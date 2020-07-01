@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+/** Ícones */
 import { FiPlus } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 
@@ -140,13 +141,6 @@ export const MenuIcon = styled(FiPlus)`
   margin: 0 0 0 8px;
 
   transition: all 200ms ease-in-out;
-`;
-
-export const CloseIcon = styled(IoMdClose)`
-  font-size: 24px;
-
-  transition: all 200ms ease-in-out;
-  margin: 0 0 0 8px;
 `;
 
 export const HiddenMenu = styled.div<Props>`

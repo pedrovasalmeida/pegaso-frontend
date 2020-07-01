@@ -7,7 +7,6 @@ import {
   Button,
   Separator,
   MenuIcon,
-  CloseIcon,
   DivMenu,
   HiddenMenu,
   HorizontalSeparator,
