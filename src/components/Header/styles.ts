@@ -9,9 +9,13 @@ interface Props {
 
 export const Container = styled.div`
   display: flex;
-  width: 100%;
   justify-content: space-between;
 
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
   height: 81px;
 
   background-color: #e1e1e1;
@@ -23,7 +27,7 @@ export const DivLogo = styled.div`
   align-items: center;
   justify-content: center;
 
-  width: 72px;
+  width: 150px;
   font-size: 32px;
 
   margin: 0 0 0 32px;
@@ -38,15 +42,19 @@ export const DivButtons = styled.div`
 
   transition: all 200ms ease-in-out;
 
-  @media (max-width: 1069px) {
+  @media (max-width: 1275px) {
     margin: 0 128px 4px 0;
   }
 
-  @media (max-width: 925px) {
+  @media (max-width: 1069px) {
     margin: 0 64px 4px 0;
   }
 
-  @media (max-width: 855px) {
+  @media (max-width: 925px) {
+    margin: 0 32px 4px 0;
+  }
+
+  @media (max-width: 897px) {
     display: none;
   }
 `;
@@ -123,7 +131,7 @@ export const DivMenu = styled.div<Props>`
     font-size: 20px;
   }
 
-  @media (max-width: 855px) {
+  @media (max-width: 897px) {
     display: flex;
     align-items: center;
     justify-content: center;
