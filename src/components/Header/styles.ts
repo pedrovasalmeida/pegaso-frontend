@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 /** Ícones */
 import { FiPlus } from "react-icons/fi";
-import { IoMdClose } from "react-icons/io";
 
 interface Props {
   isVisible?: boolean;
