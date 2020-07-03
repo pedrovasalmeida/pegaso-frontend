@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import { Link } from "react-router-dom";
-
 import {
   Container,
+  SubContainer,
+  DivContato,
+  DivAllContacts,
+  DivDados,
   DivLogo,
   DivButtons,
   Button,
@@ -11,8 +13,15 @@ import {
   MenuIcon,
   DivMenu,
   HiddenMenu,
+  LinkRRD,
   HorizontalSeparator,
+  EmailIcon,
+  WhatsAppIcon,
+  SacIcon,
+  PhoneIcon,
 } from "./styles";
+
+import Logo from "../../assets/logo.png";
 
 const Header: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -21,108 +30,121 @@ const Header: React.FC = () => {
     isVisible ? setIsVisible(false) : setIsVisible(true);
   };
 
-  const setWH = () => {
-    let windowWidth = window.innerWidth;
-    let windowHeight = window.innerHeight;
-
-    let screenWidth = window.innerWidth;
-    let screenHeight = window.innerHeight;
-
-    // document.querySelector('.window-size').innerHTML = windowWidth + 'x' + windowHeight;
-    let windowSize = document.querySelector(".window-size");
-    let screenSize = document.querySelector(".window-size");
-
-    console.log("windowWidth: " + windowWidth);
-    console.log("windowHeight: " + windowHeight);
-    console.log("screenWidth: " + screenWidth);
-    console.log("screenHeight: " + screenHeight);
-  };
-
-  useEffect(() => {
-    setWH();
-    window.addEventListener("resize", () => {
-      setWH();
-    });
-  });
-
   return (
     <>
       <HiddenMenu isVisible={isVisible}>
-        <Link to="/">
+        <LinkRRD to="/">
           <Button>HOME</Button>
-        </Link>
+        </LinkRRD>
 
         <HorizontalSeparator />
 
-        <Link to="/quem-somos">
+        <LinkRRD to="/quem-somos">
           <Button>QUEM SOMOS</Button>
-        </Link>
+        </LinkRRD>
 
         <HorizontalSeparator />
 
-        <Link to="/empreendimentos">
+        <LinkRRD to="/empreendimentos">
           <Button>EMPREENDIMENTOS</Button>
-        </Link>
+        </LinkRRD>
 
         <HorizontalSeparator />
 
-        <Link to="/portfolio">
+        <LinkRRD to="/portfolio">
           <Button>PORTFÓLIO</Button>
-        </Link>
+        </LinkRRD>
 
         <HorizontalSeparator />
 
-        <Link to="/corretor">
+        <LinkRRD to="/corretor">
           <Button>CORRETOR</Button>
-        </Link>
+        </LinkRRD>
 
         <HorizontalSeparator />
 
-        <Link to="/fale-conosco">
+        <LinkRRD to="/fale-conosco">
           <Button>FALE CONOSCO</Button>
-        </Link>
+        </LinkRRD>
       </HiddenMenu>
 
       <Container>
         <DivLogo>
-          <span>Logo</span>
+          <img src={Logo} alt="Logo" />
         </DivLogo>
 
-        <DivButtons>
-          <Link to="/">
-            <Button>HOME</Button>
-          </Link>
+        <SubContainer>
+          <DivAllContacts>
+            <DivContato>
+              <EmailIcon />
+              <DivDados>
+                <span>E-mail</span>
+                <p>contato@empresa.com.br</p>
+              </DivDados>
+            </DivContato>
 
-          <Separator />
+            <DivContato>
+              <SacIcon />
+              <DivDados>
+                <span>SAC</span>
+                <p>31 9 9999-9999</p>
+              </DivDados>
+            </DivContato>
 
-          <Link to="/quem-somos">
-            <Button>QUEM SOMOS</Button>
-          </Link>
+            <DivContato>
+              <PhoneIcon />
+              <DivDados>
+                <span>Phone</span>
+                <p>31 9 9999-9999</p>
+              </DivDados>
+            </DivContato>
 
-          <Separator />
+            <DivContato>
+              <WhatsAppIcon />
+              <DivDados>
+                <span>WhatsApp</span>
+                <p>31 9 9999-9999</p>
+              </DivDados>
+            </DivContato>
+          </DivAllContacts>
 
-          <Link to="/empreendimentos">
-            <Button>EMPREENDIMENTOS</Button>
-          </Link>
+          <DivButtons>
+            <LinkRRD to="/">
+              <Button>HOME</Button>
+            </LinkRRD>
 
-          <Separator />
+            <Separator />
 
-          <Link to="/portfolio">
-            <Button>PORTFÓLIO</Button>
-          </Link>
+            <LinkRRD to="/quem-somos">
+              <Button>QUEM SOMOS</Button>
+            </LinkRRD>
 
-          <Separator />
+            <Separator />
 
-          <Link to="/corretor">
-            <Button>CORRETOR</Button>
-          </Link>
+            <LinkRRD to="/empreendimentos">
+              <Button>EMPREENDIMENTOS</Button>
+            </LinkRRD>
 
-          <Separator />
+            <Separator />
 
-          <Link to="/fale-conosco">
-            <Button>FALE CONOSCO</Button>
-          </Link>
-        </DivButtons>
+            <LinkRRD to="/portfolio">
+              <Button>PORTFÓLIO</Button>
+            </LinkRRD>
+
+            <Separator />
+
+            <LinkRRD to="/corretor">
+              <Button>CORRETOR</Button>
+            </LinkRRD>
+
+            <Separator />
+
+            <LinkRRD to="/fale-conosco">
+              <Button>FALE CONOSCO</Button>
+            </LinkRRD>
+          </DivButtons>
+        </SubContainer>
+
         <DivMenu onClick={() => handleVisible()} isVisible={isVisible}>
           <span>{isVisible ? "Close" : "Menu"}</span>
           <MenuIcon />
