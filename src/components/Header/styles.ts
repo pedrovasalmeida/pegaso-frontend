@@ -19,7 +19,7 @@ export const Container = styled.div`
   height: 81px;
 
   background-color: #e1e1e1;
-  z-index: 1;
+  z-index: 40;
 `;
 
 export const DivLogo = styled.div`
@@ -174,7 +174,7 @@ export const HiddenMenu = styled.div<Props>`
     padding: 0 0 0 32px;
   }
 
-  z-index: ${(props) => (props.isVisible ? "2" : "0")};
+  z-index: 39;
 `;
 
 export const HorizontalSeparator = styled.div`
