@@ -15,7 +15,7 @@ export const Container = styled.div`
   top: 0;
   left: 0;
 
-  width: 100%;
+  width: 100vw;
   height: 81px;
 
   background-color: #e1e1e1;
@@ -88,7 +88,7 @@ export const Button = styled.button`
 
     border-radius: 16px;
 
-    background: rgba(0, 0, 255, 0.9);
+    background: rgba(0, 100, 255, 0.6);
 
     transition: all 300ms ease-in;
   }
@@ -98,7 +98,11 @@ export const Button = styled.button`
   }
 
   &:hover {
-    color: rgba(0, 0, 200, 0.7);
+    color: rgba(0, 100, 255, 0.6);
+  }
+
+  &:focus {
+    outline: 0;
   }
 `;
 
@@ -167,8 +171,10 @@ export const HiddenMenu = styled.div<Props>`
   transition: all 300ms ease-in-out;
 
   > button {
-    margin: 0 0 0 32px;
+    padding: 0 0 0 32px;
   }
+
+  z-index: ${(props) => (props.isVisible ? "2" : "0")};
 `;
 
 export const HorizontalSeparator = styled.div`

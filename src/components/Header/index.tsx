@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import { Link } from "react-router-dom";
 
 import {
   Container,
@@ -19,37 +21,107 @@ const Header: React.FC = () => {
     isVisible ? setIsVisible(false) : setIsVisible(true);
   };
 
+  const setWH = () => {
+    let windowWidth = window.innerWidth;
+    let windowHeight = window.innerHeight;
+
+    let screenWidth = window.innerWidth;
+    let screenHeight = window.innerHeight;
+
+    // document.querySelector('.window-size').innerHTML = windowWidth + 'x' + windowHeight;
+    let windowSize = document.querySelector(".window-size");
+    let screenSize = document.querySelector(".window-size");
+
+    console.log("windowWidth: " + windowWidth);
+    console.log("windowHeight: " + windowHeight);
+    console.log("screenWidth: " + screenWidth);
+    console.log("screenHeight: " + screenHeight);
+  };
+
+  useEffect(() => {
+    setWH();
+    window.addEventListener("resize", () => {
+      setWH();
+    });
+  });
+
   return (
     <>
       <HiddenMenu isVisible={isVisible}>
-        <Button>HOME</Button>
+        <Link to="/">
+          <Button>HOME</Button>
+        </Link>
+
         <HorizontalSeparator />
-        <Button>QUEM SOMOS</Button>
+
+        <Link to="/quem-somos">
+          <Button>QUEM SOMOS</Button>
+        </Link>
+
         <HorizontalSeparator />
-        <Button>EMPREENDIMENTOS</Button>
+
+        <Link to="/empreendimentos">
+          <Button>EMPREENDIMENTOS</Button>
+        </Link>
+
         <HorizontalSeparator />
-        <Button>PORTIFÓLIO</Button>
+
+        <Link to="/portfolio">
+          <Button>PORTFÓLIO</Button>
+        </Link>
+
         <HorizontalSeparator />
-        <Button>CORRETOR</Button>
+
+        <Link to="/corretor">
+          <Button>CORRETOR</Button>
+        </Link>
+
         <HorizontalSeparator />
-        <Button>FALE CONOSCO</Button>
+
+        <Link to="/fale-conosco">
+          <Button>FALE CONOSCO</Button>
+        </Link>
       </HiddenMenu>
+
       <Container>
         <DivLogo>
           <span>Logo</span>
         </DivLogo>
+
         <DivButtons>
-          <Button>HOME</Button>
+          <Link to="/">
+            <Button>HOME</Button>
+          </Link>
+
           <Separator />
-          <Button>QUEM SOMOS</Button>
+
+          <Link to="/quem-somos">
+            <Button>QUEM SOMOS</Button>
+          </Link>
+
           <Separator />
-          <Button>EMPREENDIMENTOS</Button>
+
+          <Link to="/empreendimentos">
+            <Button>EMPREENDIMENTOS</Button>
+          </Link>
+
           <Separator />
-          <Button>PORTIFÓLIO</Button>
+
+          <Link to="/portfolio">
+            <Button>PORTFÓLIO</Button>
+          </Link>
+
           <Separator />
-          <Button>CORRETOR</Button>
+
+          <Link to="/corretor">
+            <Button>CORRETOR</Button>
+          </Link>
+
           <Separator />
-          <Button>FALE CONOSCO</Button>
+
+          <Link to="/fale-conosco">
+            <Button>FALE CONOSCO</Button>
+          </Link>
         </DivButtons>
         <DivMenu onClick={() => handleVisible()} isVisible={isVisible}>
           <span>{isVisible ? "Close" : "Menu"}</span>
