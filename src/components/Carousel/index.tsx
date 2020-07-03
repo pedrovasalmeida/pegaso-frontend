@@ -95,9 +95,9 @@ const MyCarousel = () => {
             <RightArrow onClick={() => next()} />
           </DivIcons>
         </FloatContent>
-        <FloatButton>
+        {/* <FloatButton>
           <span>Clique aqui para conferir</span>
-        </FloatButton>
+        </FloatButton> */}
       </FloatDiv>
 
       <DivCarousel

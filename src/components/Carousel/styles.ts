@@ -32,7 +32,7 @@ export const DivCarouselItem = styled(CarouselItem)`
 
   width: 100%;
 
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #f8f8f8;
 
   > img {
     width: 100%;
@@ -71,43 +71,78 @@ export const FloatDiv = styled.div`
 
   z-index: 3;
 
+  @media (max-width: 664px) {
+    width: 300px;
+    height: 101px;
+
+    left: 32px;
+    top: 80%;
+  }
+
   @media (max-width: 562px) {
-    left: 24px;
-    top: 96px;
+    left: 32px;
+    top: 80%;
   }
 
   @media (max-width: 448px) {
-    left: 24px;
-    top: 96px;
+    left: 32px;
+    top: 80%;
   }
 
   @media (max-width: 420px) {
     width: 300px;
     height: 96px;
 
-    left: 24px;
-    top: 96px;
+    left: 32px;
+    top: 80%;
+  }
+
+  @media (max-width: 414px) {
+    width: 300px;
+    height: 101px;
+
+    left: 32px;
+    top: 80%;
   }
 
   @media (max-width: 411px) {
     width: 300px;
     height: 101px;
+
+    left: 32px;
+    top: 80%;
   }
 
   @media (max-width: 375px) {
     width: 300px;
     height: 88px;
 
-    left: 48px;
-    top: 96px;
+    left: 32px;
+    top: 80%;
   }
 
   @media (max-width: 360px) {
-    width: 250px;
-    height: 80px;
+    width: 300px;
+    height: 100px;
 
-    left: 48px;
-    top: 96px;
+    left: 32px;
+    top: 80%;
+  }
+
+  @media (max-width: 325px) {
+    width: 300px;
+    height: 100px;
+
+    left: 4px;
+    top: 80%;
+  }
+
+  @media (max-width: 320px) {
+    width: 300px;
+    height: 100px;
+
+    left: 8px;
+    top: 80%;
   }
 `;
 
@@ -146,36 +181,94 @@ export const FloatContent = styled.div`
     color: rgba(0, 200, 255, 0.6);
   }
 
-  @media (max-width: 414px) {
+  @media (max-width: 663px) {
     > div {
-      margin: 4px 6px;
+      margin: 2px 6px 4px 6px;
     }
 
     > div span:first-child {
       margin: 0;
       padding: 0;
       text-transform: uppercase;
-      font-size: 12px;
+      font-size: 14px;
       color: #fff;
     }
 
     > div span {
       margin: 0;
       padding: 0;
-      font-size: 12px;
+      font-size: 14px;
+
       color: #fff;
     }
 
     > div p {
       margin: 0;
       padding: 0;
-      font-size: 24px;
+      font-size: 26px;
+      text-transform: uppercase;
+      color: rgba(0, 200, 255, 0.6);
+    }
+  }
+
+  @media (max-width: 414px) {
+    > div {
+      margin: 2px 6px 4px 6px;
+    }
+
+    > div span:first-child {
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    > div span {
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+
+      color: #fff;
+    }
+
+    > div p {
+      margin: 0;
+      padding: 0;
+      font-size: 26px;
       text-transform: uppercase;
       color: rgba(0, 200, 255, 0.6);
     }
   }
 
   @media (max-width: 411px) {
+    > div {
+      margin: 2px 6px 4px 6px;
+    }
+
+    > div span:first-child {
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    > div span {
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+
+      color: #fff;
+    }
+
+    > div p {
+      margin: 0;
+      padding: 0;
+      font-size: 26px;
+      text-transform: uppercase;
+      color: rgba(0, 200, 255, 0.6);
+    }
   }
 
   @media (max-width: 360px) {
@@ -187,14 +280,14 @@ export const FloatContent = styled.div`
       margin: 0;
       padding: 0;
       text-transform: uppercase;
-      font-size: 12px;
+      font-size: 14px;
       color: #fff;
     }
 
     > div span {
       margin: 0;
       padding: 0;
-      font-size: 12px;
+      font-size: 14px;
 
       color: #fff;
     }
@@ -202,28 +295,11 @@ export const FloatContent = styled.div`
     > div p {
       margin: 0;
       padding: 0;
-      font-size: 18px;
+      font-size: 22px;
       text-transform: uppercase;
       color: rgba(0, 200, 255, 0.6);
     }
   }
-
-  @media (max-width: 375px) {
-  }
-
-  /* > div span:first-child {
-    color: #c1c1c1;
-    text-transform: uppercase;
-  } */
-
-  /* > div span {
-    color: #fff;
-  }
-
-  > div p {
-    color: tomato;
-    text-transform: uppercase;
-  } */
 `;
 
 export const FloatButton = styled.button`
