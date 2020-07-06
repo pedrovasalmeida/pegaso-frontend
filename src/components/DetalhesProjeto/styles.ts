@@ -70,10 +70,14 @@ export const Plantas = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  flex-wrap: wrap;
   align-self: center;
+
+  flex-wrap: wrap;
+
   width: 66%;
+
   background-color: rgba(0, 0, 0, 0.05);
+
   margin: 8px 0 0 0;
 `;
 
