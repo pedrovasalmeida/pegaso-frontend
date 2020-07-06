@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { shade } from "polished";
 
 /** Ícones */
 import { FiPlus } from "react-icons/fi";
@@ -33,15 +34,32 @@ export const DivLogo = styled.div`
   align-items: center;
   justify-content: center;
 
-  margin: 0 0 0 64px;
+  height: 100%;
 
-  > span {
-    height: 100%;
-    width: 150px;
+  > img {
+    z-index: 6;
   }
 
   @media (max-width: 1084px) {
     margin: 0 8px 0 0;
+  }
+
+  @media (max-width: 502px) {
+    > img {
+      position: absolute;
+      left: 0;
+      top: 18px;
+      margin: 0 0 0 16px;
+    }
+  }
+
+  @media (max-width: 411px) {
+    > img {
+      position: absolute;
+      left: 0;
+      top: 18px;
+      margin: 0 0 0 16px;
+    }
   }
 
   @media (max-width: 360px) {
@@ -49,18 +67,6 @@ export const DivLogo = styled.div`
       position: absolute;
       left: 0;
       top: 48px;
-      width: 100px;
-      height: 100px;
-      margin: 0 0 0 16px;
-    }
-  }
-  @media (max-width: 411px) {
-    > img {
-      position: absolute;
-      left: 0;
-      top: 18px;
-      width: 150px;
-      height: 150px;
       margin: 0 0 0 16px;
     }
   }
@@ -73,6 +79,8 @@ export const SubContainer = styled.div`
   justify-content: space-between;
 
   margin: 8px 0 0 0;
+
+  z-index: 15;
 `;
 
 export const DivAllContacts = styled.div`
@@ -98,7 +106,7 @@ export const DivContato = styled.div`
 
   align-items: center;
 
-  border-bottom: 3px solid rgba(0, 200, 255, 0.8);
+  border-bottom: 3px solid rgba(192, 25, 32, 1);
 
   background-color: rgba(0, 0, 0, 0.025);
 
@@ -111,8 +119,10 @@ export const DivContato = styled.div`
   &:hover {
     transition: all 300ms ease-in-out;
 
-    border-bottom: 3px solid rgba(0, 100, 255, 0.8);
+    border-bottom: 3px solid ${shade(0.3, `rgba(192, 25, 32, 1)`)};
     background-color: rgba(0, 0, 0, 0.05);
+
+    transform: translateX(8px);
 
     > svg {
       transition: all 300ms ease-in-out;
@@ -161,10 +171,8 @@ export const DivDados = styled.div`
 
 export const DivButtons = styled.div`
   display: flex;
-  align-items: flex-end;
-  justify-content: stretch;
 
-  margin: 0 256px 4px 0;
+  margin: 0 256px 0px 0;
 
   transition: all 200ms ease-in-out;
 
@@ -186,17 +194,17 @@ export const DivButtons = styled.div`
 `;
 
 export const Button = styled.button`
-  background: none;
   position: relative;
+  background: none;
 
   color: rgba(0, 0, 0, 1);
 
   border: none;
-
-  border-radius: 10px;
   box-sizing: border-box;
 
-  height: 50px;
+  height: 25px;
+
+  margin: 0 8px;
 
   cursor: pointer;
 
@@ -210,11 +218,9 @@ export const Button = styled.button`
     bottom: 0;
 
     width: 0px;
-    height: 4px;
+    height: 2px;
 
-    border-radius: 16px;
-
-    background: rgba(0, 100, 255, 0.6);
+    background: rgba(192, 25, 32, 1);
 
     transition: all 300ms ease-in;
   }
@@ -224,7 +230,8 @@ export const Button = styled.button`
   }
 
   &:hover {
-    color: rgba(0, 100, 255, 0.6);
+    color: ${shade(0.1, `rgba(192, 25, 32, 1)`)};
+    transform: translateY(-4px);
   }
 
   &:focus {
@@ -272,6 +279,8 @@ export const DivMenu = styled.div<Props>`
   > svg {
     ${(props) => (props.isVisible ? "transform: rotate(45deg);" : "")}
   }
+
+  z-index: 16;
 `;
 
 export const MenuIcon = styled(FiPlus)`
@@ -285,9 +294,10 @@ export const MenuIcon = styled(FiPlus)`
 export const HiddenMenu = styled.div<Props>`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
 
-  position: absolute;
+  position: fixed;
+
   top: ${(props) => (props.isVisible ? "140px" : "-50%")};
   left: 0;
 
@@ -301,11 +311,7 @@ export const HiddenMenu = styled.div<Props>`
   z-index: 39;
 `;
 
-export const LinkRRD = styled(Link)`
-  > button {
-    margin: 0 0 0 16px;
-  }
-`;
+export const LinkRRD = styled(Link)``;
 
 export const HorizontalSeparator = styled.div`
   height: 1px;
