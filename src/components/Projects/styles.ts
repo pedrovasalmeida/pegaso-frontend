@@ -6,9 +6,10 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  width: 98vw;
+  width: 99vw;
+  height: 100vh;
 
-  margin: 8px 0 0 16px;
+  padding: 0 0 0 16px;
 `;
 
 export const DivInfos = styled.div`
@@ -67,6 +68,11 @@ export const Project = styled.div`
   transition: all 200ms ease-in-out;
 
   cursor: pointer;
+
+  &:hover {
+    transition: all 200ms ease-in-out;
+    transform: translateX(8px);
+  }
 `;
 
 export const ExternalImage = styled.div`
