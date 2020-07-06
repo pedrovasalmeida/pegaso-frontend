@@ -178,7 +178,7 @@ export const FloatContent = styled.div`
     padding: 0;
     font-size: 32px;
     text-transform: uppercase;
-    color: rgba(0, 200, 255, 0.6);
+    color: rgba(192, 25, 32, 1);
   }
 
   @media (max-width: 663px) {
@@ -207,7 +207,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 26px;
       text-transform: uppercase;
-      color: rgba(0, 200, 255, 0.6);
+      color: rgba(192, 25, 32, 1);
     }
   }
 
@@ -237,7 +237,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 26px;
       text-transform: uppercase;
-      color: rgba(0, 200, 255, 0.6);
+      color: rgba(192, 25, 32, 1);
     }
   }
 
@@ -267,7 +267,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 26px;
       text-transform: uppercase;
-      color: rgba(0, 200, 255, 0.6);
+      color: rgba(192, 25, 32, 1);
     }
   }
 
@@ -297,7 +297,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 22px;
       text-transform: uppercase;
-      color: rgba(0, 200, 255, 0.6);
+      color: rgba(192, 25, 32, 1);
     }
   }
 `;
@@ -305,7 +305,7 @@ export const FloatContent = styled.div`
 export const FloatButton = styled.button`
   width: 100%;
 
-  background-color: #0096d5;
+  background-color: rgba(192, 25, 32, 1);
 
   height: 32px;
 
@@ -314,7 +314,7 @@ export const FloatButton = styled.button`
   transition: all 300ms ease-in-out;
 
   &:hover {
-    background-color: ${shade(0.4, `#0096d5`)};
+    background-color: ${shade(0.4, `rgba(192, 25, 32, 1)`)};
   }
 
   &:focus {
@@ -343,7 +343,7 @@ export const LeftArrow = styled(IoIosArrowBack)`
   cursor: pointer;
 
   &:hover {
-    color: #0096d5;
+    color: rgba(192, 25, 32, 1);
   }
 `;
 
@@ -358,6 +358,6 @@ export const RightArrow = styled(IoIosArrowForward)`
   cursor: pointer;
 
   &:hover {
-    color: #0096d5;
+    color: rgba(192, 25, 32, 1);
   }
 `;
