@@ -45,7 +45,7 @@ const Infos: React.FC = () => {
         </DivDescription>
 
         <DivCategorias>
-          <CatTitle>Algum texto aqui</CatTitle>
+          <CatTitle>Qualificações</CatTitle>
 
           <SubDivCategorias>
             <Categoria>

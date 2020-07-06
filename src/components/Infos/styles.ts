@@ -4,16 +4,11 @@ export const Container = styled.div`
   display: flex;
   margin: 8px 0 0 16px;
 
+  width: 95vw;
+
   justify-content: space-between;
 
-  @media (max-width: 1060) {
-    display: flex;
-    margin: 8px 0 0 16px;
-
-    justify-content: center;
-  }
-
-  @media (max-width: 677px) {
+  @media (max-width: 1069px) {
     flex-direction: column;
   }
 `;
@@ -22,7 +17,16 @@ export const DivInfos = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 60vw;
+  width: 75vw;
+  height: auto;
+
+  @media (max-width: 897px) {
+  }
+
+  @media (max-width: 1069px) {
+    width: 98%;
+    padding: 0 0 8px 0;
+  }
 `;
 
 export const DivTitle = styled.div`
@@ -42,18 +46,15 @@ export const Subtitle = styled.span`
   text-transform: uppercase;
   font-weight: bold;
 
-  color: rgba(0, 100, 255, 1);
-  border-bottom: 4px solid rgba(0, 100, 255, 1);
+  color: rgba(192, 25, 32, 1);
+  border-bottom: 4px solid rgba(192, 25, 32, 1);
 
   margin: 0 0 8px 0;
 `;
 
 export const DivDescription = styled.div`
-  width: 90%;
-
-  @media (max-width: 677px) {
-    width: 90vw;
-  }
+  width: 98%;
+  height: auto;
 `;
 
 export const Text = styled.span`
@@ -61,8 +62,6 @@ export const Text = styled.span`
   text-align: justify;
 
   font-weight: 300;
-
-  font-size: 14px;
 `;
 
 export const DivCategorias = styled.div`
@@ -71,11 +70,22 @@ export const DivCategorias = styled.div`
 
   margin: 16px 0 0 0;
 
+  width: 98%;
+
   > span:first-child {
     margin: 16px 0 0 0;
   }
 
-  @media (max-width: 1063px) {
+  @media (max-width: 897px) {
+    align-items: center;
+
+    > span:first-child {
+      margin: 0;
+      font-size: 32px;
+    }
+  }
+
+  /* @media (max-width: 1063px) {
     width: 90%;
   }
 
@@ -103,14 +113,24 @@ export const DivCategorias = styled.div`
     > span:first-child {
       font-size: 22px;
     }
-  }
+  } */
 `;
 
 export const SubDivCategorias = styled.div`
   display: flex;
   text-align: center;
 
-  @media (max-width: 568px) {
+  @media (max-width: 897px) {
+    flex-direction: column;
+
+    align-items: center;
+
+    .separator {
+      display: none;
+    }
+  }
+
+  /* @media (max-width: 568px) {
     flex-direction: column;
 
     .separator {
@@ -124,11 +144,12 @@ export const SubDivCategorias = styled.div`
     .separator {
       display: none;
     }
-  }
+  } */
 `;
 
 export const CatTitle = styled.span`
   font-size: 22px;
+  font-weight: bold;
 
   text-transform: uppercase;
 `;
@@ -140,7 +161,7 @@ export const Categoria = styled.div`
   > p {
     font-size: 16px;
     text-transform: uppercase;
-    color: rgba(0, 100, 255, 1);
+    color: rgba(192, 25, 32, 1);
   }
 
   > span {
@@ -150,7 +171,7 @@ export const Categoria = styled.div`
     text-align: justify;
   }
 
-  @media (max-width: 360px) {
+  /* @media (max-width: 360px) {
     > p {
       font-size: 20px;
     }
@@ -158,7 +179,7 @@ export const Categoria = styled.div`
     > span {
       font-size: 14px;
     }
-  }
+  } */
 `;
 
 export const VerticalSeparator = styled.div`
@@ -175,17 +196,20 @@ export const VerticalSeparator = styled.div`
 export const DivImagem = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
 
-  height: 55vh;
+  height: auto;
 
   margin: 8px 32px 0 0;
 `;
 
-export const Imagem = styled.img``;
+export const Imagem = styled.img`
+  object-fit: contain;
+`;
 
 export const TextImage = styled.span`
   display: flex;
-  align-self: flex-end;
+  align-self: center;
 
   margin: 2px 0 0 0;
 
