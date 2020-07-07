@@ -20,6 +20,8 @@ export const Container = styled.div`
   top: 0;
   left: 0;
 
+  border: 3px solid rgba(0, 0, 0, 0.1);
+
   width: 100vw;
   height: 140px;
 
@@ -48,7 +50,7 @@ export const DivLogo = styled.div`
     > img {
       position: absolute;
       left: 0;
-      top: 18px;
+      top: 48px;
       margin: 0 0 0 16px;
     }
   }
@@ -86,7 +88,6 @@ export const SubContainer = styled.div`
 export const DivAllContacts = styled.div`
   display: flex;
 
-  justify-content: space-between;
   align-items: center;
 
   width: 88%;
@@ -104,13 +105,12 @@ export const DivAllContacts = styled.div`
 export const DivContato = styled.div`
   display: flex;
 
-  align-items: center;
-
+  border-radius: 8px;
   border-bottom: 3px solid rgba(192, 25, 32, 1);
 
   background-color: rgba(0, 0, 0, 0.025);
 
-  border-radius: 8px;
+  margin: 0 24px 0 0;
 
   transition: all 300ms ease-in-out;
 
@@ -142,9 +142,9 @@ export const DivContato = styled.div`
     }
   }
 
-  @media (max-width: 1069px) {
+  /* @media (max-width: 1069px) {
     margin: 0 24px 0 0;
-  }
+  } */
 `;
 
 export const DivDados = styled.div`
@@ -274,6 +274,10 @@ export const DivMenu = styled.div<Props>`
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  @media (max-width: 320px) {
+    margin: 0 0 0 16px;
   }
 
   > svg {

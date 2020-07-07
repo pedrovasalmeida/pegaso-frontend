@@ -7,7 +7,6 @@ export const Container = styled.div`
   flex-direction: column;
 
   width: 99vw;
-  height: 100vh;
 
   padding: 0 0 0 16px;
 `;
@@ -30,6 +29,8 @@ export const DivTitle = styled.div`
 export const Title = styled.span`
   font-size: 16px;
   font-weight: bold;
+
+  margin: 8px 0 4px 0;
 
   text-transform: uppercase;
 `;
@@ -73,13 +74,65 @@ export const Project = styled.div`
     transition: all 200ms ease-in-out;
     transform: translateX(8px);
   }
+
+  @media (max-width: 1393px) {
+    width: 1120px;
+    height: 300px;
+  }
+
+  @media (max-width: 1285px) {
+    width: 1020px;
+    height: 300px;
+  }
+
+  @media (max-width: 1159px) {
+    width: 920px;
+    height: 300px;
+  }
+
+  @media (max-width: 1053px) {
+    width: 700px;
+    height: 200px;
+  }
+  @media (max-width: 735px) {
+    width: 500px;
+    height: 200px;
+  }
+
+  @media (max-width: 603px) {
+    width: 400px;
+    height: 200px;
+  }
+
+  @media (max-width: 414px) {
+    width: 395px;
+    height: 200px;
+  }
+
+  @media (max-width: 411px) {
+    width: 390px;
+    height: 200px;
+  }
+
+  @media (max-width: 375px) {
+    width: 350px;
+    height: 200px;
+  }
+
+  @media (max-width: 360px) {
+    width: 340px;
+    height: 200px;
+  }
+
+  @media (max-width: 320px) {
+    width: 300px;
+    height: 200px;
+  }
 `;
 
 export const ExternalImage = styled.div`
   width: 189px;
   height: 100%;
-
-  background-color: red;
 
   margin: 0 6px 0 0;
 
@@ -93,8 +146,6 @@ export const ExternalImage = styled.div`
 export const FullImage = styled.div`
   width: 100%;
   height: 100%;
-
-  background-color: blue;
 
   > img {
     width: 100%;
@@ -112,6 +163,58 @@ export const FloatDiv = styled.div`
   width: 324px;
 
   z-index: 2;
+
+  @media (max-width: 1393px) {
+    right: 16px;
+    top: 40%;
+
+    height: 70px;
+    width: 294px;
+  }
+
+  @media (max-width: 1285px) {
+    right: 16px;
+    top: 40%;
+
+    height: 70px;
+    width: 294px;
+  }
+
+  @media (max-width: 1159px) {
+    right: 16px;
+    top: 40%;
+
+    height: 70px;
+    width: 294px;
+  }
+
+  @media (max-width: 1053px) {
+    right: 16px;
+    top: 40%;
+
+    height: 70px;
+    width: 294px;
+  }
+
+  @media (max-width: 414px) {
+    display: none;
+  }
+
+  @media (max-width: 411px) {
+    display: none;
+  }
+
+  @media (max-width: 375px) {
+    display: none;
+  }
+
+  @media (max-width: 360px) {
+    display: none;
+  }
+
+  @media (max-width: 320px) {
+    display: none;
+  }
 `;
 
 export const FloatContent = styled.div`
@@ -147,6 +250,32 @@ export const FloatContent = styled.div`
     font-size: 32px;
     text-transform: uppercase;
     color: rgba(192, 25, 32, 1);
+  }
+
+  @media (max-width: 1053px) {
+    > div span:first-child {
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #fff;
+    }
+
+    > div span {
+      margin: 0;
+      padding: 0;
+      font-size: 12px;
+      color: #fff;
+    }
+
+    > div p {
+      margin: 0;
+      padding: 0;
+      line-height: 20px;
+      font-size: 24px;
+      text-transform: uppercase;
+      color: rgba(192, 25, 32, 1);
+    }
   }
 `;
 
