@@ -43,7 +43,9 @@ const Infos: React.FC = () => {
         </Endereco>
       </Details>
 
-      <MoreImages />
+      <MoreImages>
+        <span>IMAGENS</span>
+      </MoreImages>
 
       <DivTitlePlanta>
         <Title>Plantas</Title>

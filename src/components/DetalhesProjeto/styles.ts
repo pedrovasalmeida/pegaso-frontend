@@ -10,6 +10,7 @@ export const Container = styled.div`
 
 export const Imagem = styled.img`
   height: 700px;
+  width: 100%;
   object-fit: cover;
 `;
 
@@ -85,10 +86,14 @@ export const OpcaoPlanta = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   background-color: #fff;
+
   width: 22.5%;
   height: 400px;
   margin: 8px;
+
+  transition: all 200ms ease-in-out;
 
   > img {
     margin: 8px 0;
@@ -98,6 +103,11 @@ export const OpcaoPlanta = styled.div`
 
   span + span {
     font-size: 14px;
+  }
+
+  &:hover {
+    filter: drop-shadow(0px 8px 16px gray);
+    transform: translateY(-4px);
   }
 `;
 
