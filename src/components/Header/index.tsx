@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import { Link } from "react-router-dom";
+
 import {
   Container,
   SubContainer,
@@ -14,6 +16,7 @@ import {
   DivMenu,
   HiddenMenu,
   LinkRRD,
+  LinkRRDHiddenMenu,
   HorizontalSeparator,
   EmailIcon,
   WhatsAppIcon,
@@ -37,39 +40,39 @@ const Header: React.FC = () => {
   return (
     <>
       <HiddenMenu onClick={() => handleOutsideClick()} isVisible={isVisible}>
-        <LinkRRD to="/">
+        <LinkRRDHiddenMenu to="/">
           <Button>HOME</Button>
-        </LinkRRD>
+        </LinkRRDHiddenMenu>
 
         <HorizontalSeparator />
 
-        <LinkRRD to="/quem-somos">
+        <LinkRRDHiddenMenu to="/quem-somos">
           <Button>QUEM SOMOS</Button>
-        </LinkRRD>
+        </LinkRRDHiddenMenu>
 
         <HorizontalSeparator />
 
-        <LinkRRD to="/empreendimentos">
+        <LinkRRDHiddenMenu to="/empreendimentos">
           <Button>EMPREENDIMENTOS</Button>
-        </LinkRRD>
+        </LinkRRDHiddenMenu>
 
         <HorizontalSeparator />
 
-        <LinkRRD to="/portfolio">
+        <LinkRRDHiddenMenu to="/portfolio">
           <Button>PORTFÓLIO</Button>
-        </LinkRRD>
+        </LinkRRDHiddenMenu>
 
         <HorizontalSeparator />
 
-        <LinkRRD to="/corretor">
+        <LinkRRDHiddenMenu to="/corretor">
           <Button>CORRETOR</Button>
-        </LinkRRD>
+        </LinkRRDHiddenMenu>
 
         <HorizontalSeparator />
 
-        <LinkRRD to="/fale-conosco">
+        <LinkRRDHiddenMenu to="/fale-conosco">
           <Button>FALE CONOSCO</Button>
-        </LinkRRD>
+        </LinkRRDHiddenMenu>
       </HiddenMenu>
 
       <Container>

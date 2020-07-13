@@ -176,66 +176,27 @@ export const DivButtons = styled.div`
 
   transition: all 200ms ease-in-out;
 
-  @media (max-width: 1275px) {
-    margin: 0 128px 4px 0;
-  }
+  width: 100%;
 
   @media (max-width: 1069px) {
     margin: 0 64px 4px 0;
   }
 
-  @media (max-width: 925px) {
-    margin: 0 32px 4px 0;
+  @media (max-width: 988px) {
+    display: none;
   }
 
-  @media (max-width: 897px) {
-    display: none;
+  @media (max-width: 925px) {
+    margin: 0 32px 4px 0;
   }
 `;
 
 export const Button = styled.button`
-  position: relative;
-  background: none;
-
-  color: rgba(0, 0, 0, 1);
-
-  border: none;
-  box-sizing: border-box;
-
-  height: 25px;
-
-  margin: 0 8px;
-
-  cursor: pointer;
-
-  transition: all 400ms ease-in-out;
-
-  &::before {
-    content: "";
-    position: absolute;
-
-    left: -1;
-    bottom: 0;
-
-    width: 0px;
-    height: 2px;
-
-    background: rgba(192, 25, 32, 1);
-
-    transition: all 300ms ease-in;
-  }
-
-  &:hover::before {
-    width: 100%;
-  }
-
-  &:hover {
-    color: ${shade(0.1, `rgba(192, 25, 32, 1)`)};
-    transform: translateY(-4px);
-  }
+  background-color: transparent;
 
   &:focus {
     outline: 0;
+    text-decoration: none;
   }
 `;
 
@@ -270,7 +231,7 @@ export const DivMenu = styled.div<Props>`
     font-size: 20px;
   }
 
-  @media (max-width: 897px) {
+  @media (max-width: 988px) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -315,10 +276,68 @@ export const HiddenMenu = styled.div<Props>`
   z-index: 39;
 `;
 
-export const LinkRRD = styled(Link)`
+export const LinkRRDHiddenMenu = styled(Link)`
   display: flex;
   align-items: center;
+
+  height: 48px;
+
+  margin: 0 16px 0 0;
+
+  text-decoration: none;
+
+  &:focus {
+    text-decoration: none;
+  }
+`;
+
+export const LinkRRD = styled(Link)`
+  /* justify-content: center;
+  align-items: center;
   height: 40px;
+  width: 100%;
+
+  margin: 0 16px 0 0; */
+  position: relative;
+  background: none;
+
+  color: rgba(0, 0, 0, 1);
+
+  border: none;
+  box-sizing: border-box;
+
+  height: 24px;
+  width: auto;
+
+  margin: 0 8px;
+
+  cursor: pointer;
+
+  transition: all 400ms ease-in-out;
+
+  &::before {
+    content: "";
+    position: absolute;
+
+    left: -1;
+    bottom: 0;
+
+    width: 0px;
+    height: 2px;
+
+    background: rgba(192, 25, 32, 1);
+
+    transition: all 300ms ease-in;
+  }
+
+  &:hover::before {
+    width: 100%;
+  }
+
+  &:hover {
+    color: ${shade(0.1, `rgba(192, 25, 32, 1)`)};
+    transform: translateX(2px);
+  }
 `;
 
 export const HorizontalSeparator = styled.div`
