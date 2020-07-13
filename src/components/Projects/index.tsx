@@ -1,5 +1,7 @@
 import React from "react";
 
+import useAxios from "../../hooks/useAxios";
+
 import { Link } from "react-router-dom";
 
 import {
@@ -16,7 +18,17 @@ import {
   FloatButton,
 } from "./styles";
 
+interface Empreendimentos {
+  id: number;
+  nome: string;
+  descricao_curta: string;
+  banner: string;
+  poster: string;
+}
+
 const Projects: React.FC = () => {
+  const { data } = useAxios<Empreendimentos[]>("/show-all");
+
   return (
     <Container>
       <DivTitle>
@@ -25,92 +37,35 @@ const Projects: React.FC = () => {
       </DivTitle>
 
       <DivProjects>
-        <Link to="/empreendimentos/detalhes">
-          <Project>
-            <ExternalImage>
-              <img
-                src="https://i.pinimg.com/originals/c0/e0/fb/c0e0fbd3ebbd368d5b83e69c61873802.jpg"
-                alt="teste"
-              />
-            </ExternalImage>
-            <FullImage>
-              <img
-                src="https://i.pinimg.com/originals/c0/e0/fb/c0e0fbd3ebbd368d5b83e69c61873802.jpg"
-                alt="teste"
-              />
-            </FullImage>
-            <FloatDiv>
-              <FloatContent>
-                <div>
-                  <span>Primeiro Empreendimento</span>
-                  <p>Kamehameha</p>
-                  <span>O mais poderoso já lançado!</span>
-                </div>
-              </FloatContent>
-              <FloatButton>
-                <span>Clique aqui para conferir</span>
-              </FloatButton>
-            </FloatDiv>
-          </Project>
-        </Link>
-
-        <Link to="/empreendimentos/detalhes">
-          <Project>
-            <ExternalImage>
-              <img
-                src="https://i.pinimg.com/originals/c0/e0/fb/c0e0fbd3ebbd368d5b83e69c61873802.jpg"
-                alt="teste"
-              />
-            </ExternalImage>
-            <FullImage>
-              <img
-                src="https://i.pinimg.com/originals/c0/e0/fb/c0e0fbd3ebbd368d5b83e69c61873802.jpg"
-                alt="teste"
-              />
-            </FullImage>
-            <FloatDiv>
-              <FloatContent>
-                <div>
-                  <span>Primeiro Empreendimento</span>
-                  <p>Kamehameha</p>
-                  <span>O mais poderoso já lançado!</span>
-                </div>
-              </FloatContent>
-              <FloatButton>
-                <span>Clique aqui para conferir</span>
-              </FloatButton>
-            </FloatDiv>
-          </Project>
-        </Link>
-
-        <Link to="/empreendimentos/detalhes">
-          <Project>
-            <ExternalImage>
-              <img
-                src="https://i.pinimg.com/originals/c0/e0/fb/c0e0fbd3ebbd368d5b83e69c61873802.jpg"
-                alt="teste"
-              />
-            </ExternalImage>
-            <FullImage>
-              <img
-                src="https://i.pinimg.com/originals/c0/e0/fb/c0e0fbd3ebbd368d5b83e69c61873802.jpg"
-                alt="teste"
-              />
-            </FullImage>
-            <FloatDiv>
-              <FloatContent>
-                <div>
-                  <span>Primeiro Empreendimento</span>
-                  <p>Kamehameha</p>
-                  <span>O mais poderoso já lançado!</span>
-                </div>
-              </FloatContent>
-              <FloatButton>
-                <span>Clique aqui para conferir</span>
-              </FloatButton>
-            </FloatDiv>
-          </Project>
-        </Link>
+        {!data ? (
+          <p>Carregando...</p>
+        ) : (
+          data.map((item) => {
+            return (
+              <Link to={`/empreendimentos/detalhes/${item.id}`}>
+                <Project>
+                  <ExternalImage>
+                    <img src={item.poster} alt={item.nome} />
+                  </ExternalImage>
+                  <FullImage>
+                    <img src={item.banner} alt={item.nome} />
+                  </FullImage>
+                  <FloatDiv>
+                    <FloatContent>
+                      <div>
+                        <span>{item.descricao_curta}</span>
+                        <p>{item.nome}</p>
+                      </div>
+                    </FloatContent>
+                    <FloatButton>
+                      <span>Clique aqui para conferir</span>
+                    </FloatButton>
+                  </FloatDiv>
+                </Project>
+              </Link>
+            );
+          })
+        )}
       </DivProjects>
     </Container>
   );

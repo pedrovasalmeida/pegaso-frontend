@@ -73,6 +73,7 @@ export const Project = styled.div`
   &:hover {
     transition: all 200ms ease-in-out;
     transform: translateX(8px);
+    filter: drop-shadow(0px 8px 8px gray);
   }
 
   @media (max-width: 1393px) {
@@ -159,7 +160,7 @@ export const FloatDiv = styled.div`
   right: 16px;
   top: 48%;
 
-  height: 100px;
+  height: 72px;
   width: 324px;
 
   z-index: 2;
@@ -229,42 +230,26 @@ export const FloatContent = styled.div`
     margin: 4px 0 0 8px;
   }
 
-  > div span:first-child {
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #fff;
-  }
-
   > div span {
     margin: 0;
     padding: 0;
-    font-size: 14px;
+    font-size: 12px;
     color: #fff;
   }
 
   > div p {
     margin: 0;
     padding: 0;
-    font-size: 32px;
+    font-size: 24px;
     text-transform: uppercase;
     color: rgba(192, 25, 32, 1);
   }
 
   @media (max-width: 1053px) {
-    > div span:first-child {
-      margin: 0;
-      padding: 0;
-      text-transform: uppercase;
-      font-size: 12px;
-      color: #fff;
-    }
-
     > div span {
       margin: 0;
       padding: 0;
-      font-size: 12px;
+      font-size: 10px;
       color: #fff;
     }
 
