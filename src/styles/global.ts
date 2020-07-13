@@ -10,11 +10,11 @@ export default createGlobalStyle`
   *, button, input {
     border: 0;
     outline: 0;
-    font-family: Roboto, sans-serif;
+    font-family: 'Raleway', sans-serif;
   }
 
   body {
-    background-color: #fdfdfd;
+    background-image: linear-gradient(to right, #fff, #fafafa);
     -webkit-font-smoothing: antialiased !important;
   }
 
