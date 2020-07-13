@@ -52,6 +52,7 @@ const MyCarousel = () => {
     if (animating) return;
     setActiveIndex(newIndex);
   };
+
   const slides = data.map((item) => {
     return (
       <DivCarouselItem
@@ -60,7 +61,7 @@ const MyCarousel = () => {
         key={item.id}
       >
         <Link to={`/empreendimentos/detalhes/${data[activeIndex].id}`}>
-          <img src={item.banner} alt={item.nome} onClick={() => {}} />
+          <img src={item.banner} alt={item.nome} />
         </Link>
       </DivCarouselItem>
     );
