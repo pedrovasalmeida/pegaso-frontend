@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+
+import { useParams } from "react-router-dom";
+
+import useAxios from "../../hooks/useAxios";
 
 import {
   Container,
@@ -16,79 +20,156 @@ import {
   Localizacao,
   Maps,
   DetalhesBairro,
+  DivCarousel,
+  DivCarouselItem,
+  DivCarouselControl,
+  DivCarouselIndicators,
+  DivCarouselCaption,
+  LeftArrow,
+  RightArrow,
+  FloatDiv,
+  FloatContent,
+  FloatButton,
+  DivIcons,
 } from "./styles";
 
+interface Empreendimentos {
+  development: {
+    id: number;
+    nome: string;
+    descricao_curta: string;
+    descricao: string;
+    endereco: string;
+    banner: string;
+    poster: string;
+  };
+  images: {
+    id: number;
+    id_empreendimento: number;
+    imagem: string;
+    name: string;
+  }[];
+}
+
+interface Plantas {
+  id: number;
+  id_empreendimento: number;
+  planta: string;
+  name: string;
+  descricao: string;
+}
+
 const Infos: React.FC = () => {
+  let { id } = useParams();
+  const { data } = useAxios<Empreendimentos>(`/show-one/${id}`);
+  const plantas = useAxios<Plantas[]>(`/show-all-plantas/${id}`);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [animating, setAnimating] = useState(false);
+
+  if (!data)
+    return (
+      <Container
+        style={{
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <p>Carregando data...</p>
+      </Container>
+    );
+
+  const imagesLength = data?.images.length;
+
+  const images = data.images.map((item) => {
+    return (
+      <DivCarouselItem
+        onExiting={() => setAnimating(true)}
+        onExited={() => setAnimating(false)}
+        key={item.id}
+      >
+        <img src={item.imagem} alt={item.name} />
+      </DivCarouselItem>
+    );
+  });
+
+  const next = () => {
+    if (animating) return;
+    const nextIndex = activeIndex === imagesLength - 1 ? 0 : activeIndex + 1;
+    setActiveIndex(nextIndex);
+  };
+
+  const previous = () => {
+    if (animating) return;
+    const nextIndex = activeIndex === 0 ? imagesLength - 1 : activeIndex - 1;
+    setActiveIndex(nextIndex);
+  };
+
   return (
     <Container>
-      <Imagem src="https://i.redd.it/u105ro5rg8o31.jpg" alt="Imagem" />
+      <Imagem src={data.development.banner} alt="Imagem" />
 
       <Details>
         <Empreendimento>
           <Title>Empreendimento</Title>
-          <Text>• Quarto e sala</Text>
-          <Text>• Apenas 4 apartamentos por andar</Text>
-          <Text>• Todos voltados para o nascente</Text>
-          <Text>• Quarto e sala</Text>
-          <Text>• Apenas 4 apartamentos por andar</Text>
-          <Text>• Todos voltados para o nascente</Text>
+          <Text>{data.development.descricao}</Text>
         </Empreendimento>
 
         <Endereco>
           <Title>Endereço</Title>
-          <Text>
-            Poucos bairros da cidade são tão charmosos quanto a Graça. Um
-            endereço que dispensa comentários: completo, nobre, único
-          </Text>
+          <Text>{data.development.endereco}</Text>
         </Endereco>
       </Details>
 
       <MoreImages>
-        <span>IMAGENS</span>
+        <FloatDiv>
+          {images}
+          <DivIcons>
+            <LeftArrow onClick={() => previous()} />
+            <RightArrow onClick={() => next()} />
+          </DivIcons>
+        </FloatDiv>
+
+        <DivCarousel
+          activeIndex={activeIndex}
+          next={next}
+          previous={previous}
+          ride={"carousel"}
+        >
+          {images}
+          <DivCarouselControl
+            direction="prev"
+            directionText="Previous"
+            onClickHandler={previous}
+          />
+          <DivCarouselControl
+            direction="next"
+            directionText="Next"
+            onClickHandler={next}
+          />
+        </DivCarousel>
       </MoreImages>
 
-      <DivTitlePlanta>
-        <Title>Plantas</Title>
-      </DivTitlePlanta>
-
-      <Plantas>
-        <OpcaoPlanta>
-          <img src="https://i.redd.it/u105ro5rg8o31.jpg" alt="#" />
-
-          <TitlePlanta>Opção 1</TitlePlanta>
-          <Text>Área privativa: 47,48m²</Text>
-        </OpcaoPlanta>
-        <OpcaoPlanta>
-          <img src="https://i.redd.it/u105ro5rg8o31.jpg" alt="#" />
-
-          <TitlePlanta>Opção 2</TitlePlanta>
-          <Text>Área privativa: 47,48m²</Text>
-        </OpcaoPlanta>
-        <OpcaoPlanta>
-          <img src="https://i.redd.it/u105ro5rg8o31.jpg" alt="#" />
-
-          <TitlePlanta>Opção 3</TitlePlanta>
-          <Text>Área privativa: 47,48m²</Text>
-        </OpcaoPlanta>
-        <OpcaoPlanta>
-          <img src="https://i.redd.it/u105ro5rg8o31.jpg" alt="#" />
-
-          <TitlePlanta>Opção 4</TitlePlanta>
-          <Text>Área privativa: 47,48m²</Text>
-        </OpcaoPlanta>
-        <OpcaoPlanta>
-          <img src="https://i.redd.it/u105ro5rg8o31.jpg" alt="#" />
-
-          <TitlePlanta>Opção 5</TitlePlanta>
-          <Text>Área privativa: 47,48m²</Text>
-        </OpcaoPlanta>
-        <OpcaoPlanta>
-          <img src="https://i.redd.it/u105ro5rg8o31.jpg" alt="#" />
-
-          <TitlePlanta>Opção 6</TitlePlanta>
-          <Text>Área privativa: 47,48m²</Text>
-        </OpcaoPlanta>
-      </Plantas>
+      {!plantas.data ? (
+        ""
+      ) : (
+        <>
+          <DivTitlePlanta>
+            <Title>Plantas</Title>
+          </DivTitlePlanta>
+          <Plantas>
+            {plantas.data?.map((item) => (
+              <OpcaoPlanta>
+                <img src={item.planta} alt={item.name} />
+                <TitlePlanta>Opção de planta</TitlePlanta>
+                <Text>{item.descricao}</Text>
+              </OpcaoPlanta>
+            ))}
+          </Plantas>
+        </>
+      )}
 
       <Localizacao>
         <Maps />
