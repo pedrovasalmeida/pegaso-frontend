@@ -20,7 +20,7 @@ export const Container = styled.div`
   top: 0;
   left: 0;
 
-  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
 
   width: 100vw;
   height: 140px;
@@ -315,7 +315,11 @@ export const HiddenMenu = styled.div<Props>`
   z-index: 39;
 `;
 
-export const LinkRRD = styled(Link)``;
+export const LinkRRD = styled(Link)`
+  display: flex;
+  align-items: center;
+  height: 40px;
+`;
 
 export const HorizontalSeparator = styled.div`
   height: 1px;

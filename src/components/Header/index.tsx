@@ -30,9 +30,13 @@ const Header: React.FC = () => {
     isVisible ? setIsVisible(false) : setIsVisible(true);
   };
 
+  const handleOutsideClick = () => {
+    setIsVisible(false);
+  };
+
   return (
     <>
-      <HiddenMenu isVisible={isVisible}>
+      <HiddenMenu onClick={() => handleOutsideClick()} isVisible={isVisible}>
         <LinkRRD to="/">
           <Button>HOME</Button>
         </LinkRRD>
