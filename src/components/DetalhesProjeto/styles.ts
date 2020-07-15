@@ -172,7 +172,7 @@ export const DivCarouselItem = styled(CarouselItem)`
   > img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 
     @media (max-width: 663px) {
       transition: all 300ms ease-in-out;
