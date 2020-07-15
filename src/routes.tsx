@@ -9,7 +9,7 @@ import Main from "./pages/Main";
 import QuemSomos from "./pages/QuemSomos";
 import Empreendimentos from "./pages/Empreendimentos";
 import DetalhesEmpreendimento from "./pages/DetalhesEmpreendimento";
-import StoreData from "./components/StoreData";
+import Painel from "./components/Painel";
 
 // import { Container } from './styles';
 
@@ -25,7 +25,7 @@ const Routes: React.FC = () => {
           path="/empreendimentos/detalhes/:id"
           component={DetalhesEmpreendimento}
         />
-        <Route path="/add" component={StoreData} />
+        <Route path="/painel" component={Painel} />
       </Switch>
     </BrowserRouter>
   );
