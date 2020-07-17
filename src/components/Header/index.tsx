@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import {
   Container,
@@ -22,9 +22,9 @@ import {
   WhatsAppIcon,
   SacIcon,
   PhoneIcon,
-} from "./styles";
+} from './styles';
 
-import Logo from "../../assets/logo.png";
+import Logo from '../../assets/logo.png';
 
 const Header: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -72,6 +72,10 @@ const Header: React.FC = () => {
 
         <LinkRRDHiddenMenu to="/fale-conosco">
           <Button>FALE CONOSCO</Button>
+        </LinkRRDHiddenMenu>
+
+        <LinkRRDHiddenMenu to="/painel">
+          <Button>PAINEL</Button>
         </LinkRRDHiddenMenu>
       </HiddenMenu>
 
@@ -149,11 +153,17 @@ const Header: React.FC = () => {
             <LinkRRD to="/fale-conosco">
               <Button>FALE CONOSCO</Button>
             </LinkRRD>
+
+            <Separator />
+
+            <LinkRRD to="/painel">
+              <Button>PAINEL</Button>
+            </LinkRRD>
           </DivButtons>
         </SubContainer>
 
         <DivMenu onClick={() => handleVisible()} isVisible={isVisible}>
-          <span>{isVisible ? "Close" : "Menu"}</span>
+          <span>{isVisible ? 'Close' : 'Menu'}</span>
           <MenuIcon />
         </DivMenu>
       </Container>

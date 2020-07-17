@@ -1,12 +1,12 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { shade } from "polished";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { shade } from 'polished';
 
 /** Ícones */
-import { FiPlus } from "react-icons/fi";
-import { MdEmail, MdPhone } from "react-icons/md";
-import { IoLogoWhatsapp } from "react-icons/io";
-import { FiHelpCircle } from "react-icons/fi";
+import { FiPlus } from 'react-icons/fi';
+import { MdEmail, MdPhone } from 'react-icons/md';
+import { IoLogoWhatsapp } from 'react-icons/io';
+import { FiHelpCircle } from 'react-icons/fi';
 
 interface Props {
   isVisible?: boolean;
@@ -242,7 +242,7 @@ export const DivMenu = styled.div<Props>`
   }
 
   > svg {
-    ${(props) => (props.isVisible ? "transform: rotate(45deg);" : "")}
+    ${(props) => (props.isVisible ? 'transform: rotate(45deg);' : '')}
   }
 
   z-index: 16;
@@ -263,7 +263,7 @@ export const HiddenMenu = styled.div<Props>`
 
   position: fixed;
 
-  top: ${(props) => (props.isVisible ? "140px" : "-50%")};
+  top: ${(props) => (props.isVisible ? '140px' : '-50%')};
   left: 0;
 
   height: auto;
@@ -316,7 +316,7 @@ export const LinkRRD = styled(Link)`
   transition: all 400ms ease-in-out;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
 
     left: -1;
