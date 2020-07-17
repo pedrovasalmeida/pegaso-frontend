@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 import {
   Container,
@@ -14,16 +14,17 @@ import {
   Adicionar,
   Atualizar,
   Remover,
-} from "./styles";
+} from './styles';
 
-import Add from "../AdicionarEmp";
-import List from "../ListarEmp";
+import Add from '../AdicionarEmp';
+import Remove from '../RemoverEmp';
+import List from '../ListarEmp';
 
 const Painel: React.FC = () => {
   const [adicionar, setAdicionar] = useState(false);
   const [atualizar, setAtualizar] = useState(false);
-  const [remover, setRemover] = useState(false);
-  const [listar, setListar] = useState(true);
+  const [remover, setRemover] = useState(true);
+  const [listar, setListar] = useState(false);
 
   const handleAdicionar = () => {
     setAdicionar(true);
@@ -72,6 +73,12 @@ const Painel: React.FC = () => {
 
         <Separator />
 
+        <OpcaoMenu onClick={() => handleAdicionar()}>
+          Adicionar imagens
+        </OpcaoMenu>
+
+        <Separator />
+
         <OpcaoMenu onClick={() => handleRemover()}>
           Remover empreendimento
         </OpcaoMenu>
@@ -98,7 +105,7 @@ const Painel: React.FC = () => {
         {remover && (
           <>
             <span>Remover Empreendimento</span>
-            <Remover />
+            <Remove />
           </>
         )}
         {atualizar && (

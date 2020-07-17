@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -92,6 +92,8 @@ export const Data = styled.div`
   height: calc(100vh - 140px);
 
   background-color: #ccc;
+
+  overflow-y: scroll;
 
   > span {
     align-self: center;
