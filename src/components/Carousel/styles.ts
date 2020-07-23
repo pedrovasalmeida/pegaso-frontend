@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { shade } from "polished";
+import styled from 'styled-components';
+import { shade } from 'polished';
 
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 
 import {
   Carousel,
@@ -9,7 +9,7 @@ import {
   CarouselControl,
   CarouselIndicators,
   CarouselCaption,
-} from "reactstrap";
+} from 'reactstrap';
 
 export const Container = styled.div`
   width: 100vw;
@@ -178,7 +178,7 @@ export const FloatContent = styled.div`
     padding: 0;
     font-size: 32px;
     text-transform: uppercase;
-    color: rgba(192, 25, 32, 1);
+    color: rgba(113, 14, 9, 1);
   }
 
   @media (max-width: 663px) {
@@ -207,7 +207,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 26px;
       text-transform: uppercase;
-      color: rgba(192, 25, 32, 1);
+      color: rgba(113, 14, 9, 1);
     }
   }
 
@@ -237,7 +237,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 26px;
       text-transform: uppercase;
-      color: rgba(192, 25, 32, 1);
+      color: rgba(113, 14, 9, 1);
     }
   }
 
@@ -267,7 +267,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 26px;
       text-transform: uppercase;
-      color: rgba(192, 25, 32, 1);
+      color: rgba(113, 14, 9, 1);
     }
   }
 
@@ -297,7 +297,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 22px;
       text-transform: uppercase;
-      color: rgba(192, 25, 32, 1);
+      color: rgba(113, 14, 9, 1);
     }
   }
 `;
@@ -305,7 +305,7 @@ export const FloatContent = styled.div`
 export const FloatButton = styled.button`
   width: 100%;
 
-  background-color: rgba(192, 25, 32, 1);
+  background-color: rgba(113, 14, 9, 1);
 
   height: 32px;
 
@@ -314,7 +314,7 @@ export const FloatButton = styled.button`
   transition: all 300ms ease-in-out;
 
   &:hover {
-    background-color: ${shade(0.4, `rgba(192, 25, 32, 1)`)};
+    background-color: ${shade(0.4, `rgba(113, 14, 9, 1)`)};
   }
 
   &:focus {

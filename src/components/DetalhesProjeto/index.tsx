@@ -23,13 +23,9 @@ import {
   DivCarousel,
   DivCarouselItem,
   DivCarouselControl,
-  DivCarouselIndicators,
-  DivCarouselCaption,
   LeftArrow,
   RightArrow,
   FloatDiv,
-  FloatContent,
-  FloatButton,
   DivIcons,
 } from "./styles";
 

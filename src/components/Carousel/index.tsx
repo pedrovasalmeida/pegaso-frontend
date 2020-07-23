@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+
 import {
   Container,
   DivCarousel,
@@ -48,10 +49,10 @@ const MyCarousel = () => {
     setActiveIndex(nextIndex);
   };
 
-  const goToIndex = (newIndex: number) => {
-    if (animating) return;
-    setActiveIndex(newIndex);
-  };
+  // const goToIndex = (newIndex: number) => {
+  //   if (animating) return;
+  //   setActiveIndex(newIndex);
+  // };
 
   const slides = data.map((item) => {
     return (
@@ -111,79 +112,3 @@ const MyCarousel = () => {
 };
 
 export default MyCarousel;
-
-{
-  /* <Teste id="slider">
-        <img
-          className="selected"
-          id={String(places[0].id)}
-          src={places[0].url}
-          alt="imagem"
-        />
-
-        <img id={String(places[1].id)} src={places[1].url} alt="imagem" />
-
-        <img id={String(places[2].id)} src={places[2].url} alt="imagem" />
-
-        <img id={String(places[3].id)} src={places[3].url} alt="imagem" />
-
-        <img id={String(places[4].id)} src={places[4].url} alt="imagem" />
-      </Teste> */
-}
-
-{
-  /* <MyCarousel accessibility {...settings}>
-        <div>
-          <img src={places[0].url} alt="imagem" />
-        </div>
-        <div>
-          <img src={places[1].url} alt="imagem" />
-        </div>
-        <div>
-          <img src={places[2].url} alt="imagem" />
-        </div>
-        <div>
-          <img src={places[3].url} alt="imagem" />
-        </div>
-        <div>
-          <img src={places[4].url} alt="imagem" />
-        </div>
-      </MyCarousel> */
-}
-
-// const items = [
-//   {
-//     src:
-//       "https://i.pinimg.com/originals/c0/e0/fb/c0e0fbd3ebbd368d5b83e69c61873802.jpg",
-//     altText: "Grand Village",
-//     caption: "Pronto para morar",
-//     comodos: "Quarto e sala",
-//   },
-//   {
-//     src:
-//       "https://i1.wp.com/livewallpaper.info//wp-content/uploads/2016/12/1920x1080-wallpaper-High-Resolution-Download3.jpg?ssl=1",
-//     altText: "LIV",
-//     caption: "Pronto para morar",
-//     comodos: "Apartamento completo",
-//   },
-//   {
-//     src: "https://i.redd.it/u105ro5rg8o31.jpg",
-//     altText: "Tuin",
-//     caption: "Pronto para morar",
-//     comodos: "Quarto e sala",
-//   },
-//   {
-//     src:
-//       "https://wallpaperhd.wiki/wp-content/uploads/wallpapers-1920x1080-bird-silhouette-vector-134154-1920x1080.jpg",
-//     altText: "Hadouken",
-//     caption: "Pronto para morar",
-//     comodos: "Galpão",
-//   },
-//   {
-//     src:
-//       "https://i.pinimg.com/originals/8c/c3/d3/8cc3d3b0c19f5ad94cab32de42086688.jpg",
-//     altText: "Kamehamehaaaa",
-//     caption: "Em construção",
-//     comodos: "Empresarial",
-//   },
-// ];

@@ -1,25 +1,27 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-
-  *, button, input {
-    border: 0;
     outline: 0;
-    font-family: 'Raleway', sans-serif;
+    border: 0;
   }
 
   body {
-    background-image: linear-gradient(to right, #fff, #fafafa);
+    background: #fdfdfd;
     -webkit-font-smoothing: antialiased !important;
   }
 
   body, input, button {
+    outline: 0;
     font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6, strong {
+    font-weight: 500;
   }
 
   button {

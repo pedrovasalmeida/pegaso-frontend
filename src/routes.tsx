@@ -1,15 +1,17 @@
-import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 /** Header */
-import Header from "./components/Header";
+import Header from './components/Header';
 
 /** Páginas */
-import Main from "./pages/Main";
-import QuemSomos from "./pages/QuemSomos";
-import Empreendimentos from "./pages/Empreendimentos";
-import DetalhesEmpreendimento from "./pages/DetalhesEmpreendimento";
-import Painel from "./components/Painel";
+import Main from './pages/Main';
+import QuemSomos from './pages/QuemSomos';
+import Empreendimentos from './pages/Empreendimentos';
+import DetalhesEmpreendimento from './pages/DetalhesEmpreendimento';
+import Painel from './pages/Painel';
+import Forgot from './pages/Forgot';
+import Register from './pages/Register';
 
 // import { Container } from './styles';
 
@@ -26,6 +28,8 @@ const Routes: React.FC = () => {
           component={DetalhesEmpreendimento}
         />
         <Route path="/painel" component={Painel} />
+        <Route path="/forgot-password" component={Forgot} />
+        <Route path="/create-account" component={Register} />
       </Switch>
     </BrowserRouter>
   );

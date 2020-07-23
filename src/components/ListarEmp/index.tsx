@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import api from "../../services/api";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import api from '../../services/api';
+import { Link } from 'react-router-dom';
 
 import {
   Container,
@@ -12,7 +12,7 @@ import {
   Data,
   Nome,
   Descricao,
-} from "./styles";
+} from './styles';
 
 interface EmpreendimentoData {
   id: number;
@@ -28,16 +28,16 @@ const ListarEmp: React.FC = () => {
   const [data, setData] = useState<EmpreendimentoData[] | null>(null);
 
   const getData = async () => {
-    const response = await api.get("/show-all");
+    const { data, error } = await api.get('/show-all');
 
-    if (!response.data) return alert("NADA");
+    if (error) return error;
 
-    setData(response.data);
+    setData(data);
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [data]);
 
   return (
     <Container>

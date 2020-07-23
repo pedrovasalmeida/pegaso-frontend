@@ -25,7 +25,7 @@ export const Container = styled.div`
   width: 100vw;
   height: 140px;
 
-  background-color: #fdfdfd;
+  background-color: #181114;
   z-index: 40;
 
   transition: all 300ms ease-in-out;
@@ -106,9 +106,11 @@ export const DivContato = styled.div`
   display: flex;
 
   border-radius: 8px;
-  border-bottom: 3px solid rgba(192, 25, 32, 1);
+  border-bottom: 3px solid #aa160e;
 
-  background-color: rgba(0, 0, 0, 0.025);
+  padding: 4px 8px;
+
+  background-color: rgba(150, 150, 150, 0.025);
 
   margin: 0 24px 0 0;
 
@@ -119,26 +121,22 @@ export const DivContato = styled.div`
   &:hover {
     transition: all 300ms ease-in-out;
 
-    border-bottom: 3px solid ${shade(0.3, `rgba(192, 25, 32, 1)`)};
-    background-color: rgba(0, 0, 0, 0.05);
+    border-bottom: 3px solid ${shade(0.3, `#AA160E`)};
+    background-color: rgba(150, 150, 150, 0.1);
 
     transform: translateX(8px);
 
+    filter: drop-shadow(0px 0px 16px rgba(150, 150, 150, 0.1));
+
     > svg {
       transition: all 300ms ease-in-out;
-
-      color: rgba(0, 0, 0, 1);
     }
 
     > div span {
       transition: all 300ms ease-in-out;
-
-      color: rgba(0, 0, 0, 1);
     }
     > div p {
       transition: all 300ms ease-in-out;
-
-      color: rgba(0, 0, 0, 1);
     }
   }
 
@@ -157,7 +155,7 @@ export const DivDados = styled.div`
     text-transform: uppercase;
     margin: 0;
 
-    color: rgba(0, 0, 0, 0.5);
+    color: #d0c8cb;
   }
 
   > p {
@@ -165,7 +163,7 @@ export const DivDados = styled.div`
 
     line-height: 16px;
     font-size: 14px;
-    color: rgba(0, 0, 0, 0.5);
+    color: #d0c8cb;
   }
 `;
 
@@ -194,9 +192,20 @@ export const DivButtons = styled.div`
 export const Button = styled.button`
   background-color: transparent;
 
+  color: #d0c8cb;
+
+  font-weight: 500;
+
+  transition: all 300ms ease-in-out;
   &:focus {
     outline: 0;
     text-decoration: none;
+    transition: all 300ms ease-in-out;
+  }
+
+  &:hover {
+    transition: all 300ms ease-in-out;
+    filter: drop-shadow(0px 0px 4px rgba(241, 48, 48, 0.6));
   }
 `;
 
@@ -206,7 +215,7 @@ export const Separator = styled.div`
   width: 1px;
   height: 32px;
 
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.15);
 `;
 
 export const DivMenu = styled.div<Props>`
@@ -301,7 +310,7 @@ export const LinkRRD = styled(Link)`
   position: relative;
   background: none;
 
-  color: rgba(0, 0, 0, 1);
+  color: #fdfdfd;
 
   border: none;
   box-sizing: border-box;
@@ -325,7 +334,7 @@ export const LinkRRD = styled(Link)`
     width: 0px;
     height: 2px;
 
-    background: rgba(192, 25, 32, 1);
+    background: #aa160e;
 
     transition: all 300ms ease-in;
   }
@@ -334,8 +343,12 @@ export const LinkRRD = styled(Link)`
     width: 100%;
   }
 
+  &focus::before {
+    width: 100%;
+  }
+
   &:hover {
-    color: ${shade(0.1, `rgba(192, 25, 32, 1)`)};
+    color: ${shade(0.1, `#AA160E`)};
     transform: translateX(2px);
   }
 `;
@@ -344,13 +357,13 @@ export const HorizontalSeparator = styled.div`
   height: 1px;
   width: 100%;
 
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #fdfdfd;
 `;
 
 export const EmailIcon = styled(MdEmail)`
   font-size: 32px;
 
-  color: rgba(0, 0, 0, 0.5);
+  color: #fdfdfd;
 
   margin: 0 8px;
   transition: all 300ms ease-in-out;
@@ -359,7 +372,7 @@ export const EmailIcon = styled(MdEmail)`
 export const WhatsAppIcon = styled(IoLogoWhatsapp)`
   font-size: 32px;
 
-  color: rgba(0, 0, 0, 0.5);
+  color: #fdfdfd;
 
   margin: 0 8px;
   transition: all 300ms ease-in-out;
@@ -368,7 +381,7 @@ export const WhatsAppIcon = styled(IoLogoWhatsapp)`
 export const SacIcon = styled(FiHelpCircle)`
   font-size: 32px;
 
-  color: rgba(0, 0, 0, 0.5);
+  color: #fdfdfd;
 
   margin: 0 8px;
   transition: all 300ms ease-in-out;
@@ -377,7 +390,7 @@ export const SacIcon = styled(FiHelpCircle)`
 export const PhoneIcon = styled(MdPhone)`
   font-size: 32px;
 
-  color: rgba(0, 0, 0, 0.5);
+  color: #fdfdfd;
 
   margin: 0 8px;
   transition: all 300ms ease-in-out;

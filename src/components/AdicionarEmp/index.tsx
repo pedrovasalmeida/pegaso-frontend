@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import api from "../../services/api";
 
 import {
-  Container,
   Form,
   Input,
   TextArea,
@@ -13,8 +12,6 @@ import {
   UploadButton,
   Separator,
 } from "./styles";
-
-import { Alert } from "reactstrap";
 
 interface EmpreendimentoData {
   nome: string;
@@ -47,28 +44,6 @@ const AddEmp: React.FC = () => {
     if (e && e.length > 0) setFile(e[0]);
   };
 
-  const handleFileUpload = async (type: string) => {
-    let formData = new FormData();
-
-    if (file === null) return alert("Your file is empty!");
-
-    formData.append("image", file!);
-
-    if (type === "banner") {
-      return await api
-        .post("/storage-images")
-        .then((res) => console.log(res.data.link))
-        .catch((err) => err);
-    }
-
-    if (type === "poster") {
-      return await api
-        .post("/storage-images")
-        .then((res) => console.log(res.data.link))
-        .catch((err) => err);
-    }
-  };
-
   const fileUploadBannerHandler = async () => {
     let formdata = new FormData();
 
@@ -95,7 +70,6 @@ const AddEmp: React.FC = () => {
       .catch((err) => err);
   };
 
-  const doUpload = async (data: EmpreendimentoData) => {};
 
   const verifyAndSendData = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>

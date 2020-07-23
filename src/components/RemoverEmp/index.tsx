@@ -6,21 +6,9 @@ import { Preloader, ThreeDots } from 'react-preloader-icon';
 import {
   Container,
   Lista,
-  Item,
-  Separator,
-  DivItem,
-  DivButtons,
-  Button,
-  ArrowIcon,
-  DivIcon,
-  Avatar,
-  Data,
-  Nome,
-  Descricao,
   ConfirmModal,
   ModalText,
   CloseIcon,
-  CloseIconButton,
   DivModalText,
   DivModalButtons,
   ModalButton,
@@ -29,7 +17,6 @@ import {
   ErrorIcon,
   ModalErrorButton,
   ModalErrorText,
-  ConfirmIcon,
   DivLoading,
   CustomPreloader,
   SadFaceIcon,
@@ -65,14 +52,14 @@ const RemoverEmp: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [dataError, setDataError] = useState<boolean>(false);
 
-  const handleModal = (id: number, name: string) => {
-    showModal ? setShowModal(false) : setShowModal(true);
+  // const handleModal = (id: number, name: string) => {
+  //   showModal ? setShowModal(false) : setShowModal(true);
 
-    setIdToDelete(id);
-    setEmpToDelete(name);
+  //   setIdToDelete(id);
+  //   setEmpToDelete(name);
 
-    setShowConfirmedModal(false);
-  };
+  //   setShowConfirmedModal(false);
+  // };
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -132,7 +119,7 @@ const RemoverEmp: React.FC = () => {
       })
       .catch((err) => {
         if (err.response) {
-          if (err.response.status == 400) return handleError();
+          if (err.response.status === 400) return handleError();
         }
       });
   };
