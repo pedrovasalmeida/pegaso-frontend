@@ -1,22 +1,18 @@
-import React from "react";
+import React from 'react';
 
 import {
   Container,
   DivInfos,
   DivTitle,
   Title,
-  Subtitle,
   DivDescription,
   Text,
   DivCategorias,
   SubDivCategorias,
-  CatTitle,
   Categoria,
-  VerticalSeparator,
-  DivImagem,
-  Imagem,
-  TextImage,
-} from "./styles";
+  Separator,
+  DivImagemTipo,
+} from './styles';
 
 const Infos: React.FC = () => {
   return (
@@ -24,7 +20,6 @@ const Infos: React.FC = () => {
       <DivInfos>
         <DivTitle>
           <Title>Quem somos</Title>
-          <Subtitle>Engenharia?</Subtitle>
         </DivTitle>
 
         <DivDescription>
@@ -45,7 +40,7 @@ const Infos: React.FC = () => {
         </DivDescription>
 
         <DivCategorias>
-          <CatTitle>Qualificações</CatTitle>
+          <Title>Qualificações</Title>
 
           <SubDivCategorias>
             <Categoria>
@@ -57,7 +52,7 @@ const Infos: React.FC = () => {
               </span>
             </Categoria>
 
-            <VerticalSeparator className="separator" />
+            <Separator className="separator" />
 
             <Categoria>
               <p>Kamehameha Mais Forte</p>
@@ -65,7 +60,7 @@ const Infos: React.FC = () => {
               <span>O Kamehamehá mais impactante do mercado.</span>
             </Categoria>
 
-            <VerticalSeparator className="separator" />
+            <Separator className="separator" />
 
             <Categoria>
               <p>Teleporte</p>
@@ -77,14 +72,7 @@ const Infos: React.FC = () => {
           </SubDivCategorias>
         </DivCategorias>
       </DivInfos>
-
-      <DivImagem>
-        <Imagem
-          src="https://media-cdn.tripadvisor.com/media/photo-s/11/31/3b/1a/raul-verticalrio.jpg"
-          alt="Raul de Fevereiro"
-        />
-        <TextImage>Aqui vai um texto abaixo da imagem</TextImage>
-      </DivImagem>
+      <DivImagemTipo />
     </Container>
   );
 };

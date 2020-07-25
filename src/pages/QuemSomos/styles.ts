@@ -4,8 +4,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  height: calc(100vh - 140px);
+  height: 100vh;
   width: 100vw;
 
-  margin: 140px 0 0 0;
+  padding: 64px 0 81px 0;
+
+  background: #fdfdfd;
 `;

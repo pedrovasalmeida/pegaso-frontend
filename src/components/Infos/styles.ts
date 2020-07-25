@@ -1,12 +1,14 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  margin: 8px 0 0 16px;
+  /* flex-direction: column; */
+  align-items: center;
 
-  width: 95vw;
+  padding: 0 128px;
 
-  justify-content: space-between;
+  width: 100%;
+  height: 100%;
 
   @media (max-width: 1069px) {
     flex-direction: column;
@@ -16,8 +18,9 @@ export const Container = styled.div`
 export const DivInfos = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 
-  width: 75vw;
+  width: 100%;
   height: auto;
 
   @media (max-width: 897px) {
@@ -32,45 +35,43 @@ export const DivInfos = styled.div`
 export const DivTitle = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 export const Title = styled.span`
-  font-size: 16px;
-  font-weight: bold;
-`;
+  width: auto;
+  border-bottom: 8px solid rgba(192, 25, 32, 1);
 
-export const Subtitle = styled.span`
-  width: 100px;
-  font-size: 24px;
+  font-size: 40px;
+  font-weight: bold;
+
+  color: #333;
 
   text-transform: uppercase;
-  font-weight: bold;
-
-  color: rgba(192, 25, 32, 1);
-  border-bottom: 4px solid rgba(192, 25, 32, 1);
-
-  margin: 0 0 8px 0;
 `;
 
 export const DivDescription = styled.div`
-  width: 98%;
+  width: 60%;
   height: auto;
+
+  margin: 16px 0 0 0;
 `;
 
 export const Text = styled.span`
   display: flex;
   text-align: justify;
 
-  font-weight: 300;
+  font-weight: 400;
 `;
 
 export const DivCategorias = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 
-  margin: 16px 0 0 0;
+  width: 60%;
 
-  width: 98%;
+  padding: 16px 0;
 
   > span:first-child {
     margin: 16px 0 0 0;
@@ -118,6 +119,8 @@ export const DivCategorias = styled.div`
 
 export const SubDivCategorias = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 
   @media (max-width: 897px) {
@@ -148,7 +151,7 @@ export const SubDivCategorias = styled.div`
 `;
 
 export const CatTitle = styled.span`
-  font-size: 22px;
+  font-size: 32px;
   font-weight: bold;
 
   text-transform: uppercase;
@@ -182,13 +185,13 @@ export const Categoria = styled.div`
   } */
 `;
 
-export const VerticalSeparator = styled.div`
+export const Separator = styled.div`
   display: flex;
   align-self: center;
-  width: 1px;
-  height: 80px;
+  width: 80px;
+  height: 1px;
 
-  margin: 0 16px;
+  margin: 16px 0;
 
   background-color: rgba(0, 0, 0, 0.2);
 `;
@@ -216,4 +219,13 @@ export const TextImage = styled.span`
   font-weight: 500;
 
   font-size: 14px;
+`;
+
+export const DivImagemTipo = styled.div`
+  width: 50vw;
+  height: 100vh;
+
+  background: url('https://i.imgur.com/ZViQCH1.jpg') no-repeat center center
+    fixed;
+  background-size: cover;
 `;
