@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { lighten } from 'polished';
 
-import { RiHeartAddLine } from 'react-icons/ri';
-import { RiKeyLine } from 'react-icons/ri';
+import { RiHeartAddLine, RiKeyLine } from 'react-icons/ri';
+import { MdErrorOutline } from 'react-icons/md';
 import { AiOutlineUser } from 'react-icons/ai';
 import { GoSignIn } from 'react-icons/go';
 
@@ -154,4 +154,16 @@ export const SignInIcon = styled(GoSignIn)`
 
 export const CreateAccountIcon = styled(RiHeartAddLine)`
   font-size: 18px;
+`;
+
+export const LoginErrorMessage = styled.p`
+  /* margin: 8px 0; */
+
+  font-size: 14px;
+  color: #aa160e;
+`;
+
+export const LoginErrorIcon = styled(MdErrorOutline)`
+  font-size: 18px;
+  margin: 0 8px;
 `;

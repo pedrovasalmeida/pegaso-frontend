@@ -1,6 +1,6 @@
-import React, { useState, useCallback, useContext } from 'react';
+import React, { useState, useCallback } from 'react';
 
-import { AuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 import { Link } from 'react-router-dom';
 
@@ -8,9 +8,10 @@ import {
   Container,
   Separator,
   Form,
-  LoginIcon,
   SignInIcon,
   CreateAccountIcon,
+  LoginErrorMessage,
+  LoginErrorIcon,
 } from './styles';
 
 interface SignInFormData {
@@ -21,22 +22,28 @@ interface SignInFormData {
 const Login: React.FC = () => {
   const [inputLogin, setInputLogin] = useState('');
   const [inputSenha, setInputSenha] = useState('');
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const { signIn } = useContext(AuthContext);
+  const { user, signIn } = useAuth();
 
-  const handleInputLogin = useCallback(
-    (string: string) => {
-      setInputLogin(string);
-    },
-    [inputLogin],
-  );
+  const handleInputLogin = useCallback((string: string) => {
+    setInputLogin(string);
+  }, []);
 
-  const handleInputSenha = useCallback(
-    (string: string) => {
-      setInputSenha(string);
-    },
-    [inputLogin],
-  );
+  const handleInputSenha = useCallback((string: string) => {
+    setInputSenha(string);
+  }, []);
+
+  const renderLoginError = useCallback(() => {
+    if (inputLogin.length > 1) return setIsError(false);
+    return (
+      <LoginErrorMessage>
+        <LoginErrorIcon />
+        Algo deu errado. Verifique as credenciais!
+      </LoginErrorMessage>
+    );
+  }, [inputLogin]);
 
   const handleSubmit = useCallback(
     async (
@@ -45,12 +52,18 @@ const Login: React.FC = () => {
     ) => {
       e.preventDefault();
 
-      const { login, password } = data;
+      try {
+        const { login, password } = data;
 
-      if (login.length < 5) return console.log('Login invalido');
-      if (password.length < 5) return console.log('Senha invalida');
+        if (login.length < 5) return setIsError(true);
+        if (password.length < 5) return setIsError(true);
 
-      signIn!({ login, password });
+        signIn!({ login, password });
+
+        setIsError(false);
+      } catch (err) {
+        return err;
+      }
     },
     [signIn],
   );
@@ -72,6 +85,8 @@ const Login: React.FC = () => {
           value={inputSenha}
           onChange={(e) => handleInputSenha(e.target.value)}
         />
+
+        {isError && renderLoginError()}
 
         <button
           type="submit"
