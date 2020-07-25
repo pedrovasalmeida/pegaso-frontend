@@ -1,4 +1,4 @@
-import React, { useState, useCallback, createContext } from 'react';
+import React, { useState, useCallback, createContext, useContext } from 'react';
 import api from '../services/api';
 
 interface SignInCredentials {
@@ -6,52 +6,64 @@ interface SignInCredentials {
   password: string;
 }
 
-interface UserProps {
-  id: string;
-  userLogin: string;
+interface AuthState {
+  user: object;
   token: string;
 }
 
 interface AuthContextProps {
-  id?: string;
-  login?: string;
-  cargo?: string;
-  token?: string;
-  signIn?(credentials: SignInCredentials): Promise<void>;
+  user: object;
+  signIn(credentials: SignInCredentials): Promise<void>;
+  signOut(): void;
 }
 
-export const AuthContext = createContext<AuthContextProps>(
-  {} as AuthContextProps,
-);
+const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const [user, setUser] = useState({} as UserProps);
+  const [data, setData] = useState<AuthState>(() => {
+    const user = localStorage.getItem('@ProjPegaso:user');
+    const token = localStorage.getItem('@ProjPegaso:token');
 
-  /** signIn */
+    if (token && user) return { token, user: JSON.parse(user) };
+
+    return {} as AuthState;
+  });
+
   const signIn = useCallback(async ({ login, password }: SignInCredentials) => {
     const response = await api.post('/start-session', {
       login,
       password,
     });
 
-    const { id, userLogin }: UserProps = response.data.user;
-    const { token }: UserProps = response.data;
-
-    const user: UserProps = {
-      id,
-      userLogin,
-      token,
-    };
+    const { token, user } = response.data;
 
     localStorage.setItem('@ProjPegaso:user', JSON.stringify(user));
+    localStorage.setItem('@ProjPegaso:token', token);
+
+    setData({ user, token });
   }, []);
 
-  // dados do user q fez signIn
-  const getRequesterData = useCallback(async () => {}, []);
+  const signOut = useCallback(() => {
+    localStorage.removeItem('@ProjPegaso:user');
+    localStorage.removeItem('@ProjPegaso:token');
+
+    setData({} as AuthState);
+  }, []);
+
+  const getUserDataFromStorage = useCallback(() => {}, []);
 
   return (
-    <AuthContext.Provider value={{ id: '1', signIn }}>
+    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
 };
+
+export function useAuth(): AuthContextProps {
+  const context = useContext(AuthContext);
+
+  if (!context)
+    throw new Error('useAth deve ser usado dentro de um AuthProvider');
+
+  return context;
+}
