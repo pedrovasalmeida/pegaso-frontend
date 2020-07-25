@@ -3,9 +3,13 @@ import React, { useState, useEffect } from 'react';
 import {
   Container,
   Data,
+  Text,
   Contact,
   Button,
-  ContactIcon,
+  WhatsAppIcon,
+  PhoneIcon,
+  SacIcon,
+  EmailIcon,
   ContactData,
   ContactName,
   ContactText,
@@ -15,10 +19,12 @@ import {
 const Footer: React.FC = () => {
   return (
     <Container>
-      <Data />
+      <Data>
+        <Text>© 2020 por Pegaso</Text>
+      </Data>
       <Contact>
         <Button>
-          <ContactIcon />
+          <WhatsAppIcon />
           <ContactData>
             <ContactName>WhatsApp</ContactName>
             <HorizontalSeparator />
@@ -27,7 +33,7 @@ const Footer: React.FC = () => {
         </Button>
 
         <Button>
-          <ContactIcon />
+          <SacIcon />
           <ContactData>
             <ContactName />
             <ContactName>Sac</ContactName>
@@ -37,7 +43,7 @@ const Footer: React.FC = () => {
         </Button>
 
         <Button>
-          <ContactIcon />
+          <PhoneIcon />
           <ContactData>
             <ContactName>Vendas</ContactName>
             <HorizontalSeparator />
@@ -45,7 +51,7 @@ const Footer: React.FC = () => {
           </ContactData>
         </Button>
         <Button>
-          <ContactIcon />
+          <EmailIcon />
           <ContactData>
             <ContactName>E-mail</ContactName>
             <HorizontalSeparator />
