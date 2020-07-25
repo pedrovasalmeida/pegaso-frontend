@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 import {
   Container,
   SubContainer,
@@ -84,7 +83,7 @@ const Header: React.FC = () => {
         </DivLogo>
 
         <SubContainer>
-          <DivAllContacts>
+          {/* <DivAllContacts>
             <DivContato>
               <EmailIcon />
               <DivDados>
@@ -116,7 +115,7 @@ const Header: React.FC = () => {
                 <p>31 9 9999-9999</p>
               </DivDados>
             </DivContato>
-          </DivAllContacts>
+          </DivAllContacts> */}
 
           <DivButtons>
             <LinkRRD to="/">

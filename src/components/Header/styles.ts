@@ -20,12 +20,12 @@ export const Container = styled.div`
   top: 0;
   left: 0;
 
-  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.2));
 
   width: 100vw;
-  height: 140px;
+  height: 64px;
 
-  background-color: #181114;
+  background-color: #fdfdfd;
   z-index: 40;
 
   transition: all 300ms ease-in-out;
@@ -78,7 +78,7 @@ export const SubContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
 
   margin: 8px 0 0 0;
 
@@ -169,6 +169,7 @@ export const DivDados = styled.div`
 
 export const DivButtons = styled.div`
   display: flex;
+  align-items: center;
 
   margin: 0 256px 0px 0;
 
@@ -192,7 +193,7 @@ export const DivButtons = styled.div`
 export const Button = styled.button`
   background-color: transparent;
 
-  color: #d0c8cb;
+  color: #333;
 
   font-weight: 500;
 
@@ -205,7 +206,7 @@ export const Button = styled.button`
 
   &:hover {
     transition: all 300ms ease-in-out;
-    filter: drop-shadow(0px 0px 4px rgba(241, 48, 48, 0.6));
+    color: #aa160e;
   }
 `;
 
@@ -215,7 +216,8 @@ export const Separator = styled.div`
   width: 1px;
   height: 32px;
 
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(0, 0, 0, 0.1);
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.8));
 `;
 
 export const DivMenu = styled.div<Props>`
