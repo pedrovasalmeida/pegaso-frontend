@@ -12,8 +12,8 @@ import {
 } from 'reactstrap';
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: auto;
+  height: auto;
 `;
 
 export const DivCarousel = styled(Carousel)`
@@ -36,7 +36,7 @@ export const DivCarouselItem = styled(CarouselItem)`
 
   > img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
 
     @media (max-width: 663px) {
@@ -64,7 +64,7 @@ export const DivCarouselCaption = styled(CarouselCaption)`
 export const FloatDiv = styled.div`
   position: absolute;
   left: 48px;
-  bottom: 96px;
+  bottom: 128px;
 
   height: 128px;
   width: 400px;

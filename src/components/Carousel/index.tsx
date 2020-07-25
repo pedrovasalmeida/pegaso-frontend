@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 import {
   Container,
@@ -11,11 +11,11 @@ import {
   DivIcons,
   LeftArrow,
   RightArrow,
-} from "./styles";
+} from './styles';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import useAxios from "../../hooks/useAxios";
+import useAxios from '../../hooks/useAxios';
 
 interface Empreendimentos {
   id: number;
@@ -28,7 +28,7 @@ interface Empreendimentos {
 }
 
 const MyCarousel = () => {
-  const { data } = useAxios<Empreendimentos[]>("/show-all");
+  const { data } = useAxios<Empreendimentos[]>('/show-all');
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
@@ -93,7 +93,7 @@ const MyCarousel = () => {
         activeIndex={activeIndex}
         next={next}
         previous={previous}
-        ride={"carousel"}
+        ride={'carousel'}
       >
         {slides}
         <DivCarouselControl
