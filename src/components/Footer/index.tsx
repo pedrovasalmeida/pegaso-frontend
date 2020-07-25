@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
   return (
     <Container>
       <Data>
-        <Text>© 2020 por Pegaso</Text>
+        <Text>© 2020 por St. James Comunicação</Text>
       </Data>
       <Contact>
         <Button>

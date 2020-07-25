@@ -16,6 +16,8 @@ export const Container = styled.footer`
 
   background-color: #fdfdfd;
 
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+
   filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.2));
 
   z-index: 4;
@@ -66,7 +68,7 @@ export const Button = styled.div`
   border-left: 4px solid ${shade(0.1, `#aa160e`)};
   border-bottom: 4px solid ${shade(0.1, `#aa160e`)};
 
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.025);
 
   cursor: pointer;
 
@@ -109,7 +111,9 @@ export const ContactName = styled.span`
   font-size: 12px;
 `;
 
-export const ContactText = styled.span``;
+export const ContactText = styled.span`
+  font-family: 'Roboto', sans-serif;
+`;
 
 export const HorizontalSeparator = styled.div`
   width: 48px;
