@@ -20,6 +20,8 @@ export const Container = styled.div`
   top: 0;
   left: 0;
 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
   filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.2));
 
   width: 100vw;
