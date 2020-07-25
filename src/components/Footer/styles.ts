@@ -1,233 +1,88 @@
-import styled from "styled-components";
-import { MdEmail, MdPhone } from "react-icons/md";
-import { IoLogoWhatsapp } from "react-icons/io";
-import { FiHelpCircle } from "react-icons/fi";
+import styled from 'styled-components';
+import { shade } from 'polished';
+import { FaWhatsapp } from 'react-icons/fa';
 
 export const Container = styled.footer`
   position: fixed;
   bottom: 0;
+  left: 0;
 
   display: flex;
-  align-items: center;
   justify-content: center;
 
+  height: 81px;
   width: 100vw;
-  height: 56px;
 
-  background-color: #515151;
+  background-color: #fdfdfd;
 
-  > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.2));
 
-    margin: 0 16px;
+  z-index: 4;
+`;
 
-    height: 100%;
-    width: 200px;
-    padding: 0 16px 0 0;
+export const Separator = styled.div`
+  height: 32px;
+  width: 1px;
 
-    border-bottom: 3px solid rgba(0, 200, 255, 0.6);
+  background-color: rgba(0, 0, 0, 0.2);
 
-    transition: all 300ms ease-in-out;
+  filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.2));
+`;
 
-    cursor: pointer;
+export const Data = styled.div``;
 
-    &:hover {
-      border-bottom: 3px solid rgba(0, 100, 255, 0.6);
-    }
-  }
+export const Contact = styled.div`
+  display: flex;
+  height: 100%;
+`;
 
-  > div div {
-    width: 80%;
-  }
+export const Button = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  > div span {
-    font-size: 12px;
-    text-transform: uppercase;
-    color: #f5f5f5;
-  }
+  height: 64px;
+  width: auto;
 
-  > div p {
-    font-size: 14px;
-    color: #f5f5f5;
-  }
+  padding: 0 16px;
+  margin: 8px 8px;
 
-  > div p:not():first-child {
-    font-size: 14px;
-    color: #f5f5f5;
-  }
+  border-radius: 8px;
+  border-bottom: 2px solid ${shade(0.1, `#aa160e`)};
 
-  @media (max-width: 840px) {
-    max-width: auto;
-    max-height: auto;
+  background-color: rgba(0, 0, 0, 0.15);
 
-    > div {
-      max-width: auto;
-      max-height: auto;
-      font-size: auto;
-    }
+  cursor: pointer;
 
-    > div span {
-      font-size: 10px;
-      text-transform: uppercase;
-      color: #f5f5f5;
-    }
-
-    > div p {
-      font-size: 14px;
-      color: #f5f5f5;
-    }
-  }
-
-  @media (max-width: 773px) {
-    > div {
-      margin: 0;
-    }
-  }
-
-  @media (max-width: 712px) {
-    > div span {
-      font-size: 8px;
-      text-transform: uppercase;
-      color: #f5f5f5;
-    }
-
-    > div p {
-      font-size: 8px;
-      color: #f5f5f5;
-    }
-  }
-
-  @media (max-width: 562px) {
-    display: flex;
-    flex-direction: column;
-    height: 200px;
-
-    > div {
-      height: 50px;
-    }
-
-    > div svg {
-      font-size: 24px;
-    }
-  }
-
-  @media (max-width: 514px) {
-    > div {
-      margin: 0;
-    }
-  }
-
-  @media (max-width: 434px) {
-    display: flex;
-    flex-direction: column;
-    height: 224px;
-  }
-
-  @media (max-width: 414px) {
-    display: flex;
-    flex-direction: column;
-    height: 188px;
-
-    > div {
-      height: 48px;
-    }
-
-    > div div {
-      height: 42px;
-    }
-  }
-
-  @media (max-width: 411px) {
-    display: flex;
-    flex-direction: column;
-    height: 172px;
-
-    > div {
-      height: 42px;
-    }
-
-    > div div {
-      height: 48px;
-    }
-  }
-
-  @media (max-width: 360px) {
-    display: flex;
-    flex-direction: column;
-    height: 172px;
-
-    > div div {
-      height: 40px;
-    }
-  }
-
-  @media (max-width: 320px) {
-    display: flex;
-    flex-direction: column;
-    height: 148px;
-
-    > div {
-      height: 37px;
-
-      border-bottom: 2px solid rgba(0, 200, 255, 0.6);
-
-      &:hover {
-        border-bottom: 2px solid rgba(0, 100, 255, 0.6);
-      }
-    }
-
-    > div div {
-      height: 40px;
-    }
+  transition: all 200ms ease;
+  &:hover {
+    transform: translateY(-2px);
   }
 `;
 
-export const EmailIcon = styled(MdEmail)`
-  align-self: center;
-  justify-self: flex-start;
-
-  font-size: 32px;
-  width: 30%;
-
-  color: #f5f5f5;
-
-  margin: 0 4px 0 0;
+export const ContactData = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
-export const WhatsAppIcon = styled(IoLogoWhatsapp)`
-  align-self: center;
-  justify-self: flex-start;
-
-  font-size: 32px;
-  width: 30%;
-
-  color: #f5f5f5;
-
-  margin: 0 4px 0 0;
+export const ContactIcon = styled(FaWhatsapp)`
+  margin: 0 8px 0 0;
+  font-size: 24px;
 `;
 
-export const SacIcon = styled(FiHelpCircle)`
-  align-self: center;
-  justify-self: flex-start;
-
-  font-size: 32px;
-  width: 30%;
-
-  color: #f5f5f5;
-
-  margin: 0 4px 0 0;
+export const ContactName = styled.span`
+  text-transform: uppercase;
+  line-height: 4px;
+  font-size: 12px;
 `;
 
-export const PhoneIcon = styled(MdPhone)`
-  align-self: center;
-  justify-self: flex-start;
+export const ContactText = styled.span``;
 
-  font-size: 32px;
-  width: 30%;
+export const HorizontalSeparator = styled.div`
+  width: 48px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
 
-  color: #f5f5f5;
-
-  margin: 0 4px 0 0;
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 1));
+  margin: 6px 0 0 0;
 `;
