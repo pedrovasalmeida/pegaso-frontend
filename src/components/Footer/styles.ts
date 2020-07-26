@@ -43,7 +43,7 @@ export const Text = styled.span`
 
   &::before {
     content: '';
-    border-bottom: 1px solid #aa160e;
+    border-bottom: 1px solid #324286;
   }
 `;
 
@@ -64,9 +64,9 @@ export const Button = styled.div`
   margin: 0 16px;
 
   border-radius: 8px;
-  border: 1px solid ${shade(0.1, `#aa160e`)};
-  border-left: 4px solid ${shade(0.1, `#aa160e`)};
-  border-bottom: 4px solid ${shade(0.1, `#aa160e`)};
+  border: 1px solid ${shade(0.1, `#324286`)};
+  border-left: 4px solid ${shade(0.1, `#324286`)};
+  border-bottom: 4px solid ${shade(0.1, `#324286`)};
 
   background-color: rgba(0, 0, 0, 0.025);
 

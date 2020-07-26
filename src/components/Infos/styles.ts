@@ -40,7 +40,7 @@ export const DivTitle = styled.div`
 
 export const Title = styled.span`
   width: auto;
-  border-bottom: 8px solid rgba(192, 25, 32, 1);
+  border-bottom: 8px solid #324286;
 
   font-size: 40px;
   font-weight: bold;
@@ -164,7 +164,7 @@ export const Categoria = styled.div`
   > p {
     font-size: 16px;
     text-transform: uppercase;
-    color: rgba(192, 25, 32, 1);
+    color: #324286;
   }
 
   > span {

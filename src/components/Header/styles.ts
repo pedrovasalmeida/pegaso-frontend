@@ -108,7 +108,7 @@ export const DivContato = styled.div`
   display: flex;
 
   border-radius: 8px;
-  border-bottom: 3px solid #aa160e;
+  border-bottom: 3px solid #324286;
 
   padding: 4px 8px;
 
@@ -123,7 +123,7 @@ export const DivContato = styled.div`
   &:hover {
     transition: all 300ms ease-in-out;
 
-    border-bottom: 3px solid ${shade(0.3, `#AA160E`)};
+    border-bottom: 3px solid ${shade(0.3, `#324286`)};
     background-color: rgba(150, 150, 150, 0.1);
 
     transform: translateX(8px);
@@ -208,7 +208,7 @@ export const Button = styled.button`
 
   &:hover {
     transition: all 300ms ease-in-out;
-    color: #aa160e;
+    color: #324286;
   }
 `;
 
@@ -338,7 +338,7 @@ export const LinkRRD = styled(Link)`
     width: 0px;
     height: 2px;
 
-    background: #aa160e;
+    background: #324286;
 
     transition: all 300ms ease-in;
   }
@@ -352,7 +352,7 @@ export const LinkRRD = styled(Link)`
   }
 
   &:hover {
-    color: ${shade(0.1, `#AA160E`)};
+    color: ${shade(0.1, `#324286`)};
     transform: translateX(2px);
   }
 `;
