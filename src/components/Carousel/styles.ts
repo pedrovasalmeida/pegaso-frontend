@@ -153,6 +153,8 @@ export const FloatContent = styled.div`
   flex-direction: column;
 
   background-color: rgba(0, 0, 0, 0.65);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 
   > div {
     margin: 16px 16px;
@@ -304,10 +306,11 @@ export const FloatContent = styled.div`
 
 export const FloatButton = styled.button`
   width: 100%;
+  height: 32px;
 
   background-color: #324286;
-
-  height: 32px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
 
   margin: 4px 0 0 0;
 
