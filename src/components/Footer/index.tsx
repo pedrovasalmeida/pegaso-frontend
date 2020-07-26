@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
+import { motion } from 'framer-motion';
+
 import {
   Container,
   Data,
   Text,
   Contact,
   Button,
+  MotionButton,
   WhatsAppIcon,
   PhoneIcon,
   SacIcon,
@@ -20,9 +23,12 @@ const Footer: React.FC = () => {
   return (
     <Container>
       <Data>
-        <Text>© 2020 por St. James Comunicação</Text>
+        <motion.div animate={{ x: 150 }} transition={{ duration: 3 }}>
+          <Text>© 2020 por St. James Comunicação</Text>
+        </motion.div>
       </Data>
-      <Contact>
+
+      <Contact animate={{ x: -150 }} transition={{ duration: 3 }}>
         <Button>
           <WhatsAppIcon />
           <ContactData>
@@ -50,6 +56,7 @@ const Footer: React.FC = () => {
             <ContactText>31 93333333</ContactText>
           </ContactData>
         </Button>
+
         <Button>
           <EmailIcon />
           <ContactData>

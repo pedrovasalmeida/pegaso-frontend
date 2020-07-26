@@ -8,13 +8,15 @@ import { MdEmail, MdPhone } from 'react-icons/md';
 import { IoLogoWhatsapp } from 'react-icons/io';
 import { FiHelpCircle } from 'react-icons/fi';
 
+import { motion } from 'framer-motion';
+
 interface Props {
   isVisible?: boolean;
 }
 
 export const Container = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 
   position: fixed;
   top: 0;
@@ -33,7 +35,7 @@ export const Container = styled.div`
   transition: all 300ms ease-in-out;
 `;
 
-export const DivLogo = styled.div`
+export const DivLogo = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -169,13 +171,11 @@ export const DivDados = styled.div`
   }
 `;
 
-export const DivButtons = styled.div`
+export const DivButtons = styled(motion.div)`
   display: flex;
   align-items: center;
 
   margin: 0 256px 0px 0;
-
-  transition: all 200ms ease-in-out;
 
   width: 100%;
 

@@ -63,14 +63,10 @@ const Header: React.FC = () => {
         <HorizontalSeparator />
 
         <LinkRRDHiddenMenu to="/corretor">
-          <Button>CORRETOR</Button>
+          <Button>CONTATO</Button>
         </LinkRRDHiddenMenu>
 
         <HorizontalSeparator />
-
-        <LinkRRDHiddenMenu to="/fale-conosco">
-          <Button>FALE CONOSCO</Button>
-        </LinkRRDHiddenMenu>
 
         <LinkRRDHiddenMenu to="/painel">
           <Button>PAINEL</Button>
@@ -78,46 +74,12 @@ const Header: React.FC = () => {
       </HiddenMenu>
 
       <Container>
-        <DivLogo>
+        <DivLogo animate={{ x: 100 }} transition={{ duration: 3 }}>
           <img src={Logo} alt="Logo" />
         </DivLogo>
 
         <SubContainer>
-          {/* <DivAllContacts>
-            <DivContato>
-              <EmailIcon />
-              <DivDados>
-                <span>E-mail</span>
-                <p>contato@empresa.com.br</p>
-              </DivDados>
-            </DivContato>
-
-            <DivContato>
-              <SacIcon />
-              <DivDados>
-                <span>SAC</span>
-                <p>31 9 9999-9999</p>
-              </DivDados>
-            </DivContato>
-
-            <DivContato>
-              <PhoneIcon />
-              <DivDados>
-                <span>Phone</span>
-                <p>31 9 9999-9999</p>
-              </DivDados>
-            </DivContato>
-
-            <DivContato>
-              <WhatsAppIcon />
-              <DivDados>
-                <span>WhatsApp</span>
-                <p>31 9 9999-9999</p>
-              </DivDados>
-            </DivContato>
-          </DivAllContacts> */}
-
-          <DivButtons>
+          <DivButtons animate={{ x: -100 }} transition={{ duration: 3 }}>
             <LinkRRD to="/">
               <Button>HOME</Button>
             </LinkRRD>
@@ -143,13 +105,7 @@ const Header: React.FC = () => {
             <Separator />
 
             <LinkRRD to="/corretor">
-              <Button>CORRETOR</Button>
-            </LinkRRD>
-
-            <Separator />
-
-            <LinkRRD to="/fale-conosco">
-              <Button>FALE CONOSCO</Button>
+              <Button>CONTATO</Button>
             </LinkRRD>
 
             <Separator />

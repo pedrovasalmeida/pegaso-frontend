@@ -3,13 +3,15 @@ import { shade } from 'polished';
 import { FaWhatsapp, FaPhoneVolume } from 'react-icons/fa';
 import { MdReportProblem, MdEmail } from 'react-icons/md';
 
+import { motion } from 'framer-motion';
+
 export const Container = styled.footer`
   position: fixed;
   bottom: 0;
   left: 0;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 
   height: 81px;
   width: 100vw;
@@ -39,15 +41,10 @@ export const Data = styled.div`
 `;
 
 export const Text = styled.span`
-  color: #888;
-
-  &::before {
-    content: '';
-    border-bottom: 1px solid #324286;
-  }
+  color: #777;
 `;
 
-export const Contact = styled.div`
+export const Contact = styled(motion.div)`
   display: flex;
   height: 100%;
 `;
@@ -78,6 +75,28 @@ export const Button = styled.div`
     transform: translateX(4px);
     box-shadow: -3px 0px rgba(0, 0, 0, 0.3);
   }
+`;
+
+export const MotionButton = styled(motion.button)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: auto;
+
+  padding: 0 16px;
+  margin: 0 16px;
+
+  border-radius: 8px;
+
+  border: 1px solid ${shade(0.1, `#324286`)};
+  border-left: 4px solid ${shade(0.1, `#324286`)};
+  border-bottom: 4px solid ${shade(0.1, `#324286`)};
+
+  background-color: rgba(0, 0, 0, 0.025);
+
+  cursor: pointer;
 `;
 
 export const ContactData = styled.div`
