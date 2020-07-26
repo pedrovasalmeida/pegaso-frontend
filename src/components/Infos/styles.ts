@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { motion } from 'framer-motion';
+
 export const Container = styled.div`
   display: flex;
   /* flex-direction: column; */
@@ -32,7 +34,7 @@ export const DivInfos = styled.div`
   }
 `;
 
-export const DivTitle = styled.div`
+export const DivTitle = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,7 +52,7 @@ export const Title = styled.span`
   text-transform: uppercase;
 `;
 
-export const DivDescription = styled.div`
+export const DivDescription = styled(motion.div)`
   width: 60%;
   height: auto;
 
@@ -64,7 +66,7 @@ export const Text = styled.span`
   font-weight: 400;
 `;
 
-export const DivCategorias = styled.div`
+export const DivCategorias = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -221,11 +223,13 @@ export const TextImage = styled.span`
   font-size: 14px;
 `;
 
-export const DivImagemTipo = styled.div`
+export const DivImagemTipo = styled(motion.div)`
   width: 50vw;
   height: 100vh;
 
   background: url('https://i.imgur.com/ZViQCH1.jpg') no-repeat center center
     fixed;
   background-size: cover;
+
+  transform: translateX(100px);
 `;

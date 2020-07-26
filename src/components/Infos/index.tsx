@@ -18,11 +18,11 @@ const Infos: React.FC = () => {
   return (
     <Container>
       <DivInfos>
-        <DivTitle>
+        <DivTitle animate={{ x: 100 }} transition={{ duration: 3 }}>
           <Title>Quem somos</Title>
         </DivTitle>
 
-        <DivDescription>
+        <DivDescription animate={{ x: 100 }} transition={{ duration: 3 }}>
           <Text>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
             tempus euismod laoreet. Integer cursus nulla id lobortis tincidunt.
@@ -39,7 +39,7 @@ const Infos: React.FC = () => {
           </Text>
         </DivDescription>
 
-        <DivCategorias>
+        <DivCategorias animate={{ x: 100 }} transition={{ duration: 3 }}>
           <Title>Qualificações</Title>
 
           <SubDivCategorias>
@@ -72,7 +72,7 @@ const Infos: React.FC = () => {
           </SubDivCategorias>
         </DivCategorias>
       </DivInfos>
-      <DivImagemTipo />
+      <DivImagemTipo animate={{ x: -50 }} transition={{ duration: 3 }} />
     </Container>
   );
 };
