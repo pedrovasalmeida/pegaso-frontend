@@ -40,6 +40,13 @@ export const DivTitle = styled(motion.div)`
   align-items: center;
 `;
 
+export const DivTitleMotion = styled(motion.div)`
+  width: auto;
+  height: auto;
+
+  margin: 0 0 32px 0;
+`;
+
 export const Title = styled.span`
   width: auto;
   border-bottom: 8px solid #324286;
@@ -66,10 +73,11 @@ export const Text = styled.span`
   font-weight: 400;
 `;
 
-export const DivCategorias = styled(motion.div)`
+export const DivCategorias = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   width: 60%;
 
@@ -119,10 +127,11 @@ export const DivCategorias = styled(motion.div)`
   } */
 `;
 
-export const SubDivCategorias = styled.div`
+export const SubDivCategorias = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
 
   @media (max-width: 897px) {
@@ -159,9 +168,8 @@ export const CatTitle = styled.span`
   text-transform: uppercase;
 `;
 
-export const Categoria = styled.div`
+export const Categoria = styled(motion.div)`
   width: auto;
-  margin: 16px 0 0 0;
 
   > p {
     font-size: 16px;

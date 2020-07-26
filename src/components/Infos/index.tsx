@@ -4,6 +4,7 @@ import {
   Container,
   DivInfos,
   DivTitle,
+  DivTitleMotion,
   Title,
   DivDescription,
   Text,
@@ -18,11 +19,11 @@ const Infos: React.FC = () => {
   return (
     <Container>
       <DivInfos>
-        <DivTitle animate={{ x: 100 }} transition={{ duration: 3 }}>
+        <DivTitle animate={{ x: 100 }} transition={{ duration: 2.5 }}>
           <Title>Quem somos</Title>
         </DivTitle>
 
-        <DivDescription animate={{ x: 100 }} transition={{ duration: 3 }}>
+        <DivDescription animate={{ x: 100 }} transition={{ duration: 1 }}>
           <Text>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
             tempus euismod laoreet. Integer cursus nulla id lobortis tincidunt.
@@ -39,11 +40,13 @@ const Infos: React.FC = () => {
           </Text>
         </DivDescription>
 
-        <DivCategorias animate={{ x: 100 }} transition={{ duration: 3 }}>
-          <Title>Qualificações</Title>
-
+        <DivCategorias>
           <SubDivCategorias>
-            <Categoria>
+            <DivTitleMotion animate={{ x: 100 }} transition={{ duration: 3 }}>
+              <Title>Qualificações</Title>
+            </DivTitleMotion>
+
+            <Categoria animate={{ x: 100 }} transition={{ duration: 2 }}>
               <p>Genki-dama Especial</p>
 
               <span>
@@ -54,7 +57,7 @@ const Infos: React.FC = () => {
 
             <Separator className="separator" />
 
-            <Categoria>
+            <Categoria animate={{ x: 100 }} transition={{ duration: 2 }}>
               <p>Kamehameha Mais Forte</p>
 
               <span>O Kamehamehá mais impactante do mercado.</span>
@@ -62,7 +65,7 @@ const Infos: React.FC = () => {
 
             <Separator className="separator" />
 
-            <Categoria>
+            <Categoria animate={{ x: 100 }} transition={{ duration: 2 }}>
               <p>Teleporte</p>
 
               <span>
@@ -72,7 +75,7 @@ const Infos: React.FC = () => {
           </SubDivCategorias>
         </DivCategorias>
       </DivInfos>
-      <DivImagemTipo animate={{ x: -50 }} transition={{ duration: 3 }} />
+      <DivImagemTipo animate={{ x: -50 }} transition={{ duration: 1 }} />
     </Container>
   );
 };
