@@ -1,13 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import useAxios from "../../hooks/useAxios";
+import useAxios from '../../hooks/useAxios';
 
-import { Link } from "react-router-dom";
+import { motion } from 'framer-motion';
+
+import { Link } from 'react-router-dom';
 
 import {
   Container,
   DivTitle,
-  Title,
   Subtitle,
   DivProjects,
   Project,
@@ -16,7 +17,8 @@ import {
   FloatDiv,
   FloatContent,
   FloatButton,
-} from "./styles";
+  LinkRRD,
+} from './styles';
 
 interface Empreendimentos {
   id: number;
@@ -27,30 +29,43 @@ interface Empreendimentos {
 }
 
 const Projects: React.FC = () => {
-  const { data } = useAxios<Empreendimentos[]>("/show-all");
+  const { data } = useAxios<Empreendimentos[]>('/show-all');
+
+  const variants = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 },
+  };
 
   return (
     <Container>
-      <DivTitle>
-        <Title>Empreendimentos</Title>
-        <Subtitle>Conheça nossos empreendimentos com unidades à venda</Subtitle>
+      <DivTitle animate={{ x: -650 }} transition={{ duration: 1.5 }}>
+        <Subtitle>NOSSOS EMPREENDIMENTOS</Subtitle>
       </DivTitle>
 
-      <DivProjects>
+      <DivProjects animate={{ x: -350 }} transition={{ duration: 3.5 }}>
         {!data ? (
           <p>Carregando...</p>
         ) : (
           data.map((item) => {
             return (
-              <Link to={`/empreendimentos/detalhes/${item.id}`}>
-                <Project>
+              <LinkRRD to={`/empreendimentos/detalhes/${item.id}`}>
+                <Project whileHover={{ y: -10 }}>
                   <ExternalImage>
                     <img src={item.poster} alt={item.nome} />
                   </ExternalImage>
                   <FullImage>
                     <img src={item.banner} alt={item.nome} />
                   </FullImage>
-                  <FloatDiv>
+                  <FloatDiv
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{
+                      scale: 0.95,
+                    }}
+                    initial="hidden"
+                    animate={'visible'}
+                    variants={variants}
+                    transition={{ duration: 4 }}
+                  >
                     <FloatContent>
                       <div>
                         <span>{item.descricao_curta}</span>
@@ -62,7 +77,7 @@ const Projects: React.FC = () => {
                     </FloatButton>
                   </FloatDiv>
                 </Project>
-              </Link>
+              </LinkRRD>
             );
           })
         )}

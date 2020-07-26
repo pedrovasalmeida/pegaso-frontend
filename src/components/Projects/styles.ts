@@ -1,80 +1,69 @@
-import styled from "styled-components";
-import { shade } from "polished";
+import styled from 'styled-components';
+import { shade } from 'polished';
+import { Link } from 'react-router-dom';
+
+import { motion } from 'framer-motion';
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
   flex-direction: column;
-
-  width: 99vw;
-
-  padding: 0 0 0 16px;
+  width: auto;
+  height: auto;
 `;
+
+export const LinkRRD = styled(Link)``;
 
 export const DivInfos = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 75vw;
+  width: 100vw;
   height: auto;
 `;
 
-export const DivTitle = styled.div`
+export const DivTitle = styled(motion.div)`
   display: flex;
   flex-direction: column;
+
+  align-self: flex-end;
 
   width: auto;
 `;
 
-export const Title = styled.span`
-  font-size: 16px;
-  font-weight: bold;
-
-  margin: 8px 0 4px 0;
-
-  text-transform: uppercase;
-`;
-
 export const Subtitle = styled.span`
-  font-size: 24px;
+  width: auto;
+  border-bottom: 8px solid #324286;
 
-  text-transform: uppercase;
+  margin: 0 0 32px 0;
+
+  font-size: 40px;
   font-weight: bold;
 
-  color: rgba(192, 25, 32, 1);
+  color: #333;
 
-  margin: 0 0 8px 0;
+  text-transform: uppercase;
 `;
 
-export const DivProjects = styled.div`
+export const DivProjects = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
 
-  width: 95%;
+  height: auto;
 `;
 
-export const Project = styled.div`
+export const Project = styled(motion.div)`
   display: flex;
   width: 1220px;
-  height: 300px;
+  height: 250px;
   position: relative;
 
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: ${shade(0.1, `#324286`)};
 
-  margin: 0 0 8px 0;
+  border-radius: 16px;
 
+  margin: 0 0 24px 0;
   padding: 4px;
-
-  transition: all 200ms ease-in-out;
-
-  cursor: pointer;
-
-  &:hover {
-    transition: all 200ms ease-in-out;
-    transform: translateX(8px);
-    filter: drop-shadow(0px 8px 8px gray);
-  }
 
   @media (max-width: 1393px) {
     width: 1120px;
@@ -138,6 +127,8 @@ export const ExternalImage = styled.div`
   margin: 0 6px 0 0;
 
   > img {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
     width: 100%;
     object-fit: cover;
     height: 100%;
@@ -152,10 +143,13 @@ export const FullImage = styled.div`
     width: 100%;
     object-fit: cover;
     height: 100%;
+
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
   }
 `;
 
-export const FloatDiv = styled.div`
+export const FloatDiv = styled(motion.div)`
   position: absolute;
   right: 16px;
   top: 48%;
@@ -226,6 +220,9 @@ export const FloatContent = styled.div`
 
   background-color: rgba(0, 0, 0, 0.65);
 
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+
   > div {
     margin: 4px 0 0 8px;
   }
@@ -242,7 +239,8 @@ export const FloatContent = styled.div`
     padding: 0;
     font-size: 24px;
     text-transform: uppercase;
-    color: rgba(192, 25, 32, 1);
+    color: #324286;
+    font-weight: 500;
   }
 
   @media (max-width: 1053px) {
@@ -259,24 +257,25 @@ export const FloatContent = styled.div`
       line-height: 20px;
       font-size: 24px;
       text-transform: uppercase;
-      color: rgba(192, 25, 32, 1);
+      color: #324286;
     }
   }
 `;
 
 export const FloatButton = styled.button`
   width: 100%;
-
-  background-color: rgba(192, 25, 32, 1);
-
   height: 32px;
+
+  background-color: #324286;
 
   margin: 4px 0 0 0;
 
-  transition: all 300ms ease-in-out;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
 
+  transition: background-color 300ms ease;
   &:hover {
-    background-color: ${shade(0.4, `rgba(192, 25, 32, 1)`)};
+    background-color: ${shade(0.4, `#324286`)};
   }
 
   &:focus {
