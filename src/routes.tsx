@@ -12,7 +12,8 @@ import Empreendimentos from './pages/Empreendimentos';
 import DetalhesEmpreendimento from './pages/DetalhesEmpreendimento';
 import Painel from './pages/Painel';
 import Forgot from './pages/Forgot';
-import Register from './pages/Register';
+import Contato from './components/Contato';
+// import Register from './pages/Register';
 
 // import { Container } from './styles';
 
@@ -32,6 +33,7 @@ const Routes: React.FC = () => {
         <Route path="/painel" component={Painel} />
         <Route path="/forgot-password" component={Forgot} />
         {/* <Route path="/create-account" component={Register} /> */}
+        <Route path="/contato" component={Contato} />
       </Switch>
     </BrowserRouter>
   );
