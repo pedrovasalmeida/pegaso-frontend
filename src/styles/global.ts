@@ -7,6 +7,11 @@ export default createGlobalStyle`
     box-sizing: border-box;
     outline: 0;
     border: 0;
+
+    &::selection {
+      background: #324286;
+      color: #fdfdfd;
+    }
   }
 
   body {
@@ -22,13 +27,6 @@ export default createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6, strong {
     font-weight: 500;
-  }
-
-  form, button, span, p, h1, h2, h3, h4, h5, h6, strong, input, a, img, svg {
-    &::selection {
-      background: #324286;
-      color: #fdfdfd;
-    }
   }
 
   button {
