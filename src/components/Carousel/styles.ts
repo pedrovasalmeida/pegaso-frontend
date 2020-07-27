@@ -26,7 +26,7 @@ export const DivCarousel = styled(Carousel)`
 `;
 
 export const DivCarouselItem = styled(CarouselItem)`
-  height: calc(100vh - 81px);
+  height: calc(100vh - 56px);
   transition: all 400ms ease-in-out;
   align-self: center;
 
