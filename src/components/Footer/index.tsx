@@ -16,6 +16,7 @@ import {
   ContactName,
   ContactText,
   HorizontalSeparator,
+  LinkRRD,
 } from './styles';
 
 const Footer: React.FC = () => {
@@ -76,18 +77,20 @@ const Footer: React.FC = () => {
           </ContactData>
         </Button>
 
-        <Button
-          animate={{ x: -150 }}
-          transition={{ duration: 1.3 }}
-          whileHover={{ translateX: 2 }}
-        >
-          <EmailIcon />
-          <ContactData>
-            <ContactName>E-mail</ContactName>
-            <HorizontalSeparator />
-            <ContactText>contato@pegaso.com.br</ContactText>
-          </ContactData>
-        </Button>
+        <LinkRRD to={'/contato'}>
+          <Button
+            animate={{ x: -150 }}
+            transition={{ duration: 1.3 }}
+            whileHover={{ translateX: 2 }}
+          >
+            <EmailIcon />
+            <ContactData>
+              <ContactName>E-mail</ContactName>
+              <HorizontalSeparator />
+              <ContactText>contato@pegaso.com.br</ContactText>
+            </ContactData>
+          </Button>
+        </LinkRRD>
       </Contact>
     </Container>
   );

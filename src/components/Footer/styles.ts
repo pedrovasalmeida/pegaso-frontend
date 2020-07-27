@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { shade } from 'polished';
 import { FaWhatsapp, FaPhoneVolume } from 'react-icons/fa';
 import { MdReportProblem, MdEmail } from 'react-icons/md';
@@ -52,8 +53,15 @@ export const Contact = styled(motion.div)`
   width: 50%;
 `;
 
-export const LinkToContact = styled.a`
+export const LinkRRD = styled(Link)`
   text-decoration: none;
+
+  color: #222;
+
+  &:hover {
+    color: #222;
+    text-decoration: none;
+  }
 `;
 
 export const Button = styled(motion.a)`
@@ -82,6 +90,7 @@ export const Button = styled(motion.a)`
   transition: box-shadow 400ms ease;
 
   &:hover {
+    text-decoration: none;
     transform: translateX(4px);
     box-shadow: -3px 1px rgba(0, 0, 0, 0.3);
     text-decoration: none;
