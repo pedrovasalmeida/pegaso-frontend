@@ -13,7 +13,7 @@ export const Container = styled.footer`
   display: flex;
   justify-content: space-around;
 
-  height: 81px;
+  height: 56px;
   width: 100vw;
 
   background-color: #fdfdfd;
@@ -38,6 +38,8 @@ export const Data = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 20%;
 `;
 
 export const Text = styled.span`
@@ -47,9 +49,14 @@ export const Text = styled.span`
 export const Contact = styled(motion.div)`
   display: flex;
   height: 100%;
+  width: 50%;
 `;
 
-export const Button = styled.div`
+export const LinkToContact = styled.a`
+  text-decoration: none;
+`;
+
+export const Button = styled(motion.a)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,20 +67,25 @@ export const Button = styled.div`
   padding: 0 16px;
   margin: 0 16px;
 
+  color: #222;
+
   border-radius: 8px;
   border: 1px solid ${shade(0.1, `#324286`)};
   border-left: 4px solid ${shade(0.1, `#324286`)};
   border-bottom: 4px solid ${shade(0.1, `#324286`)};
 
   background-color: rgba(0, 0, 0, 0.025);
+  text-decoration: none;
 
   cursor: pointer;
 
-  transition: all 300ms ease;
+  transition: box-shadow 400ms ease;
 
   &:hover {
     transform: translateX(4px);
-    box-shadow: -3px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: -3px 1px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    color: #222;
   }
 `;
 
