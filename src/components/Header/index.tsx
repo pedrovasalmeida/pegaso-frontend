@@ -3,9 +3,6 @@ import React, { useState } from 'react';
 import {
   Container,
   SubContainer,
-  DivContato,
-  DivAllContacts,
-  DivDados,
   DivLogo,
   DivButtons,
   Button,
@@ -14,12 +11,6 @@ import {
   DivMenu,
   HiddenMenu,
   LinkRRD,
-  LinkRRDHiddenMenu,
-  HorizontalSeparator,
-  EmailIcon,
-  WhatsAppIcon,
-  SacIcon,
-  PhoneIcon,
 } from './styles';
 
 import Logo from '../../assets/logo.png';
@@ -37,7 +28,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <HiddenMenu onClick={() => handleOutsideClick()} isVisible={isVisible}>
+      {/* <HiddenMenu onClick={() => handleOutsideClick()} isVisible={isVisible}>
         <LinkRRDHiddenMenu to="/">
           <Button>HOME</Button>
         </LinkRRDHiddenMenu>
@@ -71,15 +62,15 @@ const Header: React.FC = () => {
         <LinkRRDHiddenMenu to="/painel">
           <Button>PAINEL</Button>
         </LinkRRDHiddenMenu>
-      </HiddenMenu>
+      </HiddenMenu> */}
 
       <Container>
-        <DivLogo animate={{ x: 100 }} transition={{ duration: 3 }}>
+        <DivLogo animate={{ x: 100 }} transition={{ duration: 1 }}>
           <img src={Logo} alt="Logo" />
         </DivLogo>
 
         <SubContainer>
-          <DivButtons animate={{ x: -100 }} transition={{ duration: 3 }}>
+          <DivButtons animate={{ x: -100 }} transition={{ duration: 1 }}>
             <LinkRRD to="/">
               <Button>HOME</Button>
             </LinkRRD>
@@ -98,7 +89,7 @@ const Header: React.FC = () => {
 
             <Separator />
 
-            <LinkRRD to="/portfolio">
+            {/* <LinkRRD to="/portfolio">
               <Button>PORTFÓLIO</Button>
             </LinkRRD>
 
@@ -112,7 +103,7 @@ const Header: React.FC = () => {
 
             <LinkRRD to="/painel">
               <Button>PAINEL</Button>
-            </LinkRRD>
+            </LinkRRD> */}
           </DivButtons>
         </SubContainer>
 
