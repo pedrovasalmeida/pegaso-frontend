@@ -89,7 +89,7 @@ const Header: React.FC = () => {
 
             <Separator />
 
-            {/* <LinkRRD to="/portfolio">
+            <LinkRRD to="/portfolio">
               <Button>PORTFÓLIO</Button>
             </LinkRRD>
 
@@ -103,7 +103,7 @@ const Header: React.FC = () => {
 
             <LinkRRD to="/painel">
               <Button>PAINEL</Button>
-            </LinkRRD> */}
+            </LinkRRD>
           </DivButtons>
         </SubContainer>
 
