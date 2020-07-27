@@ -31,7 +31,7 @@ const Routes: React.FC = () => {
         />
         <Route path="/painel" component={Painel} />
         <Route path="/forgot-password" component={Forgot} />
-        <Route path="/create-account" component={Register} />
+        {/* <Route path="/create-account" component={Register} /> */}
       </Switch>
     </BrowserRouter>
   );
