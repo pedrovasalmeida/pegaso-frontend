@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  margin: 140px 0 0 0;
+  margin: 64px 0 0 0;
 `;
 
 export const LeftMenu = styled.div`
@@ -10,7 +10,7 @@ export const LeftMenu = styled.div`
   flex-direction: column;
 
   width: 280px;
-  height: calc(100vh - 140px);
+  height: calc(100vh - 64px);
 
   background-color: #f1f1f1;
 
@@ -89,7 +89,7 @@ export const Data = styled.div`
   justify-content: flex-start;
 
   width: calc(100vw - 280px);
-  height: calc(100vh - 140px);
+  height: calc(100vh - 64px);
 
   background-color: #ccc;
 

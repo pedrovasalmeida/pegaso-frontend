@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import {
   Container,
@@ -11,28 +11,102 @@ import {
   OpcaoMenu,
   Separator,
   Data,
-  Atualizar,
 } from './styles';
 
-import Add from '../../components/AdicionarEmp';
-import Remove from '../../components/RemoverEmp';
-import List from '../../components/ListarEmp';
 import LoginPage from '../../components/Login';
 
+import { useAuth } from '../../context/AuthContext';
+
+interface UserDataFromStorage {
+  id: number;
+  userLogin: string;
+}
+
 const Painel: React.FC = () => {
+  const { signOut } = useAuth();
+
+  const [userData, setUserData] = useState<UserDataFromStorage>(() => {
+    const data = localStorage.getItem('@ProjPegaso:user');
+    const token = localStorage.getItem('@ProjPegaso:token');
+
+    if (data && token) {
+      const { id, userLogin } = JSON.parse(data);
+      return { id, userLogin };
+    }
+
+    return {} as UserDataFromStorage;
+  });
+
   const [isLogged, setIsLogged] = useState(false);
   const [adicionar, setAdicionar] = useState(false);
   const [atualizar, setAtualizar] = useState(false);
   const [remover, setRemover] = useState(true);
   const [listar, setListar] = useState(false);
 
-  const handleLogIn = () => {
-    setIsLogged(true);
-  };
+  const handleComponentRender = useCallback(() => {
+    if (userData.id === undefined)
+      return (
+        <Container>
+          <LoginPage />
+        </Container>
+      );
 
-  const handleLogOff = () => {
-    setIsLogged(false);
-  };
+    return (
+      <Container>
+        <LeftMenu>
+          <DadosAdmin>
+            <Avatar />
+            <div>
+              <Name>Teste</Name>
+              <Login>Login: Teste</Login>
+              <Permissao>Admin</Permissao>
+            </div>
+          </DadosAdmin>
+
+          <OpcaoMenu onClick={() => handleAdicionar()}>
+            Adicionar empreendimento
+          </OpcaoMenu>
+
+          <Separator />
+
+          <OpcaoMenu onClick={() => handleAdicionar()}>
+            Adicionar imagens
+          </OpcaoMenu>
+
+          <Separator />
+
+          <OpcaoMenu onClick={() => handleRemover()}>
+            Remover empreendimento
+          </OpcaoMenu>
+
+          <Separator />
+
+          <OpcaoMenu onClick={() => handleAtualizar()}>
+            Atualizar empreendimento
+          </OpcaoMenu>
+
+          <Separator />
+
+          <OpcaoMenu onClick={() => handleListar()}>
+            Listar empreendimentos
+          </OpcaoMenu>
+
+          <Separator />
+
+          <OpcaoMenu onClick={() => handleDeslogar()}>Sair</OpcaoMenu>
+        </LeftMenu>
+        <Data></Data>
+      </Container>
+    );
+  }, []);
+
+  const handleDeslogar = useCallback(() => {
+    signOut();
+
+    setUserData({} as UserDataFromStorage);
+
+    window.location.reload();
+  }, []);
 
   const handleAdicionar = () => {
     setAdicionar(true);
@@ -62,82 +136,7 @@ const Painel: React.FC = () => {
     setListar(true);
   };
 
-  return (
-    <>
-      {!isLogged ? (
-        <Container>
-          <LoginPage />
-        </Container>
-      ) : (
-        <Container>
-          <LeftMenu>
-            <DadosAdmin>
-              <Avatar />
-              <div>
-                <Name>Teste</Name>
-                <Login>Login: Teste</Login>
-                <Permissao>Admin</Permissao>
-              </div>
-            </DadosAdmin>
-
-            <OpcaoMenu onClick={() => handleAdicionar()}>
-              Adicionar empreendimento
-            </OpcaoMenu>
-
-            <Separator />
-
-            <OpcaoMenu onClick={() => handleAdicionar()}>
-              Adicionar imagens
-            </OpcaoMenu>
-
-            <Separator />
-
-            <OpcaoMenu onClick={() => handleRemover()}>
-              Remover empreendimento
-            </OpcaoMenu>
-
-            <Separator />
-
-            <OpcaoMenu onClick={() => handleAtualizar()}>
-              Atualizar empreendimento
-            </OpcaoMenu>
-
-            <Separator />
-
-            <OpcaoMenu onClick={() => handleListar()}>
-              Listar empreendimentos
-            </OpcaoMenu>
-          </LeftMenu>
-          <Data>
-            {adicionar && (
-              <>
-                <span>Adicionar Empreendimento</span>
-                <Add />
-              </>
-            )}
-            {remover && (
-              <>
-                <span>Remover Empreendimento</span>
-                <Remove />
-              </>
-            )}
-            {atualizar && (
-              <>
-                <span>Atualizar Empreendimento</span>
-                <Atualizar />
-              </>
-            )}
-            {listar && (
-              <>
-                <span>Listar Empreendimentos</span>
-                <List />
-              </>
-            )}
-          </Data>
-        </Container>
-      )}
-    </>
-  );
+  return <>{handleComponentRender()}</>;
 };
 
 export default Painel;

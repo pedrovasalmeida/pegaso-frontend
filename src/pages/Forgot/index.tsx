@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import { Container, Separator, Form, ForgotIcon, BackIcon } from './styles';
 
-const Register: React.FC = () => {
+const Forgot: React.FC = () => {
   return (
     <Container>
       <Form>
@@ -32,4 +32,4 @@ const Register: React.FC = () => {
   );
 };
 
-export default Register;
+export default Forgot;
