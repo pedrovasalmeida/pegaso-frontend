@@ -2,10 +2,6 @@ import React from 'react';
 
 import useAxios from '../../hooks/useAxios';
 
-import { motion } from 'framer-motion';
-
-import { Link } from 'react-router-dom';
-
 import {
   Container,
   DivTitle,
@@ -29,7 +25,8 @@ interface Empreendimentos {
 }
 
 const Projects: React.FC = () => {
-  const { data } = useAxios<Empreendimentos[]>('/show-all');
+  const { results } = useAxios('/show-all');
+  let counter = 0.4;
 
   const variants = {
     visible: { opacity: 1 },
@@ -38,18 +35,29 @@ const Projects: React.FC = () => {
 
   return (
     <Container>
-      <DivTitle animate={{ x: -650 }} transition={{ duration: 1.5 }}>
+      <DivTitle animate={{ x: -650 }} transition={{ duration: 1.2 }}>
         <Subtitle>NOSSOS EMPREENDIMENTOS</Subtitle>
       </DivTitle>
 
-      <DivProjects animate={{ x: -350 }} transition={{ duration: 3.5 }}>
-        {!data ? (
+      <DivProjects>
+        {!results ? (
           <p>Carregando...</p>
         ) : (
-          data.map((item) => {
+          results.map((item) => {
+            counter = counter + 0.2;
             return (
-              <LinkRRD to={`/empreendimentos/detalhes/${item.id}`}>
-                <Project whileHover={{ y: -10 }}>
+              <LinkRRD
+                to={`/empreendimentos/detalhes/${item.id}`}
+                key={item.id}
+              >
+                <Project
+                  animate={{ x: -350 }}
+                  transition={{ duration: counter }}
+                  whileHover={{
+                    y: -7,
+                    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))',
+                  }}
+                >
                   <ExternalImage>
                     <img src={item.poster} alt={item.nome} />
                   </ExternalImage>
@@ -64,7 +72,7 @@ const Projects: React.FC = () => {
                     initial="hidden"
                     animate={'visible'}
                     variants={variants}
-                    transition={{ duration: 4 }}
+                    transition={{ duration: 0.25 }}
                   >
                     <FloatContent>
                       <div>
