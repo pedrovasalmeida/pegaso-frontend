@@ -50,7 +50,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     setData({} as AuthState);
   }, []);
 
-  const getUserDataFromStorage = useCallback(() => {}, []);
+  // const getUserDataFromStorage = useCallback(() => {}, []);
 
   return (
     <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
