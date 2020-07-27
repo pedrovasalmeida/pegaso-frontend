@@ -126,7 +126,7 @@ const RemoverEmp: React.FC = () => {
 
   useEffect(() => {
     getData();
-  }, [data]);
+  }, [getData()]);
 
   return (
     <Container>
