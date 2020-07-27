@@ -24,7 +24,7 @@ export default createGlobalStyle`
     font-weight: 500;
   }
 
-  button, span, p {
+  form, button, span, p, h1, h2, h3, h4, h5, h6, strong, input, a, img, svg {
     &::selection {
       background: #324286;
       color: #fdfdfd;
