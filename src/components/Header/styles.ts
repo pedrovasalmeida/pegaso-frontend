@@ -14,6 +14,10 @@ interface Props {
   isVisible?: boolean;
 }
 
+interface RouterProps {
+  selected?: boolean;
+}
+
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -192,14 +196,15 @@ export const DivButtons = styled(motion.div)`
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<RouterProps>`
   background-color: transparent;
 
-  color: #333;
+  color: ${(props) => (props.selected ? '#324286' : '#333')};
 
   font-weight: 500;
 
   transition: all 300ms ease-in-out;
+
   &:focus {
     outline: 0;
     text-decoration: none;
@@ -304,7 +309,7 @@ export const LinkRRDHiddenMenu = styled(Link)`
   }
 `;
 
-export const LinkRRD = styled(Link)`
+export const LinkRRD = styled(Link)<RouterProps>`
   /* justify-content: center;
   align-items: center;
   height: 40px;
@@ -335,7 +340,7 @@ export const LinkRRD = styled(Link)`
     left: -1;
     bottom: 0;
 
-    width: 0px;
+    width: ${(props) => (props.selected ? '100%' : 0)};
     height: 2px;
 
     background: #324286;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import {
   Container,
@@ -17,6 +18,18 @@ import Logo from '../../assets/logo.png';
 
 const Header: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const location = useLocation();
+
+  console.log(location.pathname);
+
+  const menuOptions = [
+    { rota: '/', nome: 'HOME' },
+    { rota: '/quem-somos', nome: 'QUEM SOMOS' },
+    { rota: '/empreendimentos', nome: 'EMPREENDIMENTOS' },
+    { rota: '/portfolio', nome: 'PORTFÓLIO' },
+    { rota: '/contato', nome: 'CONTATO' },
+    { rota: '/painel', nome: 'PAINEL' },
+  ];
 
   const handleVisible = () => {
     isVisible ? setIsVisible(false) : setIsVisible(true);
@@ -71,39 +84,22 @@ const Header: React.FC = () => {
 
         <SubContainer>
           <DivButtons animate={{ x: -100 }} transition={{ duration: 1 }}>
-            <LinkRRD to="/">
-              <Button>HOME</Button>
-            </LinkRRD>
+            {menuOptions.map((option) => (
+              <>
+                <LinkRRD
+                  to={option.rota}
+                  selected={option.rota === location.pathname ? true : false}
+                >
+                  <Button
+                    selected={option.rota === location.pathname ? true : false}
+                  >
+                    {option.nome}
+                  </Button>
+                </LinkRRD>
 
-            <Separator />
-
-            <LinkRRD to="/quem-somos">
-              <Button>QUEM SOMOS</Button>
-            </LinkRRD>
-
-            <Separator />
-
-            <LinkRRD to="/empreendimentos">
-              <Button>EMPREENDIMENTOS</Button>
-            </LinkRRD>
-
-            <Separator />
-
-            <LinkRRD to="/portfolio">
-              <Button>PORTFÓLIO</Button>
-            </LinkRRD>
-
-            <Separator />
-
-            <LinkRRD to="/corretor">
-              <Button>CONTATO</Button>
-            </LinkRRD>
-
-            <Separator />
-
-            <LinkRRD to="/painel">
-              <Button>PAINEL</Button>
-            </LinkRRD>
+                <Separator />
+              </>
+            ))}
           </DivButtons>
         </SubContainer>
 
