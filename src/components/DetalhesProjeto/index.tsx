@@ -1,25 +1,16 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 
-import { useParams } from "react-router-dom";
-
-import useAxios from "../../hooks/useAxios";
+import useAxios from '../../hooks/useAxios';
 
 import {
   Container,
-  Imagem,
   Details,
   Title,
   Empreendimento,
   Text,
   Endereco,
   MoreImages,
-  DivTitlePlanta,
-  Plantas,
-  OpcaoPlanta,
-  TitlePlanta,
-  Localizacao,
-  Maps,
-  DetalhesBairro,
   DivCarousel,
   DivCarouselItem,
   DivCarouselControl,
@@ -27,7 +18,11 @@ import {
   RightArrow,
   FloatDiv,
   DivIcons,
-} from "./styles";
+  DivImagemTipo,
+  LinkRRD,
+  BackButton,
+  BackIcon,
+} from './styles';
 
 interface Empreendimentos {
   development: {
@@ -57,29 +52,27 @@ interface Plantas {
 
 const Infos: React.FC = () => {
   let { id } = useParams();
-  const { data } = useAxios<Empreendimentos>(`/show-one/${id}`);
-  const plantas = useAxios<Plantas[]>(`/show-all-plantas/${id}`);
+  let history = useHistory();
+  const { results } = useAxios(`/show-one/${id}`);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
-  if (!data)
+  if (!results)
     return (
       <Container
         style={{
           flex: 1,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
         <p>Carregando data...</p>
       </Container>
     );
 
-  const imagesLength = data?.images.length;
-
-  const images = data.images.map((item) => {
+  const images = results.images.map((item) => {
     return (
       <DivCarouselItem
         onExiting={() => setAnimating(true)}
@@ -90,6 +83,8 @@ const Infos: React.FC = () => {
       </DivCarouselItem>
     );
   });
+
+  const imagesLength = results.images.length;
 
   const next = () => {
     if (animating) return;
@@ -105,72 +100,57 @@ const Infos: React.FC = () => {
 
   return (
     <Container>
-      <Imagem src={data.development.banner} alt="Imagem" />
+      <DivImagemTipo src={results.development.banner}>
+        <BackButton onClick={() => history.goBack()}>
+          <BackIcon />
+          <span>Voltar</span>
+        </BackButton>
+      </DivImagemTipo>
 
       <Details>
         <Empreendimento>
           <Title>Empreendimento</Title>
-          <Text>{data.development.descricao}</Text>
+          <Text>{results.development.descricao}</Text>
         </Empreendimento>
 
         <Endereco>
           <Title>Endereço</Title>
-          <Text>{data.development.endereco}</Text>
+          <Text>{results.development.endereco}</Text>
         </Endereco>
       </Details>
 
-      <MoreImages>
-        <FloatDiv>
-          {images}
-          <DivIcons>
-            <LeftArrow onClick={() => previous()} />
-            <RightArrow onClick={() => next()} />
-          </DivIcons>
-        </FloatDiv>
-
-        <DivCarousel
-          activeIndex={activeIndex}
-          next={next}
-          previous={previous}
-          ride={"carousel"}
-        >
-          {images}
-          <DivCarouselControl
-            direction="prev"
-            directionText="Previous"
-            onClickHandler={previous}
-          />
-          <DivCarouselControl
-            direction="next"
-            directionText="Next"
-            onClickHandler={next}
-          />
-        </DivCarousel>
-      </MoreImages>
-
-      {!plantas.data ? (
-        ""
+      {imagesLength < 1 ? (
+        ''
       ) : (
-        <>
-          <DivTitlePlanta>
-            <Title>Plantas</Title>
-          </DivTitlePlanta>
-          <Plantas>
-            {plantas.data?.map((item) => (
-              <OpcaoPlanta>
-                <img src={item.planta} alt={item.name} />
-                <TitlePlanta>Opção de planta</TitlePlanta>
-                <Text>{item.descricao}</Text>
-              </OpcaoPlanta>
-            ))}
-          </Plantas>
-        </>
-      )}
+        <MoreImages>
+          <FloatDiv>
+            {images}
+            <DivIcons>
+              <LeftArrow onClick={() => previous()} />
+              <RightArrow onClick={() => next()} />
+            </DivIcons>
+          </FloatDiv>
 
-      <Localizacao>
-        <Maps />
-        <DetalhesBairro />
-      </Localizacao>
+          <DivCarousel
+            activeIndex={activeIndex}
+            next={next}
+            previous={previous}
+            ride={'carousel'}
+          >
+            {images}
+            <DivCarouselControl
+              direction="prev"
+              directionText="Previous"
+              onClickHandler={previous}
+            />
+            <DivCarouselControl
+              direction="next"
+              directionText="Next"
+              onClickHandler={next}
+            />
+          </DivCarousel>
+        </MoreImages>
+      )}
     </Container>
   );
 };

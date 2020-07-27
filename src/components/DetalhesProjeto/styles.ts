@@ -1,7 +1,13 @@
-import styled from "styled-components";
-import { shade } from "polished";
+import styled from 'styled-components';
+import { shade, lighten } from 'polished';
 
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import {
+  IoIosArrowForward,
+  IoIosArrowBack,
+  IoIosReturnLeft,
+} from 'react-icons/io';
+
+import { motion, AnimatePresence } from 'framer-motion';
 
 import {
   Carousel,
@@ -9,13 +15,21 @@ import {
   CarouselControl,
   CarouselIndicators,
   CarouselCaption,
-} from "reactstrap";
+} from 'reactstrap';
+
+import { Link } from 'react-router-dom';
+
+interface EmpImageProps {
+  src?: string;
+}
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
   width: 99vw;
+
+  padding: 0 0 60px 0;
 `;
 
 export const Imagem = styled.img`
@@ -50,7 +64,7 @@ export const Title = styled.span`
   font-weight: bold;
   text-transform: uppercase;
   margin: 8px 0;
-  color: rgba(192, 25, 32, 0.8);
+  color: #324286;
 `;
 
 export const Text = styled.span`
@@ -73,12 +87,12 @@ export const DivTitlePlanta = styled.div`
   margin: 16px 0;
 
   span {
-    color: rgba(192, 25, 32, 1);
-    border-bottom: 1px solid ${shade(0.2, `rgba(192, 25, 32, 0.8)`)};
+    color: #324286;
+    border-bottom: 1px solid ${shade(0.2, `#324286`)};
   }
 `;
 
-export const Plantas = styled.div`
+export const Plantas = styled(AnimatePresence)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,6 +105,12 @@ export const Plantas = styled.div`
   background-color: rgba(0, 0, 0, 0.05);
 
   margin: 8px 0 0 0;
+`;
+
+export const CarouselImage = styled(motion.img)`
+  margin: 8px 0;
+  width: 90%;
+  height: 80%;
 `;
 
 export const OpcaoPlanta = styled.div`
@@ -106,12 +126,6 @@ export const OpcaoPlanta = styled.div`
 
   transition: all 200ms ease-in-out;
 
-  > img {
-    margin: 8px 0;
-    width: 90%;
-    height: 80%;
-  }
-
   span + span {
     font-size: 14px;
   }
@@ -123,7 +137,7 @@ export const OpcaoPlanta = styled.div`
 `;
 
 export const TitlePlanta = styled.span`
-  color: rgba(192, 25, 32, 0.8);
+  color: #324286;
   font-weight: bold;
   text-transform: uppercase;
 `;
@@ -210,7 +224,7 @@ export const LeftArrow = styled(IoIosArrowBack)`
   cursor: pointer;
 
   &:hover {
-    color: rgba(192, 25, 32, 1);
+    color: #324286;
   }
 `;
 
@@ -228,7 +242,7 @@ export const RightArrow = styled(IoIosArrowForward)`
   cursor: pointer;
 
   &:hover {
-    color: rgba(192, 25, 32, 1);
+    color: #324286;
   }
 `;
 
@@ -350,7 +364,7 @@ export const FloatContent = styled.div`
     padding: 0;
     font-size: 32px;
     text-transform: uppercase;
-    color: rgba(192, 25, 32, 1);
+    color: #324286;
   }
 
   @media (max-width: 663px) {
@@ -379,7 +393,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 26px;
       text-transform: uppercase;
-      color: rgba(192, 25, 32, 1);
+      color: #324286;
     }
   }
 
@@ -409,7 +423,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 26px;
       text-transform: uppercase;
-      color: rgba(192, 25, 32, 1);
+      color: #324286;
     }
   }
 
@@ -439,7 +453,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 26px;
       text-transform: uppercase;
-      color: rgba(192, 25, 32, 1);
+      color: #324286;
     }
   }
 
@@ -469,7 +483,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 22px;
       text-transform: uppercase;
-      color: rgba(192, 25, 32, 1);
+      color: #324286;
     }
   }
 `;
@@ -477,7 +491,7 @@ export const FloatContent = styled.div`
 export const FloatButton = styled.button`
   width: 100%;
 
-  background-color: rgba(192, 25, 32, 1);
+  background-color: #324286;
 
   height: 32px;
 
@@ -486,7 +500,7 @@ export const FloatButton = styled.button`
   transition: all 300ms ease-in-out;
 
   &:hover {
-    background-color: ${shade(0.4, `rgba(192, 25, 32, 1)`)};
+    background-color: ${shade(0.4, `#324286`)};
   }
 
   &:focus {
@@ -502,4 +516,48 @@ export const DivIcons = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+`;
+
+export const DivImagemTipo = styled(motion.div)<EmpImageProps>`
+  position: relative;
+
+  height: calc(100vh - 190px);
+
+  background: url(${(props) => props.src}) no-repeat center center fixed;
+  background-size: cover;
+`;
+
+export const LinkRRD = styled(Link)``;
+
+export const BackButton = styled.div`
+  position: absolute;
+  top: 5vh;
+  left: 16vw;
+
+  background-color: #fdfdfd;
+
+  border-radius: 16px;
+
+  width: auto;
+  height: auto;
+
+  filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.4));
+
+  cursor: pointer;
+
+  span {
+    font-weight: bold;
+    margin: 0 4px;
+  }
+
+  transition: background-color 300ms ease;
+
+  &:hover {
+    background-color: ${lighten(0.5, '#324286')};
+  }
+`;
+
+export const BackIcon = styled(IoIosReturnLeft)`
+  font-size: 20px;
+  margin: 0 4px;
 `;
