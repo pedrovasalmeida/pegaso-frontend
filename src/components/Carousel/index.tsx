@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import {
   Container,
@@ -16,7 +16,6 @@ import {
 import { Link } from 'react-router-dom';
 
 import useAxios from '../../hooks/useAxios';
-import api from '../../services/api';
 
 interface Empreendimentos {
   id: number;
