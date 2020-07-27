@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  height: calc(100vh - 140px);
+  height: 100vh;
   width: 99vw;
 
-  margin: 140px 0 0 0;
+  margin: 64px 0 0 0;
 `;
