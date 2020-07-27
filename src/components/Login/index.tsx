@@ -23,7 +23,6 @@ const Login: React.FC = () => {
   const [inputLogin, setInputLogin] = useState('');
   const [inputSenha, setInputSenha] = useState('');
   const [isError, setIsError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const { user, signIn } = useAuth();
 
@@ -33,6 +32,15 @@ const Login: React.FC = () => {
 
   const handleInputSenha = useCallback((string: string) => {
     setInputSenha(string);
+  }, []);
+
+  const handleReloadPage = useCallback(() => {
+    const data = localStorage.getItem('@ProjPegaso:user');
+    const token = localStorage.getItem('@ProjPegaso:token');
+
+    if (data && token) {
+      window.location.reload();
+    }
   }, []);
 
   const renderLoginError = useCallback(() => {
@@ -58,9 +66,11 @@ const Login: React.FC = () => {
         if (login.length < 5) return setIsError(true);
         if (password.length < 5) return setIsError(true);
 
-        signIn!({ login, password });
+        await signIn!({ login, password });
 
         setIsError(false);
+
+        handleReloadPage();
       } catch (err) {
         return err;
       }
@@ -99,10 +109,10 @@ const Login: React.FC = () => {
         </button>
 
         <Link to="/forgot-password">Esqueci minha senha</Link>
-        <Link to="/create-account">
+        {/* <Link to="/create-account">
           <CreateAccountIcon />
           Criar conta
-        </Link>
+        </Link> */}
         <Separator />
         <span>by Pegaso</span>
       </Form>
