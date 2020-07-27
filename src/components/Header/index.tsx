@@ -20,8 +20,6 @@ const Header: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const location = useLocation();
 
-  console.log(location.pathname);
-
   const menuOptions = [
     { rota: '/', nome: 'HOME' },
     { rota: '/quem-somos', nome: 'QUEM SOMOS' },
