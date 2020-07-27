@@ -114,7 +114,7 @@ const Login: React.FC = () => {
           Criar conta
         </Link> */}
         <Separator />
-        <span>by Pegaso</span>
+        <span>Pegaso © 2020</span>
       </Form>
     </Container>
   );
