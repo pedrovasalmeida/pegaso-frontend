@@ -24,6 +24,13 @@ export default createGlobalStyle`
     font-weight: 500;
   }
 
+  button, span, p {
+    &::selection {
+      background: #324286;
+      color: #fdfdfd;
+    }
+  }
+
   button {
     cursor: pointer;
   }
