@@ -1,5 +1,7 @@
 import React, { useState, useCallback } from 'react';
 
+import api from '../../services/api';
+
 import {
   Container,
   Form,
@@ -13,6 +15,10 @@ import {
   Separator,
   WhiteSpace,
   SendIcon,
+  SucessMessage,
+  ErrorMessage,
+  LoadingMessage,
+  DivStateMessages,
 } from './styles';
 
 const Contato: React.FC = () => {
@@ -20,6 +26,14 @@ const Contato: React.FC = () => {
   const [inputEmail, setInputEmail] = useState('');
   const [inputContato, setInputContato] = useState('');
   const [inputMensagem, setInputMensagem] = useState('');
+  /** se ocorreu um erro ou não */
+  const [isError, setIsError] = useState(false);
+  /** se está carregando o envio ou não */
+  const [isLoading, setIsLoading] = useState(false);
+  /** se o email foi enviado ou não */
+  const [isSended, setIsSended] = useState(false);
+  /** se o email foi enviado ou não */
+  const [couldSend, setCouldSend] = useState(true);
 
   const handleInputNome = useCallback(
     (value: string) => {
@@ -47,6 +61,119 @@ const Contato: React.FC = () => {
       setInputMensagem(value);
     },
     [inputMensagem],
+  );
+
+  const renderStateOfSendedEmailMessage = useCallback((state: boolean) => {
+    if (state)
+      return (
+        <SucessMessage>
+          E-mail enviado com sucesso. Em breve, entraremos em contato!
+        </SucessMessage>
+      );
+    if (!state)
+      return (
+        <ErrorMessage>
+          Algo deu errado. <br />
+          Por favor, tente novamente
+          <br /> em 5 segundos!
+        </ErrorMessage>
+      );
+  }, []);
+
+  const handleSendEmail = useCallback(
+    async (
+      e,
+      nome: string,
+      email: string,
+      contato: string,
+      mensagem: string,
+    ) => {
+      e.preventDefault();
+
+      setIsLoading(true);
+
+      if (!nome || !email || !contato || !mensagem) {
+        setIsLoading(false);
+        setIsError(true);
+        setIsSended(false);
+        setCouldSend(false);
+
+        setTimeout(() => {
+          setIsLoading(false);
+          setIsError(false);
+          setIsSended(false);
+          setCouldSend(true);
+        }, 5000);
+        return;
+      }
+
+      if (!email.match(/.+@.+/)) {
+        setIsLoading(false);
+        setIsError(true);
+        setIsSended(false);
+        setCouldSend(false);
+
+        setTimeout(() => {
+          setIsLoading(false);
+          setIsError(false);
+          setIsSended(false);
+          setCouldSend(true);
+        }, 5000);
+        return;
+      }
+
+      setIsError(false);
+      setIsSended(false);
+
+      const data = {
+        nome,
+        email,
+        contato,
+        mensagem,
+      };
+
+      await api
+        .post('/send-mail', data)
+        .then((res) => {
+          setIsLoading(false);
+          setIsError(false);
+          setIsSended(true);
+          setCouldSend(false);
+          setTimeout(() => {
+            setIsLoading(false);
+            setIsError(false);
+            setIsSended(false);
+            setCouldSend(true);
+          }, 10000);
+        })
+        .catch((err) => {
+          setIsError(true);
+          setIsSended(false);
+          setIsLoading(false);
+          setCouldSend(false);
+          setTimeout(() => {
+            setIsLoading(false);
+            setIsError(false);
+            setIsSended(false);
+            setCouldSend(true);
+          }, 10000);
+        });
+
+      setTimeout(() => {
+        setIsLoading(false);
+        setIsError(false);
+        setIsSended(true);
+        setCouldSend(false);
+      }, 1000);
+
+      setTimeout(() => {
+        setIsLoading(false);
+        setIsError(false);
+        setIsSended(false);
+        setCouldSend(true);
+      }, 8000);
+    },
+    [],
   );
 
   return (
@@ -96,12 +223,19 @@ const Contato: React.FC = () => {
           />
 
           <Button
+            disabled={!couldSend}
             animate={{ x: 100 }}
             transition={{ duration: 1.5 }}
             type="submit"
-            onClick={(e) => {
-              e.preventDefault();
-            }}
+            onClick={(e) =>
+              handleSendEmail(
+                e,
+                inputNome,
+                inputEmail,
+                inputContato,
+                inputMensagem,
+              )
+            }
           >
             <SendIcon />
             Enviar
@@ -148,6 +282,30 @@ const Contato: React.FC = () => {
         <Texto animate={{ x: -100 }} transition={{ duration: 2.1 }}>
           vagas@pegaso.com.br
         </Texto>
+
+        <DivStateMessages>
+          {isLoading && (
+            <LoadingMessage>
+              <span>Carregando...</span>
+            </LoadingMessage>
+          )}
+
+          {isError && (
+            <ErrorMessage>
+              Algo deu errado. <br />
+              Por favor, tente novamente
+              <br /> em 5 segundos!
+            </ErrorMessage>
+          )}
+
+          {isSended && (
+            <SucessMessage>
+              E-mail enviado com sucesso.
+              <br />
+              Em breve, entraremos em contato!
+            </SucessMessage>
+          )}
+        </DivStateMessages>
       </DivEsquerda>
     </Container>
   );

@@ -213,3 +213,22 @@ export const WhiteSpace = styled.div`
 export const SendIcon = styled(RiMailSendLine)`
   font-size: 20px;
 `;
+
+export const SucessMessage = styled.span`
+  color: green;
+`;
+
+export const ErrorMessage = styled.span`
+  color: red;
+`;
+
+export const LoadingMessage = styled.div`
+  span {
+    color: gray;
+  }
+`;
+
+export const DivStateMessages = styled.div`
+  transform: translateX(-100px);
+  margin: 64px 0 0 0;
+`;
