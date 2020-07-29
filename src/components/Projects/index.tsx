@@ -44,7 +44,7 @@ const Projects: React.FC = () => {
           <p>Carregando...</p>
         ) : (
           results.map((item) => {
-            counter = counter + 0.2;
+            counter = counter + 0.1;
             return (
               <LinkRRD
                 to={`/empreendimentos/detalhes/${item.id}`}
