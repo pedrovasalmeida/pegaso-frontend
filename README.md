@@ -10,7 +10,7 @@ Preview: [Projeto - Pegaso](https://pegaso.netlify.app/).
 
 ## To-Do List
 
-- ...
+- [x] ...
 - [x] Criar Painel de Admin;
 - [x] Criar página de login;
 - [x] Criar página Contato;
