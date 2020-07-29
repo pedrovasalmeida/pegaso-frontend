@@ -143,7 +143,7 @@ export const InputMessage = styled(motion.textarea)`
 
 export const Button = styled(motion.button)`
   outline: 0;
-  width: 300px;
+  width: 20vw;
   height: 56px;
 
   background: #324286;
