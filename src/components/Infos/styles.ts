@@ -195,10 +195,9 @@ export const Categoria = styled(motion.div)`
   } */
 `;
 
-export const Separator = styled.div`
+export const Separator = styled(motion.div)`
   display: flex;
-  align-self: center;
-  width: 80px;
+  width: 50%;
   height: 1px;
 
   margin: 16px 0;

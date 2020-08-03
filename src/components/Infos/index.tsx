@@ -55,7 +55,7 @@ const Infos: React.FC = () => {
               </span>
             </Categoria>
 
-            <Separator className="separator" />
+            <Separator animate={{ x: 100 }} transition={{ duration: 1.1 }} />
 
             <Categoria animate={{ x: 100 }} transition={{ duration: 1.1 }}>
               <p>Kamehameha Mais Forte</p>
@@ -63,7 +63,7 @@ const Infos: React.FC = () => {
               <span>O Kamehamehá mais impactante do mercado.</span>
             </Categoria>
 
-            <Separator className="separator" />
+            <Separator animate={{ x: 100 }} transition={{ duration: 1.2 }} />
 
             <Categoria animate={{ x: 100 }} transition={{ duration: 1.2 }}>
               <p>Teleporte</p>
