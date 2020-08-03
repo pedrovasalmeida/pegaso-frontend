@@ -24,7 +24,6 @@ const Header: React.FC = () => {
     { rota: '/', nome: 'HOME' },
     { rota: '/quem-somos', nome: 'QUEM SOMOS' },
     { rota: '/empreendimentos', nome: 'EMPREENDIMENTOS' },
-    { rota: '/portfolio', nome: 'PORTFÓLIO' },
     { rota: '/contato', nome: 'CONTATO' },
     { rota: '/painel', nome: 'PAINEL' },
   ];
@@ -74,7 +73,6 @@ const Header: React.FC = () => {
           <Button>PAINEL</Button>
         </LinkRRDHiddenMenu>
       </HiddenMenu> */}
-
       <Container>
         <DivLogo animate={{ x: 100 }} transition={{ duration: 1 }}>
           <img src={Logo} alt="Logo" />
