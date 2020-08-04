@@ -19,7 +19,6 @@ import {
   FloatDiv,
   DivIcons,
   DivImagemTipo,
-  LinkRRD,
   BackButton,
   BackIcon,
 } from './styles';

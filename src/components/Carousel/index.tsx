@@ -34,14 +34,21 @@ interface ResultsProps {
 }
 
 const MyCarousel = () => {
-  const { results }: ResultsProps = useAxios('show-all');
-
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
+  const { results }: ResultsProps = useAxios('show-all');
+
   if (!results)
     return (
-      <Container style={{ marginTop: '150px' }}>
+      <Container
+        style={{
+          display: 'flex',
+          marginTop: '150px',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
         <h1>CARREGANDO</h1>
       </Container>
     );
@@ -58,7 +65,7 @@ const MyCarousel = () => {
     setActiveIndex(nextIndex);
   };
 
-  const slides = results.map((item: Empreendimentos) => {
+  const slides = results?.map((item: Empreendimentos) => {
     return (
       <DivCarouselItem
         onExiting={() => setAnimating(true)}
@@ -92,7 +99,6 @@ const MyCarousel = () => {
           </FloatButton>
         </Link>
       </FloatDiv>
-
       <DivCarousel
         activeIndex={activeIndex}
         next={next}

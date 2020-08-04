@@ -10,7 +10,6 @@ import {
   Separator,
   MenuIcon,
   DivMenu,
-  HiddenMenu,
   LinkRRD,
 } from './styles';
 
@@ -32,9 +31,9 @@ const Header: React.FC = () => {
     isVisible ? setIsVisible(false) : setIsVisible(true);
   };
 
-  const handleOutsideClick = () => {
-    setIsVisible(false);
-  };
+  // const handleOutsideClick = () => {
+  //   setIsVisible(false);
+  // };
 
   return (
     <>

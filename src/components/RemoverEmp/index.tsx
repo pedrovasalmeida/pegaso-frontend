@@ -131,107 +131,109 @@ const RemoverEmp: React.FC = () => {
   return (
     <Container>
       <Lista>
-        {showModal && (
-          <ConfirmModal>
-            <CloseIcon onClick={() => handleCloseModal()} />
+        <>
+          {showModal && (
+            <ConfirmModal>
+              <CloseIcon onClick={() => handleCloseModal()} />
 
-            <DivModalText>
-              <ModalText>
-                Tem certeza que deseja remover:
-                <br />
-                <strong>ID: {idToDelete}</strong>
-                <br />
-                <strong>Nome: {empToDelete}</strong>?
-              </ModalText>
-            </DivModalText>
+              <DivModalText>
+                <ModalText>
+                  Tem certeza que deseja remover:
+                  <br />
+                  <strong>ID: {idToDelete}</strong>
+                  <br />
+                  <strong>Nome: {empToDelete}</strong>?
+                </ModalText>
+              </DivModalText>
 
-            <DivModalButtons>
-              <ModalButton
+              <DivModalButtons>
+                <ModalButton
+                  modalType="confirm"
+                  onClick={() => removeData(idToDelete!)}
+                >
+                  <span>Confirmar</span>
+                </ModalButton>
+
+                <ModalButton
+                  modalType="cancel"
+                  onClick={() => handleCloseModal()}
+                >
+                  <span>Cancelar</span>
+                </ModalButton>
+              </DivModalButtons>
+            </ConfirmModal>
+          )}
+
+          {isError && !showConfirmedModal && (
+            <ErrorModal>
+              <DivModalText>
+                <ModalErrorText>
+                  <ErrorIcon />
+                  <span>
+                    Não foi possível excluir esse empreendimento, pois ele não
+                    existe na base de dados!
+                  </span>
+                </ModalErrorText>
+              </DivModalText>
+              <ModalErrorButton
                 modalType="confirm"
-                onClick={() => removeData(idToDelete!)}
+                fullWidth
+                isError
+                onClick={() => handleCloseErrorModal()}
               >
-                <span>Confirmar</span>
-              </ModalButton>
+                <span>Ok</span>
+              </ModalErrorButton>
+            </ErrorModal>
+          )}
 
-              <ModalButton
-                modalType="cancel"
-                onClick={() => handleCloseModal()}
-              >
-                <span>Cancelar</span>
-              </ModalButton>
-            </DivModalButtons>
-          </ConfirmModal>
-        )}
-
-        {isError && !showConfirmedModal && (
-          <ErrorModal>
-            <DivModalText>
-              <ModalErrorText>
-                <ErrorIcon />
-                <span>
-                  Não foi possível excluir esse empreendimento, pois ele não
-                  existe na base de dados!
-                </span>
-              </ModalErrorText>
-            </DivModalText>
-            <ModalErrorButton
-              modalType="confirm"
-              fullWidth
-              isError
-              onClick={() => handleCloseErrorModal()}
-            >
-              <span>Ok</span>
-            </ModalErrorButton>
-          </ErrorModal>
-        )}
-
-        {isLoading && (
-          <DivLoading isLoading={isLoading}>
-            <CustomPreloader
-              use={ThreeDots}
-              size={60}
-              strokeWidth={6}
-              strokeColor="#262626"
-              duration={2000}
-            />
-            <span>Carregando empreendimentos</span>
-          </DivLoading>
-        )}
-
-        {dataError ? (
-          <DivLoading>
-            <SadFaceIcon />
-            <span>Não possuímos empreendimentos AINDA!</span>
-          </DivLoading>
-        ) : (
-          ''
-        )}
-
-        {showConfirmedModal && (
-          <ConfirmedModal>
-            {isDeleting ? (
-              <Preloader
+          {isLoading && (
+            <DivLoading isLoading={isLoading}>
+              <CustomPreloader
                 use={ThreeDots}
                 size={60}
                 strokeWidth={6}
                 strokeColor="#262626"
                 duration={2000}
               />
-            ) : (
-              <DivModalText>
-                <ModalText>Empreendimento removido com sucesso!</ModalText>
-              </DivModalText>
-            )}
+              <span>Carregando empreendimentos</span>
+            </DivLoading>
+          )}
 
-            <ModalButton
-              modalType="confirm"
-              fullWidth
-              onClick={() => handleCloseConfirmedModal()}
-            >
-              <span>Ok</span>
-            </ModalButton>
-          </ConfirmedModal>
-        )}
+          {dataError ? (
+            <DivLoading>
+              <SadFaceIcon />
+              <span>Não possuímos empreendimentos AINDA!</span>
+            </DivLoading>
+          ) : (
+            ''
+          )}
+
+          {showConfirmedModal && (
+            <ConfirmedModal>
+              {isDeleting ? (
+                <Preloader
+                  use={ThreeDots}
+                  size={60}
+                  strokeWidth={6}
+                  strokeColor="#262626"
+                  duration={2000}
+                />
+              ) : (
+                <DivModalText>
+                  <ModalText>Empreendimento removido com sucesso!</ModalText>
+                </DivModalText>
+              )}
+
+              <ModalButton
+                modalType="confirm"
+                fullWidth
+                onClick={() => handleCloseConfirmedModal()}
+              >
+                <span>Ok</span>
+              </ModalButton>
+            </ConfirmedModal>
+          )}
+        </>
       </Lista>
     </Container>
   );

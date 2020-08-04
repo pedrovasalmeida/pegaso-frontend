@@ -11,6 +11,11 @@ interface AuthState {
   token: string;
 }
 
+interface UserProps {
+  id: number;
+  userLogin: string;
+}
+
 interface AuthContextProps {
   user: object;
   signIn(credentials: SignInCredentials): Promise<void>;
@@ -30,17 +35,22 @@ export const AuthProvider: React.FC = ({ children }) => {
   });
 
   const signIn = useCallback(async ({ login, password }: SignInCredentials) => {
-    const response = await api.post('/start-session', {
-      login,
-      password,
-    });
+    try {
+      const response = await api.post('/start-session', {
+        login,
+        password,
+      });
 
-    const { token, user } = response.data;
+      const { token, user } = response.data;
 
-    localStorage.setItem('@ProjPegaso:user', JSON.stringify(user));
-    localStorage.setItem('@ProjPegaso:token', token);
+      localStorage.setItem('@ProjPegaso:user', JSON.stringify(user));
+      localStorage.setItem('@ProjPegaso:token', token);
 
-    setData({ user, token });
+      setData({ user, token });
+    } catch (err) {
+      setData({} as AuthState);
+      throw new Error('Usuário/senha inválidos. Tente novamente!');
+    }
   }, []);
 
   const signOut = useCallback(() => {
@@ -49,8 +59,6 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     setData({} as AuthState);
   }, []);
-
-  // const getUserDataFromStorage = useCallback(() => {}, []);
 
   return (
     <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
@@ -63,7 +71,7 @@ export function useAuth(): AuthContextProps {
   const context = useContext(AuthContext);
 
   if (!context)
-    throw new Error('useAth deve ser usado dentro de um AuthProvider');
+    throw new Error('useAuth deve ser usado dentro de um AuthProvider');
 
   return context;
 }

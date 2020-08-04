@@ -12,7 +12,6 @@ import {
   Titulo,
   Texto,
   DivEsquerda,
-  Separator,
   WhiteSpace,
   SendIcon,
   SucessMessage,
@@ -35,50 +34,38 @@ const Contato: React.FC = () => {
   /** se o email foi enviado ou não */
   const [couldSend, setCouldSend] = useState(true);
 
-  const handleInputNome = useCallback(
-    (value: string) => {
-      setInputNome(value);
-    },
-    [inputNome],
-  );
-
-  const handleInputEmail = useCallback(
-    (value: string) => {
-      setInputEmail(value);
-    },
-    [inputEmail],
-  );
-
-  const handleInputContato = useCallback(
-    (value: string) => {
-      setInputContato(value);
-    },
-    [inputContato],
-  );
-
-  const handleInputMensagem = useCallback(
-    (value: string) => {
-      setInputMensagem(value);
-    },
-    [inputMensagem],
-  );
-
-  const renderStateOfSendedEmailMessage = useCallback((state: boolean) => {
-    if (state)
-      return (
-        <SucessMessage>
-          E-mail enviado com sucesso. Em breve, entraremos em contato!
-        </SucessMessage>
-      );
-    if (!state)
-      return (
-        <ErrorMessage>
-          Algo deu errado. <br />
-          Por favor, tente novamente
-          <br /> em 5 segundos!
-        </ErrorMessage>
-      );
+  const handleInputNome = useCallback((value: string) => {
+    setInputNome(value);
   }, []);
+
+  const handleInputEmail = useCallback((value: string) => {
+    setInputEmail(value);
+  }, []);
+
+  const handleInputContato = useCallback((value: string) => {
+    setInputContato(value);
+  }, []);
+
+  const handleInputMensagem = useCallback((value: string) => {
+    setInputMensagem(value);
+  }, []);
+
+  // const renderStateOfSendedEmailMessage = useCallback((state: boolean) => {
+  //   if (state)
+  //     return (
+  //       <SucessMessage>
+  //         E-mail enviado com sucesso. Em breve, entraremos em contato!
+  //       </SucessMessage>
+  //     );
+  //   if (!state)
+  //     return (
+  //       <ErrorMessage>
+  //         Algo deu errado. <br />
+  //         Por favor, tente novamente
+  //         <br /> em 5 segundos!
+  //       </ErrorMessage>
+  //     );
+  // }, []);
 
   const handleSendEmail = useCallback(
     async (
@@ -195,6 +182,7 @@ const Contato: React.FC = () => {
             onChange={(e) => handleInputNome(e.target.value)}
             animate={{ x: 100 }}
             transition={{ duration: 0.7 }}
+            required
           />
 
           <Input
@@ -204,22 +192,29 @@ const Contato: React.FC = () => {
             placeholder={'E-mail'}
             value={inputEmail}
             onChange={(e) => handleInputEmail(e.target.value)}
+            required
           />
 
           <Input
+            type="number"
+            minLength={10}
+            pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}"
             animate={{ x: 100 }}
             transition={{ duration: 1.1 }}
             placeholder={'Contato (Tel/Cel)'}
             value={inputContato}
             onChange={(e) => handleInputContato(e.target.value)}
+            required
           />
 
           <InputMessage
             animate={{ x: 100 }}
+            minLength={10}
             transition={{ duration: 1.3 }}
             placeholder={'Mensagem'}
             value={inputMensagem}
             onChange={(e) => handleInputMensagem(e.target.value)}
+            required
           />
 
           <Button

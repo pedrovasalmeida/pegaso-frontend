@@ -9,7 +9,6 @@ import {
   Separator,
   Form,
   SignInIcon,
-  CreateAccountIcon,
   LoginErrorMessage,
   LoginErrorIcon,
 } from './styles';
@@ -24,7 +23,7 @@ const Login: React.FC = () => {
   const [inputSenha, setInputSenha] = useState('');
   const [isError, setIsError] = useState(false);
 
-  const { user, signIn } = useAuth();
+  const { signIn } = useAuth();
 
   const handleInputLogin = useCallback((string: string) => {
     setInputLogin(string);
@@ -71,11 +70,11 @@ const Login: React.FC = () => {
         setIsError(false);
 
         handleReloadPage();
-      } catch (err) {
-        return err;
+      } catch {
+        return new Error('Usuário/senha inválidos. Tente novamente!');
       }
     },
-    [signIn],
+    [signIn, handleReloadPage],
   );
 
   return (
