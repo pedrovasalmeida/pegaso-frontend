@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 
 import {
   Container,
@@ -8,6 +8,7 @@ import {
   MenuIcon,
   DivMenu,
   HiddenMenu,
+  LinkRRD,
   LinkRRDHiddenMenu,
   HorizontalSeparator,
 } from './styles';
@@ -17,6 +18,7 @@ import Logo from '../../assets/logo.png';
 const HeaderMobile: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const location = useLocation();
+  const history = useHistory();
 
   const menuOptions = [
     { rota: '/', nome: 'HOME' },
@@ -32,6 +34,10 @@ const HeaderMobile: React.FC = () => {
 
   const handleOutsideClick = () => {
     setIsVisible(false);
+  };
+
+  const navigateToHome = () => {
+    history.push('/');
   };
 
   return (
@@ -55,7 +61,11 @@ const HeaderMobile: React.FC = () => {
         ))}
       </HiddenMenu>
       <Container>
-        <DivLogo animate={{ x: 25 }} transition={{ duration: 1 }}>
+        <DivLogo
+          animate={{ x: 25 }}
+          transition={{ duration: 1 }}
+          onClick={() => navigateToHome()}
+        >
           <img src={Logo} alt="Logo" />
         </DivLogo>
 

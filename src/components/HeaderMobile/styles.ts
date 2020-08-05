@@ -44,6 +44,8 @@ export const DivLogo = styled(motion.div)`
   align-items: center;
   justify-content: center;
 
+  cursor: pointer;
+
   > img {
     z-index: 6;
   }
@@ -246,6 +248,8 @@ export const LinkRRDHiddenMenu = styled(Link)<RouterProps>`
     transform: translateX(2px);
   }
 `;
+
+export const LinkRRD = styled(Link)``;
 
 export const HorizontalSeparator = styled.div`
   height: 1px;
