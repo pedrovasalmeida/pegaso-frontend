@@ -40,7 +40,7 @@ export const Data = styled.div`
   align-items: center;
   justify-content: center;
 
-  width: 20%;
+  width: auto;
 `;
 
 export const Text = styled.span`
@@ -50,7 +50,7 @@ export const Text = styled.span`
 export const Contact = styled(motion.div)`
   display: flex;
   height: 100%;
-  width: 50%;
+  width: auto;
 `;
 
 export const LinkRRD = styled(Link)`
@@ -69,11 +69,11 @@ export const Button = styled(motion.a)`
   justify-content: center;
   align-items: center;
 
-  height: 100%;
   width: auto;
+  height: 100%;
 
   padding: 0 16px;
-  margin: 0 16px;
+  margin: 0 8px;
 
   color: #222;
 
@@ -123,6 +123,8 @@ export const MotionButton = styled(motion.button)`
 export const ContactData = styled.div`
   display: flex;
   flex-direction: column;
+
+  width: 100%;
 `;
 
 export const WhatsAppIcon = styled(FaWhatsapp)`
