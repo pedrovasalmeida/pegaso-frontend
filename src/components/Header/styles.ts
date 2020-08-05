@@ -44,6 +44,8 @@ export const DivLogo = styled(motion.div)`
   align-items: center;
   justify-content: center;
 
+  cursor: pointer;
+
   > img {
     z-index: 6;
   }

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useCallback } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
@@ -24,8 +24,10 @@ import HeaderMobile from '../HeaderMobile';
 
 const Header: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const location = useLocation();
+
   const { width, height } = useWindowDimensions();
+  const location = useLocation();
+  const history = useHistory();
 
   const menuOptions = [
     { rota: '/', nome: 'HOME' },
@@ -43,13 +45,20 @@ const Header: React.FC = () => {
     setIsVisible(false);
   };
 
+  const navigateToHome = useCallback(() => {
+    history.push('/');
+  }, []);
   return (
     <>
       {width < 996 ? (
         <HeaderMobile />
       ) : (
         <Container>
-          <DivLogo animate={{ x: 100 }} transition={{ duration: 1 }}>
+          <DivLogo
+            animate={{ x: 100 }}
+            transition={{ duration: 1 }}
+            onClick={() => navigateToHome()}
+          >
             <img src={Logo} alt="Logo" />
           </DivLogo>
 
