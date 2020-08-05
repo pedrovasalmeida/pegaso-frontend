@@ -26,14 +26,14 @@ export const Container = styled.div`
   top: 0;
   left: 0;
 
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
-  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.2));
-
   width: 100vw;
   height: 64px;
 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   background-color: #fdfdfd;
+
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.2));
+
   z-index: 40;
 
   transition: all 300ms ease-in-out;
@@ -44,41 +44,8 @@ export const DivLogo = styled(motion.div)`
   align-items: center;
   justify-content: center;
 
-  height: 100%;
-
   > img {
     z-index: 6;
-  }
-
-  @media (max-width: 1084px) {
-    margin: 0 8px 0 0;
-  }
-
-  @media (max-width: 502px) {
-    > img {
-      position: absolute;
-      left: 0;
-      top: 48px;
-      margin: 0 0 0 16px;
-    }
-  }
-
-  @media (max-width: 411px) {
-    > img {
-      position: absolute;
-      left: 0;
-      top: 18px;
-      margin: 0 0 0 16px;
-    }
-  }
-
-  @media (max-width: 360px) {
-    > img {
-      position: absolute;
-      left: 0;
-      top: 48px;
-      margin: 0 0 0 16px;
-    }
   }
 `;
 
@@ -100,14 +67,6 @@ export const DivAllContacts = styled.div`
 
   width: 88%;
   height: 56px;
-
-  @media (max-width: 1069px) {
-    width: 10%;
-
-    > div div {
-      display: none;
-    }
-  }
 `;
 
 export const DivContato = styled.div`
@@ -182,18 +141,6 @@ export const DivButtons = styled(motion.div)`
   margin: 0 256px 0px 0;
 
   width: 100%;
-
-  @media (max-width: 1069px) {
-    margin: 0 64px 4px 0;
-  }
-
-  @media (max-width: 988px) {
-    display: none;
-  }
-
-  @media (max-width: 925px) {
-    margin: 0 32px 4px 0;
-  }
 `;
 
 export const Button = styled.button<RouterProps>`
@@ -247,16 +194,6 @@ export const DivMenu = styled.div<Props>`
     transition: all 400ms ease;
 
     font-size: 20px;
-  }
-
-  @media (max-width: 988px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  @media (max-width: 320px) {
-    margin: 0 0 0 16px;
   }
 
   > svg {
