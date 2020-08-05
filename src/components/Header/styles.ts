@@ -55,6 +55,8 @@ export const SubContainer = styled.div`
   align-items: flex-start;
   justify-content: center;
 
+  width: auto;
+
   margin: 8px 0 0 0;
 
   z-index: 15;
@@ -138,9 +140,7 @@ export const DivButtons = styled(motion.div)`
   display: flex;
   align-items: center;
 
-  margin: 0 256px 0px 0;
-
-  width: 100%;
+  width: auto;
 `;
 
 export const Button = styled.button<RouterProps>`

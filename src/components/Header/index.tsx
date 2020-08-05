@@ -45,7 +45,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      {width < 760 ? (
+      {width < 996 ? (
         <HeaderMobile />
       ) : (
         <Container>
@@ -75,11 +75,6 @@ const Header: React.FC = () => {
               ))}
             </DivButtons>
           </SubContainer>
-
-          <DivMenu onClick={() => handleVisible()} isVisible={isVisible}>
-            <span>{isVisible ? 'Close' : 'Menu'}</span>
-            <MenuIcon />
-          </DivMenu>
         </Container>
       )}
     </>
