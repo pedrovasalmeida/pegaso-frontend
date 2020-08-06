@@ -37,12 +37,7 @@ export const DivCarouselItem = styled(CarouselItem)`
   > img {
     width: 100%;
     height: auto;
-    object-fit: cover;
-
-    @media (max-width: 663px) {
-      transition: all 300ms ease-in-out;
-      object-fit: contain;
-    }
+    object-fit: contain;
   }
 `;
 
@@ -64,7 +59,7 @@ export const DivCarouselCaption = styled(CarouselCaption)`
 export const FloatDiv = styled.div`
   position: absolute;
   left: 48px;
-  bottom: 128px;
+  bottom: 144px;
 
   height: 128px;
   width: 400px;
@@ -76,17 +71,17 @@ export const FloatDiv = styled.div`
     height: 101px;
 
     left: 32px;
-    top: 80%;
+    top: 60%;
   }
 
   @media (max-width: 562px) {
     left: 32px;
-    top: 80%;
+    top: 60%;
   }
 
   @media (max-width: 448px) {
     left: 32px;
-    top: 80%;
+    top: 60%;
   }
 
   @media (max-width: 420px) {
@@ -94,7 +89,7 @@ export const FloatDiv = styled.div`
     height: 96px;
 
     left: 32px;
-    top: 80%;
+    top: 60%;
   }
 
   @media (max-width: 414px) {
@@ -102,7 +97,7 @@ export const FloatDiv = styled.div`
     height: 101px;
 
     left: 32px;
-    top: 80%;
+    top: 60%;
   }
 
   @media (max-width: 411px) {
@@ -110,7 +105,7 @@ export const FloatDiv = styled.div`
     height: 101px;
 
     left: 32px;
-    top: 80%;
+    top: 60%;
   }
 
   @media (max-width: 375px) {
@@ -118,7 +113,7 @@ export const FloatDiv = styled.div`
     height: 88px;
 
     left: 32px;
-    top: 80%;
+    top: 60%;
   }
 
   @media (max-width: 360px) {
@@ -126,7 +121,7 @@ export const FloatDiv = styled.div`
     height: 100px;
 
     left: 32px;
-    top: 80%;
+    top: 60%;
   }
 
   @media (max-width: 325px) {
@@ -134,7 +129,7 @@ export const FloatDiv = styled.div`
     height: 100px;
 
     left: 4px;
-    top: 80%;
+    top: 60%;
   }
 
   @media (max-width: 320px) {
@@ -142,7 +137,7 @@ export const FloatDiv = styled.div`
     height: 100px;
 
     left: 8px;
-    top: 80%;
+    top: 60%;
   }
 `;
 
