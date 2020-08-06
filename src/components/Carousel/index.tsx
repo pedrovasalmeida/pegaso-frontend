@@ -93,7 +93,7 @@ const MyCarousel = () => {
             <RightArrow onClick={() => next()} />
           </DivIcons>
         </FloatContent>
-        <Link to={`/empreendimentos/detalhes/${'id'}`}>
+        <Link to={`/empreendimentos/detalhes/${results[activeIndex].id}`}>
           <FloatButton>
             <span>Clique aqui para conferir</span>
           </FloatButton>
