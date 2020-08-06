@@ -23,6 +23,10 @@ import {
   BackIcon,
 } from './styles';
 
+import useWindowDimensions from '../../hooks/useWindowDimensions';
+
+import DetalhesProjetoMobile from '../DetalhesProjetoMobile';
+
 interface Empreendimentos {
   development: {
     id: number;
@@ -53,6 +57,8 @@ const Infos: React.FC = () => {
   let { id } = useParams();
   let history = useHistory();
   const { results } = useAxios(`/show-one/${id}`);
+
+  const { width, height } = useWindowDimensions();
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
@@ -98,59 +104,65 @@ const Infos: React.FC = () => {
   };
 
   return (
-    <Container>
-      <DivImagemTipo src={results.development.banner}>
-        <BackButton onClick={() => history.goBack()}>
-          <BackIcon />
-          <span>Voltar</span>
-        </BackButton>
-      </DivImagemTipo>
-
-      <Details>
-        <Empreendimento>
-          <Title>Empreendimento</Title>
-          <Text>{results.development.descricao}</Text>
-        </Empreendimento>
-
-        <Endereco>
-          <Title>Endereço</Title>
-          <Text>{results.development.endereco}</Text>
-        </Endereco>
-      </Details>
-
-      {imagesLength < 1 ? (
-        ''
+    <>
+      {width < 1280 ? (
+        <DetalhesProjetoMobile />
       ) : (
-        <MoreImages>
-          <FloatDiv>
-            {images}
-            <DivIcons>
-              <LeftArrow onClick={() => previous()} />
-              <RightArrow onClick={() => next()} />
-            </DivIcons>
-          </FloatDiv>
+        <Container>
+          <DivImagemTipo src={results.development.banner}>
+            <BackButton onClick={() => history.goBack()}>
+              <BackIcon />
+              <span>Voltar</span>
+            </BackButton>
+          </DivImagemTipo>
 
-          <DivCarousel
-            activeIndex={activeIndex}
-            next={next}
-            previous={previous}
-            ride={'carousel'}
-          >
-            {images}
-            <DivCarouselControl
-              direction="prev"
-              directionText="Previous"
-              onClickHandler={previous}
-            />
-            <DivCarouselControl
-              direction="next"
-              directionText="Next"
-              onClickHandler={next}
-            />
-          </DivCarousel>
-        </MoreImages>
+          <Details>
+            <Empreendimento>
+              <Title>Empreendimento</Title>
+              <Text>{results.development.descricao}</Text>
+            </Empreendimento>
+
+            <Endereco>
+              <Title>Endereço</Title>
+              <Text>{results.development.endereco}</Text>
+            </Endereco>
+          </Details>
+
+          {imagesLength < 1 ? (
+            ''
+          ) : (
+            <MoreImages>
+              <FloatDiv>
+                {images}
+                <DivIcons>
+                  <LeftArrow onClick={() => previous()} />
+                  <RightArrow onClick={() => next()} />
+                </DivIcons>
+              </FloatDiv>
+
+              <DivCarousel
+                activeIndex={activeIndex}
+                next={next}
+                previous={previous}
+                ride={'carousel'}
+              >
+                {images}
+                <DivCarouselControl
+                  direction="prev"
+                  directionText="Previous"
+                  onClickHandler={previous}
+                />
+                <DivCarouselControl
+                  direction="next"
+                  directionText="Next"
+                  onClickHandler={next}
+                />
+              </DivCarousel>
+            </MoreImages>
+          )}
+        </Container>
       )}
-    </Container>
+    </>
   );
 };
 
