@@ -64,60 +64,6 @@ export const Project = styled(motion.div)`
 
   margin: 0 0 24px 0;
   padding: 4px;
-
-  @media (max-width: 1393px) {
-    width: 1120px;
-    height: 300px;
-  }
-
-  @media (max-width: 1285px) {
-    width: 1020px;
-    height: 300px;
-  }
-
-  @media (max-width: 1159px) {
-    width: 920px;
-    height: 300px;
-  }
-
-  @media (max-width: 1053px) {
-    width: 700px;
-    height: 200px;
-  }
-  @media (max-width: 735px) {
-    width: 500px;
-    height: 200px;
-  }
-
-  @media (max-width: 603px) {
-    width: 400px;
-    height: 200px;
-  }
-
-  @media (max-width: 414px) {
-    width: 395px;
-    height: 200px;
-  }
-
-  @media (max-width: 411px) {
-    width: 390px;
-    height: 200px;
-  }
-
-  @media (max-width: 375px) {
-    width: 350px;
-    height: 200px;
-  }
-
-  @media (max-width: 360px) {
-    width: 340px;
-    height: 200px;
-  }
-
-  @media (max-width: 320px) {
-    width: 300px;
-    height: 200px;
-  }
 `;
 
 export const ExternalImage = styled.div`
@@ -158,38 +104,6 @@ export const FloatDiv = styled(motion.div)`
   width: 324px;
 
   z-index: 2;
-
-  @media (max-width: 1393px) {
-    right: 16px;
-    top: 40%;
-
-    height: 70px;
-    width: 294px;
-  }
-
-  @media (max-width: 1285px) {
-    right: 16px;
-    top: 40%;
-
-    height: 70px;
-    width: 294px;
-  }
-
-  @media (max-width: 1159px) {
-    right: 16px;
-    top: 40%;
-
-    height: 70px;
-    width: 294px;
-  }
-
-  @media (max-width: 1053px) {
-    right: 16px;
-    top: 40%;
-
-    height: 70px;
-    width: 294px;
-  }
 
   @media (max-width: 414px) {
     display: none;
@@ -241,24 +155,6 @@ export const FloatContent = styled.div`
     text-transform: uppercase;
     color: #324286;
     font-weight: 500;
-  }
-
-  @media (max-width: 1053px) {
-    > div span {
-      margin: 0;
-      padding: 0;
-      font-size: 10px;
-      color: #fff;
-    }
-
-    > div p {
-      margin: 0;
-      padding: 0;
-      line-height: 20px;
-      font-size: 24px;
-      text-transform: uppercase;
-      color: #324286;
-    }
   }
 `;
 
