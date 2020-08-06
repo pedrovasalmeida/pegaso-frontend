@@ -92,9 +92,11 @@ const FooterMobile: React.FC = () => {
           {title === 'SAC' ? (
             <>
               <TextModal>Dúvidas, reclamações ou sugestões?</TextModal>
-              <TitleModal>Entre em contato com nosso {title}</TitleModal>
+              <TitleModal>
+                Entre em contato com nosso {title} <span>pelo telefone: </span>
+              </TitleModal>
               <TextModal>
-                pelo telefone: <strong>31 933333333</strong>
+                <strong>31 933333333</strong>
               </TextModal>
             </>
           ) : (

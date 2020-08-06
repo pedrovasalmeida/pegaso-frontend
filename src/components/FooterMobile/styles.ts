@@ -175,13 +175,13 @@ export const HorizontalSeparator = styled.div`
 export const Modal = styled.div`
   position: absolute;
   top: 10vh;
-  left: 10vw;
+  left: 2vw;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  width: 500px;
+  width: 95vw;
   height: auto;
 
   padding: 16px 16px 32px 16px;
