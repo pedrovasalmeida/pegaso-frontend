@@ -14,6 +14,7 @@ import {
   FloatContent,
   FloatButton,
   LinkRRD,
+  TestProject,
 } from './styles';
 
 import useWindowDimensions from '../../hooks/useWindowDimensions';
@@ -45,7 +46,7 @@ const Projects: React.FC = () => {
         <ProjectsMobile />
       ) : (
         <Container>
-          <DivTitle animate={{ x: -650 }} transition={{ duration: 1.2 }}>
+          <DivTitle animate={{ x: 0 }} transition={{ duration: 1.2 }}>
             <Subtitle>NOSSOS EMPREENDIMENTOS</Subtitle>
           </DivTitle>
 
@@ -61,7 +62,7 @@ const Projects: React.FC = () => {
                     key={item.id}
                   >
                     <Project
-                      animate={{ x: -350 }}
+                      animate={{ x: 0 }}
                       transition={{ duration: counter }}
                       whileHover={{
                         y: -7,
@@ -70,7 +71,7 @@ const Projects: React.FC = () => {
                     >
                       <ExternalImage>
                         <img src={item.poster} alt={item.nome} />
-                      </ExternalImage>
+                      </ExternalImage>{' '}
                       <FullImage>
                         <img src={item.banner} alt={item.nome} />
                       </FullImage>
@@ -107,3 +108,6 @@ const Projects: React.FC = () => {
 };
 
 export default Projects;
+
+{
+}

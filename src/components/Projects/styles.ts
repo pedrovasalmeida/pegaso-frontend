@@ -7,8 +7,8 @@ import { motion } from 'framer-motion';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: auto;
-  height: auto;
+
+  width: 100%;
 `;
 
 export const LinkRRD = styled(Link)``;
@@ -25,7 +25,7 @@ export const DivTitle = styled(motion.div)`
   display: flex;
   flex-direction: column;
 
-  align-self: flex-end;
+  align-self: center;
 
   width: auto;
 `;
@@ -47,22 +47,24 @@ export const Subtitle = styled.span`
 export const DivProjects = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  align-self: center;
 
-  height: auto;
+  width: 80vw;
 `;
 
 export const Project = styled(motion.div)`
-  display: flex;
-  width: 1220px;
-  height: 250px;
   position: relative;
 
-  background-color: ${shade(0.1, `#324286`)};
+  display: flex;
 
+  width: 70vw;
+  height: 250px;
+
+  background-color: ${shade(0.1, `#324286`)};
   border-radius: 16px;
 
-  margin: 0 0 24px 0;
+  margin: 0 0 12px 0;
   padding: 4px;
 `;
 
@@ -149,11 +151,20 @@ export const FloatContent = styled.div`
   }
 
   > div p {
+    width: 100%;
+
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+
     margin: 0;
     padding: 0;
+
     font-size: 24px;
+
     text-transform: uppercase;
+
     color: #324286;
+
     font-weight: 500;
   }
 `;
@@ -181,4 +192,14 @@ export const FloatButton = styled.button`
   > span {
     color: #f5f5f5;
   }
+`;
+
+export const TestProject = styled.div`
+  display: flex;
+
+  width: 60%;
+  height: 250px;
+
+  background-color: ${shade(0.1, `#324286`)};
+  border-radius: 16px;
 `;
