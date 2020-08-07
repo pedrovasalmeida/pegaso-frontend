@@ -83,23 +83,23 @@ const Footer: React.FC = () => {
             {footerOptions.map((option) => (
               <>
                 {option.linkExist ? (
-                  // <LinkRRD to={option.link}>
-                  <Button
-                    href={WhatsApp}
-                    target="blank"
-                    animate={{ x: -50 }}
-                    transition={{ duration: option.duration }}
-                    whileHover={{ translateX: 2 }}
-                  >
-                    {option.icon}
-                    <ContactData>
-                      <ContactName>{option.nome}</ContactName>
-                      <HorizontalSeparator />
-                      <ContactText>{option.info}</ContactText>
-                    </ContactData>
-                  </Button>
+                  <LinkRRD to={option.link}>
+                    <Button
+                      href={WhatsApp}
+                      target="blank"
+                      animate={{ x: -50 }}
+                      transition={{ duration: option.duration }}
+                      whileHover={{ translateX: 2 }}
+                    >
+                      {option.icon}
+                      <ContactData>
+                        <ContactName>{option.nome}</ContactName>
+                        <HorizontalSeparator />
+                        <ContactText>{option.info}</ContactText>
+                      </ContactData>
+                    </Button>
+                  </LinkRRD>
                 ) : (
-                  // </LinkRRD>
                   <Button
                     href={WhatsApp}
                     target="blank"
