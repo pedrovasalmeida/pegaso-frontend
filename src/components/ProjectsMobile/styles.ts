@@ -155,10 +155,15 @@ export const FloatContent = styled.div`
   }
 
   > div p {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+
     margin: 0;
     padding: 0;
+
     font-size: 24px;
     text-transform: uppercase;
+
     color: #324286;
     font-weight: 500;
   }
