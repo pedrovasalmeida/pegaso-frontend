@@ -1,27 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import api from '../../services/api';
-
-import { Preloader, ThreeDots } from 'react-preloader-icon';
+import { Link } from 'react-router-dom';
 
 import {
   Container,
   Lista,
-  ConfirmModal,
-  ModalText,
+  Item,
+  ArrowIcon,
+  DivIcon,
+  Avatar,
+  Data,
+  Nome,
+  Descricao,
+  Modal,
   CloseIcon,
-  DivModalText,
-  DivModalButtons,
-  ModalButton,
-  ConfirmedModal,
-  ErrorModal,
-  ErrorIcon,
-  ModalErrorButton,
-  ModalErrorText,
-  DivLoading,
-  CustomPreloader,
-  SadFaceIcon,
+  Button,
+  InfoModal,
 } from './styles';
-import { AxiosResponse } from 'axios';
 
 interface EmpreendimentoData {
   id: number;
@@ -33,207 +28,108 @@ interface EmpreendimentoData {
   poster: string;
 }
 
-interface ErrorProps {
-  response: {
-    data: AxiosResponse<any>;
-    status: AxiosResponse<any>;
-    headers: AxiosResponse<any>;
-  };
-}
-
 const RemoverEmp: React.FC = () => {
   const [data, setData] = useState<EmpreendimentoData[] | null>(null);
-  const [showModal, setShowModal] = useState(false);
-  const [showConfirmedModal, setShowConfirmedModal] = useState(false);
-  const [idToDelete, setIdToDelete] = useState<number | null>(null);
-  const [empToDelete, setEmpToDelete] = useState<string | null>(null);
+  const [confirmModal, setConfirmModal] = useState(false);
+  const [idToDelete, setIdToDelete] = useState(Number);
+  const [isDeleted, setIsDeleted] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
-  const [dataError, setDataError] = useState<boolean>(false);
-
-  // const handleModal = (id: number, name: string) => {
-  //   showModal ? setShowModal(false) : setShowModal(true);
-
-  //   setIdToDelete(id);
-  //   setEmpToDelete(name);
-
-  //   setShowConfirmedModal(false);
-  // };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
-  const handleConfirmedModal = () => {
-    setShowConfirmedModal(true);
-    setTimeout(() => {
-      setShowModal(false);
-    }, 2000);
-  };
-
-  const handleCloseConfirmedModal = () => {
-    setShowConfirmedModal(false);
-  };
-
-  const handleCloseErrorModal = () => {
-    setIsError(false);
-    setShowModal(false);
-  };
-
-  const handleError = () => {
-    setIsError(true);
-    setShowConfirmedModal(false);
-  };
 
   const getData = async () => {
-    setIsLoading(true);
+    const { data, error } = await api.get('/show-all');
 
-    await api
-      .get('/show-all')
-      .then((res) => {
-        setIsLoading(false);
-        setDataError(false);
-        setData([...data, res.data]);
-        return;
-      })
-      .catch((err) => {
-        setIsLoading(false);
-        setDataError(true);
-        return;
-      });
+    if (error) return error;
+
+    setData(data);
   };
 
-  const removeData = async (id: number) => {
-    handleConfirmedModal();
-    setIsDeleting(true);
+  const handleConfirmModal = (id: number) => {
+    confirmModal ? setConfirmModal(false) : setConfirmModal(true);
+    setIdToDelete(id);
+  };
 
-    if (id === null) return alert('ID não existe!');
+  const handleClickOutsite = () => {
+    setConfirmModal(false);
+    setIsDeleted(false);
+  };
+  const handleClickOutsiteInfoModal = () => {
+    setIsDeleted(false);
+    window.location.reload();
+  };
+
+  const handleDelete = async () => {
+    const token = localStorage.getItem('@ProjPegaso:token');
+
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
 
     await api
-      .delete(`/delete/${id}`)
+      .delete(`/delete/${idToDelete}`, config)
       .then((res) => {
-        handleCloseModal();
-        setIsDeleting(false);
-        return res.data;
+        setIsDeleted(true);
+        setConfirmModal(false);
+        setIsError(false);
       })
       .catch((err) => {
-        if (err.response) {
-          if (err.response.status === 400) return handleError();
-        }
+        setIsDeleted(false);
+        setIsError(true);
       });
   };
 
   useEffect(() => {
     getData();
-  }, [getData()]);
+  }, []);
 
   return (
     <Container>
+      {isDeleted && (
+        <InfoModal>
+          <span>
+            {isError
+              ? `O empreendimento de ID ${idToDelete} não foi excluído. Tente novamente!`
+              : `O empreendimento de ID ${idToDelete} foi excluído com sucesso!`}
+          </span>
+          <CloseIcon onClick={() => handleClickOutsiteInfoModal()} />
+          <div>
+            <Button onClick={() => handleClickOutsiteInfoModal()}>
+              Confirmar
+            </Button>
+          </div>
+        </InfoModal>
+      )}
+      {confirmModal && (
+        <Modal>
+          <span>
+            Tem certeza que deseja excluir esse empreendimento? ID: {idToDelete}
+          </span>
+          <CloseIcon onClick={() => handleClickOutsite()} />
+          <div>
+            <Button onClick={() => handleDelete()}>Confirmar</Button>
+            <Button onClick={() => handleClickOutsite()}>Cancelar</Button>
+          </div>
+        </Modal>
+      )}
       <Lista>
-        <>
-          {showModal && (
-            <ConfirmModal>
-              <CloseIcon onClick={() => handleCloseModal()} />
+        {!data ? (
+          <p>Carregando...</p>
+        ) : (
+          data?.map((item) => (
+            <Item key={item.id}>
+              <Avatar src={item.banner} alt={item.nome} />
 
-              <DivModalText>
-                <ModalText>
-                  Tem certeza que deseja remover:
-                  <br />
-                  <strong>ID: {idToDelete}</strong>
-                  <br />
-                  <strong>Nome: {empToDelete}</strong>?
-                </ModalText>
-              </DivModalText>
+              <Data>
+                <Nome>{item.nome}</Nome>
+                <Descricao>{item.descricao}...</Descricao>
+                <Nome>ID: {item.id}</Nome>
+              </Data>
 
-              <DivModalButtons>
-                <ModalButton
-                  modalType="confirm"
-                  onClick={() => removeData(idToDelete!)}
-                >
-                  <span>Confirmar</span>
-                </ModalButton>
-
-                <ModalButton
-                  modalType="cancel"
-                  onClick={() => handleCloseModal()}
-                >
-                  <span>Cancelar</span>
-                </ModalButton>
-              </DivModalButtons>
-            </ConfirmModal>
-          )}
-
-          {isError && !showConfirmedModal && (
-            <ErrorModal>
-              <DivModalText>
-                <ModalErrorText>
-                  <ErrorIcon />
-                  <span>
-                    Não foi possível excluir esse empreendimento, pois ele não
-                    existe na base de dados!
-                  </span>
-                </ModalErrorText>
-              </DivModalText>
-              <ModalErrorButton
-                modalType="confirm"
-                fullWidth
-                isError
-                onClick={() => handleCloseErrorModal()}
-              >
-                <span>Ok</span>
-              </ModalErrorButton>
-            </ErrorModal>
-          )}
-
-          {isLoading && (
-            <DivLoading isLoading={isLoading}>
-              <CustomPreloader
-                use={ThreeDots}
-                size={60}
-                strokeWidth={6}
-                strokeColor="#262626"
-                duration={2000}
-              />
-              <span>Carregando empreendimentos</span>
-            </DivLoading>
-          )}
-
-          {dataError ? (
-            <DivLoading>
-              <SadFaceIcon />
-              <span>Não possuímos empreendimentos AINDA!</span>
-            </DivLoading>
-          ) : (
-            ''
-          )}
-
-          {showConfirmedModal && (
-            <ConfirmedModal>
-              {isDeleting ? (
-                <Preloader
-                  use={ThreeDots}
-                  size={60}
-                  strokeWidth={6}
-                  strokeColor="#262626"
-                  duration={2000}
-                />
-              ) : (
-                <DivModalText>
-                  <ModalText>Empreendimento removido com sucesso!</ModalText>
-                </DivModalText>
-              )}
-
-              <ModalButton
-                modalType="confirm"
-                fullWidth
-                onClick={() => handleCloseConfirmedModal()}
-              >
-                <span>Ok</span>
-              </ModalButton>
-            </ConfirmedModal>
-          )}
-        </>
+              <DivIcon>
+                <ArrowIcon onClick={() => handleConfirmModal(item.id)} />
+              </DivIcon>
+            </Item>
+          ))
+        )}
       </Lista>
     </Container>
   );
