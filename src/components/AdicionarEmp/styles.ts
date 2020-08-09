@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { shade } from "polished";
+import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Container = styled.div``;
 
@@ -29,11 +29,11 @@ export const Input = styled.input`
 
   border-radius: 16px;
 
-  border: 0px solid ${shade(0.4, `rgba(192, 25, 32, 1)`)};
+  border: 0px solid ${shade(0.4, `#324286`)};
 
   &:focus {
-    border: 1px solid ${shade(0.4, `rgba(192, 25, 32, 1)`)};
-    filter: drop-shadow(0px 0px 2px ${shade(0.4, `rgba(192, 25, 32, 1)`)});
+    border: 1px solid ${shade(0.4, `#324286`)};
+    filter: drop-shadow(0px 0px 2px ${shade(0.4, `#324286`)});
   }
 `;
 
@@ -48,11 +48,11 @@ export const TextArea = styled.textarea`
 
   border-radius: 16px;
 
-  border: 0px solid ${shade(0.4, `rgba(192, 25, 32, 1)`)};
+  border: 0px solid ${shade(0.4, `#324286`)};
 
   &:focus {
-    border: 1px solid ${shade(0.4, `rgba(192, 25, 32, 1)`)};
-    filter: drop-shadow(0px 0px 2px ${shade(0.4, `rgba(192, 25, 32, 1)`)});
+    border: 1px solid ${shade(0.4, `#324286`)};
+    filter: drop-shadow(0px 0px 2px ${shade(0.4, `#324286`)});
   }
 `;
 
@@ -98,7 +98,7 @@ export const DivButton = styled.div`
 
       border: 1px solid white;
 
-      background-color: ${shade(0.4, `rgba(192, 25, 32, 1)`)};
+      background-color: ${shade(0.4, `#324286`)};
     }
   }
 `;
@@ -123,7 +123,7 @@ export const UploadButton = styled.input`
 
     border: 1px solid white;
 
-    background-color: ${shade(0.4, `rgba(192, 25, 32, 1)`)};
+    background-color: ${shade(0.4, `#324286`)};
   }
 `;
 
