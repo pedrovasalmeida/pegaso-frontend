@@ -19,22 +19,14 @@ export const LeftMenu = styled.div`
 
 export const DadosAdmin = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 
+  height: auto;
   width: 100%;
-  height: 100px;
 
-  padding: 8px;
-
-  > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    padding: 4px 8px;
-  }
+  padding: 4px 8px;
 `;
 
 export const Avatar = styled.div`
@@ -43,23 +35,25 @@ export const Avatar = styled.div`
 
   border-radius: 50%;
 
-  background-color: red;
+  background-color: #324286;
 `;
 
 export const Name = styled.span`
-  font-weight: bold;
-  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+
+  line-height: 24px;
+
+  width: 100%;
+
+  > strong {
+    font-weight: bold;
+  }
 `;
 
-export const Login = styled.span`
-  margin: 0 0 0 2px;
-  font-size: 14px;
-`;
+export const Email = styled.span``;
 
-export const Permissao = styled.span`
-  margin: 0 0 0 2px;
-  font-size: 14px;
-`;
+export const Login = styled.span``;
 
 export const OpcaoMenu = styled.span`
   margin: 16px;

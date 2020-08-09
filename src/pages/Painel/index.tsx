@@ -1,17 +1,4 @@
-import React, { useState, useCallback } from 'react';
-
-import {
-  Container,
-  LeftMenu,
-  DadosAdmin,
-  Avatar,
-  Name,
-  Login,
-  Permissao,
-  OpcaoMenu,
-  Separator,
-  Data,
-} from './styles';
+import React, { useState, useCallback, useEffect } from 'react';
 
 import LoginPage from '../../components/Login';
 
@@ -21,6 +8,20 @@ import AdicionarEmp from '../../components/AdicionarEmp';
 import AtualizarEmp from '../../components/AtualizarEmp';
 import RemoverEmp from '../../components/RemoverEmp';
 import ListarEmp from '../../components/ListarEmp';
+import api from '../../services/api';
+
+import {
+  Container,
+  LeftMenu,
+  DadosAdmin,
+  Avatar,
+  Name,
+  Email,
+  Login,
+  OpcaoMenu,
+  Separator,
+  Data,
+} from './styles';
 
 interface UserDataFromStorage {
   id: number;
@@ -31,6 +32,15 @@ interface BlaUser {
   cargo?: string;
 }
 
+interface UserApiData {
+  id: number;
+  login: string;
+  email: string;
+  avatar: string | null;
+  nome: string;
+  cargo: string;
+}
+
 const Painel: React.FC = () => {
   const { user, signOut } = useAuth();
 
@@ -38,6 +48,9 @@ const Painel: React.FC = () => {
   const [atualizar, setAtualizar] = useState(false);
   const [remover, setRemover] = useState(true);
   const [listar, setListar] = useState(false);
+  const [loggedUserData, setLoggedUserData] = useState<UserApiData>(
+    {} as UserApiData,
+  );
 
   const [userData, setUserData] = useState<UserDataFromStorage>(() => {
     if (user) {
@@ -45,25 +58,6 @@ const Painel: React.FC = () => {
     }
     return {} as UserDataFromStorage;
   });
-
-  // const verifyUserData = () => {
-  // verificar se usuario do localStorage é válido
-  // const user = localStorage.getItem('@ProjPegaso:user');
-  // if (user) {
-  //   const { id, userLogin } = JSON.parse(user);
-  //   console.log(id, userLogin);
-  // }
-  // const response = await api.get(`/list-one-user/${convertedUser.id}`);
-  // if (response.data.user) {
-  //   const { id, userLogin } = convertedUser;
-  //   setIsLogged(true);
-  //   setUserData({ id, userLogin } as UserDataFromStorage);
-  //   return;
-  // }
-  // setIsLogged(false);
-  // setUserData({} as UserDataFromStorage);
-  // return;
-  // };
 
   const handleDeslogar = useCallback(() => {
     signOut();
@@ -101,6 +95,22 @@ const Painel: React.FC = () => {
     setListar(true);
   };
 
+  const getUserData = async () => {
+    if (!userData.id) {
+      return;
+    }
+
+    const response = await api.get(`/list-one-user/${userData.id}`);
+
+    const loggedUser: UserApiData = response.data.user;
+
+    setLoggedUserData(loggedUser);
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
   return (
     <>
       {!userData.id ? (
@@ -111,12 +121,31 @@ const Painel: React.FC = () => {
         <Container>
           <LeftMenu>
             <DadosAdmin>
-              <Avatar />
-              <div>
-                <Name>{userData.userLogin}</Name>
-                <Permissao>{userData.id}</Permissao>
-              </div>
+              <Name>
+                <strong>Nome:</strong> <p>{loggedUserData.nome}</p>
+              </Name>
+              <Separator />
+              <Name>
+                <strong>Email:</strong> <p>{loggedUserData.email}</p>
+              </Name>
+              <Separator />
+
+              <Name>
+                <strong>Login:</strong> <p>{loggedUserData.login}</p>
+              </Name>
+              <Separator />
+              {/*
+              <Name>
+                <strong>ID:</strong> <p>{loggedUserData.id}</p>
+              </Name>
+              <Separator /> */}
+
+              <Name>
+                <strong>Cargo:</strong> <p>{loggedUserData.cargo}</p>
+              </Name>
             </DadosAdmin>
+
+            <Separator />
 
             <OpcaoMenu onClick={() => handleAdicionar()}>
               Adicionar empreendimento
@@ -162,7 +191,7 @@ const Painel: React.FC = () => {
             )}
             {remover && (
               <>
-                <span>Remover Empreendimento</span>
+                <RemoverEmp />
               </>
             )}
             {atualizar && (
