@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../context/AuthContext';
-
-import { Link } from 'react-router-dom';
+import { Preloader, ThreeDots } from 'react-preloader-icon';
 
 import {
   Container,
@@ -22,6 +22,8 @@ const Login: React.FC = () => {
   const [inputLogin, setInputLogin] = useState('');
   const [inputSenha, setInputSenha] = useState('');
   const [isError, setIsError] = useState(false);
+  const [loginError, setLoginError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { signIn } = useAuth();
 
@@ -44,6 +46,7 @@ const Login: React.FC = () => {
 
   const renderLoginError = useCallback(() => {
     if (inputLogin.length > 1) return setIsError(false);
+
     return (
       <LoginErrorMessage>
         <LoginErrorIcon />
@@ -58,18 +61,35 @@ const Login: React.FC = () => {
       e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     ) => {
       e.preventDefault();
+      setIsLoading(true);
+      setLoginError(false);
 
       try {
         const { login, password } = data;
 
-        if (login.length < 5) return setIsError(true);
-        if (password.length < 5) return setIsError(true);
+        if (login.length < 5) {
+          setIsLoading(false);
+          return setIsError(true);
+        }
 
-        await signIn!({ login, password });
+        if (password.length < 5) {
+          setIsLoading(false);
+          return setIsError(true);
+        }
 
-        setIsError(false);
+        await signIn!({ login, password })
+          .then((res) => {
+            setTimeout(() => {
+              setIsLoading(false);
+              setIsError(false);
 
-        handleReloadPage();
+              return handleReloadPage();
+            }, 1000);
+          })
+          .catch((err) => {
+            setLoginError(true);
+            setIsLoading(false);
+          });
       } catch {
         return new Error('Usuário/senha inválidos. Tente novamente!');
       }
@@ -95,8 +115,6 @@ const Login: React.FC = () => {
           onChange={(e) => handleInputSenha(e.target.value)}
         />
 
-        {isError && renderLoginError()}
-
         <button
           type="submit"
           onClick={(e) =>
@@ -108,6 +126,28 @@ const Login: React.FC = () => {
         </button>
 
         <Link to="/forgot-password">Esqueci minha senha</Link>
+
+        {isLoading && (
+          <div>
+            <Preloader
+              use={ThreeDots}
+              size={60}
+              strokeWidth={6}
+              strokeColor="#324286"
+              duration={800}
+            />
+          </div>
+        )}
+
+        {isError && renderLoginError()}
+
+        {loginError && (
+          <LoginErrorMessage>
+            <LoginErrorIcon />
+            Login ou senha incorretos. Verifique as credenciais!
+          </LoginErrorMessage>
+        )}
+
         {/* <Link to="/create-account">
           <CreateAccountIcon />
           Criar conta

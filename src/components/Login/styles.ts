@@ -159,11 +159,13 @@ export const CreateAccountIcon = styled(RiHeartAddLine)`
 export const LoginErrorMessage = styled.p`
   /* margin: 8px 0; */
 
-  font-size: 14px;
-  color: #324286;
+  font-size: 18px;
+  color: rgba(192, 25, 32, 1);
 `;
 
 export const LoginErrorIcon = styled(MdErrorOutline)`
-  font-size: 18px;
+  font-size: 24px;
   margin: 0 8px;
+
+  color: rgba(192, 25, 32, 1);
 `;
