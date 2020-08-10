@@ -1,4 +1,12 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import useAxios from '../../hooks/useAxios';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
+
+import { Preloader, ThreeDots } from 'react-preloader-icon';
+
+import CarouselMobile from '../CarouselMobile';
 
 import {
   Container,
@@ -12,10 +20,6 @@ import {
   LeftArrow,
   RightArrow,
 } from './styles';
-
-import { Link } from 'react-router-dom';
-
-import useAxios from '../../hooks/useAxios';
 
 interface Empreendimentos {
   id: number;
@@ -37,6 +41,8 @@ const MyCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
+  const { width } = useWindowDimensions();
+
   const { results }: ResultsProps = useAxios('show-all');
 
   if (!results)
@@ -47,9 +53,17 @@ const MyCarousel = () => {
           marginTop: '150px',
           alignItems: 'center',
           justifyContent: 'center',
+          width: '100vw',
+          height: '100vh',
         }}
       >
-        <h1>CARREGANDO</h1>
+        <Preloader
+          use={ThreeDots}
+          size={120}
+          strokeWidth={6}
+          strokeColor="#262626"
+          duration={2000}
+        />
       </Container>
     );
 
@@ -80,44 +94,50 @@ const MyCarousel = () => {
   });
 
   return (
-    <Container>
-      <FloatDiv>
-        <FloatContent>
-          <div>
-            <span>Pronto para morar</span>
-            <p>{results[activeIndex].nome}</p>
-            <span>{results[activeIndex].descricao_curta}</span>
-          </div>
-          <DivIcons>
-            <LeftArrow onClick={() => previous()} />
-            <RightArrow onClick={() => next()} />
-          </DivIcons>
-        </FloatContent>
-        <Link to={`/empreendimentos/detalhes/${results[activeIndex].id}`}>
-          <FloatButton>
-            <span>Clique aqui para conferir</span>
-          </FloatButton>
-        </Link>
-      </FloatDiv>
-      <DivCarousel
-        activeIndex={activeIndex}
-        next={next}
-        previous={previous}
-        ride={'carousel'}
-      >
-        {slides}
-        <DivCarouselControl
-          direction="prev"
-          directionText="Previous"
-          onClickHandler={previous}
-        />
-        <DivCarouselControl
-          direction="next"
-          directionText="Next"
-          onClickHandler={next}
-        />
-      </DivCarousel>
-    </Container>
+    <>
+      {width < 1500 ? (
+        <CarouselMobile />
+      ) : (
+        <Container>
+          <FloatDiv>
+            <FloatContent>
+              <div>
+                <span>Pronto para morar</span>
+                <p>{results[activeIndex].nome}</p>
+                <span>{results[activeIndex].descricao_curta}</span>
+              </div>
+              <DivIcons>
+                <LeftArrow onClick={() => previous()} />
+                <RightArrow onClick={() => next()} />
+              </DivIcons>
+            </FloatContent>
+            <Link to={`/empreendimentos/detalhes/${results[activeIndex].id}`}>
+              <FloatButton>
+                <span>Clique aqui para conferir</span>
+              </FloatButton>
+            </Link>
+          </FloatDiv>
+          <DivCarousel
+            activeIndex={activeIndex}
+            next={next}
+            previous={previous}
+            ride={'carousel'}
+          >
+            {slides}
+            <DivCarouselControl
+              direction="prev"
+              directionText="Previous"
+              onClickHandler={previous}
+            />
+            <DivCarouselControl
+              direction="next"
+              directionText="Next"
+              onClickHandler={next}
+            />
+          </DivCarousel>
+        </Container>
+      )}
+    </>
   );
 };
 
