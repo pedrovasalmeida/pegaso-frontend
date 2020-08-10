@@ -1,4 +1,4 @@
-# Pegaso - Web-site
+# Sistema Web - FRONT-END
 
 Projeto desenvolvido utilizando ReactJS e Typescript.
 
