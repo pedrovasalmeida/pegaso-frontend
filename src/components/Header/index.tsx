@@ -10,12 +10,7 @@ import {
   DivButtons,
   Button,
   Separator,
-  MenuIcon,
-  DivMenu,
   LinkRRD,
-  HiddenMenu,
-  LinkRRDHiddenMenu,
-  HorizontalSeparator,
 } from './styles';
 
 import Logo from '../../assets/logo.png';
@@ -25,7 +20,7 @@ import HeaderMobile from '../HeaderMobile';
 const Header: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const location = useLocation();
   const history = useHistory();
 
@@ -37,17 +32,10 @@ const Header: React.FC = () => {
     { rota: '/painel', nome: 'PAINEL' },
   ];
 
-  const handleVisible = () => {
-    isVisible ? setIsVisible(false) : setIsVisible(true);
-  };
-
-  const handleOutsideClick = () => {
-    setIsVisible(false);
-  };
-
   const navigateToHome = useCallback(() => {
     history.push('/');
   }, []);
+
   return (
     <>
       {width < 996 ? (
@@ -64,9 +52,10 @@ const Header: React.FC = () => {
 
           <SubContainer>
             <DivButtons animate={{ x: -100 }} transition={{ duration: 1 }}>
-              {menuOptions.map((option) => (
+              {menuOptions.map((option, index) => (
                 <>
                   <LinkRRD
+                    key={option.nome}
                     to={option.rota}
                     selected={option.rota === location.pathname ? true : false}
                   >
