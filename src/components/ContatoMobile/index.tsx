@@ -2,6 +2,8 @@ import React, { useState, useCallback } from 'react';
 
 import api from '../../services/api';
 
+import { Preloader, ThreeDots } from 'react-preloader-icon';
+
 import {
   Container,
   Form,
@@ -239,7 +241,13 @@ const ContatoMobile: React.FC = () => {
         <DivStateMessages>
           {isLoading && (
             <LoadingMessage>
-              <span>Carregando...</span>
+              <Preloader
+                use={ThreeDots}
+                size={60}
+                strokeWidth={6}
+                strokeColor="#324286"
+                duration={800}
+              />
             </LoadingMessage>
           )}
 

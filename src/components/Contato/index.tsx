@@ -2,6 +2,8 @@ import React, { useState, useCallback } from 'react';
 
 import api from '../../services/api';
 
+import { Preloader, ThreeDots } from 'react-preloader-icon';
+
 import {
   Container,
   Form,
@@ -38,7 +40,7 @@ const Contato: React.FC = () => {
   /** se o email foi enviado ou não */
   const [couldSend, setCouldSend] = useState(true);
 
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const handleInputNome = useCallback((value: string) => {
     setInputNome(value);
@@ -291,7 +293,13 @@ const Contato: React.FC = () => {
             <DivStateMessages>
               {isLoading && (
                 <LoadingMessage>
-                  <span>Carregando...</span>
+                  <Preloader
+                    use={ThreeDots}
+                    size={60}
+                    strokeWidth={6}
+                    strokeColor="#324286"
+                    duration={800}
+                  />
                 </LoadingMessage>
               )}
 

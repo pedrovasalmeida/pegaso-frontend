@@ -13,8 +13,6 @@ export const Container = styled.div`
   width: 100vw;
   height: calc(100vh - 64px);
 
-  margin: 64px 0 0 0;
-
   background: #fdfdfd;
 `;
 
@@ -24,6 +22,8 @@ export const DivDireita = styled.div`
   align-items: center;
 
   padding: 8vh 0 0 0;
+
+  margin: 0 140px 0 0;
 
   width: 40%;
 `;

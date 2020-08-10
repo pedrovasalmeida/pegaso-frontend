@@ -12,11 +12,11 @@ export const Container = styled.div`
   justify-content: center;
 
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 
-  margin: 320px 0 0 0;
+  padding: 70px 0 20px 0;
 
-  background: #fdfdfd;
+  background-color: #fdfdfd;
 `;
 
 export const DivDireita = styled.div`
@@ -26,7 +26,6 @@ export const DivDireita = styled.div`
   justify-content: center;
 
   width: 95vw;
-  height: auto;
 
   padding: 0;
 `;
@@ -40,7 +39,6 @@ export const DivEsquerda = styled.div`
   padding: 0 0 100px 0;
 
   width: 95vw;
-  height: 100vh;
 `;
 
 export const Form = styled.form`
