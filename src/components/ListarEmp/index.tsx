@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
 
+import { Preloader, ThreeDots } from 'react-preloader-icon';
+
 import {
   Container,
   Lista,
@@ -37,13 +39,30 @@ const ListarEmp: React.FC = () => {
 
   useEffect(() => {
     getData();
-  }, [data]);
+  }, []);
 
   return (
     <Container>
       <Lista>
         {!data ? (
-          <p>Carregando...</p>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              justifyContent: 'center',
+              height: '100vh',
+              width: '100%',
+              marginTop: '100px',
+            }}
+          >
+            <Preloader
+              use={ThreeDots}
+              size={120}
+              strokeWidth={8}
+              strokeColor="#324286"
+              duration={800}
+            />
+          </div>
         ) : (
           data?.map((item) => (
             <Item key={item.id}>
