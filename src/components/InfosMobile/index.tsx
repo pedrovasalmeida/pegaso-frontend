@@ -1,5 +1,7 @@
 import React from 'react';
 
+import useWindowDimensions from '../../hooks/useWindowDimensions';
+
 import {
   Container,
   DivInfos,
@@ -16,10 +18,12 @@ import {
 } from './styles';
 
 const InfosMobile: React.FC = () => {
+  const { width } = useWindowDimensions();
+
   return (
     <Container>
       <DivTitle animate={{ x: 0 }} transition={{ duration: 0.5 }}>
-        <Title>Quem somos</Title>
+        <Title width={width}>Quem somos</Title>
       </DivTitle>
 
       <DivDescription animate={{ x: 0 }} transition={{ duration: 0.7 }}>
@@ -41,7 +45,7 @@ const InfosMobile: React.FC = () => {
       <DivCategorias>
         <SubDivCategorias>
           <DivTitleMotion animate={{ x: 0 }} transition={{ duration: 0.8 }}>
-            <Title>Qualificações</Title>
+            <Title width={width}>Qualificações</Title>
           </DivTitleMotion>
 
           <Categoria animate={{ x: 0 }} transition={{ duration: 1 }}>

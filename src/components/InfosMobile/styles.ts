@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 import { motion } from 'framer-motion';
 
+interface ScreenSizeProps {
+  width: number;
+}
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -30,11 +34,11 @@ export const DivTitleMotion = styled(motion.div)`
   margin: 0 0 32px 0;
 `;
 
-export const Title = styled.span`
+export const Title = styled.span<ScreenSizeProps>`
   width: auto;
   border-bottom: 8px solid #324286;
 
-  font-size: 40px;
+  font-size: ${(props) => (props.width < 346 ? '34px' : '40px')};
   font-weight: bold;
 
   color: #333;
