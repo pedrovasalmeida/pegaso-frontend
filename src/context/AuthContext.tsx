@@ -35,22 +35,40 @@ export const AuthProvider: React.FC = ({ children }) => {
   });
 
   const signIn = useCallback(async ({ login, password }: SignInCredentials) => {
-    try {
-      const response = await api.post('/start-session', {
+    await api
+      .post('/start-session', {
         login,
         password,
+      })
+      .then((res) => {
+        const { token, user } = res.data;
+
+        localStorage.setItem('@ProjPegaso:user', JSON.stringify(user));
+        localStorage.setItem('@ProjPegaso:token', token);
+
+        setData({ user, token });
+      })
+      .catch((err) => {
+        setData({} as AuthState);
+        throw new Error('Usuário/senha inválidos. Tente novamente!');
       });
 
-      const { token, user } = response.data;
+    // try {
+    //   const response = await api.post('/start-session', {
+    //     login,
+    //     password,
+    //   });
 
-      localStorage.setItem('@ProjPegaso:user', JSON.stringify(user));
-      localStorage.setItem('@ProjPegaso:token', token);
+    //   const { token, user } = response.data;
 
-      setData({ user, token });
-    } catch (err) {
-      setData({} as AuthState);
-      throw new Error('Usuário/senha inválidos. Tente novamente!');
-    }
+    //   localStorage.setItem('@ProjPegaso:user', JSON.stringify(user));
+    //   localStorage.setItem('@ProjPegaso:token', token);
+
+    //   setData({ user, token });
+    // } catch (err) {
+    //   setData({} as AuthState);
+    //   throw new Error('Usuário/senha inválidos. Tente novamente!');
+    // }
   }, []);
 
   const signOut = useCallback(() => {
