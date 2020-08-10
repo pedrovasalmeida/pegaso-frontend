@@ -10,6 +10,8 @@ import RemoverEmp from '../../components/RemoverEmp';
 import ListarEmp from '../../components/ListarEmp';
 import api from '../../services/api';
 
+import { Preloader, ThreeDots } from 'react-preloader-icon';
+
 import {
   Container,
   LeftMenu,
@@ -22,6 +24,7 @@ import {
   Separator,
   Data,
 } from './styles';
+import { threadId } from 'worker_threads';
 
 interface UserDataFromStorage {
   id: number;
@@ -100,11 +103,16 @@ const Painel: React.FC = () => {
       return;
     }
 
-    const response = await api.get(`/list-one-user/${userData.id}`);
+    await api
+      .get(`/list-one-user/${userData.id}`)
+      .then((res) => {
+        const loggedUser: UserApiData = res.data.user;
 
-    const loggedUser: UserApiData = response.data.user;
-
-    setLoggedUserData(loggedUser);
+        setLoggedUserData(loggedUser);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
@@ -121,28 +129,44 @@ const Painel: React.FC = () => {
         <Container>
           <LeftMenu>
             <DadosAdmin>
-              <Name>
-                <strong>Nome:</strong> <p>{loggedUserData.nome}</p>
-              </Name>
-              <Separator />
-              <Name>
-                <strong>Email:</strong> <p>{loggedUserData.email}</p>
-              </Name>
-              <Separator />
+              {!loggedUserData.nome ? (
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '150px',
+                  }}
+                >
+                  <Preloader
+                    use={ThreeDots}
+                    size={100}
+                    strokeColor="#324286"
+                    strokeWidth={6}
+                    duration={800}
+                  />
+                </div>
+              ) : (
+                <>
+                  <Name>
+                    <strong>Nome:</strong> <p>{loggedUserData!.nome}</p>
+                  </Name>
+                  <Separator />
+                  <Name>
+                    <strong>Email:</strong> <p>{loggedUserData!.email}</p>
+                  </Name>
+                  <Separator />
 
-              <Name>
-                <strong>Login:</strong> <p>{loggedUserData.login}</p>
-              </Name>
-              <Separator />
-              {/*
-              <Name>
-                <strong>ID:</strong> <p>{loggedUserData.id}</p>
-              </Name>
-              <Separator /> */}
+                  <Name>
+                    <strong>Login:</strong> <p>{loggedUserData!.login}</p>
+                  </Name>
+                  <Separator />
 
-              <Name>
-                <strong>Cargo:</strong> <p>{loggedUserData.cargo}</p>
-              </Name>
+                  <Name>
+                    <strong>Cargo:</strong> <p>{loggedUserData!.cargo}</p>
+                  </Name>
+                </>
+              )}
             </DadosAdmin>
 
             <Separator />
