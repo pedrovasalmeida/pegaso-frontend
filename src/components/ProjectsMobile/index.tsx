@@ -2,6 +2,8 @@ import React from 'react';
 
 import useAxios from '../../hooks/useAxios';
 
+import { Preloader, ThreeDots } from 'react-preloader-icon';
+
 import {
   Container,
   DivTitle,
@@ -41,7 +43,13 @@ const ProjectsMobile: React.FC = () => {
 
       <DivProjects>
         {!results ? (
-          <p>Carregando...</p>
+          <Preloader
+            use={ThreeDots}
+            size={120}
+            strokeWidth={6}
+            strokeColor="#324286"
+            duration={800}
+          />
         ) : (
           results.map((item) => {
             counter = counter + 0.1;
@@ -58,9 +66,6 @@ const ProjectsMobile: React.FC = () => {
                     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))',
                   }}
                 >
-                  {/* <ExternalImage>
-                    <img src={item.poster} alt={item.nome} />
-                  </ExternalImage> */}
                   <FullImage>
                     <img src={item.banner} alt={item.nome} />
                   </FullImage>

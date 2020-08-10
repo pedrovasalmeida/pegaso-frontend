@@ -1,6 +1,11 @@
 import React from 'react';
 
 import useAxios from '../../hooks/useAxios';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
+
+import { Preloader, ThreeDots } from 'react-preloader-icon';
+
+import ProjectsMobile from '../ProjectsMobile';
 
 import {
   Container,
@@ -16,10 +21,6 @@ import {
   LinkRRD,
   TestProject,
 } from './styles';
-
-import useWindowDimensions from '../../hooks/useWindowDimensions';
-
-import ProjectsMobile from '../ProjectsMobile';
 
 interface Empreendimentos {
   id: number;
@@ -52,7 +53,13 @@ const Projects: React.FC = () => {
 
           <DivProjects>
             {!results ? (
-              <p>Carregando...</p>
+              <Preloader
+                use={ThreeDots}
+                size={120}
+                strokeWidth={6}
+                strokeColor="#324286"
+                duration={800}
+              />
             ) : (
               results.map((item) => {
                 counter = counter + 0.1;
