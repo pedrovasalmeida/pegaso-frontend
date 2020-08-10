@@ -79,12 +79,10 @@ const Login: React.FC = () => {
 
         await signIn!({ login, password })
           .then((res) => {
-            setTimeout(() => {
-              setIsLoading(false);
-              setIsError(false);
+            setIsLoading(false);
+            setIsError(false);
 
-              return handleReloadPage();
-            }, 1000);
+            return handleReloadPage();
           })
           .catch((err) => {
             setLoginError(true);
