@@ -36,6 +36,7 @@ const RemoverEmp: React.FC = () => {
   const [idToDelete, setIdToDelete] = useState(Number);
   const [isDeleted, setIsDeleted] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getData = async () => {
     const { data, error } = await api.get('/show-all');
@@ -60,6 +61,8 @@ const RemoverEmp: React.FC = () => {
   };
 
   const handleDelete = async () => {
+    setIsLoading(true);
+
     const token = localStorage.getItem('@ProjPegaso:token');
 
     const config = {
@@ -72,10 +75,12 @@ const RemoverEmp: React.FC = () => {
         setIsDeleted(true);
         setConfirmModal(false);
         setIsError(false);
+        setIsLoading(false);
       })
       .catch((err) => {
         setIsDeleted(false);
         setIsError(true);
+        setIsLoading(false);
       });
   };
 
@@ -102,14 +107,27 @@ const RemoverEmp: React.FC = () => {
       )}
       {confirmModal && (
         <Modal>
-          <span>
-            Tem certeza que deseja excluir esse empreendimento? ID: {idToDelete}
-          </span>
-          <CloseIcon onClick={() => handleClickOutsite()} />
-          <div>
-            <Button onClick={() => handleDelete()}>Confirmar</Button>
-            <Button onClick={() => handleClickOutsite()}>Cancelar</Button>
-          </div>
+          {isLoading ? (
+            <Preloader
+              use={ThreeDots}
+              size={80}
+              strokeWidth={8}
+              strokeColor="#324286"
+              duration={800}
+            />
+          ) : (
+            <>
+              <span>
+                Tem certeza que deseja excluir esse empreendimento? ID:{' '}
+                {idToDelete}
+              </span>
+              <CloseIcon onClick={() => handleClickOutsite()} />
+              <div>
+                <Button onClick={() => handleDelete()}>Confirmar</Button>
+                <Button onClick={() => handleClickOutsite()}>Cancelar</Button>
+              </div>
+            </>
+          )}
         </Modal>
       )}
       <Lista>
