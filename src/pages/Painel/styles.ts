@@ -85,8 +85,6 @@ export const Data = styled.div`
   width: calc(100vw - 280px);
   height: calc(100vh - 64px);
 
-  background-color: #ccc;
-
   overflow-y: scroll;
 
   > span {

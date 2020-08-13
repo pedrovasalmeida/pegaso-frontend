@@ -4,7 +4,7 @@ import LoginPage from '../../components/Login';
 
 import { useAuth } from '../../context/AuthContext';
 
-import AdicionarEmp from '../../components/AdicionarEmp';
+import AdicionarEmp from '../../components/AdicionarEmp2';
 import AtualizarEmp from '../../components/AtualizarEmp';
 import RemoverEmp from '../../components/RemoverEmp';
 import ListarEmp from '../../components/ListarEmp';
@@ -47,9 +47,9 @@ interface UserApiData {
 const Painel: React.FC = () => {
   const { user, signOut } = useAuth();
 
-  const [adicionar, setAdicionar] = useState(false);
+  const [adicionar, setAdicionar] = useState(true);
   const [atualizar, setAtualizar] = useState(false);
-  const [remover, setRemover] = useState(true);
+  const [remover, setRemover] = useState(false);
   const [listar, setListar] = useState(false);
   const [loggedUserData, setLoggedUserData] = useState<UserApiData>(
     {} as UserApiData,
