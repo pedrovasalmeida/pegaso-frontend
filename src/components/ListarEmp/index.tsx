@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
-import { Link } from 'react-router-dom';
 
 import { Preloader, ThreeDots } from 'react-preloader-icon';
 
@@ -8,6 +7,7 @@ import {
   Container,
   Lista,
   Item,
+  LinkRRD,
   ArrowIcon,
   DivIcon,
   Avatar,
@@ -65,7 +65,7 @@ const ListarEmp: React.FC = () => {
           </div>
         ) : (
           data?.map((item) => (
-            <Item key={item.id}>
+            <LinkRRD to={`/empreendimentos/detalhes/${item.id}`} key={item.id}>
               <Avatar src={item.banner} alt={item.nome} />
               <Data>
                 <Nome>{item.nome}</Nome>
@@ -74,11 +74,9 @@ const ListarEmp: React.FC = () => {
               </Data>
 
               <DivIcon>
-                <Link to={`/empreendimentos/detalhes/${item.id}`}>
-                  <ArrowIcon />
-                </Link>
+                <ArrowIcon />
               </DivIcon>
-            </Item>
+            </LinkRRD>
           ))
         )}
       </Lista>
