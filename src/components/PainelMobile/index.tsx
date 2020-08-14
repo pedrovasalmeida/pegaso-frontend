@@ -51,10 +51,10 @@ interface UserApiData {
 const PainelMobile: React.FC = () => {
   const { user, signOut } = useAuth();
 
-  const [adicionar, setAdicionar] = useState(true);
+  const [adicionar, setAdicionar] = useState(false);
   const [atualizar, setAtualizar] = useState(false);
   const [remover, setRemover] = useState(false);
-  const [listar, setListar] = useState(false);
+  const [listar, setListar] = useState(true);
   const [openMenu, setOpenMenu] = useState(false);
   const [loggedUserData, setLoggedUserData] = useState<UserApiData>(
     {} as UserApiData,
@@ -82,6 +82,7 @@ const PainelMobile: React.FC = () => {
     setAtualizar(false);
     setRemover(false);
     setListar(false);
+    setOpenMenu(false);
   };
 
   const handleAtualizar = () => {
@@ -89,6 +90,7 @@ const PainelMobile: React.FC = () => {
     setAtualizar(true);
     setRemover(false);
     setListar(false);
+    setOpenMenu(false);
   };
 
   const handleRemover = () => {
@@ -96,6 +98,7 @@ const PainelMobile: React.FC = () => {
     setAtualizar(false);
     setRemover(true);
     setListar(false);
+    setOpenMenu(false);
   };
 
   const handleListar = () => {
@@ -103,6 +106,7 @@ const PainelMobile: React.FC = () => {
     setAtualizar(false);
     setRemover(false);
     setListar(true);
+    setOpenMenu(false);
   };
 
   const handleMenu = () => {
