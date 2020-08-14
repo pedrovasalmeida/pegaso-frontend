@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /src/components/Carousel/background-old.carousel.txt
+/src/backup_styles
 
 # testing
 /coverage
