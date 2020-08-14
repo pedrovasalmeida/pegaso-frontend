@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
+import { Link } from 'react-router-dom';
+
 import { BsArrowBarRight } from 'react-icons/bs';
 
 export const Container = styled.div`
@@ -10,6 +12,7 @@ export const Container = styled.div`
 export const Lista = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin: 0 0 80px 0;
 `;
 
 export const Item = styled.div`
@@ -24,6 +27,29 @@ export const Item = styled.div`
 
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 16px;
+`;
+
+export const LinkRRD = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 45%;
+
+  margin: 16px 4px;
+  position: relative;
+
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+
+  color: #333;
+
+  transition: all 300ms ease;
+
+  &:hover {
+    color: #324282;
+    text-decoration: none;
+  }
 `;
 
 export const ArrowIcon = styled(BsArrowBarRight)`
@@ -84,5 +110,5 @@ export const Descricao = styled.span`
 
   line-clamp: 2;
 
-  width: 250px;
+  width: 50%;
 `;

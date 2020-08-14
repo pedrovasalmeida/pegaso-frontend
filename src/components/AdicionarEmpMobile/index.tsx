@@ -5,6 +5,7 @@ import { Preloader, ThreeDots } from 'react-preloader-icon';
 
 import {
   Form,
+  Title,
   Input,
   UploadInput,
   TextArea,
@@ -30,7 +31,7 @@ interface EmpreendimentoData {
   poster: string;
 }
 
-const AddEmp2: React.FC = () => {
+const AddEk: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
 
   const [uploaded, setUploaded] = useState(false);
@@ -143,10 +144,11 @@ const AddEmp2: React.FC = () => {
     window.location.reload();
   };
 
-  useEffect(() => {}, []);
-
   return (
     <Form>
+      <>
+        <Title>Adicionar Empreendimento</Title>
+      </>
       {uploaded && (
         <ModalSuccess>
           <CloseIcon onClick={() => handleCloseModal()} />
@@ -196,7 +198,7 @@ const AddEmp2: React.FC = () => {
           placeholder="Endereço"
           onChange={(e) => handleInputs(e.target.value, 'endereco')}
         />
-        <Input
+        {/* <Input
           type="text"
           value={linkBanner}
           disabled
@@ -207,7 +209,7 @@ const AddEmp2: React.FC = () => {
           value={linkPoster}
           disabled
           placeholder="Link do poster"
-        />
+        /> */}
         {isLoading && (
           <Preloader
             use={ThreeDots}
@@ -310,4 +312,4 @@ const AddEmp2: React.FC = () => {
   );
 };
 
-export default AddEmp2;
+export default AddEk;

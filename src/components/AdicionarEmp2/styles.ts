@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { shade, lighten } from 'polished';
 
-import { TiDelete } from 'react-icons/ti';
-
 interface InputProps {
   disabled?: boolean;
   whatImageType?: string;
@@ -239,7 +237,6 @@ export const UploadButton = styled.input`
 
 export const LinkMessage = styled.span`
   font-weight: 500;
-  color: ${shade(0.1, '#324286')};
 `;
 
 export const Separator = styled.div`
@@ -254,67 +251,4 @@ export const Separator = styled.div`
   @media (max-width: 1639px) {
     display: none;
   }
-`;
-
-export const ModalSuccess = styled.div`
-  position: absolute;
-
-  left: 25%;
-  top: 75%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  padding: 8px;
-
-  width: 450px;
-  height: 150px;
-
-  border: 1px solid #324286;
-  border-radius: 16px;
-
-  background-color: ${lighten(0.61, '#324286')};
-
-  z-index: 2;
-`;
-
-export const ModalText = styled.span``;
-
-export const ModalButton = styled.input`
-  align-self: center;
-
-  width: 100px;
-  height: 32px;
-
-  outline: 0;
-
-  margin: 8px 0 0 0;
-
-  color: #324286;
-
-  border: 1px solid #324286;
-  border-radius: 8px;
-  /* border-top-width: 0;
-  border-bottom-width: 0; */
-
-  transition: all 300ms ease;
-
-  &:hover {
-    color: #fff;
-    font-weight: bold;
-    background-color: ${lighten(0.2, '#324286')};
-    border: 0px solid #324286;
-  }
-`;
-
-export const CloseIcon = styled(TiDelete)`
-  position: absolute;
-  right: 8px;
-  top: 8px;
-
-  font-size: 24px;
-
-  cursor: pointer;
 `;

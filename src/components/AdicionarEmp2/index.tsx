@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 
-import { Preloader, ThreeDots } from 'react-preloader-icon';
-
 import {
   Form,
   Input,
@@ -15,10 +13,6 @@ import {
   UploadButton,
   LinkMessage,
   Separator,
-  ModalSuccess,
-  ModalText,
-  ModalButton,
-  CloseIcon,
 } from './styles';
 
 interface EmpreendimentoData {
@@ -40,10 +34,6 @@ const AddEmp2: React.FC = () => {
   const [inputEndereco, setInputEndereco] = useState('');
   const [linkBanner, setLinkBanner] = useState('');
   const [linkPoster, setLinkPoster] = useState('');
-  const [isBannerLoading, setIsBannerLoading] = useState(false);
-  const [isPosterLoading, setIsPosterLoading] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
 
   const token = localStorage.getItem('@ProjPegaso:token');
 
@@ -63,7 +53,6 @@ const AddEmp2: React.FC = () => {
   };
 
   const fileUploadBannerHandler = async () => {
-    setIsBannerLoading(true);
     let formdata = new FormData();
 
     if (file === null) return alert('file is empty');
@@ -72,15 +61,11 @@ const AddEmp2: React.FC = () => {
 
     await api
       .post('/storage-images', formdata)
-      .then((res) => {
-        setIsBannerLoading(false);
-        return setLinkBanner(res.data.link);
-      })
+      .then((res) => setLinkBanner(res.data.link))
       .catch((err) => err);
   };
 
   const fileUploadPosterHandler = async () => {
-    setIsPosterLoading(true);
     let formdata = new FormData();
 
     if (file === null) return alert('file is empty');
@@ -89,10 +74,7 @@ const AddEmp2: React.FC = () => {
 
     await api
       .post('/storage-images', formdata)
-      .then((res) => {
-        setIsPosterLoading(false);
-        return setLinkPoster(res.data.link);
-      })
+      .then((res) => setLinkPoster(res.data.link))
       .catch((err) => err);
   };
 
@@ -114,12 +96,10 @@ const AddEmp2: React.FC = () => {
     if (!linkPoster)
       return alert('O poster do empreendimento não pode estar vazio!');
 
-    setIsLoading(true);
-
     const data = {
       nome: inputName,
-      descricao_curta: inputDescCurta,
       descricao: inputDescricao,
+      descricao_curta: inputDescCurta,
       endereco: inputEndereco,
       banner: linkBanner,
       poster: linkPoster,
@@ -127,51 +107,16 @@ const AddEmp2: React.FC = () => {
 
     await api
       .post('/create', data, config)
-      .then((res) => {
-        setUploaded(true);
-        return setIsLoading(false);
-      })
+      .then((res) => setUploaded(true))
       .catch((err) => console.log(err));
   };
 
-  const handleModal = () => {
-    setModalOpen(!modalOpen);
-  };
-
-  const handleCloseModal = () => {
-    setUploaded(false);
-    window.location.reload();
-  };
+  const isUploaded = () => <p>Empreendimento criado com sucesso!</p>;
 
   useEffect(() => {}, []);
 
   return (
     <Form>
-      {uploaded && (
-        <ModalSuccess>
-          <CloseIcon onClick={() => handleCloseModal()} />
-          <ModalText>Empreendimento criado com sucesso!</ModalText>
-          <ModalButton
-            type="button"
-            value="Confirmar"
-            onClick={() => handleCloseModal()}
-          />
-        </ModalSuccess>
-      )}
-      {/* {uploaded && ()} */}
-
-      {/* {modalOpen && (
-        <ModalSuccess>
-          <CloseIcon onClick={() => handleCloseModal()} />
-          <ModalText>Empreendimento criado com sucesso!</ModalText>
-          <ModalButton
-            type="button"
-            value="Confirmar"
-            onClick={() => handleCloseModal()}
-          />
-        </ModalSuccess>
-      )} */}
-
       <DivDetalhes>
         <Input
           type="text"
@@ -208,15 +153,8 @@ const AddEmp2: React.FC = () => {
           disabled
           placeholder="Link do poster"
         />
-        {isLoading && (
-          <Preloader
-            use={ThreeDots}
-            size={70}
-            strokeColor={'#324286'}
-            strokeWidth={6}
-            duration={1000}
-          />
-        )}
+
+        {uploaded && isUploaded()}
       </DivDetalhes>
 
       <Separator />
@@ -238,29 +176,11 @@ const AddEmp2: React.FC = () => {
             />
             <label>Banner</label>
           </form>
-
           {linkBanner ? (
             <LinkMessage>{'Link: ' + linkBanner}</LinkMessage>
           ) : (
-            <>
-              {isBannerLoading ? (
-                <Preloader
-                  use={ThreeDots}
-                  size={70}
-                  strokeColor={'#324286'}
-                  strokeWidth={6}
-                  duration={1000}
-                />
-              ) : (
-                <LinkMessage>Link: Upload ainda não realizado</LinkMessage>
-              )}
-            </>
-          )}
-          {/* {linkBanner ? (
-            <LinkMessage>{'Link: ' + linkBanner}</LinkMessage>
-          ) : (
             <LinkMessage>Link: Upload ainda não realizado</LinkMessage>
-          )} */}
+          )}
 
           <form encType="multipart/form-data">
             <UploadInput
@@ -281,19 +201,7 @@ const AddEmp2: React.FC = () => {
             {linkPoster ? (
               <LinkMessage>{'Link: ' + linkPoster}</LinkMessage>
             ) : (
-              <>
-                {isPosterLoading ? (
-                  <Preloader
-                    use={ThreeDots}
-                    size={70}
-                    strokeColor={'#324286'}
-                    strokeWidth={6}
-                    duration={1000}
-                  />
-                ) : (
-                  <LinkMessage>Link: Upload ainda não realizado</LinkMessage>
-                )}
-              </>
+              <LinkMessage>Link: Upload ainda não realizado</LinkMessage>
             )}
             <LinkMessage style={{ marginTop: '24px' }}>
               O link aparecerá automaticamente nos campos 'Link' à esquerda.

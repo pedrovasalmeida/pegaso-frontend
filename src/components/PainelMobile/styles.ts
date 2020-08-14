@@ -1,20 +1,34 @@
 import styled from 'styled-components';
 
+import { TiDelete } from 'react-icons/ti';
+import { AiOutlineMenuUnfold } from 'react-icons/ai';
+
 export const Container = styled.div`
   display: flex;
   margin: 64px 0 0 0;
+  position: relative;
 `;
 
 export const LeftMenu = styled.div`
+  position: absolute;
+  left: 0%;
+  top: 0;
+
   display: flex;
   flex-direction: column;
 
   width: 280px;
   height: calc(100vh - 64px);
 
+  padding: 24px 0 0 0;
+
   background-color: #f1f1f1;
 
   border-right: 1px solid rgba(0, 0, 0, 0.4);
+
+  overflow-y: hidden;
+
+  z-index: 3;
 `;
 
 export const DadosAdmin = styled.div`
@@ -82,8 +96,8 @@ export const Data = styled.div`
   align-items: center;
   justify-content: flex-start;
 
-  width: calc(100vw - 280px);
-  height: calc(100vh - 64px);
+  width: 100vw;
+  height: 100vh;
 
   overflow-y: scroll;
 
@@ -124,4 +138,29 @@ export const Remover = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
 
   border-radius: 16px;
+`;
+
+export const MenuIcon = styled(AiOutlineMenuUnfold)`
+  position: absolute;
+  display: block;
+  right: 3vw;
+  top: 1vh;
+
+  font-size: 24px;
+
+  height: 8vh;
+
+  z-index: 7;
+`;
+
+export const CloseIcon = styled(TiDelete)`
+  position: absolute;
+  top: 4px;
+  right: 8px;
+
+  font-size: 24px;
+
+  color: #324286;
+
+  cursor: pointer;
 `;
