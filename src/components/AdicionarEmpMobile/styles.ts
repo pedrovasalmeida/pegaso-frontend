@@ -12,38 +12,51 @@ export const Container = styled.div``;
 
 export const Form = styled.form`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   position: relative;
 
-  width: 50vw;
+  width: 99vw;
   height: auto;
 
-  margin: 24px 0 0 0;
-  padding: 16px 16px 120px 16px;
+  /* margin: 24px 0 0 0;
+  padding: 16px 16px 120px 16px; */
+  padding: 16px 0 120px 0;
 
   border: 1px solid ${lighten(0.4, '#324286')};
   border-radius: 16px;
 
-  @media (max-width: 1639px) {
+  /* @media (max-width: 1639px) {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
+  } */
 
-  @media (max-width: 1281px) {
+  /* @media (max-width: 1281px) {
     padding: 16px 16px 200px 16px;
-  }
+  } */
+`;
+
+export const Title = styled.span`
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 20px;
+
+  margin: 0 24px 0 0;
 `;
 
 export const DivDetalhes = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin: 0 16px 0 0;
+  padding: 0 4px;
 `;
 
 export const Input = styled.input<InputProps>`
-  width: 352px;
+  width: 95vw;
 
   color: ${shade(0.4, '#324286')};
 
@@ -77,8 +90,7 @@ export const Input = styled.input<InputProps>`
 `;
 
 export const UploadInput = styled.input<InputProps>`
-  width: 352px;
-  height: 32px;
+  width: 70vw;
 
   color: ${shade(0.4, '#324286')};
 
@@ -119,7 +131,7 @@ export const UploadInput = styled.input<InputProps>`
 export const TextArea = styled.textarea`
   resize: none;
 
-  width: 352px;
+  width: 95vw;
   height: 256px;
 
   color: ${shade(0.4, '#324286')};
@@ -157,9 +169,8 @@ export const DivImagens = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    width: 450px;
+    width: 100%;
 
-    padding: 0 0 0 16px;
     margin: 16px 0;
 
     /* background-color: ${lighten(0.62, '#324286')}; */
@@ -176,16 +187,13 @@ export const DivImagens = styled.div`
 `;
 
 export const DivButton = styled.div`
-  position: absolute;
-  bottom: 4vh;
-  left: 13vw;
-
   button {
-    width: 352px;
+    width: 95vw;
     height: 40px;
 
     outline: 0;
 
+    margin: 16px 0 0 0;
     color: #324286;
 
     border: 1px solid #324286;
@@ -203,12 +211,12 @@ export const DivButton = styled.div`
 
   @media (max-width: 1639px) {
     bottom: 8vh;
-    left: 13vw;
+    left: 0;
   }
 
   @media (max-width: 1281px) {
     bottom: 16vh;
-    left: 11vw;
+    left: 0;
   }
 `;
 
@@ -259,8 +267,8 @@ export const Separator = styled.div`
 export const ModalSuccess = styled.div`
   position: absolute;
 
-  left: 25%;
-  top: 75%;
+  left: 2vw;
+  bottom: 18vh;
 
   display: flex;
   flex-direction: column;
@@ -269,7 +277,7 @@ export const ModalSuccess = styled.div`
 
   padding: 8px;
 
-  width: 450px;
+  width: 95vw;
   height: 150px;
 
   border: 1px solid #324286;

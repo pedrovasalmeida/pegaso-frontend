@@ -1,17 +1,21 @@
 import React, { useState, useCallback, useEffect } from 'react';
 
-import LoginPage from '../../components/Login';
-
+/** Hooks */
 import { useAuth } from '../../context/AuthContext';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
-import AdicionarEmp from '../../components/AdicionarEmp2';
-import AtualizarEmp from '../../components/AtualizarEmp';
+/** Componentes */
+import LoginPage from '../../components/Login';
+import PainelMobile from '../../components/PainelMobile';
+import AdicionarEmp from '../../components/AdicionarEmp';
 import RemoverEmp from '../../components/RemoverEmp';
 import ListarEmp from '../../components/ListarEmp';
 import api from '../../services/api';
 
+/** Ícones e imagens */
 import { Preloader, ThreeDots } from 'react-preloader-icon';
 
+/** Estilos */
 import {
   Container,
   LeftMenu,
@@ -24,8 +28,8 @@ import {
   Separator,
   Data,
 } from './styles';
-import { threadId } from 'worker_threads';
 
+/** Tipos */
 interface UserDataFromStorage {
   id: number;
   userLogin: string;
@@ -61,6 +65,8 @@ const Painel: React.FC = () => {
     }
     return {} as UserDataFromStorage;
   });
+
+  const { width } = useWindowDimensions();
 
   const handleDeslogar = useCallback(() => {
     signOut();
@@ -126,105 +132,111 @@ const Painel: React.FC = () => {
           <LoginPage />
         </Container>
       ) : (
-        <Container>
-          <LeftMenu>
-            <DadosAdmin>
-              {!loggedUserData.nome ? (
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '150px',
-                  }}
-                >
-                  <Preloader
-                    use={ThreeDots}
-                    size={100}
-                    strokeColor="#324286"
-                    strokeWidth={6}
-                    duration={800}
-                  />
-                </div>
-              ) : (
-                <>
-                  <Name>
-                    <strong>Nome:</strong> <p>{loggedUserData!.nome}</p>
-                  </Name>
-                  <Separator />
-                  <Name>
-                    <strong>Email:</strong> <p>{loggedUserData!.email}</p>
-                  </Name>
-                  <Separator />
+        <>
+          {width < 910 ? (
+            <PainelMobile />
+          ) : (
+            <Container>
+              <LeftMenu>
+                <DadosAdmin>
+                  {!loggedUserData.nome ? (
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: '150px',
+                      }}
+                    >
+                      <Preloader
+                        use={ThreeDots}
+                        size={100}
+                        strokeColor="#324286"
+                        strokeWidth={6}
+                        duration={800}
+                      />
+                    </div>
+                  ) : (
+                    <>
+                      <Name>
+                        <strong>Nome:</strong> <p>{loggedUserData!.nome}</p>
+                      </Name>
+                      <Separator />
+                      <Name>
+                        <strong>Email:</strong> <p>{loggedUserData!.email}</p>
+                      </Name>
+                      <Separator />
 
-                  <Name>
-                    <strong>Login:</strong> <p>{loggedUserData!.login}</p>
-                  </Name>
-                  <Separator />
+                      <Name>
+                        <strong>Login:</strong> <p>{loggedUserData!.login}</p>
+                      </Name>
+                      <Separator />
 
-                  <Name>
-                    <strong>Cargo:</strong> <p>{loggedUserData!.cargo}</p>
-                  </Name>
-                </>
-              )}
-            </DadosAdmin>
+                      <Name>
+                        <strong>Cargo:</strong> <p>{loggedUserData!.cargo}</p>
+                      </Name>
+                    </>
+                  )}
+                </DadosAdmin>
 
-            <Separator />
+                <Separator />
 
-            <OpcaoMenu onClick={() => handleAdicionar()}>
-              Adicionar empreendimento
-            </OpcaoMenu>
+                <OpcaoMenu onClick={() => handleAdicionar()}>
+                  Adicionar empreendimento
+                </OpcaoMenu>
 
-            <Separator />
+                <Separator />
 
-            {/* <OpcaoMenu onClick={() => {}}>Adicionar imagens</OpcaoMenu>
+                {/* <OpcaoMenu onClick={() => {}}>Adicionar imagens</OpcaoMenu>
 
             <Separator /> */}
 
-            <OpcaoMenu onClick={() => handleRemover()}>
-              Remover empreendimento
-            </OpcaoMenu>
+                <OpcaoMenu onClick={() => handleRemover()}>
+                  Remover empreendimento
+                </OpcaoMenu>
 
-            <Separator />
+                <Separator />
 
-            <OpcaoMenu onClick={() => handleAtualizar()}>
-              Atualizar empreendimento
-            </OpcaoMenu>
+                <OpcaoMenu onClick={() => handleAtualizar()}>
+                  Atualizar empreendimento
+                </OpcaoMenu>
 
-            <Separator />
+                <Separator />
 
-            <OpcaoMenu onClick={() => handleListar()}>
-              Listar empreendimentos
-            </OpcaoMenu>
+                <OpcaoMenu onClick={() => handleListar()}>
+                  Listar empreendimentos
+                </OpcaoMenu>
 
-            <Separator />
+                <Separator />
 
-            <OpcaoMenu onClick={() => handleDeslogar()}>Sair</OpcaoMenu>
-          </LeftMenu>
+                <OpcaoMenu onClick={() => handleDeslogar()}>Sair</OpcaoMenu>
+              </LeftMenu>
 
-          <Data>
-            {adicionar && (
-              <>
-                <AdicionarEmp />
-              </>
-            )}
-            {listar && (
-              <>
-                <ListarEmp />
-              </>
-            )}
-            {remover && (
-              <>
-                <RemoverEmp />
-              </>
-            )}
-            {atualizar && (
-              <>
-                <span>Atualizar Empreendimento</span>
-              </>
-            )}
-          </Data>
-        </Container>
+              <Data>
+                {adicionar && (
+                  <>
+                    <AdicionarEmp />
+                  </>
+                )}
+                {listar && (
+                  <>
+                    <ListarEmp />
+                  </>
+                )}
+                {remover && (
+                  <>
+                    <RemoverEmp />
+                  </>
+                )}
+                {atualizar && (
+                  <>
+                    <span>Atualizar Empreendimento</span>
+                  </>
+                )}
+              </Data>
+            </Container>
+          )}
+        </>
       )}
     </>
   );
