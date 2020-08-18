@@ -118,6 +118,11 @@ export const Form = styled.form`
     color: rgba(50, 66, 134, 0.6);
     font-size: 12px;
   }
+
+  @media (max-width: 499px) {
+    width: auto;
+    padding: 0 8px;
+  }
 `;
 
 export const Separator = styled.div`
