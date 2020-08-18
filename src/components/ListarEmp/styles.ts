@@ -13,6 +13,10 @@ export const Lista = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 0 0 80px 0;
+
+  @media (max-width: 1548px) {
+    flex-direction: column;
+  }
 `;
 
 export const Item = styled.div`
@@ -49,6 +53,10 @@ export const LinkRRD = styled(Link)`
   &:hover {
     color: #324282;
     text-decoration: none;
+  }
+
+  @media (max-width: 1548px) {
+    width: 90%;
   }
 `;
 
