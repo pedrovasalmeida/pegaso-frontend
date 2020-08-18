@@ -4,7 +4,6 @@ import LoginPage from '../../components/Login';
 
 import { useAuth } from '../../context/AuthContext';
 
-import AdicionarEmp from '../../components/AdicionarEmp';
 import AdicionarEmpMobile from '../../components/AdicionarEmpMobile';
 import AtualizarEmp from '../../components/AtualizarEmp';
 import RemoverEmp from '../../components/RemoverEmp';
