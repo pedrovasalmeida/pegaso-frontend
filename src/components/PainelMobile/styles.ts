@@ -18,7 +18,7 @@ export const LeftMenu = styled.div`
   flex-direction: column;
 
   width: 280px;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 150px);
 
   padding: 24px 0 0 0;
 
@@ -97,9 +97,9 @@ export const Data = styled.div`
   justify-content: flex-start;
 
   width: 100vw;
-  height: 100vh;
+  height: auto;
 
-  overflow-y: scroll;
+  overflow-y: hidden;
 
   > span {
     align-self: center;
