@@ -47,6 +47,8 @@ const ListarEmp: React.FC = () => {
     getData();
   }, []);
 
+  // if (!data) return <span>Não existem empreendimentos ainda! :(</span>;
+
   return (
     <>
       {width < 910 ? (
