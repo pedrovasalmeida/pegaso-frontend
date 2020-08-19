@@ -10,6 +10,7 @@ import PainelMobile from '../../components/PainelMobile';
 import AdicionarEmp from '../../components/AdicionarEmp';
 import RemoverEmp from '../../components/RemoverEmp';
 import ListarEmp from '../../components/ListarEmp';
+import AtualizarEmp from '../../components/AtualizarEmp';
 import api from '../../services/api';
 
 /** Ícones e imagens */
@@ -51,8 +52,8 @@ interface UserApiData {
 const Painel: React.FC = () => {
   const { user, signOut } = useAuth();
 
-  const [adicionar, setAdicionar] = useState(true);
-  const [atualizar, setAtualizar] = useState(false);
+  const [adicionar, setAdicionar] = useState(false);
+  const [atualizar, setAtualizar] = useState(true);
   const [remover, setRemover] = useState(false);
   const [listar, setListar] = useState(false);
   const [loggedUserData, setLoggedUserData] = useState<UserApiData>(
@@ -230,7 +231,7 @@ const Painel: React.FC = () => {
                 )}
                 {atualizar && (
                   <>
-                    <span>Atualizar Empreendimento</span>
+                    <AtualizarEmp />
                   </>
                 )}
               </Data>
