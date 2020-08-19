@@ -20,14 +20,12 @@ export const LeftMenu = styled.div`
   width: 280px;
   height: calc(100vh - 150px);
 
-  padding: 24px 0 0 0;
+  padding: 24px 0;
 
   background-color: #f1f1f1;
-
   border-right: 1px solid rgba(0, 0, 0, 0.4);
 
-  overflow-y: hidden;
-
+  overflow-y: scroll;
   z-index: 3;
 `;
 

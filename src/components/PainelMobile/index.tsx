@@ -51,9 +51,9 @@ const PainelMobile: React.FC = () => {
   const { user, signOut } = useAuth();
 
   const [adicionar, setAdicionar] = useState(false);
-  const [atualizar, setAtualizar] = useState(false);
+  const [atualizar, setAtualizar] = useState(true);
   const [remover, setRemover] = useState(false);
-  const [listar, setListar] = useState(true);
+  const [listar, setListar] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [loggedUserData, setLoggedUserData] = useState<UserApiData>(
     {} as UserApiData,
