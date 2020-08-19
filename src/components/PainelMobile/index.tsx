@@ -234,7 +234,7 @@ const PainelMobile: React.FC = () => {
             )}
             {atualizar && (
               <>
-                <span>Atualizar Empreendimento</span>
+                <AtualizarEmp />
               </>
             )}
           </Data>
