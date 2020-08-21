@@ -77,7 +77,7 @@ const InfosMobile: React.FC = () => {
         </SubDivCategorias>
       </DivCategorias>
       <DivImagemTipo>
-        <img src="https://i.imgur.com/ZViQCH1.jpg" alt="a" />
+        <img src="https://i.imgur.com/n7mYaHC.png" alt="Pegaso" />
       </DivImagemTipo>
       {/* <DivImagemTipo animate={{ x: 0 }} transition={{ duration: 1.3 }} /> */}
     </Container>
