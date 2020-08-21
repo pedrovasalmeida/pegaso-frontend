@@ -14,8 +14,6 @@ export const Container = styled.div`
   background-color: #fdfdfd;
   width: 100%;
 
-  background-color: green;
-
   height: calc(100vh - 160px);
 
   padding: 16px;
@@ -58,10 +56,11 @@ export const Input = styled.input<InputProps>`
 
 export const Lista = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  margin: 0 0 80px 0;
 
-  background-color: red;
+  margin: 0 0 80px 0;
 
   @media (max-width: 1548px) {
     flex-direction: column;
@@ -188,4 +187,26 @@ export const Descricao = styled.span`
 
 export const SelectInput = styled(Select)`
   margin: 32px 0 0 0;
+  align-self: center;
+  width: 40%;
+
+  @media (max-width: 1049px) {
+    width: 80%;
+  }
+  @media (max-width: 414px) {
+    width: 80%;
+  }
+`;
+
+export const UpdateContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: auto;
+  min-height: 40vh;
+
+  margin: 16px 0 0 0;
 `;

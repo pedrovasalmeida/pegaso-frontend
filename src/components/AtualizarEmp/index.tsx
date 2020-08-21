@@ -13,6 +13,7 @@ import {
   Nome,
   Descricao,
   SelectInput,
+  UpdateContainer,
 } from './styles';
 
 interface EmpreendimentoData {
@@ -25,8 +26,16 @@ interface EmpreendimentoData {
   poster: string;
 }
 
+interface Enterprise {
+  message: string;
+  images: string[];
+  development: EmpreendimentoData;
+}
+
 const AtualizarEmp: React.FC = () => {
   const [data, setData] = useState<EmpreendimentoData[] | null>(null);
+  const [inputValue, setInputValue] = useState(null);
+  const [enterpriseData, setEnterpriseData] = useState<Enterprise | null>(null);
 
   const getData = async () => {
     const { data, error } = await api.get('/show-all');
@@ -36,19 +45,52 @@ const AtualizarEmp: React.FC = () => {
     setData(data);
   };
 
-  useEffect(() => {
-    getData();
-  }, []);
+  const getDataFromOneEnterprise = async (id) => {
+    const { data } = await api.get(`/show-one/${id}`);
+
+    setEnterpriseData(data);
+  };
+
+  const handleInputChange = (option) => {
+    setInputValue(option.value);
+  };
 
   const options = data?.map((proj) => ({
     value: proj.id,
     label: proj.nome,
   }));
 
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    if (inputValue) getDataFromOneEnterprise(inputValue);
+  }, [inputValue]);
+
   return (
     <Container>
       <Lista>
-        <SelectInput options={options} />
+        {data && (
+          <SelectInput
+            options={options}
+            placeholder="Selecione um empreendimento..."
+            onChange={(option) => handleInputChange(option)}
+          />
+        )}
+
+        {enterpriseData ? (
+          <UpdateContainer>
+            <span>ID: {enterpriseData.development.id}</span>
+            <span>{enterpriseData.development.nome}</span>
+            <span>{enterpriseData.development.descricao}</span>
+            <span>{enterpriseData.development.descricao_curta}</span>
+          </UpdateContainer>
+        ) : (
+          <UpdateContainer>
+            <span>Selecione um empreendimento acima!</span>
+          </UpdateContainer>
+        )}
       </Lista>
     </Container>
   );
