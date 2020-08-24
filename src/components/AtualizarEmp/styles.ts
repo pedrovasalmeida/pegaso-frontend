@@ -210,3 +210,51 @@ export const UpdateContainer = styled.div`
 
   margin: 16px 0 0 0;
 `;
+
+export const Form = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  width: auto;
+  height: auto;
+
+  padding: 32px;
+  margin: 16px 0;
+
+  border: 1px solid ${lighten(0.4, '#324286')};
+  border-radius: 16px;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  width: 360px;
+`;
+
+export const Button = styled.input`
+  width: 45%;
+  height: 32px;
+
+  margin: 0 8px;
+  padding: 4px;
+  outline: 0;
+
+  color: #324286;
+
+  border: 1px solid #324286;
+  border-radius: 8px;
+
+  transition: all 300ms ease;
+
+  &:hover {
+    color: #fff;
+    font-weight: bold;
+    background-color: ${lighten(0.2, '#324286')};
+    border: 0px solid #324286;
+  }
+`;

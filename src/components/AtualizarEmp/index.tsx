@@ -14,6 +14,9 @@ import {
   Descricao,
   SelectInput,
   UpdateContainer,
+  Form,
+  ButtonContainer,
+  Button,
 } from './styles';
 
 interface EmpreendimentoData {
@@ -32,10 +35,19 @@ interface Enterprise {
   development: EmpreendimentoData;
 }
 
+interface InputValueListProps {
+  id: number;
+  value: string;
+}
+
 const AtualizarEmp: React.FC = () => {
   const [data, setData] = useState<EmpreendimentoData[] | null>(null);
   const [inputValue, setInputValue] = useState(null);
   const [enterpriseData, setEnterpriseData] = useState<Enterprise | null>(null);
+  const [inputList, setInputList] = useState<any[]>([
+    <Input key={0} type="text" placeholder="Link da imagem" />,
+  ]);
+  const [inputValueList, setInputValueList] = useState<string[]>([]);
 
   const getData = async () => {
     const { data, error } = await api.get('/show-all');
@@ -55,6 +67,25 @@ const AtualizarEmp: React.FC = () => {
     setInputValue(option.value);
   };
 
+  const rendleInput = () => (
+    <Input key={inputList.length} type="text" placeholder="Link da imagem" />
+  );
+
+  const handleAddInput = () => {
+    setInputList([...inputList, rendleInput()]);
+  };
+
+  const handleRemoveInput = () => {
+    setInputList([<Input key={0} type="text" placeholder="Link da imagem" />]);
+    setInputValueList([]);
+  };
+
+  const handleInputValue = (index: number, value: string) => {
+    let array = [...inputValueList];
+    array[index] = value;
+    setInputValueList([...array]);
+  };
+
   const options = data?.map((proj) => ({
     value: proj.id,
     label: proj.nome,
@@ -71,21 +102,48 @@ const AtualizarEmp: React.FC = () => {
   return (
     <Container>
       <Lista>
-        {data && (
+        {data ? (
           <SelectInput
             options={options}
             placeholder="Selecione um empreendimento..."
             onChange={(option) => handleInputChange(option)}
           />
+        ) : (
+          <span>Não temos empreendimentos ainda! :(</span>
         )}
 
         {enterpriseData ? (
-          <UpdateContainer>
+          <Form>
+            {inputList.map((item, index) => (
+              <>
+                <Input
+                  type="text"
+                  value={inputValueList[index]}
+                  onChange={(e) => handleInputValue(index, e.target.value)}
+                />
+                <span>{inputValueList[index]}</span>
+              </>
+            ))}
+            {<span>{inputList.length}</span>}
+
+            <ButtonContainer>
+              <Button
+                type="button"
+                value="Adicionar imagem"
+                onClick={() => handleAddInput()}
+              />
+              <Button
+                type="button"
+                value="Limpar lista"
+                onClick={() => handleRemoveInput()}
+              />
+            </ButtonContainer>
+
             <span>ID: {enterpriseData.development.id}</span>
             <span>{enterpriseData.development.nome}</span>
             <span>{enterpriseData.development.descricao}</span>
             <span>{enterpriseData.development.descricao_curta}</span>
-          </UpdateContainer>
+          </Form>
         ) : (
           <UpdateContainer>
             <span>Selecione um empreendimento acima!</span>
