@@ -200,7 +200,7 @@ const PainelMobile: React.FC = () => {
               <Separator />
 
               <OpcaoMenu onClick={() => handleAtualizar()}>
-                Atualizar empreendimento
+                Adicionar imagens
               </OpcaoMenu>
 
               <Separator />
