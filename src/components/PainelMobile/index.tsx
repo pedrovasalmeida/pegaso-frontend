@@ -51,10 +51,10 @@ interface UserApiData {
 const PainelMobile: React.FC = () => {
   const { user, signOut } = useAuth();
 
-  const [adicionar, setAdicionar] = useState(true);
+  const [adicionar, setAdicionar] = useState(false);
   const [atualizar, setAtualizar] = useState(false);
   const [remover, setRemover] = useState(false);
-  const [listar, setListar] = useState(false);
+  const [listar, setListar] = useState(true);
   const [openMenu, setOpenMenu] = useState(false);
   const [loggedUserData, setLoggedUserData] = useState<UserApiData>(
     {} as UserApiData,
