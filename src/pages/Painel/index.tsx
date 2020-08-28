@@ -53,9 +53,9 @@ const Painel: React.FC = () => {
   const { user, signOut } = useAuth();
 
   const [adicionar, setAdicionar] = useState(false);
-  const [atualizar, setAtualizar] = useState(true);
+  const [atualizar, setAtualizar] = useState(false);
   const [remover, setRemover] = useState(false);
-  const [listar, setListar] = useState(false);
+  const [listar, setListar] = useState(true);
   const [loggedUserData, setLoggedUserData] = useState<UserApiData>(
     {} as UserApiData,
   );
