@@ -11,6 +11,9 @@ interface InputProps {
 }
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
   background-color: #fdfdfd;
   width: 100%;
 
@@ -43,9 +46,9 @@ export const Input = styled.input<InputProps>`
 
   &:hover {
     background-color: ${(props) =>
-      props.disabled
-        ? `${lighten(0.55, '#324286')}`
-        : `${lighten(0.6, '#324286')}`};
+    props.disabled
+      ? `${lighten(0.55, '#324286')}`
+      : `${lighten(0.6, '#324286')}`};
   }
 
   &:focus {
@@ -56,6 +59,7 @@ export const Input = styled.input<InputProps>`
 
 export const Lista = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
@@ -227,6 +231,36 @@ export const Form = styled.div`
 
   border: 1px solid ${lighten(0.4, '#324286')};
   border-radius: 16px;
+
+  form {
+    position: relative;
+
+    input[type='file'] {
+      opacity: 0;
+    }
+
+    > label {
+      position: absolute;
+
+      background-color: ${lighten(0.5, '#324286')};
+
+      width: 65%;
+      height: 34px;
+
+      padding: 4px 0 0 0;
+
+      border: 1px solid #324286;
+      border-right-width: 0;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+
+      text-align: center;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -237,10 +271,9 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Button = styled.input`
-  width: 45%;
-  height: 32px;
+  width: 35%;
+  line-height: 24px;
 
-  margin: 0 8px;
   padding: 4px;
   outline: 0;
 
@@ -248,13 +281,50 @@ export const Button = styled.input`
 
   border: 1px solid #324286;
   border-radius: 8px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 
   transition: all 300ms ease;
 
   &:hover {
     color: #fff;
-    font-weight: bold;
     background-color: ${lighten(0.2, '#324286')};
-    border: 0px solid #324286;
+    border: 1px solid #324286;
+  }
+`;
+
+export const UploadInput = styled.input`
+  width: 65%;
+  line-height: 26px;
+
+  margin: 0 0 16px 0;
+
+  color: ${shade(0.4, '#324286')};
+
+  cursor: 'not-allowed';
+
+  border: 1px solid ${shade(0.4, `#324286`)};
+  border-radius: 8px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right-width: 0px;
+
+  background-color: ${lighten(0.55, '#324286')};
+
+  ::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+
+  -webkit-writing-mode: horizontal-tb !important;
+
+  transition: all 300ms ease;
+
+  &:hover {
+    background-color: ${lighten(0.6, '#324286')};
+  }
+
+  &:focus {
+    border: 1px solid ${shade(0.4, `#324286`)};
+    filter: drop-shadow(0px 0px 2px ${lighten(0.4, `#324286`)});
   }
 `;

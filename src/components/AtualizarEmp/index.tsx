@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 
+import { Preloader, ThreeDots } from 'react-preloader-icon';
+
 import {
   Container,
   Input,
@@ -17,6 +19,7 @@ import {
   Form,
   ButtonContainer,
   Button,
+  UploadInput,
 } from './styles';
 
 interface EmpreendimentoData {
@@ -44,10 +47,18 @@ const AtualizarEmp: React.FC = () => {
   const [data, setData] = useState<EmpreendimentoData[] | null>(null);
   const [inputValue, setInputValue] = useState(null);
   const [enterpriseData, setEnterpriseData] = useState<Enterprise | null>(null);
-  const [inputList, setInputList] = useState<any[]>([
-    <Input key={0} type="text" placeholder="Link da imagem" />,
-  ]);
-  const [inputValueList, setInputValueList] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [showConfirmButton, setShowConfirmButton] = useState(false);
+  const [imageLinks, setImageLinks] = useState<string[]>([]);
+  const [files, setFile] = useState<any>([]);
+  const [message, setMessage] = useState('');
+
+  const token = localStorage.getItem('@ProjPegaso:token');
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
 
   const getData = async () => {
     const { data, error } = await api.get('/show-all');
@@ -67,23 +78,64 @@ const AtualizarEmp: React.FC = () => {
     setInputValue(option.value);
   };
 
-  const rendleInput = () => (
-    <Input key={inputList.length} type="text" placeholder="Link da imagem" />
-  );
-
-  const handleAddInput = () => {
-    setInputList([...inputList, rendleInput()]);
+  const handleSubmitImage = (e: FileList | null) => {
+    if (e && e.length > 0) setFile(Array.from(e));
   };
 
-  const handleRemoveInput = () => {
-    setInputList([<Input key={0} type="text" placeholder="Link da imagem" />]);
-    setInputValueList([]);
+  const fileUploadImages = async (id) => {
+    setLoading(true);
+    setError(false);
+    let formdata = new FormData();
+
+    if (files.length < 1) return alert('file is empty');
+
+    for (let i = 0; i < files.length; i++) {
+      formdata.append('images', files[i]);
+    }
+
+    api
+      .post('/storage-many-images', formdata)
+      .then((res) => {
+        let images: any = [];
+
+        res.data.links.map((link) => {
+          images.push(link);
+        });
+
+        setImageLinks([...imageLinks, ...images]);
+        setLoading(false);
+        setShowConfirmButton(true);
+        setMessage('Imagens upadas com sucesso!');
+      })
+      .catch((err) => {
+        setError(true);
+        setLoading(false);
+        setShowConfirmButton(false);
+        setMessage('Ocorreu algum erro ao enviar as imagens!');
+      });
   };
 
-  const handleInputValue = (index: number, value: string) => {
-    let array = [...inputValueList];
-    array[index] = value;
-    setInputValueList([...array]);
+  const sendDataToApi = async (id) => {
+    setLoading(true);
+
+    const data = {
+      imageLinks,
+    };
+
+    console.log(data);
+    console.log(imageLinks);
+
+    await api
+      .post(`/create-images/${id}`, data, config)
+      .then((res) => {
+        setLoading(false);
+        setMessage('Imagens cadastradas com sucesso!');
+      })
+      .catch((err) => {
+        setMessage('Ocorreu algum erro!');
+        setError(true);
+        setLoading(false);
+      });
   };
 
   const options = data?.map((proj) => ({
@@ -114,35 +166,47 @@ const AtualizarEmp: React.FC = () => {
 
         {enterpriseData ? (
           <Form>
-            {inputList.map((item, index) => (
+            <form encType="multipart/form-data">
+              <label>Selecione as imagens</label>
+              <UploadInput
+                name="images"
+                id="images"
+                type="file"
+                accept="image/png, image/jpeg, image/jpg"
+                multiple
+                onChange={(e) => handleSubmitImage(e.target.files)}
+              />
+              <Button
+                type="button"
+                value="Upload"
+                onClick={() => fileUploadImages(inputValue)}
+              />
+            </form>
+
+
+            {error && <span>DEU ERRO DOIDAO!</span>}
+            {loading && (
               <>
-                <Input
-                  type="text"
-                  value={inputValueList[index]}
-                  onChange={(e) => handleInputValue(index, e.target.value)}
+                <span>Upando imagens...</span>
+                <Preloader
+                  use={ThreeDots}
+                  size={48}
+                  strokeColor="#324286"
+                  strokeWidth={6}
+                  duration={1000}
                 />
-                <span>{inputValueList[index]}</span>
               </>
-            ))}
-            {<span>{inputList.length}</span>}
-
-            <ButtonContainer>
+            )}
+            {message.length > 0 && (
+              <span>{message}</span>
+            )}
+            {showConfirmButton && (
               <Button
                 type="button"
-                value="Adicionar imagem"
-                onClick={() => handleAddInput()}
+                value="Concluir"
+                onClick={() => sendDataToApi(inputValue)}
               />
-              <Button
-                type="button"
-                value="Limpar lista"
-                onClick={() => handleRemoveInput()}
-              />
-            </ButtonContainer>
-
-            <span>ID: {enterpriseData.development.id}</span>
-            <span>{enterpriseData.development.nome}</span>
-            <span>{enterpriseData.development.descricao}</span>
-            <span>{enterpriseData.development.descricao_curta}</span>
+            )}
           </Form>
         ) : (
           <UpdateContainer>
@@ -153,30 +217,5 @@ const AtualizarEmp: React.FC = () => {
     </Container>
   );
 };
-
-// return (
-//   <Container>
-//     <Lista>
-//       {!data ? (
-//         <span>no data man</span>
-//       ) : (
-//         data?.map((item) => (
-//           <DivDados>
-//             <Avatar src={item.banner} alt={item.nome} />
-//             <Data>
-//               <Nome>{item.nome}</Nome>
-//               <Descricao>{item.descricao}...</Descricao>
-//               <Nome>ID: {item.id}</Nome>
-//             </Data>
-
-//             <DivIcon>
-//               <ArrowIcon />
-//             </DivIcon>
-//           </DivDados>
-//         ))
-//       )}
-//     </Lista>
-//   </Container>
-// );
 
 export default AtualizarEmp;
