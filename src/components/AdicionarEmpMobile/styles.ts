@@ -23,7 +23,7 @@ export const Form = styled.form`
 
   /* margin: 24px 0 0 0;
   padding: 16px 16px 120px 16px; */
-  padding: 16px 0 120px 0;
+  padding: 36px 0 120px 0;
 
   border: 1px solid ${lighten(0.4, '#324286')};
   border-radius: 16px;
@@ -45,7 +45,7 @@ export const Title = styled.span`
   text-transform: uppercase;
   font-size: 20px;
 
-  margin: 0 24px 0 0;
+  margin: 0 0 0 0;
 `;
 
 export const DivDetalhes = styled.div`
@@ -221,7 +221,7 @@ export const DivButton = styled.div`
 `;
 
 export const UploadButton = styled.input`
-  width: 100px;
+  width: 88px;
   height: 32px;
 
   outline: 0;
@@ -248,6 +248,7 @@ export const UploadButton = styled.input`
 export const LinkMessage = styled.span`
   font-weight: 500;
   color: ${shade(0.1, '#324286')};
+  margin: 0 0 0 8px;
 `;
 
 export const Separator = styled.div`

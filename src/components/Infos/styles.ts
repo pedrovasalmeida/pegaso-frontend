@@ -234,7 +234,7 @@ export const DivImagemTipo = styled(motion.div)`
   width: 50vw;
   height: 100vh;
 
-  background: url('https://i.imgur.com/ZViQCH1.jpg') no-repeat center center
+  background: url('https://i.imgur.com/n7mYaHC.png') no-repeat center center
     fixed;
   background-size: cover;
 

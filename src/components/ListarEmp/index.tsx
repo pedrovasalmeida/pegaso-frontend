@@ -3,6 +3,10 @@ import api from '../../services/api';
 
 import { Preloader, ThreeDots } from 'react-preloader-icon';
 
+import useWindowDimensions from '../../hooks/useWindowDimensions';
+
+import ListarEmpMobile from '../ListarEmpMobile';
+
 import {
   Container,
   Lista,
@@ -29,6 +33,8 @@ interface EmpreendimentoData {
 const ListarEmp: React.FC = () => {
   const [data, setData] = useState<EmpreendimentoData[] | null>(null);
 
+  const { width } = useWindowDimensions();
+
   const getData = async () => {
     const { data, error } = await api.get('/show-all');
 
@@ -41,46 +47,57 @@ const ListarEmp: React.FC = () => {
     getData();
   }, []);
 
-  return (
-    <Container>
-      <Lista>
-        {!data ? (
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'flex-start',
-              justifyContent: 'center',
-              height: '100vh',
-              width: '100%',
-              marginTop: '100px',
-            }}
-          >
-            <Preloader
-              use={ThreeDots}
-              size={120}
-              strokeWidth={8}
-              strokeColor="#324286"
-              duration={800}
-            />
-          </div>
-        ) : (
-          data?.map((item) => (
-            <LinkRRD to={`/empreendimentos/detalhes/${item.id}`} key={item.id}>
-              <Avatar src={item.banner} alt={item.nome} />
-              <Data>
-                <Nome>{item.nome}</Nome>
-                <Descricao>{item.descricao}...</Descricao>
-                <Nome>ID: {item.id}</Nome>
-              </Data>
+  // if (!data) return <span>Não existem empreendimentos ainda! :(</span>;
 
-              <DivIcon>
-                <ArrowIcon />
-              </DivIcon>
-            </LinkRRD>
-          ))
-        )}
-      </Lista>
-    </Container>
+  return (
+    <>
+      {width < 910 ? (
+        <ListarEmpMobile />
+      ) : (
+        <Container>
+          <Lista>
+            {!data ? (
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  justifyContent: 'center',
+                  height: '100vh',
+                  width: '100%',
+                  marginTop: '100px',
+                }}
+              >
+                <Preloader
+                  use={ThreeDots}
+                  size={120}
+                  strokeWidth={8}
+                  strokeColor="#324286"
+                  duration={800}
+                />
+              </div>
+            ) : (
+              data?.map((item) => (
+                <LinkRRD
+                  to={`/empreendimentos/detalhes/${item.id}`}
+                  key={item.id}
+                >
+                  <Avatar src={item.banner} alt={item.nome} />
+                  <Data>
+                    <Nome>{item.nome}</Nome>
+                    <Descricao>{item.descricao}...</Descricao>
+                    <Nome>ID: {item.id}</Nome>
+                  </Data>
+
+                  <DivIcon>
+                    <ArrowIcon />
+                  </DivIcon>
+                </LinkRRD>
+              ))
+            )}
+          </Lista>
+        </Container>
+      )}
+    </>
   );
 };
 

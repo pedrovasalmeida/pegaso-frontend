@@ -4,7 +4,6 @@ import LoginPage from '../../components/Login';
 
 import { useAuth } from '../../context/AuthContext';
 
-import AdicionarEmp from '../../components/AdicionarEmp';
 import AdicionarEmpMobile from '../../components/AdicionarEmpMobile';
 import AtualizarEmp from '../../components/AtualizarEmp';
 import RemoverEmp from '../../components/RemoverEmp';
@@ -82,6 +81,7 @@ const PainelMobile: React.FC = () => {
     setAtualizar(false);
     setRemover(false);
     setListar(false);
+    setOpenMenu(false);
   };
 
   const handleAtualizar = () => {
@@ -89,6 +89,7 @@ const PainelMobile: React.FC = () => {
     setAtualizar(true);
     setRemover(false);
     setListar(false);
+    setOpenMenu(false);
   };
 
   const handleRemover = () => {
@@ -96,6 +97,7 @@ const PainelMobile: React.FC = () => {
     setAtualizar(false);
     setRemover(true);
     setListar(false);
+    setOpenMenu(false);
   };
 
   const handleListar = () => {
@@ -103,6 +105,7 @@ const PainelMobile: React.FC = () => {
     setAtualizar(false);
     setRemover(false);
     setListar(true);
+    setOpenMenu(false);
   };
 
   const handleMenu = () => {
@@ -197,7 +200,7 @@ const PainelMobile: React.FC = () => {
               <Separator />
 
               <OpcaoMenu onClick={() => handleAtualizar()}>
-                Atualizar empreendimento
+                Adicionar imagens
               </OpcaoMenu>
 
               <Separator />
@@ -231,7 +234,7 @@ const PainelMobile: React.FC = () => {
             )}
             {atualizar && (
               <>
-                <span>Atualizar Empreendimento</span>
+                <AtualizarEmp />
               </>
             )}
           </Data>

@@ -6,17 +6,13 @@ import { Link } from 'react-router-dom';
 import { BsArrowBarRight } from 'react-icons/bs';
 
 export const Container = styled.div`
-  width: 90%;
+  width: 95vw;
 `;
 
 export const Lista = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   margin: 0 0 80px 0;
-
-  @media (max-width: 1548px) {
-    flex-direction: column;
-  }
 `;
 
 export const Item = styled.div`
@@ -24,7 +20,7 @@ export const Item = styled.div`
   align-items: center;
   justify-content: flex-start;
 
-  width: 45%;
+  width: 95%;
 
   margin: 16px 4px;
   position: relative;
@@ -38,7 +34,7 @@ export const LinkRRD = styled(Link)`
   align-items: center;
   justify-content: flex-start;
 
-  width: 45%;
+  width: 85vw;
 
   margin: 16px 4px;
   position: relative;
@@ -53,10 +49,6 @@ export const LinkRRD = styled(Link)`
   &:hover {
     color: #324282;
     text-decoration: none;
-  }
-
-  @media (max-width: 1548px) {
-    width: 90%;
   }
 `;
 
@@ -93,17 +85,16 @@ export const Avatar = styled.img`
 export const Data = styled.div`
   display: flex;
   flex-direction: column;
+  width: 50vw;
 `;
 
 export const Nome = styled.span`
   white-space: nowrap;
-
   text-overflow: ellipsis;
   overflow: hidden;
 
-  line-clamp: 2;
-
-  width: 250px;
+  line-clamp: 1;
+  max-width: 100%;
 
   &:first-child {
     font-weight: bold;
@@ -117,6 +108,5 @@ export const Descricao = styled.span`
   overflow: hidden;
 
   line-clamp: 2;
-
-  width: 50%;
+  max-width: 80%;
 `;

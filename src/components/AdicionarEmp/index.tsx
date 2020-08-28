@@ -158,19 +158,6 @@ const AddEmp2: React.FC = () => {
           />
         </ModalSuccess>
       )}
-      {/* {uploaded && ()} */}
-
-      {/* {modalOpen && (
-        <ModalSuccess>
-          <CloseIcon onClick={() => handleCloseModal()} />
-          <ModalText>Empreendimento criado com sucesso!</ModalText>
-          <ModalButton
-            type="button"
-            value="Confirmar"
-            onClick={() => handleCloseModal()}
-          />
-        </ModalSuccess>
-      )} */}
 
       <DivDetalhes>
         <Input

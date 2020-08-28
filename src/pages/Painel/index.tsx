@@ -10,6 +10,7 @@ import PainelMobile from '../../components/PainelMobile';
 import AdicionarEmp from '../../components/AdicionarEmp';
 import RemoverEmp from '../../components/RemoverEmp';
 import ListarEmp from '../../components/ListarEmp';
+import AtualizarEmp from '../../components/AtualizarEmp';
 import api from '../../services/api';
 
 /** Ícones e imagens */
@@ -198,7 +199,7 @@ const Painel: React.FC = () => {
                 <Separator />
 
                 <OpcaoMenu onClick={() => handleAtualizar()}>
-                  Atualizar empreendimento
+                  Adicionar imagens
                 </OpcaoMenu>
 
                 <Separator />
@@ -230,7 +231,7 @@ const Painel: React.FC = () => {
                 )}
                 {atualizar && (
                   <>
-                    <span>Atualizar Empreendimento</span>
+                    <AtualizarEmp />
                   </>
                 )}
               </Data>
