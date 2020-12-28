@@ -43,7 +43,6 @@ const AddEmp2: React.FC = () => {
   const [isBannerLoading, setIsBannerLoading] = useState(false);
   const [isPosterLoading, setIsPosterLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
 
   const token = localStorage.getItem('@ProjPegaso:token');
 
@@ -132,10 +131,6 @@ const AddEmp2: React.FC = () => {
         return setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  };
-
-  const handleModal = () => {
-    setModalOpen(!modalOpen);
   };
 
   const handleCloseModal = () => {

@@ -10,7 +10,6 @@ import ListarEmpMobile from '../ListarEmpMobile';
 import {
   Container,
   Lista,
-  Item,
   LinkRRD,
   ArrowIcon,
   DivIcon,

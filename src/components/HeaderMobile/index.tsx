@@ -8,7 +8,6 @@ import {
   MenuIcon,
   DivMenu,
   HiddenMenu,
-  LinkRRD,
   LinkRRDHiddenMenu,
   HorizontalSeparator,
 } from './styles';

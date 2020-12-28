@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import api from '../../services/api';
 
 import { Preloader, ThreeDots } from 'react-preloader-icon';
@@ -44,7 +44,6 @@ const AddEk: React.FC = () => {
   const [isBannerLoading, setIsBannerLoading] = useState(false);
   const [isPosterLoading, setIsPosterLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
 
   const token = localStorage.getItem('@ProjPegaso:token');
 
@@ -133,10 +132,6 @@ const AddEk: React.FC = () => {
         return setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  };
-
-  const handleModal = () => {
-    setModalOpen(!modalOpen);
   };
 
   const handleCloseModal = () => {

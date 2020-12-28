@@ -4,7 +4,6 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 import {
   Container,
-  DivInfos,
   DivTitle,
   DivTitleMotion,
   Title,

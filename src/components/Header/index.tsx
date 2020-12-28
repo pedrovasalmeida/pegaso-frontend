@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 
 import useWindowDimensions from '../../hooks/useWindowDimensions';
@@ -18,8 +18,6 @@ import Logo from '../../assets/logo.png';
 import HeaderMobile from '../HeaderMobile';
 
 const Header: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
   const { width } = useWindowDimensions();
   const location = useLocation();
   const history = useHistory();
@@ -34,7 +32,7 @@ const Header: React.FC = () => {
 
   const navigateToHome = useCallback(() => {
     history.push('/');
-  }, []);
+  }, [history]);
 
   return (
     <>

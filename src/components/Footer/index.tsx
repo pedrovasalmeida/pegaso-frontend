@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
     number,
   )}&text=${encodeURIComponent(msg)}`;
 
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const footerOptions = [
     {

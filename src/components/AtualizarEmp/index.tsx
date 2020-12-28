@@ -5,19 +5,10 @@ import { Preloader, ThreeDots } from 'react-preloader-icon';
 
 import {
   Container,
-  Input,
   Lista,
-  DivDados,
-  ArrowIcon,
-  DivIcon,
-  Avatar,
-  Data,
-  Nome,
-  Descricao,
   SelectInput,
   UpdateContainer,
   Form,
-  ButtonContainer,
   Button,
   UploadInput,
 } from './styles';
@@ -98,7 +89,7 @@ const AtualizarEmp: React.FC = () => {
       .then((res) => {
         let images: any = [];
 
-        res.data.links.map((link) => {
+        res.data.links.forEach((link) => {
           images.push(link);
         });
 
@@ -183,7 +174,6 @@ const AtualizarEmp: React.FC = () => {
               />
             </form>
 
-
             {error && <span>DEU ERRO DOIDAO!</span>}
             {loading && (
               <>
@@ -197,9 +187,7 @@ const AtualizarEmp: React.FC = () => {
                 />
               </>
             )}
-            {message.length > 0 && (
-              <span>{message}</span>
-            )}
+            {message.length > 0 && <span>{message}</span>}
             {showConfirmButton && (
               <Button
                 type="button"

@@ -21,10 +21,7 @@ import {
   Container,
   LeftMenu,
   DadosAdmin,
-  Avatar,
   Name,
-  Email,
-  Login,
   OpcaoMenu,
   Separator,
   Data,
@@ -105,7 +102,7 @@ const Painel: React.FC = () => {
     setListar(true);
   };
 
-  const getUserData = async () => {
+  const getUserData = useCallback(async () => {
     if (!userData.id) {
       return;
     }
@@ -120,11 +117,11 @@ const Painel: React.FC = () => {
       .catch((err) => {
         console.log(err);
       });
-  };
+  }, [userData.id]);
 
   useEffect(() => {
     getUserData();
-  }, []);
+  }, [getUserData]);
 
   return (
     <>

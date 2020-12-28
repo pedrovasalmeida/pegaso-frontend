@@ -19,7 +19,6 @@ import {
   FloatContent,
   FloatButton,
   LinkRRD,
-  TestProject,
 } from './styles';
 
 interface Empreendimentos {
@@ -34,7 +33,7 @@ const Projects: React.FC = () => {
   const { results } = useAxios('/show-all');
   let counter = 0.4;
 
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const variants = {
     visible: { opacity: 1 },
@@ -115,6 +114,3 @@ const Projects: React.FC = () => {
 };
 
 export default Projects;
-
-{
-}

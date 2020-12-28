@@ -58,7 +58,7 @@ const Infos: React.FC = () => {
   let history = useHistory();
   const { results } = useAxios(`/show-one/${id}`);
 
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);

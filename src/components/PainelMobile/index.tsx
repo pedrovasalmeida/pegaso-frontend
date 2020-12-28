@@ -16,18 +16,13 @@ import {
   Container,
   LeftMenu,
   DadosAdmin,
-  Avatar,
   Name,
-  Email,
-  Login,
   OpcaoMenu,
   Separator,
   Data,
   MenuIcon,
   CloseIcon,
 } from './styles';
-
-import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 interface UserDataFromStorage {
   id: number;
@@ -65,8 +60,6 @@ const PainelMobile: React.FC = () => {
     }
     return {} as UserDataFromStorage;
   });
-
-  const { width } = useWindowDimensions();
 
   const handleDeslogar = useCallback(() => {
     signOut();
@@ -112,7 +105,7 @@ const PainelMobile: React.FC = () => {
     setOpenMenu(!openMenu);
   };
 
-  const getUserData = async () => {
+  const getUserData = useCallback(async () => {
     if (!userData.id) {
       return;
     }
@@ -127,11 +120,11 @@ const PainelMobile: React.FC = () => {
       .catch((err) => {
         console.log(err);
       });
-  };
+  }, [userData.id]);
 
   useEffect(() => {
     getUserData();
-  }, []);
+  }, [getUserData]);
 
   return (
     <>

@@ -6,7 +6,6 @@ import { Preloader, ThreeDots } from 'react-preloader-icon';
 import {
   Container,
   Lista,
-  Item,
   LinkRRD,
   ArrowIcon,
   DivIcon,

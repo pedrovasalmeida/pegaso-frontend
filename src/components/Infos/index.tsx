@@ -20,7 +20,7 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 import InfosMobile from '../InfosMobile';
 
 const Infos: React.FC = () => {
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   return (
     <>

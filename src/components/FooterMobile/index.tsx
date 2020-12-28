@@ -1,29 +1,20 @@
 import React, { useState } from 'react';
 
-import { motion } from 'framer-motion';
-
 import {
   Container,
   Data,
-  Text,
-  Contact,
   Button,
   WhatsAppIcon,
   PhoneIcon,
   SacIcon,
   EmailIcon,
-  ContactData,
   ContactName,
-  ContactText,
-  HorizontalSeparator,
   LinkRRD,
   Modal,
   CloseIcon,
   TitleModal,
   TextModal,
 } from './styles';
-
-import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 const FooterMobile: React.FC = () => {
   const msg = 'Olá!';
@@ -32,7 +23,6 @@ const FooterMobile: React.FC = () => {
     number,
   )}&text=${encodeURIComponent(msg)}`;
 
-  const { width, height } = useWindowDimensions();
   const [modal, setModal] = useState(false);
   const [title, setTitle] = useState('');
 
