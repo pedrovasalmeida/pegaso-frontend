@@ -1,7 +1,11 @@
 import axios from 'axios';
 
-const local = 'http://localhost:3333';
-const heroku = 'https://withpostgres.herokuapp.com';
+const DatabaseConnectionLink = {
+  local: 'http://localhost:3333',
+  heroku: 'https://withpostgres.herokuapp.com',
+};
+
+const { heroku } = DatabaseConnectionLink;
 
 const api = axios.create({
   baseURL: heroku,
