@@ -168,14 +168,17 @@ export const FloatContent = styled.div`
     padding: 0;
     font-size: 14px;
     color: #fff;
+    text-shadow: 0px 0px 2px black;
   }
 
   > div p {
     margin: 0;
     padding: 0;
     font-size: 32px;
+    font-weight: bold;
     text-transform: uppercase;
     color: #324286;
+    text-shadow: 0px 0px 3px ${shade(0.6, '#324286')};
   }
 
   @media (max-width: 663px) {
@@ -184,27 +187,15 @@ export const FloatContent = styled.div`
     }
 
     > div span:first-child {
-      margin: 0;
-      padding: 0;
-      text-transform: uppercase;
       font-size: 14px;
-      color: #fff;
     }
 
     > div span {
-      margin: 0;
-      padding: 0;
       font-size: 14px;
-
-      color: #fff;
     }
 
     > div p {
-      margin: 0;
-      padding: 0;
       font-size: 26px;
-      text-transform: uppercase;
-      color: #324286;
     }
   }
 
@@ -214,27 +205,15 @@ export const FloatContent = styled.div`
     }
 
     > div span:first-child {
-      margin: 0;
-      padding: 0;
-      text-transform: uppercase;
       font-size: 14px;
-      color: #fff;
     }
 
     > div span {
-      margin: 0;
-      padding: 0;
       font-size: 14px;
-
-      color: #fff;
     }
 
     > div p {
-      margin: 0;
-      padding: 0;
       font-size: 26px;
-      text-transform: uppercase;
-      color: #324286;
     }
   }
 
@@ -244,27 +223,15 @@ export const FloatContent = styled.div`
     }
 
     > div span:first-child {
-      margin: 0;
-      padding: 0;
-      text-transform: uppercase;
       font-size: 14px;
-      color: #fff;
     }
 
     > div span {
-      margin: 0;
-      padding: 0;
       font-size: 14px;
-
-      color: #fff;
     }
 
     > div p {
-      margin: 0;
-      padding: 0;
       font-size: 26px;
-      text-transform: uppercase;
-      color: #324286;
     }
   }
 
@@ -274,27 +241,15 @@ export const FloatContent = styled.div`
     }
 
     > div span:first-child {
-      margin: 0;
-      padding: 0;
-      text-transform: uppercase;
       font-size: 14px;
-      color: #fff;
     }
 
     > div span {
-      margin: 0;
-      padding: 0;
       font-size: 14px;
-
-      color: #fff;
     }
 
     > div p {
-      margin: 0;
-      padding: 0;
       font-size: 22px;
-      text-transform: uppercase;
-      color: #324286;
     }
   }
 `;
