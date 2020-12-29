@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
+
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 
 import {
@@ -33,21 +34,20 @@ export const DivCarouselItem = styled(CarouselItem)`
   transition: all 400ms ease-in-out;
   align-self: center;
 
-  width: 100%;
+  width: 100vw;
 
   background-color: #f8f8f8;
+`;
 
-  > img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-  }
+export const Imagem = styled.img`
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
 `;
 
 export const DivCarouselControl = styled(CarouselControl)`
   display: none;
   background-color: rgba(0, 0, 0, 0.05);
-
   transition: all 400ms ease-in-out;
 `;
 
@@ -176,13 +176,16 @@ export const FloatContent = styled.div`
   }
 
   > div p {
+    color: #324286;
+
     margin: 0;
     padding: 0;
+
     font-size: 32px;
     font-weight: bold;
+
     text-transform: uppercase;
-    color: #324286;
-    text-shadow: 0px 0px 1px ${shade(0.6, '#324286')};
+    text-shadow: 0px 0px 3px ${shade(0.6, '#324286')};
   }
 
   @media (max-width: 663px) {

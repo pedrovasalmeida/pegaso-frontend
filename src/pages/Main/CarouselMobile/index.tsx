@@ -2,18 +2,15 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Preloader, ThreeDots } from 'react-preloader-icon';
-import useAxios from '../../hooks/useAxios';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
+import useAxios from '../../../hooks/useAxios';
 
-/** Versão do componente mobile */
-import CarouselMobile from './CarouselMobile';
-
-import Footer from '../../components/Footer';
+import Footer from '../../../components/Footer';
 
 import {
   Container,
   DivCarousel,
   DivCarouselItem,
+  Imagem,
   DivCarouselControl,
   FloatDiv,
   FloatContent,
@@ -39,18 +36,11 @@ interface ResultsProps {
   isError?: any;
 }
 
-const Main = () => {
-  console.log(
-    'Bem-vindo ao console do Chrome. \nVocê está agora no site da Pegaso! \n*********************** \nUse com cuidado! 😉 \n***********************',
-  );
-
+const MyCarouselMobile = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
-  const { width } = useWindowDimensions();
-
   const { results }: ResultsProps = useAxios('show-all');
-
   if (!results)
     return (
       <Container
@@ -93,60 +83,54 @@ const Main = () => {
         key={item.id}
       >
         <Link to={`/empreendimentos/detalhes/${results[activeIndex].id}`}>
-          <img src={item.banner} alt={item.nome} />
+          <Imagem src={item.banner} alt={item.nome} />
         </Link>
       </DivCarouselItem>
     );
   });
 
   return (
-    <>
-      {width < 1500 ? (
-        <CarouselMobile />
-      ) : (
-        <Container>
-          <FloatDiv>
-            <FloatContent>
-              <div>
-                <span>Pronto para morar</span>
-                <p>{results[activeIndex].nome}</p>
-                <span>{results[activeIndex].descricao_curta}</span>
-              </div>
-              <DivIcons>
-                <LeftArrow onClick={() => previous()} />
-                <RightArrow onClick={() => next()} />
-              </DivIcons>
-            </FloatContent>
-            <Link to={`/empreendimentos/detalhes/${results[activeIndex].id}`}>
-              <FloatButton>
-                <span>Clique aqui para conferir</span>
-              </FloatButton>
-            </Link>
-          </FloatDiv>
-          <DivCarousel
-            activeIndex={activeIndex}
-            next={next}
-            previous={previous}
-            ride="carousel"
-          >
-            {slides}
-            <DivCarouselControl
-              direction="prev"
-              directionText="Previous"
-              onClickHandler={previous}
-            />
-            <DivCarouselControl
-              direction="next"
-              directionText="Next"
-              onClickHandler={next}
-            />
-          </DivCarousel>
+    <Container>
+      <FloatDiv>
+        <FloatContent>
+          <div>
+            <span>Pronto para morar</span>
+            <p>{results[activeIndex].nome}</p>
+            <span>{results[activeIndex].descricao_curta}</span>
+          </div>
+          <DivIcons>
+            <LeftArrow onClick={() => previous()} />
+            <RightArrow onClick={() => next()} />
+          </DivIcons>
+        </FloatContent>
+        <Link to={`/empreendimentos/detalhes/${results[activeIndex].id}`}>
+          <FloatButton>
+            <span>Clique aqui para conferir</span>
+          </FloatButton>
+        </Link>
+      </FloatDiv>
+      <DivCarousel
+        activeIndex={activeIndex}
+        next={next}
+        previous={previous}
+        ride="carousel"
+      >
+        {slides}
+        <DivCarouselControl
+          direction="prev"
+          directionText="Previous"
+          onClickHandler={previous}
+        />
+        <DivCarouselControl
+          direction="next"
+          directionText="Next"
+          onClickHandler={next}
+        />
+      </DivCarousel>
 
-          <Footer />
-        </Container>
-      )}
-    </>
+      <Footer />
+    </Container>
   );
 };
 
-export default Main;
+export default MyCarouselMobile;
