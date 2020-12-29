@@ -14,8 +14,6 @@ import Forgot from './pages/Forgot';
 import Contato from './components/Contato';
 // import Register from './pages/Register';
 
-// import { Container } from './styles';
-
 const Routes: React.FC = () => {
   return (
     <BrowserRouter>
