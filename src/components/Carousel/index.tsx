@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { Preloader, ThreeDots } from 'react-preloader-icon';
 import useAxios from '../../hooks/useAxios';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
-
-import { Preloader, ThreeDots } from 'react-preloader-icon';
 
 import CarouselMobile from '../CarouselMobile';
 
@@ -121,7 +120,7 @@ const MyCarousel = () => {
             activeIndex={activeIndex}
             next={next}
             previous={previous}
-            ride={'carousel'}
+            ride="carousel"
           >
             {slides}
             <DivCarouselControl

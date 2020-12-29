@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
-
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 
 import {
@@ -44,6 +43,7 @@ export const DivCarouselItem = styled(CarouselItem)`
 export const DivCarouselControl = styled(CarouselControl)`
   display: none;
   background-color: rgba(0, 0, 0, 0.05);
+
   transition: all 400ms ease-in-out;
 `;
 

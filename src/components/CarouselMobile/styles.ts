@@ -172,12 +172,15 @@ export const FloatContent = styled.div`
   }
 
   > div p {
+    color: #324286;
+
     margin: 0;
     padding: 0;
+
     font-size: 32px;
     font-weight: bold;
+
     text-transform: uppercase;
-    color: #324286;
     text-shadow: 0px 0px 3px ${shade(0.6, '#324286')};
   }
 
