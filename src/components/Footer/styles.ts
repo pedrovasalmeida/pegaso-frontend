@@ -14,7 +14,7 @@ export const Container = styled.footer`
   display: flex;
   justify-content: space-around;
 
-  height: 56px;
+  height: 40px;
   width: 100vw;
 
   background-color: #fdfdfd;

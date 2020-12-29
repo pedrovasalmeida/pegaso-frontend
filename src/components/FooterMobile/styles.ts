@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { shade } from 'polished';
 import { FaWhatsapp, FaPhoneVolume } from 'react-icons/fa';
@@ -11,6 +11,10 @@ interface ContactTextProps {
   isBigInfo?: boolean;
 }
 
+interface ButtonProps {
+  linkExist?: boolean;
+}
+
 export const Container = styled.footer`
   position: fixed;
   bottom: 0;
@@ -21,7 +25,7 @@ export const Container = styled.footer`
   justify-content: center;
   align-items: center;
 
-  height: 96px;
+  height: 40px;
   width: 100vw;
 
   background-color: #fdfdfd;
@@ -44,7 +48,7 @@ export const Separator = styled.div`
 
 export const Data = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
 `;
@@ -69,12 +73,19 @@ export const LinkRRD = styled(Link)`
   }
 `;
 
-export const Button = styled(motion.a)`
+export const Button = styled(motion.a)<ButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
 
-  width: 150px;
+  ${(props) =>
+    props.linkExist
+      ? css`
+          width: 240px;
+        `
+      : css`
+          width: 150px;
+        `}
   height: auto;
 
   padding: 0 16px;
@@ -100,6 +111,29 @@ export const Button = styled(motion.a)`
     box-shadow: -3px 1px rgba(0, 0, 0, 0.3);
     text-decoration: none;
     color: #222;
+  }
+
+  @media only screen and (max-width: 559px) {
+    ${(props) =>
+      props.linkExist
+        ? css`
+            width: 180px;
+          `
+        : css`
+            width: 150px;
+          `}
+  }
+
+  @media only screen and (max-width: 499px) {
+    width: 120px;
+
+    span {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 360px) {
+    width: 100px;
   }
 `;
 

@@ -6,7 +6,6 @@ import {
   Button,
   WhatsAppIcon,
   PhoneIcon,
-  SacIcon,
   EmailIcon,
   ContactName,
   LinkRRD,
@@ -45,15 +44,15 @@ const FooterMobile: React.FC = () => {
       duration: 0.3,
       modal: false,
     },
-    {
-      nome: 'SAC',
-      info: '31 93333333',
-      linkExist: false,
-      link: '/',
-      icon: <SacIcon />,
-      duration: 0.5,
-      modal: true,
-    },
+    // {
+    //   nome: 'SAC',
+    //   info: '31 93333333',
+    //   linkExist: false,
+    //   link: '/',
+    //   icon: <SacIcon />,
+    //   duration: 0.5,
+    //   modal: true,
+    // },
     {
       nome: 'Vendas',
       info: '31 93333333',
@@ -91,7 +90,10 @@ const FooterMobile: React.FC = () => {
             </>
           ) : (
             <>
-              <TitleModal>Para maiores informações sobre {title}</TitleModal>
+              <TitleModal>
+                Para maiores informações sobre
+                {title}
+              </TitleModal>
               <TextModal>
                 Entre em contato pelo telefone: <br />
                 <strong>31 933333333</strong>
@@ -111,9 +113,10 @@ const FooterMobile: React.FC = () => {
                     animate={{ y: 0 }}
                     transition={{ duration: option.duration }}
                     whileHover={{ translateX: 2 }}
+                    linkExist={option.linkExist}
                   >
                     {option.icon}
-                    <ContactName>{option.nome}</ContactName>
+                    <ContactName>{option.info}</ContactName>
                   </Button>
                 </LinkRRD>
               ) : (
@@ -126,7 +129,7 @@ const FooterMobile: React.FC = () => {
                       onClick={() => handleModal(option.nome)}
                     >
                       {option.icon}
-                      <ContactName>{option.nome}</ContactName>
+                      <ContactName>{option.info}</ContactName>
                     </Button>
                   ) : (
                     <Button
@@ -137,7 +140,7 @@ const FooterMobile: React.FC = () => {
                       whileHover={{ translateX: 2 }}
                     >
                       {option.icon}
-                      <ContactName>{option.nome}</ContactName>
+                      <ContactName>{option.info}</ContactName>
                     </Button>
                   )}
                 </>

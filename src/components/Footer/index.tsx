@@ -10,12 +10,9 @@ import {
   Button,
   WhatsAppIcon,
   PhoneIcon,
-  SacIcon,
   EmailIcon,
   ContactData,
-  ContactName,
   ContactText,
-  HorizontalSeparator,
   LinkRRD,
 } from './styles';
 
@@ -41,14 +38,14 @@ const Footer: React.FC = () => {
       icon: <WhatsAppIcon />,
       duration: 0.3,
     },
-    {
-      nome: 'SAC',
-      info: '31 93333333',
-      linkExist: false,
-      link: '/contato',
-      icon: <SacIcon />,
-      duration: 0.5,
-    },
+    // {
+    //   nome: 'SAC',
+    //   info: '31 93333333',
+    //   linkExist: false,
+    //   link: '/contato',
+    //   icon: <SacIcon />,
+    //   duration: 0.5,
+    // },
     {
       nome: 'Vendas',
       info: '31 93333333',
@@ -93,8 +90,6 @@ const Footer: React.FC = () => {
                     >
                       {option.icon}
                       <ContactData>
-                        <ContactName>{option.nome}</ContactName>
-                        <HorizontalSeparator />
                         <ContactText>{option.info}</ContactText>
                       </ContactData>
                     </Button>
@@ -109,8 +104,6 @@ const Footer: React.FC = () => {
                   >
                     {option.icon}
                     <ContactData>
-                      <ContactName>{option.nome}</ContactName>
-                      <HorizontalSeparator />
                       <ContactText>{option.info}</ContactText>
                     </ContactData>
                   </Button>
