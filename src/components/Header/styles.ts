@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { shade } from 'polished';
 
+/** Components */
+import { motion } from 'framer-motion';
+
 /** Ícones */
-import { FiPlus } from 'react-icons/fi';
+import { FiPlus, FiHelpCircle } from 'react-icons/fi';
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { IoLogoWhatsapp } from 'react-icons/io';
-import { FiHelpCircle } from 'react-icons/fi';
-
-import { motion } from 'framer-motion';
 
 interface Props {
   isVisible?: boolean;
