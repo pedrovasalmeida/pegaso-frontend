@@ -284,7 +284,7 @@ export const LinkRRD = styled(Link)<RouterProps>`
 
     background: #324286;
 
-    transition: all 300ms ease-in;
+    transition: all 400ms ease-in;
   }
 
   &:hover::before {
@@ -297,7 +297,6 @@ export const LinkRRD = styled(Link)<RouterProps>`
 
   &:hover {
     color: ${shade(0.1, `#324286`)};
-    transform: translateX(2px);
   }
 `;
 
