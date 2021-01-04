@@ -27,9 +27,8 @@ const HeaderMobile: React.FC = () => {
     { rota: '/painel', nome: 'PAINEL' },
   ];
 
-  const handleVisible = () => {
+  const handleVisible = () =>
     isVisible ? setIsVisible(false) : setIsVisible(true);
-  };
 
   const handleOutsideClick = () => {
     setIsVisible(false);
@@ -46,11 +45,9 @@ const HeaderMobile: React.FC = () => {
           <>
             <LinkRRDHiddenMenu
               to={option.rota}
-              selected={option.rota === location.pathname ? true : false}
+              selected={option.rota === location.pathname}
             >
-              <Button
-                selected={option.rota === location.pathname ? true : false}
-              >
+              <Button selected={option.rota === location.pathname}>
                 {option.nome}
               </Button>
             </LinkRRDHiddenMenu>
