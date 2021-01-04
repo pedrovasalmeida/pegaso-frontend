@@ -1,9 +1,8 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
 import { Preloader, ThreeDots } from 'react-preloader-icon';
 
-import { useSwipeable } from 'react-swipeable';
 import useAxios from '../../hooks/useAxios';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
