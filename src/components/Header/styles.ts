@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { shade } from 'polished';
 
+/** Components */
+import { motion } from 'framer-motion';
+
 /** Ícones */
-import { FiPlus } from 'react-icons/fi';
+import { FiPlus, FiHelpCircle } from 'react-icons/fi';
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { IoLogoWhatsapp } from 'react-icons/io';
-import { FiHelpCircle } from 'react-icons/fi';
-
-import { motion } from 'framer-motion';
 
 interface Props {
   isVisible?: boolean;
@@ -284,7 +284,7 @@ export const LinkRRD = styled(Link)<RouterProps>`
 
     background: #324286;
 
-    transition: all 300ms ease-in;
+    transition: all 400ms ease-in;
   }
 
   &:hover::before {
@@ -297,7 +297,6 @@ export const LinkRRD = styled(Link)<RouterProps>`
 
   &:hover {
     color: ${shade(0.1, `#324286`)};
-    transform: translateX(2px);
   }
 `;
 

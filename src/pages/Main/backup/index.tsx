@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import useAxios from '../../hooks/useAxios';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
-
 import { Preloader, ThreeDots } from 'react-preloader-icon';
+import useAxios from '../../../hooks/useAxios';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 
-import CarouselMobile from '../CarouselMobile';
+/** Versão do componente mobile */
+import CarouselMobile from './CarouselMobile';
+
+import Footer from '../../../components/Footer';
 
 import {
   Container,
@@ -37,7 +39,11 @@ interface ResultsProps {
   isError?: any;
 }
 
-const MyCarousel = () => {
+const Main = () => {
+  console.log(
+    'Bem-vindo ao console do Chrome. \nVocê está agora no site da Pegaso! \n*********************** \nUse com cuidado! 😉 \n***********************',
+  );
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -121,7 +127,7 @@ const MyCarousel = () => {
             activeIndex={activeIndex}
             next={next}
             previous={previous}
-            ride={'carousel'}
+            ride="carousel"
           >
             {slides}
             <DivCarouselControl
@@ -135,10 +141,12 @@ const MyCarousel = () => {
               onClickHandler={next}
             />
           </DivCarousel>
+
+          <Footer />
         </Container>
       )}
     </>
   );
 };
 
-export default MyCarousel;
+export default Main;

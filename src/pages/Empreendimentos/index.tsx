@@ -1,15 +1,17 @@
-import React from "react";
+import React from 'react';
 
 /** Componentes */
-import Projects from "../../components/Projects";
+import Projects from '../../components/ProjectsMobile';
+import Footer from '../../components/Footer';
 
-import { Container } from "./styles";
+// import { Container } from './styles';
 
 const Empreendimentos: React.FC = () => {
   return (
-    <Container>
+    <>
       <Projects />
-    </Container>
+      <Footer />
+    </>
   );
 };
 

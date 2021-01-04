@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
-
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 
 import {
@@ -12,8 +11,12 @@ import {
 } from 'reactstrap';
 
 export const Container = styled.div`
-  width: auto;
-  height: auto;
+  width: 100vw;
+  height: calc(100vh - 104px);
+
+  margin-top: 64px;
+
+  overflow: hidden;
 `;
 
 export const DivCarousel = styled(Carousel)`
@@ -44,6 +47,7 @@ export const DivCarouselItem = styled(CarouselItem)`
 export const DivCarouselControl = styled(CarouselControl)`
   display: none;
   background-color: rgba(0, 0, 0, 0.05);
+
   transition: all 400ms ease-in-out;
 `;
 
@@ -168,14 +172,17 @@ export const FloatContent = styled.div`
     padding: 0;
     font-size: 14px;
     color: #fff;
+    text-shadow: 0px 0px 2px black;
   }
 
   > div p {
     margin: 0;
     padding: 0;
     font-size: 32px;
+    font-weight: bold;
     text-transform: uppercase;
     color: #324286;
+    text-shadow: 0px 0px 1px ${shade(0.6, '#324286')};
   }
 
   @media (max-width: 663px) {
@@ -184,27 +191,15 @@ export const FloatContent = styled.div`
     }
 
     > div span:first-child {
-      margin: 0;
-      padding: 0;
-      text-transform: uppercase;
       font-size: 14px;
-      color: #fff;
     }
 
     > div span {
-      margin: 0;
-      padding: 0;
       font-size: 14px;
-
-      color: #fff;
     }
 
     > div p {
-      margin: 0;
-      padding: 0;
       font-size: 26px;
-      text-transform: uppercase;
-      color: #324286;
     }
   }
 
@@ -214,27 +209,15 @@ export const FloatContent = styled.div`
     }
 
     > div span:first-child {
-      margin: 0;
-      padding: 0;
-      text-transform: uppercase;
       font-size: 14px;
-      color: #fff;
     }
 
     > div span {
-      margin: 0;
-      padding: 0;
       font-size: 14px;
-
-      color: #fff;
     }
 
     > div p {
-      margin: 0;
-      padding: 0;
       font-size: 26px;
-      text-transform: uppercase;
-      color: #324286;
     }
   }
 
@@ -244,27 +227,15 @@ export const FloatContent = styled.div`
     }
 
     > div span:first-child {
-      margin: 0;
-      padding: 0;
-      text-transform: uppercase;
       font-size: 14px;
-      color: #fff;
     }
 
     > div span {
-      margin: 0;
-      padding: 0;
       font-size: 14px;
-
-      color: #fff;
     }
 
     > div p {
-      margin: 0;
-      padding: 0;
       font-size: 26px;
-      text-transform: uppercase;
-      color: #324286;
     }
   }
 
@@ -274,27 +245,15 @@ export const FloatContent = styled.div`
     }
 
     > div span:first-child {
-      margin: 0;
-      padding: 0;
-      text-transform: uppercase;
       font-size: 14px;
-      color: #fff;
     }
 
     > div span {
-      margin: 0;
-      padding: 0;
       font-size: 14px;
-
-      color: #fff;
     }
 
     > div p {
-      margin: 0;
-      padding: 0;
       font-size: 22px;
-      text-transform: uppercase;
-      color: #324286;
     }
   }
 `;

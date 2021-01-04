@@ -2,7 +2,7 @@ import useSWR from 'swr';
 import api from '../services/api';
 
 const fetcher = async (url: string) =>
-  await api
+  api
     .get(url)
     .then((res) => res.data)
     .catch((err) => err);

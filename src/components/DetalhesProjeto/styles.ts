@@ -27,9 +27,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 99vw;
+  width: 100%;
+  height: auto;
 
-  padding: 0 0 60px 0;
+  padding-top: 60px;
+  padding-bottom: 60px;
 `;
 
 export const Imagem = styled.img`

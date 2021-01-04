@@ -1,6 +1,10 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 import { motion } from 'framer-motion';
+
+interface ScreenSizeProps {
+  width: number;
+}
 
 interface BackgroundProps {
   url?: string;
@@ -8,10 +12,11 @@ interface BackgroundProps {
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: calc(100vh - 104px);
+
+  width: 100%;
+  height: auto;
 
   margin-top: 64px;
 
@@ -20,21 +25,8 @@ export const Container = styled.div`
 
 export const DivInfos = styled.div`
   display: flex;
-
   flex-direction: column;
   align-items: center;
-
-  width: auto;
-  max-width: 40%;
-  height: calc(100vh - 104px);
-
-  /* @media (max-width: 897px) {
-  }
-
-  @media (max-width: 1069px) {
-    width: 98%;
-    padding: 0 0 8px 0;
-  } */
 `;
 
 export const DivTitle = styled(motion.div)`
@@ -47,14 +39,15 @@ export const DivTitleMotion = styled(motion.div)`
   width: auto;
   height: auto;
 
-  margin: 0 0 32px 0;
+  margin-top: 40px;
+  margin-bottom: 10px;
 `;
 
-export const Title = styled.span`
+export const Title = styled.span<ScreenSizeProps>`
   width: auto;
   border-bottom: 8px solid #324286;
 
-  font-size: 40px;
+  font-size: ${(props) => (props.width < 346 ? '34px' : '40px')};
   font-weight: bold;
 
   color: #333;
@@ -63,10 +56,10 @@ export const Title = styled.span`
 `;
 
 export const DivDescription = styled(motion.div)`
-  width: 60%;
+  width: 80vw;
   height: auto;
 
-  margin: 16px 0 0 0;
+  margin: 16px 0;
 `;
 
 export const Text = styled.span`
@@ -80,54 +73,15 @@ export const DivCategorias = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 
-  width: 60%;
+  width: 90%;
+  height: auto;
 
-  padding: 16px 0;
+  overflow: hidden;
 
   > span:first-child {
     margin: 16px 0 0 0;
   }
-
-  @media (max-width: 897px) {
-    align-items: center;
-
-    > span:first-child {
-      margin: 0;
-      font-size: 32px;
-    }
-  }
-
-  /* @media (max-width: 1063px) {
-    width: 90%;
-  }
-
-  @media (max-width: 897px) {
-    margin: 80px 0 0 0;
-  }
-
-  @media (max-width: 865px) {
-    position: absolute;
-    bottom: 40px;
-    left: 32px;
-  }
-
-  @media (max-width: 677px) {
-    margin: 32px 0 0 0;
-    position: relative;
-    width: 80vw;
-  }
-
-  @media (max-width: 360px) {
-    margin: 32px 0 0 0;
-    position: relative;
-    width: 60vw;
-
-    > span:first-child {
-      font-size: 22px;
-    }
-  } */
 `;
 
 export const SubDivCategorias = styled(motion.div)`
@@ -136,32 +90,6 @@ export const SubDivCategorias = styled(motion.div)`
   align-items: center;
   justify-content: center;
   text-align: center;
-
-  @media (max-width: 897px) {
-    flex-direction: column;
-
-    align-items: center;
-
-    .separator {
-      display: none;
-    }
-  }
-
-  /* @media (max-width: 568px) {
-    flex-direction: column;
-
-    .separator {
-      display: none;
-    }
-  }
-
-  @media (max-width: 360px) {
-    flex-direction: column;
-
-    .separator {
-      display: none;
-    }
-  } */
 `;
 
 export const CatTitle = styled.span`
@@ -172,19 +100,27 @@ export const CatTitle = styled.span`
 `;
 
 export const Categoria = styled(motion.div)`
-  width: auto;
-
   > p {
     font-size: 16px;
     text-transform: uppercase;
+
     color: #324286;
+
+    line-height: 42px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom-width: 1px;
+    ]border-bottom-color: #324286;
   }
 
   > span {
-    width: 100%;
     display: flex;
-    font-size: 14px;
     text-align: justify;
+
+    width: 100%;
+    font-size: 14px;
+
+    margin-bottom: 20px;
   }
 
   /* @media (max-width: 360px) {
@@ -233,29 +169,22 @@ export const TextImage = styled.span`
   font-size: 14px;
 `;
 
-export const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+export const DivImagemTipo = styled(motion.div)<BackgroundProps>`
+  /* margin: 16px 0 100px 0; */
+
+  height: calc(100vh - 190px);
+  width: 100vw;
+
+  background: url(${(props) => props.url}) no-repeat center center fixed;
+  background-size: cover;
 `;
 
-export const DivImagemTipo = styled.div<BackgroundProps>`
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+export const DivBackground = styled.div<BackgroundProps>`
+  overflow-x: hidden;
 
-  height: calc(100vh - 104px);
+  height: 100vh;
+  width: 100%;
 
-  > img {
-    height: 100%;
-    width: 1080px;
-    opacity: 0;
-
-    object-fit: fill;
-
-    animation: ${fadeIn} 3s ease-in-out 0.5s forwards;
-  }
+  background: url(${(props) => props.url}) no-repeat center center fixed;
+  background-size: cover;
 `;

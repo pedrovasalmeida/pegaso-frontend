@@ -1,9 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-/** Header && Footer*/
+/** Header */
 import Header from './components/Header';
-import Footer from './components/Footer';
 
 /** Páginas */
 import Main from './pages/Main';
@@ -15,13 +14,10 @@ import Forgot from './pages/Forgot';
 import Contato from './components/Contato';
 // import Register from './pages/Register';
 
-// import { Container } from './styles';
-
 const Routes: React.FC = () => {
   return (
     <BrowserRouter>
       <Header />
-      <Footer />
       <Switch>
         <Route path="/" exact component={Main} />
         <Route path="/quem-somos" exact component={QuemSomos} />

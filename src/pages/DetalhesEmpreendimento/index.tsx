@@ -1,16 +1,12 @@
-import React from "react";
+import React from 'react';
 
 /** Componentes */
-import DetalhesProjeto from "../../components/DetalhesProjeto";
+import DetalhesProjeto from '../../components/DetalhesProjeto';
 
-import { Container } from "./styles";
+// import { Container } from './styles';
 
 const DetalhesEmpreendimento: React.FC = () => {
-  return (
-    <Container>
-      <DetalhesProjeto />
-    </Container>
-  );
+  return <DetalhesProjeto />;
 };
 
 export default DetalhesEmpreendimento;

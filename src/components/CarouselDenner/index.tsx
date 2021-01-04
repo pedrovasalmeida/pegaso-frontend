@@ -7,8 +7,6 @@ import { useSwipeable } from 'react-swipeable';
 import { Preloader, ThreeDots } from 'react-preloader-icon';
 import useAxios from '../../hooks/useAxios';
 
-import Footer from '../../components/Footer';
-
 import {
   Carousel,
   Container,
@@ -89,33 +87,37 @@ const CarouselDenner: React.FC = () => {
     );
   }
   return (
-    <>
-      <Carousel {...handlers} style={{ cursor: 'grab' }}>
-        {results.map((item) => (
-          <Container key={item.id} sliding={sliding} dir={dir}>
-            <Imagem src={item.banner} alt={item.nome} />
-          </Container>
-        ))}
+    <Carousel {...handlers} style={{ cursor: 'grab' }}>
+      {results.map((item) => (
+        <Container
+          key={item.id}
+          sliding={sliding}
+          dir={dir}
+          onClick={() => console.log('evento clique')}
+        >
+          <Imagem src={item.banner} alt={item.nome} />
+        </Container>
+      ))}
 
-        <FloatDiv>
-          <FloatContent>
-            <div>
-              <span>Pronto para morar</span>
-              <p>{results[sliding].nome}</p>
-              <span>{results[sliding].descricao_curta}</span>
-            </div>
-            <DivIcons>
-              <LeftArrow onClick={() => handleBack()} />
-              <RightArrow onClick={() => handleNext()} />
-            </DivIcons>
-          </FloatContent>
-          <Link to={`/empreendimentos/detalhes/${results[sliding].id}`}>
-            <FloatButton>
-              <span>Clique aqui para conferir</span>
-            </FloatButton>
-          </Link>
-        </FloatDiv>
-        {/* {results.length >= 1 && (
+      <FloatDiv>
+        <FloatContent>
+          <div>
+            <span>Pronto para morar</span>
+            <p>{results[sliding].nome}</p>
+            <span>{results[sliding].descricao_curta}</span>
+          </div>
+          <DivIcons>
+            <LeftArrow onClick={() => handleBack()} />
+            <RightArrow onClick={() => handleNext()} />
+          </DivIcons>
+        </FloatContent>
+        <Link to={`/empreendimentos/detalhes/${results[sliding].id}`}>
+          <FloatButton>
+            <span>Clique aqui para conferir</span>
+          </FloatButton>
+        </Link>
+      </FloatDiv>
+      {/* {results.length >= 1 && (
           <>
             <ButtonNext>
               <IoIosArrowForward onClick={handleNext} className="icon" />
@@ -125,9 +127,7 @@ const CarouselDenner: React.FC = () => {
             </ButtonBack>
           </>
         )} */}
-      </Carousel>
-      <Footer />
-    </>
+    </Carousel>
   );
 };
 export default CarouselDenner;

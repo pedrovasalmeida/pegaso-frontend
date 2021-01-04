@@ -1,5 +1,15 @@
-# Sistema Web - FRONT-END
+# Pegaso - Front-end
 
-Projeto desenvolvido utilizando ReactJS e Typescript.
+Projeto desenvolvido utilizando algumas tecnologias como:
+- **ReactJS**
+- **TypeScript**
+- **Context API**
+- **Axios**
+- **Styled Components**
+- **React Router DOM** (and **History**)
 
-Preview: [Projeto - Pegaso](https://pegaso.netlify.app/).
+---
+
+## Preview
+
+Veja um preview do projeto aqui: [Pegaso](https://pegaso.vercel.app/).

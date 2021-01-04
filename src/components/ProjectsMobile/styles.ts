@@ -1,16 +1,22 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade } from 'polished';
 import { Link } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
+
+interface FullImageProps {
+  width: number;
+}
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  width: 95vw;
-  height: 100vh;
+  width: 100%;
+  height: auto;
+
+  padding-top: 70px;
 `;
 
 export const LinkRRD = styled(Link)``;
@@ -87,7 +93,7 @@ export const ExternalImage = styled.div`
   }
 `;
 
-export const FullImage = styled.div`
+export const FullImage = styled.div<FullImageProps>`
   width: 100%;
   height: 100%;
 
@@ -98,6 +104,13 @@ export const FullImage = styled.div`
 
     border-top-right-radius: 16px;
     border-bottom-right-radius: 16px;
+
+    ${(props) =>
+      props.width < 970 &&
+      css`
+        border-top-left-radius: 16px;
+        border-bottom-left-radius: 16px;
+      `}
   }
 `;
 

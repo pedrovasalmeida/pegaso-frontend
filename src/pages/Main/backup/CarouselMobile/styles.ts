@@ -1,182 +1,63 @@
 import styled from 'styled-components';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { shade } from 'polished';
 
-export const NEXT = 'NEXT';
-export const PREV = 'PREV';
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 
-export const Carousel = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+import {
+  Carousel,
+  CarouselItem,
+  CarouselControl,
+  CarouselIndicators,
+  CarouselCaption,
+} from 'reactstrap';
 
-  width: 100%;
-  height: auto;
-
-  overflow: hidden;
-
-  * {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-`;
-
-interface IContainerProps {
-  sliding: number;
-  dir: string;
-}
-
-export const Container = styled.div<IContainerProps>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  min-width: 100vw;
+export const Container = styled.div`
+  width: 100vw;
   height: calc(100vh - 104px);
 
   margin-top: 64px;
 
-  cursor: grab;
+  overflow: hidden;
+`;
 
-  transition: transform 1s ease;
-  transform: ${(props) =>
-    props.sliding
-      ? `translateX(calc(-100vw * ${props.sliding}))`
-      : `translateX(0%)`};
+export const DivCarousel = styled(Carousel)`
+  transition: all 400ms ease-in-out;
 
-  @media only screen and (max-width: 1000px) {
-    flex-direction: column;
-  }
+  width: 100vw;
+
+  margin: 0;
+  padding: 0;
+`;
+
+export const DivCarouselItem = styled(CarouselItem)`
+  height: calc(100vh - 56px);
+  transition: all 400ms ease-in-out;
+  align-self: center;
+
+  width: 100vw;
+
+  background-color: #f8f8f8;
 `;
 
 export const Imagem = styled.img`
-  height: auto;
-  width: auto;
-  max-width: 100%;
-
-  object-fit: contain;
-
-  pointer-events: none;
-  transition: 0.5s all;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
 `;
 
-export const Describe = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 40%;
-  padding: 30px;
-  cursor: grab;
-
-  @media only screen and (max-width: 1000px) {
-    width: 90%;
-    min-width: 350px;
-  }
+export const DivCarouselControl = styled(CarouselControl)`
+  display: none;
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: all 400ms ease-in-out;
 `;
 
-export const Title = styled.span`
-  color: ${(props) => props.theme.color};
-  font-size: 50px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.5s all;
-
-  @media only screen and (max-width: 600px) {
-    font-size: 40px;
-  }
-
-  &:hover {
-    transition: 0.5s all;
-    color: ${(props) => props.theme.primary};
-  }
+export const DivCarouselIndicators = styled(CarouselIndicators)`
+  transition: all 400ms ease-in-out;
 `;
 
-export const CreatedBy = styled.span`
-  color: ${(props) => props.theme.color};
-  margin-top: 50px;
-
-  b {
-    cursor: pointer;
-    transition: 0.5s all;
-
-    &:hover {
-      transition: 0.5s all;
-      color: ${(props) => props.theme.primary};
-    }
-  }
-`;
-
-export const ListTag = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 20px;
-`;
-
-export const Tag = styled.span`
-  color: ${(props) => props.theme.background};
-  background-color: ${(props) => props.theme.color};
-  padding: 5px 20px;
-  font-weight: 600;
-  font-size: 12px;
-  border-radius: 50px;
-  margin-right: 20px;
-  cursor: pointer;
-  transition: 0.5s all;
-
-  &:hover {
-    transition: 0.5s all;
-    background-color: ${(props) => props.theme.primary};
-  }
-`;
-
-export const ButtonNext = styled.span`
-  display: flex;
-  position: absolute;
-  right: 20px;
-  font-size: 50px;
-  color: ${(props) => props.theme.color}5;
-  padding: 0;
-
-  @media only screen and (max-width: 600px) {
-    font-size: 30px;
-    right: 10px;
-  }
-
-  .icon {
-    cursor: pointer;
-
-    &:hover {
-      color: ${(props) => props.theme.color}8;
-    }
-  }
-`;
-
-export const ButtonBack = styled.span`
-  display: flex;
-  position: absolute;
-  left: 20px;
-  font-size: 50px;
-  color: ${(props) => props.theme.color}5;
-  padding: 0;
-
-  @media only screen and (max-width: 600px) {
-    font-size: 30px;
-    left: 10px;
-  }
-
-  .icon {
-    cursor: pointer;
-  }
-
-  &:hover {
-    color: ${(props) => props.theme.color}8;
-  }
+export const DivCarouselCaption = styled(CarouselCaption)`
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: all 400ms ease-in-out;
 `;
 
 export const FloatDiv = styled.div`
@@ -295,13 +176,16 @@ export const FloatContent = styled.div`
   }
 
   > div p {
+    color: #324286;
+
     margin: 0;
     padding: 0;
+
     font-size: 32px;
     font-weight: bold;
+
     text-transform: uppercase;
-    color: #324286;
-    text-shadow: 0px 0px 1px ${shade(0.6, '#324286')};
+    text-shadow: 0px 0px 3px ${shade(0.6, '#324286')};
   }
 
   @media (max-width: 663px) {
