@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useSwipeable } from 'react-swipeable';
 
+// import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 import { Preloader, ThreeDots } from 'react-preloader-icon';
 import useAxios from '../../hooks/useAxios';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
-
-/** Versão do componente mobile */
-import CarouselMobile from './CarouselMobile';
 
 import Footer from '../../components/Footer';
 
 import {
+  Carousel,
   Container,
-  DivCarousel,
-  DivCarouselItem,
-  DivCarouselControl,
+  Imagem,
   FloatDiv,
   FloatContent,
   FloatButton,
@@ -39,21 +37,38 @@ interface ResultsProps {
   isError?: any;
 }
 
-const Main = () => {
-  console.log(
-    'Bem-vindo ao console do Chrome. \nVocê está agora no site da Pegaso! \n*********************** \nUse com cuidado! 😉 \n***********************',
-  );
-
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [animating, setAnimating] = useState(false);
-
-  const { width } = useWindowDimensions();
+const CarouselDenner: React.FC = () => {
+  const [sliding, setSliding] = useState(0);
+  const [dir, setDir] = useState('NEXT');
 
   const { results }: ResultsProps = useAxios('show-all');
 
-  if (!results)
+  const handleNext = useCallback(() => {
+    if (sliding !== results.length - 1) {
+      setSliding(sliding + 1);
+    } else {
+      setSliding(0);
+    }
+  }, [sliding, setSliding, results]);
+
+  const handleBack = useCallback(() => {
+    if (sliding !== 0) {
+      setSliding(sliding - 1);
+    } else {
+      setSliding(results.length - 1);
+    }
+  }, [sliding, setSliding, results]);
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handleBack(),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
+
+  if (!results) {
     return (
-      <Container
+      <div
         style={{
           display: 'flex',
           marginTop: '150px',
@@ -70,83 +85,54 @@ const Main = () => {
           strokeColor="#262626"
           duration={2000}
         />
-      </Container>
+      </div>
     );
-
-  const next = () => {
-    if (animating) return;
-    const nextIndex = activeIndex === results.length - 1 ? 0 : activeIndex + 1;
-    setActiveIndex(nextIndex);
-  };
-
-  const previous = () => {
-    if (animating) return;
-    const nextIndex = activeIndex === 0 ? results.length - 1 : activeIndex - 1;
-    setActiveIndex(nextIndex);
-  };
-
-  const slides = results?.map((item: Empreendimentos) => {
-    return (
-      <DivCarouselItem
-        onExiting={() => setAnimating(true)}
-        onExited={() => setAnimating(false)}
-        key={item.id}
-      >
-        <Link to={`/empreendimentos/detalhes/${results[activeIndex].id}`}>
-          <img src={item.banner} alt={item.nome} />
-        </Link>
-      </DivCarouselItem>
-    );
-  });
-
+  }
   return (
     <>
-      {width < 1500 ? (
-        <CarouselMobile />
-      ) : (
-        <Container>
-          <FloatDiv>
-            <FloatContent>
-              <div>
-                <span>Pronto para morar</span>
-                <p>{results[activeIndex].nome}</p>
-                <span>{results[activeIndex].descricao_curta}</span>
-              </div>
-              <DivIcons>
-                <LeftArrow onClick={() => previous()} />
-                <RightArrow onClick={() => next()} />
-              </DivIcons>
-            </FloatContent>
-            <Link to={`/empreendimentos/detalhes/${results[activeIndex].id}`}>
-              <FloatButton>
-                <span>Clique aqui para conferir</span>
-              </FloatButton>
-            </Link>
-          </FloatDiv>
-          <DivCarousel
-            activeIndex={activeIndex}
-            next={next}
-            previous={previous}
-            ride="carousel"
+      <Carousel {...handlers} style={{ cursor: 'grab' }}>
+        {results.map((item) => (
+          <Container
+            key={item.id}
+            sliding={sliding}
+            dir={dir}
+            onClick={() => console.log('evento clique')}
           >
-            {slides}
-            <DivCarouselControl
-              direction="prev"
-              directionText="Previous"
-              onClickHandler={previous}
-            />
-            <DivCarouselControl
-              direction="next"
-              directionText="Next"
-              onClickHandler={next}
-            />
-          </DivCarousel>
+            <Imagem src={item.banner} alt={item.nome} />
+          </Container>
+        ))}
 
-          <Footer />
-        </Container>
-      )}
+        <FloatDiv>
+          <FloatContent>
+            <div>
+              <span>Pronto para morar</span>
+              <p>{results[sliding].nome}</p>
+              <span>{results[sliding].descricao_curta}</span>
+            </div>
+            <DivIcons>
+              <LeftArrow onClick={() => handleBack()} />
+              <RightArrow onClick={() => handleNext()} />
+            </DivIcons>
+          </FloatContent>
+          <Link to={`/empreendimentos/detalhes/${results[sliding].id}`}>
+            <FloatButton>
+              <span>Clique aqui para conferir</span>
+            </FloatButton>
+          </Link>
+        </FloatDiv>
+        {/* {results.length >= 1 && (
+          <>
+            <ButtonNext>
+              <IoIosArrowForward onClick={handleNext} className="icon" />
+            </ButtonNext>
+            <ButtonBack>
+              <IoIosArrowBack onClick={handleBack} className="icon" />
+            </ButtonBack>
+          </>
+        )} */}
+      </Carousel>
+      <Footer />
     </>
   );
 };
-
-export default Main;
+export default CarouselDenner;

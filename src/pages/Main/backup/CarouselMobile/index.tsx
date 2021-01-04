@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Preloader, ThreeDots } from 'react-preloader-icon';
-import useAxios from '../../../hooks/useAxios';
+import useAxios from '../../../../hooks/useAxios';
 
-import Footer from '../../../components/Footer';
+import Footer from '../../../../components/Footer';
 
 import {
   Container,
@@ -36,11 +36,12 @@ interface ResultsProps {
   isError?: any;
 }
 
-const MyCarouselMobile = () => {
+const MyCarouselMobile: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
   const { results }: ResultsProps = useAxios('show-all');
+
   if (!results)
     return (
       <Container
@@ -109,6 +110,7 @@ const MyCarouselMobile = () => {
           </FloatButton>
         </Link>
       </FloatDiv>
+
       <DivCarousel
         activeIndex={activeIndex}
         next={next}
