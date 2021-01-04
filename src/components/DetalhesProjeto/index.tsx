@@ -1,7 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
+import { Preloader, ThreeDots } from 'react-preloader-icon';
+
+import { useSwipeable } from 'react-swipeable';
 import useAxios from '../../hooks/useAxios';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
+
+import DetalhesProjetoMobile from '../DetalhesProjetoMobile';
+
+import Footer from '../Footer';
 
 import {
   Container,
@@ -22,10 +30,6 @@ import {
   BackButton,
   BackIcon,
 } from './styles';
-
-import useWindowDimensions from '../../hooks/useWindowDimensions';
-
-import DetalhesProjetoMobile from '../DetalhesProjetoMobile';
 
 interface Empreendimentos {
   development: {
@@ -54,8 +58,8 @@ interface Plantas {
 }
 
 const Infos: React.FC = () => {
-  let { id } = useParams();
-  let history = useHistory();
+  const { id } = useParams();
+  const history = useHistory();
   const { results } = useAxios(`/show-one/${id}`);
 
   const { width } = useWindowDimensions();
@@ -65,16 +69,24 @@ const Infos: React.FC = () => {
 
   if (!results)
     return (
-      <Container
+      <div
         style={{
-          flex: 1,
           display: 'flex',
+          marginTop: '60px',
           alignItems: 'center',
           justifyContent: 'center',
+          width: '100vw',
+          height: '100vh',
         }}
       >
-        <p>Carregando data...</p>
-      </Container>
+        <Preloader
+          use={ThreeDots}
+          size={120}
+          strokeWidth={6}
+          strokeColor="#262626"
+          duration={2000}
+        />
+      </div>
     );
 
   const images = results.images.map((item) => {
@@ -144,7 +156,7 @@ const Infos: React.FC = () => {
                 activeIndex={activeIndex}
                 next={next}
                 previous={previous}
-                ride={'carousel'}
+                ride="carousel"
               >
                 {images}
                 <DivCarouselControl
@@ -162,6 +174,8 @@ const Infos: React.FC = () => {
           )}
         </Container>
       )}
+
+      <Footer />
     </>
   );
 };
