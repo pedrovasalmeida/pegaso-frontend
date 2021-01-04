@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useSwipeable } from 'react-swipeable';
@@ -92,12 +92,7 @@ const CarouselDenner: React.FC = () => {
     <>
       <Carousel {...handlers} style={{ cursor: 'grab' }}>
         {results.map((item) => (
-          <Container
-            key={item.id}
-            sliding={sliding}
-            dir={dir}
-            onClick={() => console.log('evento clique')}
-          >
+          <Container key={item.id} sliding={sliding} dir={dir}>
             <Imagem src={item.banner} alt={item.nome} />
           </Container>
         ))}
