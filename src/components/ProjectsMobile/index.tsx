@@ -1,8 +1,8 @@
 import React from 'react';
 
-import useAxios from '../../hooks/useAxios';
-
 import { Preloader, ThreeDots } from 'react-preloader-icon';
+import useAxios from '../../hooks/useAxios';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 import {
   Container,
@@ -10,6 +10,7 @@ import {
   Subtitle,
   DivProjects,
   Project,
+  ExternalImage,
   FullImage,
   FloatDiv,
   FloatContent,
@@ -27,7 +28,7 @@ interface Empreendimentos {
 
 const ProjectsMobile: React.FC = () => {
   const { results } = useAxios('/show-all');
-  let counter = 0.4;
+  const { width } = useWindowDimensions();
 
   const variants = {
     visible: { opacity: 1 },
@@ -51,7 +52,6 @@ const ProjectsMobile: React.FC = () => {
           />
         ) : (
           results.map((item) => {
-            counter = counter + 0.1;
             return (
               <LinkRRD
                 to={`/empreendimentos/detalhes/${item.id}`}
@@ -59,13 +59,19 @@ const ProjectsMobile: React.FC = () => {
               >
                 <Project
                   animate={{ x: 0 }}
-                  transition={{ duration: counter }}
+                  transition={{ duration: 0.3 }}
                   whileHover={{
                     y: -7,
                     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))',
                   }}
                 >
-                  <FullImage>
+                  {width > 970 && (
+                    <ExternalImage>
+                      <img src={item.poster} alt={item.nome} />
+                    </ExternalImage>
+                  )}
+
+                  <FullImage width={width}>
                     <img src={item.banner} alt={item.nome} />
                   </FullImage>
                   <FloatDiv
@@ -74,7 +80,7 @@ const ProjectsMobile: React.FC = () => {
                       scale: 0.95,
                     }}
                     initial="hidden"
-                    animate={'visible'}
+                    animate="visible"
                     variants={variants}
                     transition={{ duration: 0.25 }}
                   >
