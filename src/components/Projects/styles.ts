@@ -9,6 +9,9 @@ export const Container = styled.div`
   flex-direction: column;
 
   width: 100%;
+  height: auto;
+
+  padding-top: 80px;
 `;
 
 export const LinkRRD = styled(Link)``;

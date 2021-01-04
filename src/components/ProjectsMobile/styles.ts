@@ -9,8 +9,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  width: 95vw;
-  height: 100vh;
+  width: 100%;
+  height: auto;
+
+  padding-top: 70px;
 `;
 
 export const LinkRRD = styled(Link)``;

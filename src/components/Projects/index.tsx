@@ -1,9 +1,9 @@
 import React from 'react';
 
+import { Preloader, ThreeDots } from 'react-preloader-icon';
 import useAxios from '../../hooks/useAxios';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
-
-import { Preloader, ThreeDots } from 'react-preloader-icon';
+import Footer from '../Footer';
 
 import ProjectsMobile from '../ProjectsMobile';
 
@@ -31,7 +31,7 @@ interface Empreendimentos {
 
 const Projects: React.FC = () => {
   const { results } = useAxios('/show-all');
-  let counter = 0.4;
+  const counter = 0.4;
 
   const { width } = useWindowDimensions();
 
@@ -42,8 +42,8 @@ const Projects: React.FC = () => {
 
   return (
     <>
-      {width < 1571 ? (
-        <ProjectsMobile />
+      <ProjectsMobile />
+      {/* {width < 1571 ? (
       ) : (
         <Container>
           <DivTitle animate={{ x: 0 }} transition={{ duration: 1.2 }}>
@@ -61,7 +61,7 @@ const Projects: React.FC = () => {
               />
             ) : (
               results.map((item) => {
-                counter = counter + 0.1;
+                counter += 0.1;
                 return (
                   <LinkRRD
                     to={`/empreendimentos/detalhes/${item.id}`}
@@ -87,7 +87,7 @@ const Projects: React.FC = () => {
                           scale: 0.95,
                         }}
                         initial="hidden"
-                        animate={'visible'}
+                        animate="visible"
                         variants={variants}
                         transition={{ duration: 0.25 }}
                       >
@@ -108,7 +108,8 @@ const Projects: React.FC = () => {
             )}
           </DivProjects>
         </Container>
-      )}
+      )} */}
+      <Footer />
     </>
   );
 };
