@@ -55,18 +55,14 @@ const Header: React.FC = () => {
                   <LinkRRD
                     key={option.nome}
                     to={option.rota}
-                    selected={option.rota === location.pathname ? true : false}
+                    selected={option.rota === location.pathname}
                   >
-                    <Button
-                      selected={
-                        option.rota === location.pathname ? true : false
-                      }
-                    >
+                    <Button selected={option.rota === location.pathname}>
                       {option.nome}
                     </Button>
                   </LinkRRD>
 
-                  <Separator />
+                  {index !== menuOptions.length - 1 && <Separator />}
                 </>
               ))}
             </DivButtons>
