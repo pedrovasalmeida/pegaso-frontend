@@ -30,6 +30,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/react-select": "^3.0.19",
     "@types/react-slick": "^0.23.4",
+    "@types/react-swipeable": "^5.2.0",
     "@types/reactstrap": "^8.4.3",
     "@types/styled-components": "^5.1.0",
     "@typescript-eslint/eslint-plugin": "^3.7.0",
@@ -44,6 +45,7 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier-eslint": "^12.0.0",
+    "react-swipeable": "^6.0.1",
     "typescript": "~3.7.2"
   },
   "scripts": {
