@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useSwipeable } from 'react-swipeable';
 
-// import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 import { Preloader, ThreeDots } from 'react-preloader-icon';
 import useAxios from '../../hooks/useAxios';
 
@@ -71,11 +70,10 @@ const CarouselDenner: React.FC = () => {
       <div
         style={{
           display: 'flex',
-          marginTop: '150px',
           alignItems: 'center',
           justifyContent: 'center',
-          width: '100vw',
-          height: '100vh',
+          width: '100%',
+          height: '95vh',
         }}
       >
         <Preloader
