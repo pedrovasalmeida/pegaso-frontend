@@ -10,12 +10,12 @@ export default createGlobalStyle`
 
     &::selection {
       background: #324286;
-      color: #fdfdfd;
+      color: #f2f2f2;
     }
   }
 
   body {
-    background: #fdfdfd;
+    background: #f2f2f2;
     -webkit-font-smoothing: antialiased !important;
   }
 
