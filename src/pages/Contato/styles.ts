@@ -81,6 +81,12 @@ export const Contacts = styled.div`
       flex-direction: column;
     }
   }
+
+  @media only screen and (max-width: 628px) {
+    div + div {
+      flex-direction: column;
+    }
+  }
 `;
 
 export const Contact = styled.div<InfoProps>`
