@@ -109,12 +109,12 @@ const Painel: React.FC = () => {
 
     await api
       .get(`/list-one-user/${userData.id}`)
-      .then(res => {
+      .then((res) => {
         const loggedUser: UserApiData = res.data.user;
 
         setLoggedUserData(loggedUser);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }, [userData.id]);
@@ -159,53 +159,29 @@ const Painel: React.FC = () => {
                       <Name>
                         <strong>Nome:</strong> <p>{loggedUserData!.nome}</p>
                       </Name>
-                      <Separator />
+
                       <Name>
                         <strong>Email:</strong> <p>{loggedUserData!.email}</p>
-                      </Name>
-                      <Separator />
-
-                      <Name>
-                        <strong>Login:</strong> <p>{loggedUserData!.login}</p>
-                      </Name>
-                      <Separator />
-
-                      <Name>
-                        <strong>Cargo:</strong> <p>{loggedUserData!.cargo}</p>
                       </Name>
                     </>
                   )}
                 </DadosAdmin>
 
-                <Separator />
-
                 <OpcaoMenu onClick={() => handleAdicionar()}>
                   Adicionar empreendimento
                 </OpcaoMenu>
-
-                <Separator />
-
-                {/* <OpcaoMenu onClick={() => {}}>Adicionar imagens</OpcaoMenu>
-
-            <Separator /> */}
 
                 <OpcaoMenu onClick={() => handleRemover()}>
                   Remover empreendimento
                 </OpcaoMenu>
 
-                <Separator />
-
                 <OpcaoMenu onClick={() => handleAtualizar()}>
                   Adicionar imagens
                 </OpcaoMenu>
 
-                <Separator />
-
                 <OpcaoMenu onClick={() => handleListar()}>
                   Listar empreendimentos
                 </OpcaoMenu>
-
-                <Separator />
 
                 <OpcaoMenu onClick={() => handleDeslogar()}>Sair</OpcaoMenu>
               </LeftMenu>
