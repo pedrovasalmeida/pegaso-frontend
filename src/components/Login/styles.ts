@@ -84,7 +84,7 @@ export const Form = styled.form`
     background: #324286;
     color: #fdfdfd;
 
-    border: 2px solid #324286;
+    border: 1px solid #324286;
     border-radius: 4px;
 
     margin: 8px 0;
