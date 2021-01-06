@@ -47,8 +47,8 @@ const Contato: React.FC = () => {
     },
   ];
 
-  const [center, setCenter] = useState({ lat: -12.9778728, lng: -38.4404094 });
-  const [zoom, setZoom] = useState(11);
+  const [center] = useState({ lat: -12.9778728, lng: -38.4404094 });
+  const [zoom] = useState(11);
   const [inputNome, setInputNome] = useState('');
   const [inputEmail, setInputEmail] = useState('');
   const [inputContato, setInputContato] = useState('');
@@ -205,7 +205,7 @@ const Contato: React.FC = () => {
             </div>
           </Contacts>
 
-          <div style={{ width: '100%', height: '50vh' }}>
+          <div style={{ width: '100%', height: '48vh' }}>
             <GoogleMapReact
               bootstrapURLKeys={{
                 key: 'AIzaSyDwvVXrmufqKOeHvepsGplig7sX9nHQyFo',
