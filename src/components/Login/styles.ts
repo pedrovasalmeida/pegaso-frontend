@@ -1,21 +1,27 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade, lighten } from 'polished';
 
 import { RiHeartAddLine, RiKeyLine } from 'react-icons/ri';
-import { MdErrorOutline } from 'react-icons/md';
+import { MdErrorOutline, MdCheckCircle } from 'react-icons/md';
 import { AiOutlineUser } from 'react-icons/ai';
 import { GoSignIn } from 'react-icons/go';
+
+interface LoginStatusProps {
+  isLogged?: boolean;
+  isLoading?: boolean;
+}
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   place-content: center center;
 
-  height: calc(100vh - 64px);
+  height: calc(100vh - 104px);
   width: 100vw;
 `;
 
 export const Form = styled.form`
+  position: relative;
   display: flex;
   flex-direction: column;
 
@@ -23,69 +29,78 @@ export const Form = styled.form`
   align-items: center;
   justify-content: center;
 
-  width: 500px;
-  height: 100%;
+  width: 50%;
+  height: auto;
 
-  background-color: rgba(0, 0, 0, 0.01);
-  border-right: 2px solid rgba(50, 66, 134, 0.4);
-  border-left: 2px solid rgba(50, 66, 134, 0.4);
+  @media only screen and (max-width: 999px) {
+    width: 100%;
+  }
 
   h1 {
-    margin: 0 0 32px 0;
+    margin-bottom: 32px;
     color: ${shade(0.6, '#324286')};
     font-size: 32px;
   }
 
   input {
     position: relative;
-    width: 300px;
-    height: 56px;
 
-    color: ${shade(0.6, '#324286')};
+    width: 50%;
+    height: 50px;
+
     font-size: 18px;
 
-    background: #eeeeee;
+    color: ${shade(0.6, '#324286')};
+    background: #f2f2f2;
 
-    border: 2px solid #324286;
-    border-radius: 16px;
+    border: 1px solid ${shade(0.4, '#f2f2f2')};
+    border-radius: 4px;
 
-    margin: 0 0 8px 0;
+    margin: 8px 0;
     padding: 16px;
 
-    transition: all 300ms ease;
+    transition: color 300ms ease;
+
+    @media only screen and (max-width: 999px) {
+      width: 80%;
+    }
 
     &::placeholder {
-      color: ${shade(0.6, '#324286')};
+      color: ${shade(0, 'rgba(50, 66, 134, 0.6)')};
     }
 
     &:focus {
-      transition: all 300ms ease;
-      border: 2px solid ${lighten(0.2, `#324286`)};
-      filter: drop-shadow(0px 0px 3px ${lighten(0.1, '#324286')});
+      transition: border 300ms ease;
+      border: 1px solid ${lighten(0.1, `#324286`)};
+      filter: drop-shadow(0px 0px 1px ${lighten(0.1, '#324286')});
     }
   }
 
   button {
     outline: 0;
-    width: 300px;
-    height: 56px;
+    width: 50%;
+    height: 50px;
 
     background: #324286;
     color: #fdfdfd;
 
     border: 2px solid #324286;
-    border-radius: 16px;
+    border-radius: 4px;
 
-    margin: 0 0 8px 0;
+    margin: 8px 0;
     padding: 0 16px;
 
-    font-weight: 500;
+    font-weight: bold;
     font-size: 18px;
 
     transition: background 300ms ease;
 
+    @media only screen and (max-width: 999px) {
+      width: 80%;
+    }
+
     svg {
-      margin: 0 8px 0 0;
+      margin-right: 8px;
     }
 
     &:hover {
@@ -117,11 +132,6 @@ export const Form = styled.form`
   span {
     color: rgba(50, 66, 134, 0.6);
     font-size: 12px;
-  }
-
-  @media (max-width: 499px) {
-    width: auto;
-    padding: 0 8px;
   }
 `;
 
@@ -161,16 +171,75 @@ export const CreateAccountIcon = styled(RiHeartAddLine)`
   font-size: 18px;
 `;
 
-export const LoginErrorMessage = styled.p`
-  /* margin: 8px 0; */
+export const LoginStatusDiv = styled.div<LoginStatusProps>`
+  position: absolute;
+  bottom: 28%;
 
-  font-size: 18px;
-  color: rgba(192, 25, 32, 1);
+  width: 50%;
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ${(props) =>
+    props.isLoading &&
+    css`
+      background: #f2f2f2;
+    `};
+  ${(props) =>
+    props.isLogged &&
+    css`
+      background: #32c019;
+    `};
+
+  span {
+    font-weight: bold;
+    font-size: 18px;
+    color: #f2f2f2;
+  }
+
+  @media only screen and (max-width: 999px) {
+    width: 80%;
+  }
+`;
+
+export const LoginErrorMessage = styled.div`
+  /* margin: 8px 0; */
+  position: absolute;
+  bottom: 28%;
+
+  width: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(192, 25, 32, 1);
+
+  height: 56px;
+
+  span {
+    font-weight: bold;
+    font-size: 18px;
+    color: #f2f2f2;
+  }
+
+  @media only screen and (max-width: 999px) {
+    width: 80%;
+  }
 `;
 
 export const LoginErrorIcon = styled(MdErrorOutline)`
   font-size: 24px;
   margin: 0 8px;
 
-  color: rgba(192, 25, 32, 1);
+  color: #f2f2f2;
+`;
+
+export const LoggedIcon = styled(MdCheckCircle)`
+  font-size: 24px;
+  margin: 0 8px;
+
+  color: #f2f2f2;
 `;
