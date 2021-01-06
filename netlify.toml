@@ -1,2 +1,2 @@
 [build]
-CI= yarn build
+CI= npm run build
