@@ -4,11 +4,13 @@
     "es2020": true
   },
   "extends": [
-    "plugin:react/recommended",
+    "prettier",
+    "prettier/react",
+    "prettier/@typescript-eslint",
     "airbnb",
-    "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "prettier/@typescript-eslint"
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -20,7 +22,7 @@
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
   "rules": {
-    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "prettier/prettier": ["off", { "endOfLine": "auto" }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
@@ -29,6 +31,8 @@
     "import/prefer-default-export": "off",
     "no-use-before-define": "off",
     "camelcase": "off",
+    "react/jsx-curly-newline": "off",
+    "arrow-parens": ["error", { "requireForBlockBody": 1 }],
     "import/extensions": [
       "error",
       "ignorePackages",
