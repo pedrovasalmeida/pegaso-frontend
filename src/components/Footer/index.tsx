@@ -13,7 +13,6 @@ import {
   EmailIcon,
   ContactData,
   ContactText,
-  LinkRRD,
 } from './styles';
 
 import useWindowDimensions from '../../hooks/useWindowDimensions';
@@ -48,7 +47,7 @@ const Footer: React.FC = () => {
     // },
     {
       nome: 'Vendas',
-      info: '31 93333333',
+      info: '31 32999999',
       linkExist: false,
       link: '/contato',
       icon: <PhoneIcon />,
@@ -78,22 +77,20 @@ const Footer: React.FC = () => {
 
           <Contact>
             {footerOptions.map((option) => (
-              <>
+              <React.Fragment key={option.nome}>
                 {option.linkExist ? (
-                  <LinkRRD to={option.link}>
-                    <Button
-                      href={WhatsApp}
-                      target="blank"
-                      animate={{ x: -50 }}
-                      transition={{ duration: option.duration }}
-                      whileHover={{ translateX: 2 }}
-                    >
-                      {option.icon}
-                      <ContactData>
-                        <ContactText>{option.info}</ContactText>
-                      </ContactData>
-                    </Button>
-                  </LinkRRD>
+                  <Button
+                    href={WhatsApp}
+                    target="blank"
+                    animate={{ x: -50 }}
+                    transition={{ duration: option.duration }}
+                    whileHover={{ translateX: 2 }}
+                  >
+                    {option.icon}
+                    <ContactData>
+                      <ContactText>{option.info}</ContactText>
+                    </ContactData>
+                  </Button>
                 ) : (
                   <Button
                     href={WhatsApp}
@@ -108,7 +105,7 @@ const Footer: React.FC = () => {
                     </ContactData>
                   </Button>
                 )}
-              </>
+              </React.Fragment>
             ))}
           </Contact>
         </Container>
