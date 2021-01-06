@@ -28,6 +28,8 @@ import {
 
 const SomeComponent = ({ text }: any) => <div>{text}</div>;
 
+const { REACT_APP_API_GOOGLE_MAPS } = process.env;
+
 const Contato: React.FC = () => {
   const contactData = [
     {
@@ -46,6 +48,14 @@ const Contato: React.FC = () => {
       text: 'teste@pegaso.com',
     },
   ];
+
+  let API_GOOGLE_MAPS: any;
+
+  if (REACT_APP_API_GOOGLE_MAPS !== undefined) {
+    API_GOOGLE_MAPS = REACT_APP_API_GOOGLE_MAPS;
+  } else {
+    API_GOOGLE_MAPS = 'unknown';
+  }
 
   const [center] = useState({ lat: -12.9778728, lng: -38.4404094 });
   const [zoom] = useState(11);
@@ -208,7 +218,7 @@ const Contato: React.FC = () => {
           <div style={{ width: '100%', height: '48vh' }}>
             <GoogleMapReact
               bootstrapURLKeys={{
-                key: 'AIzaSyDwvVXrmufqKOeHvepsGplig7sX9nHQyFo',
+                key: API_GOOGLE_MAPS,
               }}
               defaultCenter={center}
               defaultZoom={zoom}
