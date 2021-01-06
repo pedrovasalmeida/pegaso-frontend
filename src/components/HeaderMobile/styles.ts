@@ -128,7 +128,7 @@ export const DivDados = styled.div`
 export const Button = styled.button<RouterProps>`
   background-color: transparent;
 
-  color: ${(props) => (props.selected ? '#324286' : '#333')};
+  color: ${props => (props.selected ? '#324286' : '#333')};
 
   font-weight: 500;
 
@@ -169,7 +169,7 @@ export const DivMenu = styled.div<Props>`
   }
 
   > svg {
-    ${(props) => (props.isVisible ? 'transform: rotate(45deg);' : '')}
+    ${props => (props.isVisible ? 'transform: rotate(45deg);' : '')}
   }
 
   z-index: 16;
@@ -190,7 +190,7 @@ export const HiddenMenu = styled.div<Props>`
 
   position: fixed;
 
-  top: ${(props) => (props.isVisible ? '64px' : '-50%')};
+  top: ${props => (props.isVisible ? '64px' : '-50%')};
   left: 0;
 
   height: auto;
@@ -227,7 +227,7 @@ export const LinkRRDHiddenMenu = styled(Link)<RouterProps>`
     left: -1;
     bottom: 0;
 
-    width: ${(props) => (props.selected ? '100%' : 0)};
+    width: ${props => (props.selected ? '100%' : 0)};
     height: 2px;
 
     background: #324286;

@@ -103,7 +103,7 @@ const FooterMobile: React.FC = () => {
       )}
       <Container>
         <Data>
-          {footerOptions1.map((option) => (
+          {footerOptions1.map(option => (
             <React.Fragment key={option.nome}>
               {option.linkExist ? (
                 <Button

@@ -525,7 +525,7 @@ export const DivImagemTipo = styled(motion.div)<EmpImageProps>`
 
   height: calc(100vh - 190px);
 
-  background: url(${(props) => props.src}) no-repeat center center fixed;
+  background: url(${props => props.src}) no-repeat center center fixed;
   background-size: cover;
 `;
 

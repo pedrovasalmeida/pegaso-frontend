@@ -47,7 +47,7 @@ export const Title = styled.span<ScreenSizeProps>`
   width: auto;
   border-bottom: 8px solid #324286;
 
-  font-size: ${(props) => (props.width < 346 ? '34px' : '40px')};
+  font-size: ${props => (props.width < 346 ? '34px' : '40px')};
   font-weight: bold;
 
   color: #333;
@@ -175,7 +175,7 @@ export const DivImagemTipo = styled(motion.div)<BackgroundProps>`
   height: calc(100vh - 190px);
   width: 100vw;
 
-  background: url(${(props) => props.url}) no-repeat center center fixed;
+  background: url(${props => props.url}) no-repeat center center fixed;
   background-size: cover;
 `;
 
@@ -185,6 +185,6 @@ export const DivBackground = styled.div<BackgroundProps>`
   height: 100vh;
   width: 100%;
 
-  background: url(${(props) => props.url}) no-repeat center center fixed;
+  background: url(${props => props.url}) no-repeat center center fixed;
   background-size: cover;
 `;

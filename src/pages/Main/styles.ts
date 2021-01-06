@@ -43,7 +43,7 @@ export const Container = styled.div<IContainerProps>`
   cursor: grab;
 
   transition: transform 1s ease;
-  transform: ${(props) =>
+  transform: ${props =>
     props.sliding
       ? `translateX(calc(-100vw * ${props.sliding}))`
       : `translateX(0%)`};
@@ -86,7 +86,7 @@ export const Describe = styled.div`
 `;
 
 export const Title = styled.span`
-  color: ${(props) => props.theme.color};
+  color: ${props => props.theme.color};
   font-size: 50px;
   font-weight: 600;
   cursor: pointer;
@@ -98,12 +98,12 @@ export const Title = styled.span`
 
   &:hover {
     transition: 0.5s all;
-    color: ${(props) => props.theme.primary};
+    color: ${props => props.theme.primary};
   }
 `;
 
 export const CreatedBy = styled.span`
-  color: ${(props) => props.theme.color};
+  color: ${props => props.theme.color};
   margin-top: 50px;
 
   b {
@@ -112,7 +112,7 @@ export const CreatedBy = styled.span`
 
     &:hover {
       transition: 0.5s all;
-      color: ${(props) => props.theme.primary};
+      color: ${props => props.theme.primary};
     }
   }
 `;
@@ -125,8 +125,8 @@ export const ListTag = styled.div`
 `;
 
 export const Tag = styled.span`
-  color: ${(props) => props.theme.background};
-  background-color: ${(props) => props.theme.color};
+  color: ${props => props.theme.background};
+  background-color: ${props => props.theme.color};
   padding: 5px 20px;
   font-weight: 600;
   font-size: 12px;
@@ -137,7 +137,7 @@ export const Tag = styled.span`
 
   &:hover {
     transition: 0.5s all;
-    background-color: ${(props) => props.theme.primary};
+    background-color: ${props => props.theme.primary};
   }
 `;
 
@@ -146,7 +146,7 @@ export const ButtonNext = styled.span`
   position: absolute;
   right: 20px;
   font-size: 50px;
-  color: ${(props) => props.theme.color}5;
+  color: ${props => props.theme.color}5;
   padding: 0;
 
   @media only screen and (max-width: 600px) {
@@ -158,7 +158,7 @@ export const ButtonNext = styled.span`
     cursor: pointer;
 
     &:hover {
-      color: ${(props) => props.theme.color}8;
+      color: ${props => props.theme.color}8;
     }
   }
 `;
@@ -168,7 +168,7 @@ export const ButtonBack = styled.span`
   position: absolute;
   left: 20px;
   font-size: 50px;
-  color: ${(props) => props.theme.color}5;
+  color: ${props => props.theme.color}5;
   padding: 0;
 
   @media only screen and (max-width: 600px) {
@@ -181,7 +181,7 @@ export const ButtonBack = styled.span`
   }
 
   &:hover {
-    color: ${(props) => props.theme.color}8;
+    color: ${props => props.theme.color}8;
   }
 `;
 

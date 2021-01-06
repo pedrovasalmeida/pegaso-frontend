@@ -19,7 +19,7 @@ const Forgot: React.FC = () => {
 
         <input type="email" placeholder="E-mail" />
         <p>ou</p>
-        <input placeholder={'Login'} />
+        <input placeholder="Login" />
 
         <button type="submit">
           <ForgotIcon />

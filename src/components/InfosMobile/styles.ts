@@ -38,7 +38,7 @@ export const Title = styled.span<ScreenSizeProps>`
   width: auto;
   border-bottom: 8px solid #324286;
 
-  font-size: ${(props) => (props.width < 346 ? '34px' : '40px')};
+  font-size: ${props => (props.width < 346 ? '34px' : '40px')};
   font-weight: bold;
 
   color: #333;

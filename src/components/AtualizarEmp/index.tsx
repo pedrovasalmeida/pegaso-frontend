@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import api from '../../services/api';
-
 import { Preloader, ThreeDots } from 'react-preloader-icon';
+import api from '../../services/api';
 
 import {
   Container,
@@ -59,13 +58,13 @@ const AtualizarEmp: React.FC = () => {
     setData(data);
   };
 
-  const getDataFromOneEnterprise = async (id) => {
+  const getDataFromOneEnterprise = async id => {
     const { data } = await api.get(`/show-one/${id}`);
 
     setEnterpriseData(data);
   };
 
-  const handleInputChange = (option) => {
+  const handleInputChange = option => {
     setInputValue(option.value);
   };
 
@@ -73,10 +72,10 @@ const AtualizarEmp: React.FC = () => {
     if (e && e.length > 0) setFile(Array.from(e));
   };
 
-  const fileUploadImages = async (id) => {
+  const fileUploadImages = async id => {
     setLoading(true);
     setError(false);
-    let formdata = new FormData();
+    const formdata = new FormData();
 
     if (files.length < 1) return alert('file is empty');
 
@@ -86,10 +85,10 @@ const AtualizarEmp: React.FC = () => {
 
     api
       .post('/storage-many-images', formdata)
-      .then((res) => {
-        let images: any = [];
+      .then(res => {
+        const images: any = [];
 
-        res.data.links.forEach((link) => {
+        res.data.links.forEach(link => {
           images.push(link);
         });
 
@@ -98,7 +97,7 @@ const AtualizarEmp: React.FC = () => {
         setShowConfirmButton(true);
         setMessage('Imagens upadas com sucesso!');
       })
-      .catch((err) => {
+      .catch(err => {
         setError(true);
         setLoading(false);
         setShowConfirmButton(false);
@@ -106,7 +105,7 @@ const AtualizarEmp: React.FC = () => {
       });
   };
 
-  const sendDataToApi = async (id) => {
+  const sendDataToApi = async id => {
     setLoading(true);
 
     const data = {
@@ -118,18 +117,18 @@ const AtualizarEmp: React.FC = () => {
 
     await api
       .post(`/create-images/${id}`, data, config)
-      .then((res) => {
+      .then(res => {
         setLoading(false);
         setMessage('Imagens cadastradas com sucesso!');
       })
-      .catch((err) => {
+      .catch(err => {
         setMessage('Ocorreu algum erro!');
         setError(true);
         setLoading(false);
       });
   };
 
-  const options = data?.map((proj) => ({
+  const options = data?.map(proj => ({
     value: proj.id,
     label: proj.nome,
   }));
@@ -149,7 +148,7 @@ const AtualizarEmp: React.FC = () => {
           <SelectInput
             options={options}
             placeholder="Selecione um empreendimento..."
-            onChange={(option) => handleInputChange(option)}
+            onChange={option => handleInputChange(option)}
           />
         ) : (
           <span>Não temos empreendimentos ainda! :(</span>
@@ -165,7 +164,7 @@ const AtualizarEmp: React.FC = () => {
                 type="file"
                 accept="image/png, image/jpeg, image/jpg"
                 multiple
-                onChange={(e) => handleSubmitImage(e.target.files)}
+                onChange={e => handleSubmitImage(e.target.files)}
               />
               <Button
                 type="button"

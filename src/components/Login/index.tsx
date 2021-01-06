@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
-import { useAuth } from '../../context/AuthContext';
 import { Preloader, ThreeDots } from 'react-preloader-icon';
+import { useAuth } from '../../context/AuthContext';
 
 import {
   Container,
@@ -78,13 +78,13 @@ const Login: React.FC = () => {
         }
 
         await signIn!({ login, password })
-          .then((res) => {
+          .then(res => {
             setIsLoading(false);
             setIsError(false);
 
             return handleReloadPage();
           })
-          .catch((err) => {
+          .catch(err => {
             setLoginError(true);
             setIsLoading(false);
           });
@@ -102,20 +102,20 @@ const Login: React.FC = () => {
         <h1>Faça seu logon</h1>
 
         <input
-          placeholder={'Login'}
+          placeholder="Login"
           value={inputLogin}
-          onChange={(e) => handleInputLogin(e.target.value)}
+          onChange={e => handleInputLogin(e.target.value)}
         />
         <input
           type="password"
           placeholder="Senha"
           value={inputSenha}
-          onChange={(e) => handleInputSenha(e.target.value)}
+          onChange={e => handleInputSenha(e.target.value)}
         />
 
         <button
           type="submit"
-          onClick={(e) =>
+          onClick={e =>
             handleSubmit({ login: inputLogin, password: inputSenha }, e)
           }
         >

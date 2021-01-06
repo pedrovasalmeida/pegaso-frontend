@@ -272,7 +272,7 @@ export const StatusMessage = styled.div<StatusMessageProps>`
 
   padding-left: 16px;
 
-  background: ${(props) => {
+  background: ${props => {
     if (props.isError) {
       return '#d11d1d';
     }

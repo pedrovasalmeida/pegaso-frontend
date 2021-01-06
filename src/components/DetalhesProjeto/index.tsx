@@ -88,7 +88,7 @@ const Infos: React.FC = () => {
       </div>
     );
 
-  const images = results.images.map((item) => {
+  const images = results.images.map(item => {
     return (
       <DivCarouselItem
         onExiting={() => setAnimating(true)}

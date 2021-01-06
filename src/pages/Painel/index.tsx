@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 
 /** Hooks */
+import { Preloader, ThreeDots } from 'react-preloader-icon';
 import { useAuth } from '../../context/AuthContext';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
@@ -14,7 +15,6 @@ import AtualizarEmp from '../../components/AtualizarEmp';
 import api from '../../services/api';
 
 /** Ícones e imagens */
-import { Preloader, ThreeDots } from 'react-preloader-icon';
 
 /** Estilos */
 import {
@@ -109,12 +109,12 @@ const Painel: React.FC = () => {
 
     await api
       .get(`/list-one-user/${userData.id}`)
-      .then((res) => {
+      .then(res => {
         const loggedUser: UserApiData = res.data.user;
 
         setLoggedUserData(loggedUser);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }, [userData.id]);

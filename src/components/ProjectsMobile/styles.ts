@@ -105,7 +105,7 @@ export const FullImage = styled.div<FullImageProps>`
     border-top-right-radius: 16px;
     border-bottom-right-radius: 16px;
 
-    ${(props) =>
+    ${props =>
       props.width < 970 &&
       css`
         border-top-left-radius: 16px;

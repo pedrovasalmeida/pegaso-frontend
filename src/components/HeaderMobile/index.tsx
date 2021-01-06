@@ -41,7 +41,7 @@ const HeaderMobile: React.FC = () => {
   return (
     <>
       <HiddenMenu onClick={() => handleOutsideClick()} isVisible={isVisible}>
-        {menuOptions.map((option) => (
+        {menuOptions.map(option => (
           <React.Fragment key={option.nome}>
             <LinkRRDHiddenMenu
               to={option.rota}

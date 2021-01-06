@@ -146,7 +146,7 @@ const Contato: React.FC = () => {
 
       await api
         .post('/send-mail', data)
-        .then((res) => {
+        .then(res => {
           setIsLoading(false);
           setIsError(false);
           setIsSended(true);
@@ -158,7 +158,7 @@ const Contato: React.FC = () => {
             setCouldSend(true);
           }, 10000);
         })
-        .catch((err) => {
+        .catch(err => {
           setIsError(true);
           setIsSended(false);
           setIsLoading(false);
@@ -243,7 +243,7 @@ const Contato: React.FC = () => {
               type="text"
               placeholder="Nome"
               value={inputNome}
-              onChange={(e) => handleInputNome(e.target.value)}
+              onChange={e => handleInputNome(e.target.value)}
               required
             />
 
@@ -251,7 +251,7 @@ const Contato: React.FC = () => {
               type="email"
               placeholder="E-mail"
               value={inputEmail}
-              onChange={(e) => handleInputEmail(e.target.value)}
+              onChange={e => handleInputEmail(e.target.value)}
               required
             />
 
@@ -261,7 +261,7 @@ const Contato: React.FC = () => {
               pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}"
               placeholder="Contato (Tel/Cel)"
               value={inputContato}
-              onChange={(e) => handleInputContato(e.target.value)}
+              onChange={e => handleInputContato(e.target.value)}
               required
             />
 
@@ -269,14 +269,14 @@ const Contato: React.FC = () => {
               minLength={10}
               placeholder="Mensagem"
               value={inputMensagem}
-              onChange={(e) => handleInputMensagem(e.target.value)}
+              onChange={e => handleInputMensagem(e.target.value)}
               required
             />
 
             <Button
               disabled={!couldSend}
               type="submit"
-              onClick={(e) =>
+              onClick={e =>
                 handleSendEmail(
                   e,
                   inputNome,

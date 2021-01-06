@@ -1,6 +1,7 @@
 # Pegaso - Front-end
 
 Projeto desenvolvido utilizando algumas tecnologias como:
+
 - **ReactJS**
 - **TypeScript**
 - **Context API**

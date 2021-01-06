@@ -40,7 +40,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         login,
         password,
       })
-      .then((res) => {
+      .then(res => {
         const { token, user } = res.data;
 
         localStorage.setItem('@ProjPegaso:user', JSON.stringify(user));
@@ -48,7 +48,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
         setData({ user, token });
       })
-      .catch((err) => {
+      .catch(err => {
         setData({} as AuthState);
         throw new Error('Usuário/senha inválidos. Tente novamente!');
       });

@@ -51,7 +51,7 @@ const ProjectsMobile: React.FC = () => {
             duration={800}
           />
         ) : (
-          results.map((item) => {
+          results.map(item => {
             return (
               <LinkRRD
                 to={`/empreendimentos/detalhes/${item.id}`}

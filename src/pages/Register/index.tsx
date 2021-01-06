@@ -18,7 +18,7 @@ const Register: React.FC = () => {
         <h1>Crie sua conta agora mesmo!</h1>
 
         <input type="email" placeholder="E-mail" />
-        <input placeholder={'Login'} />
+        <input placeholder="Login" />
         <input type="password" placeholder="Senha" />
         <input placeholder="Nome" />
 

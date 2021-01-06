@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
           </Data>
 
           <Contact>
-            {footerOptions.map((option) => (
+            {footerOptions.map(option => (
               <React.Fragment key={option.nome}>
                 {option.linkExist ? (
                   <Button

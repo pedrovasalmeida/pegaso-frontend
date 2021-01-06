@@ -60,7 +60,7 @@ export const Input = styled.input<InputProps>`
 
   color: ${shade(0.4, '#324286')};
 
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'auto')};
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'auto')};
 
   padding: 4px 8px;
 
@@ -69,7 +69,7 @@ export const Input = styled.input<InputProps>`
 
   margin: 8px 0;
 
-  background-color: ${(props) =>
+  background-color: ${props =>
     props.disabled
       ? `${lighten(0.55, '#324286')}`
       : `${lighten(0.62, '#324286')}`};
@@ -77,7 +77,7 @@ export const Input = styled.input<InputProps>`
   transition: all 300ms ease;
 
   &:hover {
-    background-color: ${(props) =>
+    background-color: ${props =>
       props.disabled
         ? `${lighten(0.55, '#324286')}`
         : `${lighten(0.6, '#324286')}`};
@@ -94,7 +94,7 @@ export const UploadInput = styled.input<InputProps>`
 
   color: ${shade(0.4, '#324286')};
 
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'auto')};
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'auto')};
 
   border: 1px solid ${shade(0.4, `#324286`)};
   border-radius: 8px;
@@ -102,7 +102,7 @@ export const UploadInput = styled.input<InputProps>`
   border-bottom-right-radius: 0;
   border-right-width: 0px;
 
-  background-color: ${(props) =>
+  background-color: ${props =>
     props.disabled
       ? `${lighten(0.55, '#324286')}`
       : `${lighten(0.62, '#324286')}`};
@@ -116,7 +116,7 @@ export const UploadInput = styled.input<InputProps>`
   transition: all 300ms ease;
 
   &:hover {
-    background-color: ${(props) =>
+    background-color: ${props =>
       props.disabled
         ? `${lighten(0.55, '#324286')}`
         : `${lighten(0.6, '#324286')}`};

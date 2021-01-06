@@ -78,7 +78,7 @@ export const Button = styled(motion.a)<ButtonProps>`
   justify-content: center;
   align-items: center;
 
-  ${(props) =>
+  ${props =>
     props.linkExist
       ? css`
           width: 240px;
@@ -114,7 +114,7 @@ export const Button = styled(motion.a)<ButtonProps>`
   }
 
   @media only screen and (max-width: 559px) {
-    ${(props) =>
+    ${props =>
       props.linkExist
         ? css`
             width: 180px;
@@ -194,7 +194,7 @@ export const ContactName = styled.span`
 
 export const ContactText = styled.span<ContactTextProps>`
   font-family: 'Roboto', sans-serif;
-  font-size: ${(props) => (props.isBigInfo ? '12px' : '16px')};
+  font-size: ${props => (props.isBigInfo ? '12px' : '16px')};
 `;
 
 export const HorizontalSeparator = styled.div`

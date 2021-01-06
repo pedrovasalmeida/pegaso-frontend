@@ -1,16 +1,15 @@
 import React, { useState, useCallback, useEffect } from 'react';
 
-import LoginPage from '../../components/Login';
+import { Preloader, ThreeDots } from 'react-preloader-icon';
+import LoginPage from '../Login';
 
 import { useAuth } from '../../context/AuthContext';
 
-import AdicionarEmpMobile from '../../components/AdicionarEmpMobile';
-import AtualizarEmp from '../../components/AtualizarEmp';
-import RemoverEmp from '../../components/RemoverEmp';
-import ListarEmp from '../../components/ListarEmp';
+import AdicionarEmpMobile from '../AdicionarEmpMobile';
+import AtualizarEmp from '../AtualizarEmp';
+import RemoverEmp from '../RemoverEmp';
+import ListarEmp from '../ListarEmp';
 import api from '../../services/api';
-
-import { Preloader, ThreeDots } from 'react-preloader-icon';
 
 import {
   Container,
@@ -112,12 +111,12 @@ const PainelMobile: React.FC = () => {
 
     await api
       .get(`/list-one-user/${userData.id}`)
-      .then((res) => {
+      .then(res => {
         const loggedUser: UserApiData = res.data.user;
 
         setLoggedUserData(loggedUser);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }, [userData.id]);

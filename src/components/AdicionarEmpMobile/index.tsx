@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import api from '../../services/api';
-
 import { Preloader, ThreeDots } from 'react-preloader-icon';
+import api from '../../services/api';
 
 import {
   Form,
@@ -64,7 +63,7 @@ const AddEk: React.FC = () => {
 
   const fileUploadBannerHandler = async () => {
     setIsBannerLoading(true);
-    let formdata = new FormData();
+    const formdata = new FormData();
 
     if (file === null) return alert('file is empty');
 
@@ -72,16 +71,16 @@ const AddEk: React.FC = () => {
 
     await api
       .post('/storage-images', formdata)
-      .then((res) => {
+      .then(res => {
         setIsBannerLoading(false);
         return setLinkBanner(res.data.link);
       })
-      .catch((err) => err);
+      .catch(err => err);
   };
 
   const fileUploadPosterHandler = async () => {
     setIsPosterLoading(true);
-    let formdata = new FormData();
+    const formdata = new FormData();
 
     if (file === null) return alert('file is empty');
 
@@ -89,11 +88,11 @@ const AddEk: React.FC = () => {
 
     await api
       .post('/storage-images', formdata)
-      .then((res) => {
+      .then(res => {
         setIsPosterLoading(false);
         return setLinkPoster(res.data.link);
       })
-      .catch((err) => err);
+      .catch(err => err);
   };
 
   const verifyAndSendData = async (
@@ -127,11 +126,11 @@ const AddEk: React.FC = () => {
 
     await api
       .post('/create', data, config)
-      .then((res) => {
+      .then(res => {
         setUploaded(true);
         return setIsLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   };
 
   const handleCloseModal = () => {
@@ -174,24 +173,24 @@ const AddEk: React.FC = () => {
           type="text"
           id="emp-name"
           placeholder="Nome do empreendimento"
-          onChange={(e) => handleInputs(e.target.value, 'nome')}
+          onChange={e => handleInputs(e.target.value, 'nome')}
         />
         <TextArea
           id="emp-descricao"
           placeholder="Descrição (detalhes)"
-          onChange={(e) => handleInputs(e.target.value, 'descricao')}
+          onChange={e => handleInputs(e.target.value, 'descricao')}
         />
         <Input
           id="emp-descricao_curta"
           type="text"
           placeholder="Curta descrição (2 ou 3 palavras)"
-          onChange={(e) => handleInputs(e.target.value, 'descricao_curta')}
+          onChange={e => handleInputs(e.target.value, 'descricao_curta')}
         />
         <Input
           id="emp-endereco"
           type="text"
           placeholder="Endereço"
-          onChange={(e) => handleInputs(e.target.value, 'endereco')}
+          onChange={e => handleInputs(e.target.value, 'endereco')}
         />
         {/* <Input
           type="text"
@@ -209,7 +208,7 @@ const AddEk: React.FC = () => {
           <Preloader
             use={ThreeDots}
             size={70}
-            strokeColor={'#324286'}
+            strokeColor="#324286"
             strokeWidth={6}
             duration={1000}
           />
@@ -225,8 +224,8 @@ const AddEk: React.FC = () => {
               name="image"
               id="image"
               type="file"
-              whatImageType={'banner'}
-              onChange={(e) => handleSubmitImage(e.target.files)}
+              whatImageType="banner"
+              onChange={e => handleSubmitImage(e.target.files)}
             />
             <UploadButton
               type="button"
@@ -237,14 +236,14 @@ const AddEk: React.FC = () => {
           </form>
 
           {linkBanner ? (
-            <LinkMessage>{'Link: ' + linkBanner}</LinkMessage>
+            <LinkMessage>{`Link: ${linkBanner}`}</LinkMessage>
           ) : (
             <>
               {isBannerLoading ? (
                 <Preloader
                   use={ThreeDots}
                   size={70}
-                  strokeColor={'#324286'}
+                  strokeColor="#324286"
                   strokeWidth={6}
                   duration={1000}
                 />
@@ -264,8 +263,8 @@ const AddEk: React.FC = () => {
               name="image"
               id="image"
               type="file"
-              whatImageType={'poster'}
-              onChange={(e) => handleSubmitImage(e.target.files)}
+              whatImageType="poster"
+              onChange={e => handleSubmitImage(e.target.files)}
             />
             <UploadButton
               type="button"
@@ -276,14 +275,14 @@ const AddEk: React.FC = () => {
           </form>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {linkPoster ? (
-              <LinkMessage>{'Link: ' + linkPoster}</LinkMessage>
+              <LinkMessage>{`Link: ${linkPoster}`}</LinkMessage>
             ) : (
               <>
                 {isPosterLoading ? (
                   <Preloader
                     use={ThreeDots}
                     size={70}
-                    strokeColor={'#324286'}
+                    strokeColor="#324286"
                     strokeWidth={6}
                     duration={1000}
                   />
@@ -298,7 +297,7 @@ const AddEk: React.FC = () => {
           </div>
         </DivImagens>
         <DivButton>
-          <button onClick={(e) => verifyAndSendData(e)}>
+          <button onClick={e => verifyAndSendData(e)}>
             Criar Empreendimento
           </button>
         </DivButton>

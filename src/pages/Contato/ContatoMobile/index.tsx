@@ -122,7 +122,7 @@ const ContatoMobile: React.FC = () => {
 
       await api
         .post('/send-mail', data)
-        .then((res) => {
+        .then(res => {
           setIsLoading(false);
           setIsError(false);
           setIsSended(true);
@@ -134,7 +134,7 @@ const ContatoMobile: React.FC = () => {
             setCouldSend(true);
           }, 10000);
         })
-        .catch((err) => {
+        .catch(err => {
           setIsError(true);
           setIsSended(false);
           setIsLoading(false);
@@ -180,7 +180,7 @@ const ContatoMobile: React.FC = () => {
             type="text"
             placeholder="Nome"
             value={inputNome}
-            onChange={(e) => handleInputNome(e.target.value)}
+            onChange={e => handleInputNome(e.target.value)}
             animate={{ x: 0 }}
             transition={{ duration: 0.7 }}
             required
@@ -192,7 +192,7 @@ const ContatoMobile: React.FC = () => {
             transition={{ duration: 0.9 }}
             placeholder="E-mail"
             value={inputEmail}
-            onChange={(e) => handleInputEmail(e.target.value)}
+            onChange={e => handleInputEmail(e.target.value)}
             required
           />
 
@@ -204,7 +204,7 @@ const ContatoMobile: React.FC = () => {
             transition={{ duration: 1.1 }}
             placeholder="Contato (Tel/Cel)"
             value={inputContato}
-            onChange={(e) => handleInputContato(e.target.value)}
+            onChange={e => handleInputContato(e.target.value)}
             required
           />
 
@@ -214,7 +214,7 @@ const ContatoMobile: React.FC = () => {
             transition={{ duration: 1.3 }}
             placeholder="Mensagem"
             value={inputMensagem}
-            onChange={(e) => handleInputMensagem(e.target.value)}
+            onChange={e => handleInputMensagem(e.target.value)}
             required
           />
 
@@ -223,7 +223,7 @@ const ContatoMobile: React.FC = () => {
             animate={{ x: 0 }}
             transition={{ duration: 1.5 }}
             type="submit"
-            onClick={(e) =>
+            onClick={e =>
               handleSendEmail(
                 e,
                 inputNome,

@@ -4,8 +4,8 @@ import api from '../services/api';
 const fetcher = async (url: string) =>
   api
     .get(url)
-    .then((res) => res.data)
-    .catch((err) => err);
+    .then(res => res.data)
+    .catch(err => err);
 
 export default function UseAxios(url: string) {
   const { data, error } = useSWR(url, fetcher);

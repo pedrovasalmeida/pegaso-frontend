@@ -88,7 +88,7 @@ const CarouselDenner: React.FC = () => {
   }
   return (
     <Carousel {...handlers} style={{ cursor: 'grab' }}>
-      {results.map((item) => (
+      {results.map(item => (
         <Container
           key={item.id}
           sliding={sliding}

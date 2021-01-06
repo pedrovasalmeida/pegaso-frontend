@@ -50,8 +50,8 @@ interface Plantas {
 }
 
 const DetalhesProjetoMobile: React.FC = () => {
-  let { id } = useParams();
-  let history = useHistory();
+  const { id } = useParams();
+  const history = useHistory();
   const { results } = useAxios(`/show-one/${id}`);
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -71,7 +71,7 @@ const DetalhesProjetoMobile: React.FC = () => {
       </Container>
     );
 
-  const images = results.images.map((item) => {
+  const images = results.images.map(item => {
     return (
       <DivCarouselItem
         onExiting={() => setAnimating(true)}
@@ -134,7 +134,7 @@ const DetalhesProjetoMobile: React.FC = () => {
             activeIndex={activeIndex}
             next={next}
             previous={previous}
-            ride={'carousel'}
+            ride="carousel"
           >
             {images}
             <DivCarouselControl
