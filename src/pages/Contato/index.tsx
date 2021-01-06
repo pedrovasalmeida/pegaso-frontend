@@ -32,17 +32,17 @@ const Contato: React.FC = () => {
   const contactData = [
     {
       name: 'Location',
-      icon: <LocationIcon size={50} />,
+      icon: <LocationIcon size={40} />,
       text: 'Rua Teste, ao lado do Teste, nº 15, Novo Teste, Teste-TE',
     },
     {
       name: 'Phone',
-      icon: <PhoneIcon size={50} />,
+      icon: <PhoneIcon size={40} />,
       text: '(31) 9 9876 - 5432',
     },
     {
       name: 'Mail',
-      icon: <MailIcon size={50} />,
+      icon: <MailIcon size={40} />,
       text: 'teste@pegaso.com',
     },
   ];
