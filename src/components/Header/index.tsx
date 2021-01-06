@@ -51,7 +51,7 @@ const Header: React.FC = () => {
           <SubContainer>
             <DivButtons animate={{ x: -100 }} transition={{ duration: 1 }}>
               {menuOptions.map((option, index) => (
-                <>
+                <React.Fragment key={option.nome}>
                   <LinkRRD
                     key={option.nome}
                     to={option.rota}
@@ -63,7 +63,7 @@ const Header: React.FC = () => {
                   </LinkRRD>
 
                   {index !== menuOptions.length - 1 && <Separator />}
-                </>
+                </React.Fragment>
               ))}
             </DivButtons>
           </SubContainer>

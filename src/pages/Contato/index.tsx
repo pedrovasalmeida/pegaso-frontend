@@ -28,27 +28,37 @@ import {
 
 const SomeComponent = ({ text }: any) => <div>{text}</div>;
 
+const { REACT_APP_API_GOOGLE_MAPS } = process.env;
+
 const Contato: React.FC = () => {
   const contactData = [
     {
       name: 'Location',
-      icon: <LocationIcon size={50} />,
+      icon: <LocationIcon size={40} />,
       text: 'Rua Teste, ao lado do Teste, nº 15, Novo Teste, Teste-TE',
     },
     {
       name: 'Phone',
-      icon: <PhoneIcon size={50} />,
+      icon: <PhoneIcon size={40} />,
       text: '(31) 9 9876 - 5432',
     },
     {
       name: 'Mail',
-      icon: <MailIcon size={50} />,
+      icon: <MailIcon size={40} />,
       text: 'teste@pegaso.com',
     },
   ];
 
-  const [center, setCenter] = useState({ lat: -12.9778728, lng: -38.4404094 });
-  const [zoom, setZoom] = useState(11);
+  let API_GOOGLE_MAPS: any;
+
+  if (REACT_APP_API_GOOGLE_MAPS !== undefined) {
+    API_GOOGLE_MAPS = REACT_APP_API_GOOGLE_MAPS;
+  } else {
+    API_GOOGLE_MAPS = 'unknown';
+  }
+
+  const [center] = useState({ lat: -12.9778728, lng: -38.4404094 });
+  const [zoom] = useState(11);
   const [inputNome, setInputNome] = useState('');
   const [inputEmail, setInputEmail] = useState('');
   const [inputContato, setInputContato] = useState('');
@@ -205,10 +215,10 @@ const Contato: React.FC = () => {
             </div>
           </Contacts>
 
-          <div style={{ width: '100%', height: '50vh' }}>
+          <div style={{ width: '100%', height: '48vh' }}>
             <GoogleMapReact
               bootstrapURLKeys={{
-                key: 'AIzaSyDwvVXrmufqKOeHvepsGplig7sX9nHQyFo',
+                key: API_GOOGLE_MAPS,
               }}
               defaultCenter={center}
               defaultZoom={zoom}

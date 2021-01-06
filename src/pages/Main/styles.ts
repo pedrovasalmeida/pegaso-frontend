@@ -56,12 +56,18 @@ export const Container = styled.div<IContainerProps>`
 export const Imagem = styled.img`
   height: auto;
   width: auto;
-  max-width: 100%;
 
-  object-fit: contain;
+  overflow: hidden;
+
+  object-fit: cover;
 
   pointer-events: none;
   transition: 0.5s all;
+
+  @media only screen and (max-width: 1000px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const Describe = styled.div`

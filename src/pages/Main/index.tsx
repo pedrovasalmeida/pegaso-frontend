@@ -38,7 +38,7 @@ interface ResultsProps {
 
 const CarouselDenner: React.FC = () => {
   const [sliding, setSliding] = useState(0);
-  const [dir, setDir] = useState('NEXT');
+  const [dir] = useState('NEXT');
 
   const { results }: ResultsProps = useAxios('show-all');
 

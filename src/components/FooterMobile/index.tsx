@@ -8,7 +8,6 @@ import {
   PhoneIcon,
   EmailIcon,
   ContactName,
-  LinkRRD,
   Modal,
   CloseIcon,
   TitleModal,
@@ -105,20 +104,18 @@ const FooterMobile: React.FC = () => {
       <Container>
         <Data>
           {footerOptions1.map((option) => (
-            <>
+            <React.Fragment key={option.nome}>
               {option.linkExist ? (
-                <LinkRRD to={option.link}>
-                  <Button
-                    target="blank"
-                    animate={{ y: 0 }}
-                    transition={{ duration: option.duration }}
-                    whileHover={{ translateX: 2 }}
-                    linkExist={option.linkExist}
-                  >
-                    {option.icon}
-                    <ContactName>{option.info}</ContactName>
-                  </Button>
-                </LinkRRD>
+                <Button
+                  target="blank"
+                  animate={{ y: 0 }}
+                  transition={{ duration: option.duration }}
+                  whileHover={{ translateX: 2 }}
+                  linkExist={option.linkExist}
+                >
+                  {option.icon}
+                  <ContactName>{option.info}</ContactName>
+                </Button>
               ) : (
                 <>
                   {option.modal ? (
@@ -145,7 +142,7 @@ const FooterMobile: React.FC = () => {
                   )}
                 </>
               )}
-            </>
+            </React.Fragment>
           ))}
         </Data>
       </Container>
