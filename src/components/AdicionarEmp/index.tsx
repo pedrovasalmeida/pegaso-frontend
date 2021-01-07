@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Preloader, ThreeDots } from 'react-preloader-icon';
 import api from '../../services/api';
 
@@ -10,7 +10,7 @@ import {
   DivDetalhes,
   DivDireita,
   DivImagens,
-  DivButton,
+  CreateButton,
   UploadButton,
   LinkMessage,
   Separator,
@@ -18,6 +18,9 @@ import {
   ModalText,
   ModalButton,
   CloseIcon,
+  DivPreloader,
+  PreviewImage,
+  PreviewDiv,
 } from './styles';
 
 interface EmpreendimentoData {
@@ -70,11 +73,14 @@ const AddEmp2: React.FC = () => {
 
     await api
       .post('/storage-images', formdata)
-      .then(res => {
+      .then((res) => {
         setIsBannerLoading(false);
         return setLinkBanner(res.data.link);
       })
-      .catch(err => err);
+      .catch((err) => {
+        setIsBannerLoading(false);
+        return err;
+      });
   };
 
   const fileUploadPosterHandler = async () => {
@@ -87,11 +93,11 @@ const AddEmp2: React.FC = () => {
 
     await api
       .post('/storage-images', formdata)
-      .then(res => {
+      .then((res) => {
         setIsPosterLoading(false);
         return setLinkPoster(res.data.link);
       })
-      .catch(err => err);
+      .catch((err) => err);
   };
 
   const verifyAndSendData = async (
@@ -125,11 +131,11 @@ const AddEmp2: React.FC = () => {
 
     await api
       .post('/create', data, config)
-      .then(res => {
+      .then((res) => {
         setUploaded(true);
         return setIsLoading(false);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   const handleCloseModal = () => {
@@ -158,37 +164,107 @@ const AddEmp2: React.FC = () => {
           type="text"
           id="emp-name"
           placeholder="Nome do empreendimento"
-          onChange={e => handleInputs(e.target.value, 'nome')}
+          onChange={(e) => handleInputs(e.target.value, 'nome')}
         />
         <TextArea
           id="emp-descricao"
           placeholder="Descrição (detalhes)"
-          onChange={e => handleInputs(e.target.value, 'descricao')}
+          onChange={(e) => handleInputs(e.target.value, 'descricao')}
         />
         <Input
           id="emp-descricao_curta"
           type="text"
           placeholder="Curta descrição (2 ou 3 palavras)"
-          onChange={e => handleInputs(e.target.value, 'descricao_curta')}
+          onChange={(e) => handleInputs(e.target.value, 'descricao_curta')}
         />
         <Input
           id="emp-endereco"
           type="text"
           placeholder="Endereço"
-          onChange={e => handleInputs(e.target.value, 'endereco')}
+          onChange={(e) => handleInputs(e.target.value, 'endereco')}
         />
-        <Input
-          type="text"
-          value={linkBanner}
-          disabled
-          placeholder="Link do banner"
-        />
-        <Input
-          type="text"
-          value={linkPoster}
-          disabled
-          placeholder="Link do poster"
-        />
+
+        <label>Selecione um arquivo para ser o Banner do empreendimento:</label>
+
+        <form encType="multipart/form-data">
+          <UploadInput
+            name="image"
+            id="image"
+            type="file"
+            whatImageType="banner"
+            onChange={(e) => handleSubmitImage(e.target.files)}
+          />
+
+          <UploadButton
+            type="button"
+            value="Upload Banner"
+            onClick={() => fileUploadBannerHandler()}
+          />
+        </form>
+
+        {linkBanner ? (
+          <Input
+            type="text"
+            value={linkBanner}
+            disabled
+            placeholder="Link do banner"
+          />
+        ) : (
+          <>
+            {isBannerLoading && (
+              <DivPreloader>
+                <Preloader
+                  use={ThreeDots}
+                  size={70}
+                  strokeColor="#324286"
+                  strokeWidth={6}
+                  duration={1000}
+                />
+              </DivPreloader>
+            )}
+          </>
+        )}
+
+        <label>Selecione um arquivo para ser o Poster do empreendimento:</label>
+
+        <form encType="multipart/form-data">
+          <UploadInput
+            name="image"
+            id="image"
+            type="file"
+            whatImageType="poster"
+            onChange={(e) => handleSubmitImage(e.target.files)}
+          />
+          <UploadButton
+            type="button"
+            value="Upload Poster"
+            onClick={() => fileUploadPosterHandler()}
+          />
+        </form>
+
+        {linkPoster ? (
+          <Input
+            type="text"
+            value={linkPoster}
+            disabled
+            placeholder="Link do poster"
+          />
+        ) : (
+          <>
+            {isPosterLoading && (
+              <DivPreloader>
+                <Preloader
+                  use={ThreeDots}
+                  size={70}
+                  strokeColor="#324286"
+                  strokeWidth={6}
+                  duration={1000}
+                />
+              </DivPreloader>
+            )}
+          </>
+        )}
+
         {isLoading && (
           <Preloader
             use={ThreeDots}
@@ -198,95 +274,30 @@ const AddEmp2: React.FC = () => {
             duration={1000}
           />
         )}
-      </DivDetalhes>
-
-      <Separator />
-
-      <DivDireita>
-        <DivImagens>
-          <form encType="multipart/form-data">
-            <UploadInput
-              name="image"
-              id="image"
-              type="file"
-              whatImageType="banner"
-              onChange={e => handleSubmitImage(e.target.files)}
-            />
-            <UploadButton
-              type="button"
-              value="Upload"
-              onClick={() => fileUploadBannerHandler()}
-            />
-            <label>Banner</label>
-          </form>
-
-          {linkBanner ? (
-            <LinkMessage>{`Link: ${linkBanner}`}</LinkMessage>
-          ) : (
+        <PreviewDiv>
+          {linkBanner && (
             <>
-              {isBannerLoading ? (
-                <Preloader
-                  use={ThreeDots}
-                  size={70}
-                  strokeColor="#324286"
-                  strokeWidth={6}
-                  duration={1000}
-                />
-              ) : (
-                <LinkMessage>Link: Upload ainda não realizado</LinkMessage>
-              )}
+              <span>Banner: </span>
+              <a href={linkBanner}>
+                <PreviewImage src={linkBanner} alt={linkBanner} />
+              </a>
             </>
           )}
-          {/* {linkBanner ? (
-            <LinkMessage>{'Link: ' + linkBanner}</LinkMessage>
-          ) : (
-            <LinkMessage>Link: Upload ainda não realizado</LinkMessage>
-          )} */}
 
-          <form encType="multipart/form-data">
-            <UploadInput
-              name="image"
-              id="image"
-              type="file"
-              whatImageType="poster"
-              onChange={e => handleSubmitImage(e.target.files)}
-            />
-            <UploadButton
-              type="button"
-              value="Upload"
-              onClick={() => fileUploadPosterHandler()}
-            />
-            <label>Poster</label>
-          </form>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {linkPoster ? (
-              <LinkMessage>{`Link: ${linkPoster}`}</LinkMessage>
-            ) : (
-              <>
-                {isPosterLoading ? (
-                  <Preloader
-                    use={ThreeDots}
-                    size={70}
-                    strokeColor="#324286"
-                    strokeWidth={6}
-                    duration={1000}
-                  />
-                ) : (
-                  <LinkMessage>Link: Upload ainda não realizado</LinkMessage>
-                )}
-              </>
-            )}
-            <LinkMessage style={{ marginTop: '24px' }}>
-              O link aparecerá automaticamente nos campos 'Link' à esquerda.
-            </LinkMessage>
-          </div>
-        </DivImagens>
-        <DivButton>
-          <button onClick={e => verifyAndSendData(e)}>
-            Criar Empreendimento
-          </button>
-        </DivButton>
-      </DivDireita>
+          {linkPoster && (
+            <>
+              <span>Poster: </span>
+              <a href={linkPoster}>
+                <PreviewImage src={linkPoster} alt={linkPoster} />
+              </a>
+            </>
+          )}
+        </PreviewDiv>
+
+        <CreateButton onClick={(e) => verifyAndSendData(e)}>
+          Criar Empreendimento
+        </CreateButton>
+      </DivDetalhes>
     </Form>
   );
 };
