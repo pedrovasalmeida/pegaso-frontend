@@ -1,23 +1,58 @@
-import { lighten } from 'polished';
-import styled from 'styled-components';
+import { lighten, shade } from 'polished';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
   margin: 64px 0 0 0;
 `;
 
-export const LeftMenu = styled.div`
+interface LeftMenuProps {
+  isOpened?: boolean;
+  width: number;
+}
+
+export const LeftMenu = styled.div<LeftMenuProps>`
+  ${(props) =>
+    props.width! < 731
+      ? css`
+          position: absolute;
+          left: 0;
+          top: 64px;
+          transform: translateX(-280px);
+          z-index: 999;
+        `
+      : css`
+          z-index: 1;
+        `}
+
   display: flex;
   flex-direction: column;
 
-  width: 280px;
-  height: calc(100vh - 64px);
+  min-width: 280px;
+  width: auto;
+  min-height: calc(100vh - 64px);
+  height: 100%;
 
   padding-top: 20px;
 
   background-color: #f1f1f1;
 
   border-right: 1px solid rgba(0, 0, 0, 0.6);
+
+  transition: all 800ms ease-in-out;
+
+  @media only screen and (max-width: 730px) {
+    display: flex;
+
+    ${(props) =>
+      props.isOpened
+        ? css`
+            transform: translateX(0);
+          `
+        : css`
+            transform: translateX(-280px);
+          `}
+  }
 `;
 
 export const DadosAdmin = styled.div`
@@ -101,17 +136,27 @@ export const Data = styled.div`
   align-items: center;
   justify-content: flex-start;
 
-  width: calc(100vw - 280px);
-  height: calc(100vh - 64px);
+  background: #fff;
 
-  overflow-y: scroll;
+  width: calc(100vw - 280px);
+  min-height: calc(100vh - 64px);
+  height: auto;
+
+  padding-top: 20px;
+
+  overflow-y: hidden;
 
   > span {
     align-self: center;
     font-size: 24px;
-    margin: 16px 0 0 0;
+    margin-top: 16px;
     text-transform: uppercase;
     font-weight: bold;
+  }
+
+  @media only screen and (max-width: 730px) {
+    padding: 40px 10px 0 10px;
+    width: 100vw;
   }
 `;
 
@@ -143,4 +188,25 @@ export const Remover = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
 
   border-radius: 16px;
+`;
+
+export const FloatButtonDiv = styled.div`
+  position: fixed;
+  right: 5px;
+  top: 10%;
+
+  display: flex;
+  flex-direction: row;
+
+  clip-path: circle(50%);
+
+  background: ${lighten(0.1, '#324286')};
+
+  z-index: 999;
+
+  transition: background 500ms ease-in-out;
+
+  &:hover {
+    background: ${shade(0.2, '#324286')};
+  }
 `;

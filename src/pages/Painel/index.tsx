@@ -14,6 +14,8 @@ import ListarEmp from '../../components/ListarEmp';
 import AtualizarEmp from '../../components/AtualizarEmp';
 import api from '../../services/api';
 
+import { Slant as Hamburger } from 'hamburger-react';
+
 /** Ícones e imagens */
 
 /** Estilos */
@@ -25,6 +27,7 @@ import {
   OpcaoMenu,
   Separator,
   Data,
+  FloatButtonDiv,
 } from './styles';
 
 /** Tipos */
@@ -49,10 +52,11 @@ interface UserApiData {
 const Painel: React.FC = () => {
   const { user, signOut } = useAuth();
 
-  const [adicionar, setAdicionar] = useState(false);
+  const [adicionar, setAdicionar] = useState(true);
   const [atualizar, setAtualizar] = useState(false);
   const [remover, setRemover] = useState(false);
-  const [listar, setListar] = useState(true);
+  const [listar, setListar] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(true);
   const [loggedUserData, setLoggedUserData] = useState<UserApiData>(
     {} as UserApiData,
   );
@@ -79,6 +83,7 @@ const Painel: React.FC = () => {
     setAtualizar(false);
     setRemover(false);
     setListar(false);
+    setToggleMenu(false);
   };
 
   const handleAtualizar = () => {
@@ -86,6 +91,7 @@ const Painel: React.FC = () => {
     setAtualizar(true);
     setRemover(false);
     setListar(false);
+    setToggleMenu(false);
   };
 
   const handleRemover = () => {
@@ -93,6 +99,7 @@ const Painel: React.FC = () => {
     setAtualizar(false);
     setRemover(true);
     setListar(false);
+    setToggleMenu(false);
   };
 
   const handleListar = () => {
@@ -100,6 +107,7 @@ const Painel: React.FC = () => {
     setAtualizar(false);
     setRemover(false);
     setListar(true);
+    setToggleMenu(false);
   };
 
   const getUserData = useCallback(async () => {
@@ -131,85 +139,98 @@ const Painel: React.FC = () => {
         </Container>
       ) : (
         <>
-          {width < 910 ? (
+          {/* {width < 910 ? (
             <PainelMobile />
-          ) : (
-            <Container>
-              <LeftMenu>
-                <DadosAdmin>
-                  {!loggedUserData.nome ? (
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        height: '150px',
-                      }}
-                    >
-                      <Preloader
-                        use={ThreeDots}
-                        size={100}
-                        strokeColor="#324286"
-                        strokeWidth={6}
-                        duration={800}
-                      />
-                    </div>
-                  ) : (
-                    <>
-                      <Name>
-                        <strong>Nome:</strong> <p>{loggedUserData!.nome}</p>
-                      </Name>
+          ) : ( */}
 
-                      <Name>
-                        <strong>Email:</strong> <p>{loggedUserData!.email}</p>
-                      </Name>
-                    </>
-                  )}
-                </DadosAdmin>
-
-                <OpcaoMenu onClick={() => handleAdicionar()}>
-                  Adicionar empreendimento
-                </OpcaoMenu>
-
-                <OpcaoMenu onClick={() => handleRemover()}>
-                  Remover empreendimento
-                </OpcaoMenu>
-
-                <OpcaoMenu onClick={() => handleAtualizar()}>
-                  Adicionar imagens
-                </OpcaoMenu>
-
-                <OpcaoMenu onClick={() => handleListar()}>
-                  Listar empreendimentos
-                </OpcaoMenu>
-
-                <OpcaoMenu onClick={() => handleDeslogar()}>Sair</OpcaoMenu>
-              </LeftMenu>
-
-              <Data>
-                {adicionar && (
+          <Container>
+            {width < 731 && (
+              <FloatButtonDiv>
+                <Hamburger
+                  toggled={toggleMenu}
+                  toggle={setToggleMenu}
+                  size={25}
+                  color="#f2f2f2"
+                  duration={0.5}
+                  easing="ease-in-out"
+                />
+              </FloatButtonDiv>
+            )}
+            <LeftMenu width={width} isOpened={toggleMenu}>
+              <DadosAdmin>
+                {!loggedUserData.nome ? (
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      height: '150px',
+                    }}
+                  >
+                    <Preloader
+                      use={ThreeDots}
+                      size={100}
+                      strokeColor="#324286"
+                      strokeWidth={6}
+                      duration={800}
+                    />
+                  </div>
+                ) : (
                   <>
-                    <AdicionarEmp />
+                    <Name>
+                      <strong>Nome:</strong> <p>{loggedUserData!.nome}</p>
+                    </Name>
+
+                    <Name>
+                      <strong>Email:</strong> <p>{loggedUserData!.email}</p>
+                    </Name>
                   </>
                 )}
-                {listar && (
-                  <>
-                    <ListarEmp />
-                  </>
-                )}
-                {remover && (
-                  <>
-                    <RemoverEmp />
-                  </>
-                )}
-                {atualizar && (
-                  <>
-                    <AtualizarEmp />
-                  </>
-                )}
-              </Data>
-            </Container>
-          )}
+              </DadosAdmin>
+
+              <OpcaoMenu onClick={() => handleAdicionar()}>
+                Adicionar empreendimento
+              </OpcaoMenu>
+
+              <OpcaoMenu onClick={() => handleRemover()}>
+                Remover empreendimento
+              </OpcaoMenu>
+
+              <OpcaoMenu onClick={() => handleAtualizar()}>
+                Adicionar imagens
+              </OpcaoMenu>
+
+              <OpcaoMenu onClick={() => handleListar()}>
+                Listar empreendimentos
+              </OpcaoMenu>
+
+              <OpcaoMenu onClick={() => handleDeslogar()}>Sair</OpcaoMenu>
+            </LeftMenu>
+
+            <Data>
+              {adicionar && (
+                <>
+                  <AdicionarEmp />
+                </>
+              )}
+              {listar && (
+                <>
+                  <ListarEmp />
+                </>
+              )}
+              {remover && (
+                <>
+                  <RemoverEmp />
+                </>
+              )}
+              {atualizar && (
+                <>
+                  <AtualizarEmp />
+                </>
+              )}
+            </Data>
+          </Container>
+          {/* )} */}
         </>
       )}
     </>
