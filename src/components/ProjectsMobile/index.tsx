@@ -51,7 +51,7 @@ const ProjectsMobile: React.FC = () => {
             duration={800}
           />
         ) : (
-          results.map(item => {
+          results.map((item) => {
             return (
               <LinkRRD
                 to={`/empreendimentos/detalhes/${item.id}`}
@@ -65,12 +65,6 @@ const ProjectsMobile: React.FC = () => {
                     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))',
                   }}
                 >
-                  {width > 970 && (
-                    <ExternalImage>
-                      <img src={item.poster} alt={item.nome} />
-                    </ExternalImage>
-                  )}
-
                   <FullImage width={width}>
                     <img src={item.banner} alt={item.nome} />
                   </FullImage>
