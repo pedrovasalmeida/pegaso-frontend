@@ -25,7 +25,6 @@ import {
   DadosAdmin,
   Name,
   OpcaoMenu,
-  Separator,
   Data,
   FloatButtonDiv,
 } from './styles';
