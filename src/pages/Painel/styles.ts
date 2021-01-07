@@ -35,7 +35,6 @@ export const LeftMenu = styled.div<LeftMenuProps>`
   height: auto;
 
   padding-top: 20px;
-  margin-top: 64px;
 
   background: linear-gradient(45deg, ${shade(0.7, '#324286')}, #324286);
   border-right: 1px solid rgba(0, 0, 0, 0.6);
