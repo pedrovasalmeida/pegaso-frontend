@@ -9,8 +9,10 @@ import {
   Separator,
   Form,
   SignInIcon,
+  LoginStatusDiv,
   LoginErrorMessage,
   LoginErrorIcon,
+  LoggedIcon,
 } from './styles';
 
 interface SignInFormData {
@@ -24,6 +26,7 @@ const Login: React.FC = () => {
   const [isError, setIsError] = useState(false);
   const [loginError, setLoginError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
 
   const { signIn } = useAuth();
 
@@ -49,8 +52,10 @@ const Login: React.FC = () => {
 
     return (
       <LoginErrorMessage>
-        <LoginErrorIcon />
-        Algo deu errado. Verifique as credenciais!
+        <span>
+          <LoginErrorIcon />
+          Insira suas credenciais!
+        </span>
       </LoginErrorMessage>
     );
   }, [inputLogin]);
@@ -78,15 +83,23 @@ const Login: React.FC = () => {
         }
 
         await signIn!({ login, password })
-          .then(res => {
+          .then((res) => {
             setIsLoading(false);
             setIsError(false);
+            setIsLogged(true);
 
-            return handleReloadPage();
+            setTimeout(() => {
+              setIsLogged(false);
+              return handleReloadPage();
+            }, 2000);
           })
-          .catch(err => {
+          .catch((err) => {
             setLoginError(true);
             setIsLoading(false);
+
+            setTimeout(() => {
+              setLoginError(false);
+            }, 3000);
           });
       } catch {
         return new Error('Usuário/senha inválidos. Tente novamente!');
@@ -104,18 +117,18 @@ const Login: React.FC = () => {
         <input
           placeholder="Login"
           value={inputLogin}
-          onChange={e => handleInputLogin(e.target.value)}
+          onChange={(e) => handleInputLogin(e.target.value)}
         />
         <input
           type="password"
           placeholder="Senha"
           value={inputSenha}
-          onChange={e => handleInputSenha(e.target.value)}
+          onChange={(e) => handleInputSenha(e.target.value)}
         />
 
         <button
           type="submit"
-          onClick={e =>
+          onClick={(e) =>
             handleSubmit({ login: inputLogin, password: inputSenha }, e)
           }
         >
@@ -126,7 +139,7 @@ const Login: React.FC = () => {
         <Link to="/forgot-password">Esqueci minha senha</Link>
 
         {isLoading && (
-          <div>
+          <LoginStatusDiv isLoading={isLoading} isLogged={false}>
             <Preloader
               use={ThreeDots}
               size={60}
@@ -134,22 +147,29 @@ const Login: React.FC = () => {
               strokeColor="#324286"
               duration={800}
             />
-          </div>
+          </LoginStatusDiv>
         )}
 
         {isError && renderLoginError()}
 
         {loginError && (
           <LoginErrorMessage>
-            <LoginErrorIcon />
-            Login ou senha incorretos. Verifique as credenciais!
+            <span>
+              <LoginErrorIcon />
+              Login/senha incorretos!
+            </span>
           </LoginErrorMessage>
         )}
 
-        {/* <Link to="/create-account">
-          <CreateAccountIcon />
-          Criar conta
-        </Link> */}
+        {isLogged && (
+          <LoginStatusDiv isLoading={false} isLogged={isLogged}>
+            <span>
+              <LoggedIcon />
+              Logado. Entrando...
+            </span>
+          </LoginStatusDiv>
+        )}
+
         <Separator />
         <span>Pegaso © 2020</span>
       </Form>

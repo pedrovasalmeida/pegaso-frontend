@@ -72,9 +72,9 @@ export const Project = styled(motion.div)`
 
   background-color: ${shade(0.1, `#324286`)};
 
-  border-radius: 16px;
+  border-radius: 4px;
 
-  margin: 0 0 24px 0;
+  margin-bottom: 24px;
   padding: 4px;
 `;
 
@@ -85,8 +85,7 @@ export const ExternalImage = styled.div`
   margin: 0 6px 0 0;
 
   > img {
-    border-top-left-radius: 16px;
-    border-bottom-left-radius: 16px;
+    border-radius: 4px;
     width: 100%;
     object-fit: cover;
     height: 100%;
@@ -102,15 +101,7 @@ export const FullImage = styled.div<FullImageProps>`
     object-fit: cover;
     height: 100%;
 
-    border-top-right-radius: 16px;
-    border-bottom-right-radius: 16px;
-
-    ${props =>
-      props.width < 970 &&
-      css`
-        border-top-left-radius: 16px;
-        border-bottom-left-radius: 16px;
-      `}
+    border-radius: 4px;
   }
 `;
 
@@ -127,22 +118,6 @@ export const FloatDiv = styled(motion.div)`
   @media (max-width: 414px) {
     display: none;
   }
-
-  @media (max-width: 411px) {
-    display: none;
-  }
-
-  @media (max-width: 375px) {
-    display: none;
-  }
-
-  @media (max-width: 360px) {
-    display: none;
-  }
-
-  @media (max-width: 320px) {
-    display: none;
-  }
 `;
 
 export const FloatContent = styled.div`
@@ -153,8 +128,8 @@ export const FloatContent = styled.div`
 
   background-color: rgba(0, 0, 0, 0.65);
 
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 
   > div {
     margin: 4px 0 0 8px;
@@ -188,10 +163,10 @@ export const FloatButton = styled.button`
 
   background-color: #324286;
 
-  margin: 4px 0 0 0;
+  margin-top: 4px;
 
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 
   transition: background-color 300ms ease;
   &:hover {

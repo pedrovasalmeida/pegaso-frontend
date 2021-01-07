@@ -12,26 +12,26 @@ export const Container = styled.div``;
 
 export const Form = styled.form`
   display: flex;
+  align-items: center;
+  justify-content: center;
+
   position: relative;
 
-  width: 50vw;
+  width: 80%;
   height: auto;
 
-  margin: 24px 0 0 0;
-  padding: 16px 16px 120px 16px;
+  padding: 16px 10px 0 10px;
 
-  border: 1px solid ${lighten(0.4, '#324286')};
-  border-radius: 16px;
+  background: #fff;
 
-  @media (max-width: 1639px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  border-radius: 4px;
+
+  @media only screen and (max-width: 1281px) {
+    padding: 20px;
   }
 
-  @media (max-width: 1281px) {
-    padding: 16px 16px 200px 16px;
+  @media only screen and (max-width: 730px) {
+    width: 100%;
   }
 `;
 
@@ -39,58 +39,74 @@ export const DivDetalhes = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin: 0 16px 0 0;
+  width: 50%;
+
+  @media only screen and (max-width: 1475px) {
+    width: 90%;
+  }
+
+  @media only screen and (max-width: 1120px) {
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 830px) {
+    width: 100%;
+  }
 `;
 
 export const Input = styled.input<InputProps>`
-  width: 352px;
+  position: relative;
 
-  color: ${shade(0.4, '#324286')};
+  width: 100%;
+  height: 50px;
 
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'auto')};
+  font-size: 18px;
 
-  padding: 4px 8px;
+  color: ${shade(0.6, '#324286')};
+  background: #f2f2f2;
 
-  border: 1px solid ${shade(0.4, `#324286`)};
-  border-radius: 8px;
+  border: 1px solid ${shade(0.4, '#f2f2f2')};
+  border-radius: 4px;
 
   margin: 8px 0;
-
-  background-color: ${props =>
-    props.disabled
-      ? `${lighten(0.55, '#324286')}`
-      : `${lighten(0.62, '#324286')}`};
+  padding: 16px;
 
   transition: all 300ms ease;
 
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'auto')};
+
+  &::placeholder {
+    color: ${shade(0, 'rgba(50, 66, 134, 0.6)')};
+  }
+
   &:hover {
-    background-color: ${props =>
+    background-color: ${(props) =>
       props.disabled
         ? `${lighten(0.55, '#324286')}`
         : `${lighten(0.6, '#324286')}`};
   }
 
   &:focus {
-    border: 1px solid ${shade(0.4, `#324286`)};
-    filter: drop-shadow(0px 0px 2px ${lighten(0.4, `#324286`)});
+    transition: border 300ms ease;
+    border: 1px solid ${lighten(0.1, `#324286`)};
+    filter: drop-shadow(0px 0px 1px ${lighten(0.1, '#324286')});
   }
 `;
 
 export const UploadInput = styled.input<InputProps>`
-  width: 352px;
+  width: 100%;
   height: 32px;
+
+  overflow: hidden;
 
   color: ${shade(0.4, '#324286')};
 
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'auto')};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'auto')};
 
   border: 1px solid ${shade(0.4, `#324286`)};
-  border-radius: 8px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right-width: 0px;
+  border-radius: 4px;
 
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.disabled
       ? `${lighten(0.55, '#324286')}`
       : `${lighten(0.62, '#324286')}`};
@@ -104,7 +120,7 @@ export const UploadInput = styled.input<InputProps>`
   transition: all 300ms ease;
 
   &:hover {
-    background-color: ${props =>
+    background-color: ${(props) =>
       props.disabled
         ? `${lighten(0.55, '#324286')}`
         : `${lighten(0.6, '#324286')}`};
@@ -119,17 +135,19 @@ export const UploadInput = styled.input<InputProps>`
 export const TextArea = styled.textarea`
   resize: none;
 
-  width: 352px;
-  height: 256px;
+  width: 100%;
+  height: 250px;
 
-  color: ${shade(0.4, '#324286')};
+  font-size: 18px;
 
-  padding: 4px 8px;
+  color: ${shade(0.6, '#324286')};
+  background: #f2f2f2;
+
+  margin: 8px 0;
+  padding: 16px;
 
   border: 1px solid ${shade(0.4, `#324286`)};
-  border-radius: 8px;
-
-  background-color: ${lighten(0.62, '#324286')};
+  border-radius: 4px;
 
   transition: all 300ms ease;
 
@@ -175,30 +193,38 @@ export const DivImagens = styled.div`
   }
 `;
 
-export const DivButton = styled.div`
-  position: absolute;
-  bottom: 4vh;
-  left: 13vw;
+export const CreateButton = styled.button`
+  margin: 4px 0;
 
-  button {
-    width: 352px;
-    height: 40px;
+  outline: 0;
+  width: 100%;
+  height: 50px;
 
+  background: #324286;
+  color: #fdfdfd;
+
+  border: 1px solid #324286;
+  border-radius: 4px;
+
+  margin: 8px 0;
+  padding: 0 16px;
+
+  font-weight: bold;
+  font-size: 18px;
+
+  transition: background 300ms ease;
+
+  svg {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    transition: background 300ms ease;
+    background: ${lighten(0.1, `#324286`)};
+  }
+
+  &:focus {
     outline: 0;
-
-    color: #324286;
-
-    border: 1px solid #324286;
-    border-radius: 8px;
-
-    transition: all 300ms ease;
-
-    &:hover {
-      color: #fff;
-      font-weight: bold;
-      background-color: ${lighten(0.2, '#324286')};
-      border: 0px solid #324286;
-    }
   }
 
   @media (max-width: 1639px) {
@@ -213,28 +239,23 @@ export const DivButton = styled.div`
 `;
 
 export const UploadButton = styled.input`
-  width: 100px;
-  height: 32px;
+  width: 100%;
+  height: 50px;
 
-  outline: 0;
+  font-size: 18px;
 
-  color: #324286;
+  color: ${shade(0.6, '#324286')};
+  background: #f2f2f2;
 
-  border: 1px solid #324286;
-  border-radius: 8px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  /* border-top-width: 0;
-  border-bottom-width: 0; */
+  border: 1px solid ${shade(0.4, '#f2f2f2')};
+  border-radius: 4px;
+
+  margin: 8px 0;
+  padding: 16px;
 
   transition: all 300ms ease;
 
-  &:hover {
-    color: #fff;
-    font-weight: bold;
-    background-color: ${lighten(0.2, '#324286')};
-    border: 0px solid #324286;
-  }
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'auto')};
 `;
 
 export const LinkMessage = styled.span`
@@ -317,4 +338,40 @@ export const CloseIcon = styled(TiDelete)`
   font-size: 24px;
 
   cursor: pointer;
+`;
+
+export const DivPreloader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100px;
+`;
+
+export const PreviewDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  width: auto;
+  height: auto;
+
+  padding-left: 10px;
+
+  span:not(:first-child) {
+    margin-top: 12px;
+  }
+`;
+
+export const PreviewImage = styled.img`
+  width: 150px;
+  height: 150px;
+
+  margin: 0 8px;
+
+  border-radius: 4px;
+
+  border: 2px solid ${shade(0.8, '#f2f2f2')};
 `;
