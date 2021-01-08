@@ -186,23 +186,25 @@ const Painel: React.FC = () => {
                 )}
               </DadosAdmin>
 
-              <OpcaoMenu onClick={() => handleAdicionar()}>
+              <OpcaoMenu selected={adicionar} onClick={() => handleAdicionar()}>
                 Adicionar empreendimento
               </OpcaoMenu>
 
-              <OpcaoMenu onClick={() => handleRemover()}>
+              <OpcaoMenu selected={remover} onClick={() => handleRemover()}>
                 Remover empreendimento
               </OpcaoMenu>
 
-              <OpcaoMenu onClick={() => handleAtualizar()}>
+              <OpcaoMenu selected={atualizar} onClick={() => handleAtualizar()}>
                 Adicionar imagens
               </OpcaoMenu>
 
-              <OpcaoMenu onClick={() => handleListar()}>
+              <OpcaoMenu selected={listar} onClick={() => handleListar()}>
                 Listar empreendimentos
               </OpcaoMenu>
 
-              <OpcaoMenu onClick={() => handleDeslogar()}>Sair</OpcaoMenu>
+              <OpcaoMenu selected={false} onClick={() => handleDeslogar()}>
+                Sair
+              </OpcaoMenu>
             </LeftMenu>
 
             <Data>
