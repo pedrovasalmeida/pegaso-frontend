@@ -6,6 +6,10 @@ interface LeftMenuProps {
   width: number;
 }
 
+interface OpcoesMenuProps {
+  selected?: boolean;
+}
+
 export const Container = styled.div`
   display: flex;
   margin-top: 64px;
@@ -104,7 +108,7 @@ export const Email = styled.span``;
 
 export const Login = styled.span``;
 
-export const OpcaoMenu = styled.span`
+export const OpcaoMenu = styled.span<OpcoesMenuProps>`
   display: flex;
   align-items: center;
 
@@ -116,12 +120,17 @@ export const OpcaoMenu = styled.span`
   padding-top: 3px;
 
   border-bottom: 1px solid rgba(242, 242, 242, 0.2);
-
   border-radius: 4px;
 
   font-weight: bold;
+  color: ${(props) =>
+    props.selected ? `${shade(0.4, '#324286')}` : '#f2f2f2'};
 
-  color: #f2f2f2;
+  ${(props) =>
+    props.selected &&
+    css`
+      background: #f2f2f2;
+    `}
 
   cursor: pointer;
 

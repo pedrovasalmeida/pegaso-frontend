@@ -16,6 +16,7 @@ import {
   CloseIcon,
   Button,
   InfoModal,
+  StatusMessageDiv,
 } from './styles';
 
 interface EmpreendimentoData {
@@ -53,12 +54,13 @@ const RemoverEmp: React.FC = () => {
     setConfirmModal(false);
     setIsDeleted(false);
   };
+
   const handleClickOutsiteInfoModal = () => {
     setIsDeleted(false);
     window.location.reload();
   };
 
-  const handleDelete = async () => {
+  const handleDelete = async (id) => {
     setIsLoading(true);
 
     const token = localStorage.getItem('@ProjPegaso:token');
@@ -68,14 +70,14 @@ const RemoverEmp: React.FC = () => {
     };
 
     await api
-      .delete(`/delete/${idToDelete}`, config)
-      .then(res => {
+      .delete(`/delete/${id}`, config)
+      .then((res) => {
         setIsDeleted(true);
         setConfirmModal(false);
         setIsError(false);
         setIsLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         setIsDeleted(false);
         setIsError(true);
         setIsLoading(false);
@@ -90,39 +92,61 @@ const RemoverEmp: React.FC = () => {
     <Container>
       {isDeleted && (
         <InfoModal>
-          <span>
-            {isError
-              ? `O empreendimento de ID ${idToDelete} não foi excluído. Tente novamente!`
-              : `O empreendimento de ID ${idToDelete} foi excluído com sucesso!`}
-          </span>
-          <CloseIcon onClick={() => handleClickOutsiteInfoModal()} />
-          <div>
-            <Button onClick={() => handleClickOutsiteInfoModal()}>
-              Confirmar
-            </Button>
-          </div>
+          <>
+            <span>
+              {isError
+                ? `O empreendimento de ID ${idToDelete} não foi excluído. Tente novamente!`
+                : `O empreendimento de ID ${idToDelete} foi excluído com sucesso!`}
+            </span>
+            <CloseIcon onClick={() => handleClickOutsiteInfoModal()} />
+            <div>
+              <Button
+                buttonType="confirm"
+                onClick={() => handleClickOutsiteInfoModal()}
+              >
+                Confirmar
+              </Button>
+            </div>
+          </>
         </InfoModal>
       )}
       {confirmModal && (
         <Modal>
           {isLoading ? (
-            <Preloader
-              use={ThreeDots}
-              size={80}
-              strokeWidth={8}
-              strokeColor="#324286"
-              duration={800}
-            />
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '100px',
+              }}
+            >
+              <Preloader
+                use={ThreeDots}
+                size={80}
+                strokeWidth={8}
+                strokeColor="#324286"
+                duration={800}
+              />
+            </div>
           ) : (
             <>
-              <span>
-                Tem certeza que deseja excluir esse empreendimento? ID:{' '}
-                {idToDelete}
-              </span>
+              <span>Tem certeza que deseja excluir esse empreendimento?</span>
+              <span>ID: {idToDelete}</span>
               <CloseIcon onClick={() => handleClickOutsite()} />
               <div>
-                <Button onClick={() => handleDelete()}>Confirmar</Button>
-                <Button onClick={() => handleClickOutsite()}>Cancelar</Button>
+                <Button
+                  buttonType="confirm"
+                  onClick={() => handleDelete(idToDelete)}
+                >
+                  Confirmar
+                </Button>
+                <Button
+                  buttonType="cancel"
+                  onClick={() => handleClickOutsite()}
+                >
+                  Cancelar
+                </Button>
               </div>
             </>
           )}
@@ -135,7 +159,7 @@ const RemoverEmp: React.FC = () => {
               display: 'flex',
               alignItems: 'flex-start',
               justifyContent: 'center',
-              height: '100vh',
+              height: 'calc(100vh - 104px)',
               width: '100%',
               marginTop: '100px',
             }}
@@ -149,7 +173,7 @@ const RemoverEmp: React.FC = () => {
             />
           </div>
         ) : (
-          data?.map(item => (
+          data?.map((item) => (
             <Item key={item.id}>
               <Avatar src={item.banner} alt={item.nome} />
 

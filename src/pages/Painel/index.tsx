@@ -50,8 +50,8 @@ interface UserApiData {
 const Painel: React.FC = () => {
   const { user, signOut } = useAuth();
 
-  const [adicionar, setAdicionar] = useState(false);
-  const [atualizar, setAtualizar] = useState(true);
+  const [adicionar, setAdicionar] = useState(true);
+  const [atualizar, setAtualizar] = useState(false);
   const [remover, setRemover] = useState(false);
   const [listar, setListar] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -186,23 +186,25 @@ const Painel: React.FC = () => {
                 )}
               </DadosAdmin>
 
-              <OpcaoMenu onClick={() => handleAdicionar()}>
+              <OpcaoMenu selected={adicionar} onClick={() => handleAdicionar()}>
                 Adicionar empreendimento
               </OpcaoMenu>
 
-              <OpcaoMenu onClick={() => handleRemover()}>
+              <OpcaoMenu selected={remover} onClick={() => handleRemover()}>
                 Remover empreendimento
               </OpcaoMenu>
 
-              <OpcaoMenu onClick={() => handleAtualizar()}>
+              <OpcaoMenu selected={atualizar} onClick={() => handleAtualizar()}>
                 Adicionar imagens
               </OpcaoMenu>
 
-              <OpcaoMenu onClick={() => handleListar()}>
+              <OpcaoMenu selected={listar} onClick={() => handleListar()}>
                 Listar empreendimentos
               </OpcaoMenu>
 
-              <OpcaoMenu onClick={() => handleDeslogar()}>Sair</OpcaoMenu>
+              <OpcaoMenu selected={false} onClick={() => handleDeslogar()}>
+                Sair
+              </OpcaoMenu>
             </LeftMenu>
 
             <Data>
