@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Preloader, ThreeDots } from 'react-preloader-icon';
 import api from '../../services/api';
 
@@ -8,12 +8,8 @@ import {
   UploadInput,
   TextArea,
   DivDetalhes,
-  DivDireita,
-  DivImagens,
   CreateButton,
   UploadButton,
-  LinkMessage,
-  Separator,
   ModalSuccess,
   ModalText,
   ModalButton,
@@ -278,7 +274,7 @@ const AddEmp2: React.FC = () => {
           {linkBanner && (
             <>
               <span>Banner: </span>
-              <a href={linkBanner}>
+              <a href={linkBanner} target="_blank" rel="noreferrer noopener">
                 <PreviewImage src={linkBanner} alt={linkBanner} />
               </a>
             </>
@@ -287,7 +283,7 @@ const AddEmp2: React.FC = () => {
           {linkPoster && (
             <>
               <span>Poster: </span>
-              <a href={linkPoster}>
+              <a href={linkPoster} target="_blank" rel="noreferrer noopener">
                 <PreviewImage src={linkPoster} alt={linkPoster} />
               </a>
             </>
