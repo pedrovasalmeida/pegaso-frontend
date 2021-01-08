@@ -10,7 +10,6 @@ import {
   Subtitle,
   DivProjects,
   Project,
-  ExternalImage,
   FullImage,
   FloatDiv,
   FloatContent,
