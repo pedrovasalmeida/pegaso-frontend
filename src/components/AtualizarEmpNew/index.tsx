@@ -200,6 +200,32 @@ const AtualizarEmpNew: React.FC = () => {
     if (enterpriseId) getDataFromOneEnterprise(enterpriseId);
   }, [enterpriseId]);
 
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      border: '1px solid #333',
+      color: state.isSelected ? '#fff' : '#324286',
+      background: state.isSelected ? '#5264b3' : '#fff',
+      fontWeight: 'bold',
+      borderRadius: '2px',
+    }),
+    control: () => ({
+      // none of react-select's styles are passed to <Control />
+      display: 'flex',
+      flexDirection: 'row',
+      width: '100%',
+      border: '1px solid #fff',
+      borderRadius: '4px',
+      outline: 0,
+    }),
+    singleValue: (provided, state) => {
+      const opacity = state.isDisabled ? 0.5 : 1;
+      const transition = 'opacity 300ms';
+
+      return { ...provided, opacity, transition };
+    },
+  };
+
   if (!enterprises)
     return (
       <div
@@ -224,8 +250,13 @@ const AtualizarEmpNew: React.FC = () => {
   return (
     <Container>
       <SelectInput
+        styles={customStyles}
         options={options}
-        placeholder="Selecione um empreendimento..."
+        placeholder={
+          <div>
+            <span>Empreendimentos...</span>
+          </div>
+        }
         onChange={(option) => handleInputChange(option)}
       />
 
@@ -240,13 +271,18 @@ const AtualizarEmpNew: React.FC = () => {
                 {singleEnterprise.images.length > 10 ? (
                   <>
                     <Text>
-                      O empreendimento possui mais de 10 imagens cadastradas.
+                      O empreendimento possui{' '}
+                      <strong>mais de 10 imagens</strong> cadastradas. Por isso,
+                      o preview está desativado.
                     </Text>
-                    <Text>Preview indisponível.</Text>
+                    <Text>
+                      Total de imagens:{' '}
+                      <strong>{singleEnterprise.images.length}</strong>
+                    </Text>
                   </>
                 ) : (
                   <>
-                    <Text>Imagens cadastradas:</Text>
+                    <Text>Imagens existentes:</Text>
                     <PreviewDiv>
                       {singleEnterprise.images.map((image) => (
                         <a
@@ -280,19 +316,20 @@ const AtualizarEmpNew: React.FC = () => {
                   />
                 </StatusMessageDiv>
               )}
-
               {success && (
                 <StatusMessageDiv status="success">
                   <span>{statusMessage}</span>
                 </StatusMessageDiv>
               )}
-
               {error && (
                 <StatusMessageDiv status="error">
                   <span>{statusMessage}</span>
                 </StatusMessageDiv>
               )}
-
+              <Text style={{ margin: 0, padding: 0 }}>
+                Selecione a(s) imagem(ns)
+              </Text>
+              :
               <UploadInput
                 name="images"
                 id="images"
@@ -301,7 +338,6 @@ const AtualizarEmpNew: React.FC = () => {
                 multiple
                 onChange={(e) => handleAddFileListToArray(e.target.files)}
               />
-
               <Button
                 type="button"
                 value="Adicionar Imagens"
@@ -311,7 +347,9 @@ const AtualizarEmpNew: React.FC = () => {
           </EnterpriseDetails>
         </>
       ) : (
-        <Text>Selecione um dos empreendimentos disponíveis acima!</Text>
+        <Text style={{ fontWeight: 'bold' }}>
+          Selecione um dos empreendimentos disponíveis acima!
+        </Text>
       )}
     </Container>
   );

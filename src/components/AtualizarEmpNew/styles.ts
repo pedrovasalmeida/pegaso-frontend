@@ -3,11 +3,6 @@ import { shade, lighten } from 'polished';
 
 import Select from 'react-select';
 
-interface InputProps {
-  disabled?: boolean;
-  whatImageType?: string;
-}
-
 interface PreviewDivProps {
   numberImages?: number;
 }
@@ -19,31 +14,47 @@ interface StatusMessageProp {
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 
-  background-color: #fff;
+  min-height: calc(100vh - 104px);
+  height: auto;
   width: 100%;
 
-  min-height: calc(100vh - 64px);
-  height: auto;
+  padding: 8px;
 
-  padding: 16px;
+  background-color: #fff;
 `;
 
 export const SelectInput = styled(Select)`
-  margin-top: 32px;
+  margin-top: 8px;
   align-self: center;
 
-  width: 50%;
+  width: 40%;
 
   color: ${shade(0.6, '#324286')};
   border: 1px solid ${shade(0.4, '#324286')};
   border-radius: 4px;
 
-  @media (max-width: 1049px) {
-    width: 80%;
+  /* div {
+    color: ${shade(0.7, '#fff')};
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    line-height: 26px;
+
+    &:hover {
+      background: red;
+    }
+
+    span {
+      border-bottom: 1px solid #000;
+    } */
+
+  @media only screen and (max-width: 1400px) {
+    width: 70%;
   }
-  @media (max-width: 414px) {
-    width: 80%;
+  @media only screen and (max-width: 912px) {
+    width: 100%;
   }
 `;
 
@@ -53,19 +64,22 @@ export const EnterpriseDetails = styled.div`
   align-items: center;
   justify-content: center;
 
+  text-align: center;
+
   position: relative;
 
   width: auto;
   height: auto;
-
-  padding: 32px;
-  margin: 16px 0;
 
   border: 1px solid ${lighten(0.6, '#324286')};
   border-radius: 4px;
 
   form {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   @media only screen and (max-width: 394px) {
@@ -86,9 +100,18 @@ export const Text = styled.span`
   line-height: 30px;
 
   margin: 4px 0;
+
+  strong {
+    font-weight: bold;
+  }
 `;
 
 export const PreviewDiv = styled.div<PreviewDivProps>`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
   max-width: 50%;
   height: auto;
@@ -135,28 +158,53 @@ export const UploadInput = styled.input`
 `;
 
 export const Button = styled.input`
+  margin: 4px 0;
+
+  outline: 0;
   width: 100%;
   height: 50px;
 
-  font-size: 18px;
+  background: #324286;
+  color: #fdfdfd;
 
-  color: ${shade(0.6, '#324286')};
-  background: #f2f2f2;
-
-  border: 1px solid ${shade(0.4, '#f2f2f2')};
+  border: 1px solid #324286;
   border-radius: 4px;
 
   margin: 8px 0;
-  padding: 16px;
+  padding: 0 16px;
 
-  transition: all 300ms ease;
+  font-weight: bold;
+  font-size: 18px;
 
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'auto')};
+  transition: background 300ms ease;
+
+  svg {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    transition: background 300ms ease;
+    background: ${lighten(0.1, `#324286`)};
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  @media (max-width: 1639px) {
+    bottom: 8vh;
+    left: 13vw;
+  }
+
+  @media (max-width: 1281px) {
+    bottom: 16vh;
+    left: 11vw;
+  }
 `;
 
 export const StatusMessageDiv = styled.div<StatusMessageProp>`
   position: absolute;
-  bottom: 5%;
+  bottom: 4%;
   left: 0;
 
   display: flex;
