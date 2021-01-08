@@ -26,15 +26,16 @@ interface EmpreendimentoData {
 }
 
 const AddEmp2: React.FC = () => {
+  // estado para arquivos
   const [file, setFile] = useState<File | null>(null);
-
-  const [uploaded, setUploaded] = useState(false);
+  // estado dos inputs
   const [inputName, setInputName] = useState('');
   const [inputDescricao, setInputDescricao] = useState('');
   const [inputDescCurta, setInputDescCurta] = useState('');
   const [inputEndereco, setInputEndereco] = useState('');
   const [linkBanner, setLinkBanner] = useState('');
   const [linkPoster, setLinkPoster] = useState('');
+  // estados informativos
   const [isBannerLoading, setIsBannerLoading] = useState(false);
   const [isPosterLoading, setIsPosterLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -190,7 +191,6 @@ const AddEmp2: React.FC = () => {
     await api
       .post('/create', data, config)
       .then((res) => {
-        setUploaded(true);
         setSuccess(true);
         setError(false);
         setStatusMessage('Empreendimento criado com sucesso!');
