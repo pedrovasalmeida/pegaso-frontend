@@ -19,17 +19,20 @@ export const LeftMenu = styled.div<LeftMenuProps>`
           left: 0;
           top: 0;
           bottom: 0;
+
+          min-width: 240px;
+
           transform: translateX(-280px);
           z-index: 999;
         `
       : css`
+          min-width: 280px;
           z-index: 1;
         `}
 
   display: flex;
   flex-direction: column;
 
-  min-width: 280px;
   width: auto;
   min-height: calc(100vh - 64px);
   height: auto;
