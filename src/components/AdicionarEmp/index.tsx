@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Preloader, ThreeDots } from 'react-preloader-icon';
 import api from '../../services/api';
 
@@ -10,13 +10,10 @@ import {
   DivDetalhes,
   CreateButton,
   UploadButton,
-  ModalSuccess,
-  ModalText,
-  ModalButton,
-  CloseIcon,
   DivPreloader,
   PreviewImage,
   PreviewDiv,
+  StatusMessageDiv,
 } from './styles';
 
 interface EmpreendimentoData {
@@ -41,6 +38,9 @@ const AddEmp2: React.FC = () => {
   const [isBannerLoading, setIsBannerLoading] = useState(false);
   const [isPosterLoading, setIsPosterLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
 
   const token = localStorage.getItem('@ProjPegaso:token');
 
@@ -100,21 +100,83 @@ const AddEmp2: React.FC = () => {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     e.preventDefault();
-
-    if (!inputName)
-      return alert('O nome do empreendimento não pode estar vazio!');
-    if (!inputDescricao)
-      return alert('A descrição do empreendimento não pode estar vazia!');
-    if (!inputDescCurta)
-      return alert('A descrição curta do empreendimento não pode estar vazia!');
-    if (!inputEndereco)
-      return alert('O endereço do empreendimento não pode estar vazio!');
-    if (!linkBanner)
-      return alert('O banner do empreendimento não pode estar vazio!');
-    if (!linkPoster)
-      return alert('O poster do empreendimento não pode estar vazio!');
-
     setIsLoading(true);
+    setSuccess(false);
+    setError(false);
+    setStatusMessage('');
+
+    if (!inputName) {
+      setError(true);
+      setIsLoading(false);
+      setStatusMessage('O nome do empreendimento não pode estar vazio!');
+
+      setTimeout(() => {
+        setError(false);
+        setStatusMessage('');
+      }, 3000);
+
+      return;
+    }
+    if (!inputDescricao) {
+      setError(true);
+      setIsLoading(false);
+      setStatusMessage('A descrição não pode estar vazia!');
+
+      setTimeout(() => {
+        setError(false);
+        setStatusMessage('');
+      }, 3000);
+
+      return;
+    }
+    if (!inputDescCurta) {
+      setError(true);
+      setIsLoading(false);
+      setStatusMessage('A curta descrição não pode estar vazia!');
+
+      setTimeout(() => {
+        setError(false);
+        setStatusMessage('');
+      }, 3000);
+
+      return;
+    }
+    if (!inputEndereco) {
+      setError(true);
+      setIsLoading(false);
+      setStatusMessage('O endereço não pode estar vazio!');
+
+      setTimeout(() => {
+        setError(false);
+        setStatusMessage('');
+      }, 3000);
+
+      return;
+    }
+    if (!linkBanner) {
+      setError(true);
+      setIsLoading(false);
+      setStatusMessage('O banner do empreendimento não pode estar vazio!');
+
+      setTimeout(() => {
+        setError(false);
+        setStatusMessage('');
+      }, 3000);
+
+      return;
+    }
+    if (!linkPoster) {
+      setError(true);
+      setIsLoading(false);
+      setStatusMessage('O poster do empreendimento não pode estar vazio!');
+
+      setTimeout(() => {
+        setError(false);
+        setStatusMessage('');
+      }, 3000);
+
+      return;
+    }
 
     const data = {
       nome: inputName,
@@ -129,32 +191,20 @@ const AddEmp2: React.FC = () => {
       .post('/create', data, config)
       .then((res) => {
         setUploaded(true);
+        setSuccess(true);
+        setError(false);
+        setStatusMessage('Empreendimento criado com sucesso!');
         return setIsLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setError(true);
+        setIsLoading(false);
+        setStatusMessage('Erro: ' + err);
+      });
   };
-
-  const handleCloseModal = () => {
-    setUploaded(false);
-    window.location.reload();
-  };
-
-  useEffect(() => {}, []);
 
   return (
     <Form>
-      {uploaded && (
-        <ModalSuccess>
-          <CloseIcon onClick={() => handleCloseModal()} />
-          <ModalText>Empreendimento criado com sucesso!</ModalText>
-          <ModalButton
-            type="button"
-            value="Confirmar"
-            onClick={() => handleCloseModal()}
-          />
-        </ModalSuccess>
-      )}
-
       <DivDetalhes>
         <Input
           type="text"
@@ -260,16 +310,6 @@ const AddEmp2: React.FC = () => {
             )}
           </>
         )}
-
-        {isLoading && (
-          <Preloader
-            use={ThreeDots}
-            size={70}
-            strokeColor="#324286"
-            strokeWidth={6}
-            duration={1000}
-          />
-        )}
         <PreviewDiv>
           {linkBanner && (
             <>
@@ -289,6 +329,30 @@ const AddEmp2: React.FC = () => {
             </>
           )}
         </PreviewDiv>
+
+        {isLoading && (
+          <PreviewDiv>
+            <Preloader
+              use={ThreeDots}
+              size={70}
+              strokeColor="#324286"
+              strokeWidth={6}
+              duration={1000}
+            />
+          </PreviewDiv>
+        )}
+
+        {success && (
+          <StatusMessageDiv status="success">
+            <span>{statusMessage}</span>
+          </StatusMessageDiv>
+        )}
+
+        {error && (
+          <StatusMessageDiv status="error">
+            <span>{statusMessage}</span>
+          </StatusMessageDiv>
+        )}
 
         <CreateButton onClick={(e) => verifyAndSendData(e)}>
           Criar Empreendimento
