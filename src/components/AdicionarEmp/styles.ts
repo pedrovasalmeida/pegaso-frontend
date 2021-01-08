@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade, lighten } from 'polished';
 
 import { TiDelete } from 'react-icons/ti';
@@ -6,6 +6,10 @@ import { TiDelete } from 'react-icons/ti';
 interface InputProps {
   disabled?: boolean;
   whatImageType?: string;
+}
+
+interface StatusMessageProp {
+  status: 'error' | 'loading' | 'success';
 }
 
 export const Container = styled.div``;
@@ -36,6 +40,7 @@ export const Form = styled.form`
 `;
 
 export const DivDetalhes = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
 
@@ -363,6 +368,10 @@ export const PreviewDiv = styled.div`
   span:not(:first-child) {
     margin-top: 12px;
   }
+
+  @media only screen and (max-width: 489px) {
+    flex-direction: column;
+  }
 `;
 
 export const PreviewImage = styled.img`
@@ -374,4 +383,47 @@ export const PreviewImage = styled.img`
   border-radius: 4px;
 
   border: 2px solid ${shade(0.8, '#f2f2f2')};
+`;
+
+export const StatusMessageDiv = styled.div<StatusMessageProp>`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 60px;
+  border-radius: 4px;
+
+  padding: 4px;
+
+  z-index: 1;
+
+  ${(props) =>
+    props.status === 'error' &&
+    css`
+      background: rgba(192, 25, 32, 1);
+    `}
+  ${(props) =>
+    props.status === 'loading' &&
+    css`
+      background: #fff;
+    `}
+  ${(props) =>
+    props.status === 'success' &&
+    css`
+      background: #32c019;
+    `}
+
+  span {
+    font-weight: bold;
+    font-size: 16px;
+
+    z-index: 2;
+
+    color: #fff;
+  }
 `;

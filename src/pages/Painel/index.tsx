@@ -7,11 +7,10 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 /** Componentes */
 import LoginPage from '../../components/Login';
-import PainelMobile from '../../components/PainelMobile';
 import AdicionarEmp from '../../components/AdicionarEmp';
 import RemoverEmp from '../../components/RemoverEmp';
 import ListarEmp from '../../components/ListarEmp';
-import AtualizarEmp from '../../components/AtualizarEmp';
+import AtualizarEmp from '../../components/AtualizarEmpNew';
 import api from '../../services/api';
 
 import { Slant as Hamburger } from 'hamburger-react';
@@ -51,8 +50,8 @@ interface UserApiData {
 const Painel: React.FC = () => {
   const { user, signOut } = useAuth();
 
-  const [adicionar, setAdicionar] = useState(true);
-  const [atualizar, setAtualizar] = useState(false);
+  const [adicionar, setAdicionar] = useState(false);
+  const [atualizar, setAtualizar] = useState(true);
   const [remover, setRemover] = useState(false);
   const [listar, setListar] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(true);
