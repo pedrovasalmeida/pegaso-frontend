@@ -34,7 +34,6 @@ const AddEmp2: React.FC = () => {
   const [inputDescCurta, setInputDescCurta] = useState('');
   const [inputEndereco, setInputEndereco] = useState('');
   const [linkBanner, setLinkBanner] = useState('');
-  const [linkPoster, setLinkPoster] = useState('');
   // estados informativos
   const [isBannerLoading, setIsBannerLoading] = useState(false);
   const [isPosterLoading, setIsPosterLoading] = useState(false);
@@ -78,23 +77,6 @@ const AddEmp2: React.FC = () => {
         setIsBannerLoading(false);
         return err;
       });
-  };
-
-  const fileUploadPosterHandler = async () => {
-    setIsPosterLoading(true);
-    const formdata = new FormData();
-
-    if (file === null) return alert('file is empty');
-
-    formdata.append('image', file!);
-
-    await api
-      .post('/storage-images', formdata)
-      .then((res) => {
-        setIsPosterLoading(false);
-        return setLinkPoster(res.data.link);
-      })
-      .catch((err) => err);
   };
 
   const verifyAndSendData = async (
@@ -166,18 +148,6 @@ const AddEmp2: React.FC = () => {
 
       return;
     }
-    if (!linkPoster) {
-      setError(true);
-      setIsLoading(false);
-      setStatusMessage('O poster do empreendimento não pode estar vazio!');
-
-      setTimeout(() => {
-        setError(false);
-        setStatusMessage('');
-      }, 3000);
-
-      return;
-    }
 
     const data = {
       nome: inputName,
@@ -185,7 +155,7 @@ const AddEmp2: React.FC = () => {
       descricao: inputDescricao,
       endereco: inputEndereco,
       banner: linkBanner,
-      poster: linkPoster,
+      poster: linkBanner,
     };
 
     await api
@@ -193,13 +163,24 @@ const AddEmp2: React.FC = () => {
       .then((res) => {
         setSuccess(true);
         setError(false);
+        setIsLoading(false);
         setStatusMessage('Empreendimento criado com sucesso!');
+
+        setTimeout(() => {
+          setSuccess(false);
+          window.location.reload();
+        }, 2000);
         return setIsLoading(false);
       })
       .catch((err) => {
         setError(true);
+        setSuccess(false);
         setIsLoading(false);
         setStatusMessage('Erro: ' + err);
+
+        setTimeout(() => {
+          setError(false);
+        }, 2000);
       });
   };
 
@@ -271,45 +252,6 @@ const AddEmp2: React.FC = () => {
           </>
         )}
 
-        <label>Selecione um arquivo para ser o Poster do empreendimento:</label>
-
-        <form encType="multipart/form-data">
-          <UploadInput
-            name="image"
-            id="image"
-            type="file"
-            whatImageType="poster"
-            onChange={(e) => handleSubmitImage(e.target.files)}
-          />
-          <UploadButton
-            type="button"
-            value="Upload Poster"
-            onClick={() => fileUploadPosterHandler()}
-          />
-        </form>
-
-        {linkPoster ? (
-          <Input
-            type="text"
-            value={linkPoster}
-            disabled
-            placeholder="Link do poster"
-          />
-        ) : (
-          <>
-            {isPosterLoading && (
-              <DivPreloader>
-                <Preloader
-                  use={ThreeDots}
-                  size={70}
-                  strokeColor="#324286"
-                  strokeWidth={6}
-                  duration={1000}
-                />
-              </DivPreloader>
-            )}
-          </>
-        )}
         <PreviewDiv>
           {linkBanner && (
             <>
@@ -319,19 +261,10 @@ const AddEmp2: React.FC = () => {
               </a>
             </>
           )}
-
-          {linkPoster && (
-            <>
-              <span>Poster: </span>
-              <a href={linkPoster} target="_blank" rel="noreferrer noopener">
-                <PreviewImage src={linkPoster} alt={linkPoster} />
-              </a>
-            </>
-          )}
         </PreviewDiv>
 
         {isLoading && (
-          <PreviewDiv>
+          <StatusMessageDiv status="loading">
             <Preloader
               use={ThreeDots}
               size={70}
@@ -339,7 +272,7 @@ const AddEmp2: React.FC = () => {
               strokeWidth={6}
               duration={1000}
             />
-          </PreviewDiv>
+          </StatusMessageDiv>
         )}
 
         {success && (
