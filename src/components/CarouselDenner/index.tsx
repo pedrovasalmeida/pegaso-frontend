@@ -30,7 +30,7 @@ interface Empreendimentos {
 }
 
 interface ResultsProps {
-  results: Array<Empreendimentos>;
+  results: Empreendimentos[];
   isLoading?: any;
   isError?: any;
 }
