@@ -15,6 +15,11 @@ interface InfoProps {
   infoName?: string;
 }
 
+interface MapMarkerProps {
+  lat?: any;
+  lng?: any;
+}
+
 export const Container = styled.div`
   display: flex;
   justify-content: space-around;
@@ -225,7 +230,7 @@ export const Button = styled.button`
   height: 40px;
 
   background: #324286;
-  color: #f2d2d2;
+  color: #f2f2f2;
 
   border: 1px solid #324286;
   border-radius: 4px;
@@ -295,6 +300,23 @@ export const StatusMessage = styled.div<StatusMessageProps>`
     > span {
       font-size: 14px;
     }
+  }
+`;
+
+export const MapMarker = styled.div<MapMarkerProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f2f2f2;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #324286;
+  border-radius: 50%;
+
+  span {
+    font-weight: bold;
+    font-size: 8px;
   }
 `;
 

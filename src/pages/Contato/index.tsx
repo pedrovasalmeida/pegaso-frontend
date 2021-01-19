@@ -20,13 +20,12 @@ import {
   Title,
   Button,
   StatusMessage,
+  MapMarker,
   PhoneIcon,
   LocationIcon,
   MailIcon,
   SendIcon,
 } from './styles';
-
-const SomeComponent = ({ text }: any) => <div>{text}</div>;
 
 const { REACT_APP_API_GOOGLE_MAPS } = process.env;
 
@@ -35,12 +34,13 @@ const Contato: React.FC = () => {
     {
       name: 'Location',
       icon: <LocationIcon size={40} />,
-      text: 'Rua Teste, ao lado do Teste, nº 15, Novo Teste, Teste-TE',
+      text:
+        'R. Doutor Jose Peroba, 297, Edf: Atlanta Empresarial, Sala: 907, Stiep, Salvador - BA',
     },
     {
       name: 'Phone',
       icon: <PhoneIcon size={40} />,
-      text: '(31) 9 9876 - 5432',
+      text: '(71) 9 9908-7283 | (71) 3018-5649',
     },
     {
       name: 'Mail',
@@ -89,13 +89,7 @@ const Contato: React.FC = () => {
   }, []);
 
   const handleSendEmail = useCallback(
-    async (
-      e,
-      nome: string,
-      email: string,
-      contato: string,
-      mensagem: string,
-    ) => {
+    async (e, nome: string, email: string, contato: string, mensagem: string) => {
       e.preventDefault();
 
       setIsLoading(true);
@@ -163,9 +157,7 @@ const Contato: React.FC = () => {
           setIsSended(false);
           setIsLoading(false);
           setCouldSend(false);
-          setErrorMessage(
-            'Ocorreu algum erro com o envio dos dados. Tente novamente!',
-          );
+          setErrorMessage('Ocorreu algum erro com o envio dos dados. Tente novamente!');
           setTimeout(() => {
             setIsLoading(false);
             setIsError(false);
@@ -199,18 +191,18 @@ const Contato: React.FC = () => {
           <Contacts>
             <Contact infoName={contactData[0].name}>
               {contactData[0].icon}
-              <Text>{contactData[0].text}</Text>
+              <Text style={{ fontFamily: 'Roboto' }}>{contactData[0].text}</Text>
             </Contact>
 
             <div>
               <Contact>
                 {contactData[1].icon}
-                <Text>{contactData[1].text}</Text>
+                <Text style={{ fontFamily: 'Roboto' }}>{contactData[1].text}</Text>
               </Contact>
 
               <Contact>
                 {contactData[2].icon}
-                <Text>{contactData[2].text}</Text>
+                <Text style={{ fontFamily: 'Roboto' }}>{contactData[2].text}</Text>
               </Contact>
             </div>
           </Contacts>
@@ -223,11 +215,9 @@ const Contato: React.FC = () => {
               defaultCenter={center}
               defaultZoom={zoom}
             >
-              <SomeComponent
-                lat={-12.9778728}
-                lng={-38.4404094}
-                text="My Marker"
-              />
+              <MapMarker lat={-12.9845797} lng={-38.4501945}>
+                <span>Logo</span>
+              </MapMarker>
             </GoogleMapReact>
           </div>
         </ContactDiv>
@@ -235,8 +225,8 @@ const Contato: React.FC = () => {
         <FormDiv>
           <Title>Entre em contato</Title>
           <Text>
-            Para qualquer informação, dúvida ou comentário, por favor ligue:
-            (11) 3456-7890. Ou preencha o fomulário:
+            Para qualquer informação, dúvida ou comentário ligue: (71) 3018-5649 ou
+            preencha o fomulário:
           </Text>
           <Form>
             <Input
@@ -277,13 +267,7 @@ const Contato: React.FC = () => {
               disabled={!couldSend}
               type="submit"
               onClick={e =>
-                handleSendEmail(
-                  e,
-                  inputNome,
-                  inputEmail,
-                  inputContato,
-                  inputMensagem,
-                )
+                handleSendEmail(e, inputNome, inputEmail, inputContato, inputMensagem)
               }
             >
               <SendIcon />
@@ -307,9 +291,7 @@ const Contato: React.FC = () => {
             )}
             {isSended && (
               <StatusMessage isLoading={false} isError={false}>
-                <span>
-                  Obrigado por entrar em contato. Responderemos em breve!
-                </span>
+                <span>Obrigado por entrar em contato. Responderemos em breve!</span>
               </StatusMessage>
             )}
           </Form>
