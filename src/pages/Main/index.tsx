@@ -31,7 +31,7 @@ interface Empreendimentos {
 }
 
 interface ResultsProps {
-  results: Array<Empreendimentos>;
+  results: Empreendimentos[];
   isLoading?: any;
   isError?: any;
 }
@@ -89,7 +89,7 @@ const CarouselDenner: React.FC = () => {
   return (
     <>
       <Carousel {...handlers} style={{ cursor: 'grab' }}>
-        {results.map((item) => (
+        {results.map(item => (
           <Container key={item.id} sliding={sliding} dir={dir}>
             <Imagem src={item.banner} alt={item.nome} />
           </Container>
@@ -113,16 +113,6 @@ const CarouselDenner: React.FC = () => {
             </FloatButton>
           </Link>
         </FloatDiv>
-        {/* {results.length >= 1 && (
-          <>
-            <ButtonNext>
-              <IoIosArrowForward onClick={handleNext} className="icon" />
-            </ButtonNext>
-            <ButtonBack>
-              <IoIosArrowBack onClick={handleBack} className="icon" />
-            </ButtonBack>
-          </>
-        )} */}
       </Carousel>
       <Footer />
     </>
