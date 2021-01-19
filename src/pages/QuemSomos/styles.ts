@@ -244,8 +244,6 @@ export const fadeIn = keyframes`
 
 export const DivImagemTipo = styled.div<BackgroundProps>`
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
 
   height: calc(100vh - 104px);
 
