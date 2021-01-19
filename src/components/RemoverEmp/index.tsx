@@ -16,7 +16,6 @@ import {
   CloseIcon,
   Button,
   InfoModal,
-  StatusMessageDiv,
 } from './styles';
 
 interface EmpreendimentoData {
@@ -60,7 +59,7 @@ const RemoverEmp: React.FC = () => {
     window.location.reload();
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async id => {
     setIsLoading(true);
 
     const token = localStorage.getItem('@ProjPegaso:token');
@@ -71,13 +70,13 @@ const RemoverEmp: React.FC = () => {
 
     await api
       .delete(`/delete/${id}`, config)
-      .then((res) => {
+      .then(res => {
         setIsDeleted(true);
         setConfirmModal(false);
         setIsError(false);
         setIsLoading(false);
       })
-      .catch((err) => {
+      .catch(err => {
         setIsDeleted(false);
         setIsError(true);
         setIsLoading(false);
@@ -173,7 +172,7 @@ const RemoverEmp: React.FC = () => {
             />
           </div>
         ) : (
-          data?.map((item) => (
+          data?.map(item => (
             <Item key={item.id}>
               <Avatar src={item.banner} alt={item.nome} />
 

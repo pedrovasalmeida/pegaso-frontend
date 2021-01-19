@@ -36,7 +36,6 @@ const AddEmp2: React.FC = () => {
   const [linkBanner, setLinkBanner] = useState('');
   // estados informativos
   const [isBannerLoading, setIsBannerLoading] = useState(false);
-  const [isPosterLoading, setIsPosterLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -69,11 +68,11 @@ const AddEmp2: React.FC = () => {
 
     await api
       .post('/storage-images', formdata)
-      .then((res) => {
+      .then(res => {
         setIsBannerLoading(false);
         return setLinkBanner(res.data.link);
       })
-      .catch((err) => {
+      .catch(err => {
         setIsBannerLoading(false);
         return err;
       });
@@ -160,7 +159,7 @@ const AddEmp2: React.FC = () => {
 
     await api
       .post('/create', data, config)
-      .then((res) => {
+      .then(res => {
         setSuccess(true);
         setError(false);
         setIsLoading(false);
@@ -172,7 +171,7 @@ const AddEmp2: React.FC = () => {
         }, 2000);
         return setIsLoading(false);
       })
-      .catch((err) => {
+      .catch(err => {
         setError(true);
         setSuccess(false);
         setIsLoading(false);
@@ -191,24 +190,24 @@ const AddEmp2: React.FC = () => {
           type="text"
           id="emp-name"
           placeholder="Nome do empreendimento"
-          onChange={(e) => handleInputs(e.target.value, 'nome')}
+          onChange={e => handleInputs(e.target.value, 'nome')}
         />
         <TextArea
           id="emp-descricao"
           placeholder="Descrição (detalhes)"
-          onChange={(e) => handleInputs(e.target.value, 'descricao')}
+          onChange={e => handleInputs(e.target.value, 'descricao')}
         />
         <Input
           id="emp-descricao_curta"
           type="text"
           placeholder="Curta descrição (2 ou 3 palavras)"
-          onChange={(e) => handleInputs(e.target.value, 'descricao_curta')}
+          onChange={e => handleInputs(e.target.value, 'descricao_curta')}
         />
         <Input
           id="emp-endereco"
           type="text"
           placeholder="Endereço"
-          onChange={(e) => handleInputs(e.target.value, 'endereco')}
+          onChange={e => handleInputs(e.target.value, 'endereco')}
         />
 
         <label>Selecione um arquivo para ser o Banner do empreendimento:</label>
@@ -219,7 +218,7 @@ const AddEmp2: React.FC = () => {
             id="image"
             type="file"
             whatImageType="banner"
-            onChange={(e) => handleSubmitImage(e.target.files)}
+            onChange={e => handleSubmitImage(e.target.files)}
           />
 
           <UploadButton
@@ -287,7 +286,7 @@ const AddEmp2: React.FC = () => {
           </StatusMessageDiv>
         )}
 
-        <CreateButton onClick={(e) => verifyAndSendData(e)}>
+        <CreateButton onClick={e => verifyAndSendData(e)}>
           Criar Empreendimento
         </CreateButton>
       </DivDetalhes>
