@@ -61,10 +61,7 @@ const Login: React.FC = () => {
   }, [inputLogin]);
 
   const handleSubmit = useCallback(
-    async (
-      data: SignInFormData,
-      e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    ) => {
+    async (data: SignInFormData, e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault();
       setIsLoading(true);
       setLoginError(false);
@@ -83,7 +80,7 @@ const Login: React.FC = () => {
         }
 
         await signIn!({ login, password })
-          .then((res) => {
+          .then(res => {
             setIsLoading(false);
             setIsError(false);
             setIsLogged(true);
@@ -93,7 +90,7 @@ const Login: React.FC = () => {
               return handleReloadPage();
             }, 2000);
           })
-          .catch((err) => {
+          .catch(err => {
             setLoginError(true);
             setIsLoading(false);
 
@@ -117,26 +114,24 @@ const Login: React.FC = () => {
         <input
           placeholder="Login"
           value={inputLogin}
-          onChange={(e) => handleInputLogin(e.target.value)}
+          onChange={e => handleInputLogin(e.target.value)}
         />
         <input
           type="password"
           placeholder="Senha"
           value={inputSenha}
-          onChange={(e) => handleInputSenha(e.target.value)}
+          onChange={e => handleInputSenha(e.target.value)}
         />
 
         <button
           type="submit"
-          onClick={(e) =>
-            handleSubmit({ login: inputLogin, password: inputSenha }, e)
-          }
+          onClick={e => handleSubmit({ login: inputLogin, password: inputSenha }, e)}
         >
           <SignInIcon />
           Entrar
         </button>
 
-        <Link to="/forgot-password">Esqueci minha senha</Link>
+        {/* <Link to="/forgot-password">Esqueci minha senha</Link> */}
 
         {isLoading && (
           <LoginStatusDiv isLoading={isLoading} isLogged={false}>
@@ -144,7 +139,7 @@ const Login: React.FC = () => {
               use={ThreeDots}
               size={60}
               strokeWidth={6}
-              strokeColor="#324286"
+              strokeColor="#0e6387"
               duration={800}
             />
           </LoginStatusDiv>

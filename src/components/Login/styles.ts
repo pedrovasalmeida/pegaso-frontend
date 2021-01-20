@@ -38,7 +38,7 @@ export const Form = styled.form`
 
   h1 {
     margin-bottom: 32px;
-    color: ${shade(0.6, '#324286')};
+    color: ${props => shade(0.6, props.theme.colors.light.lightBlue)};
     font-size: 32px;
   }
 
@@ -50,7 +50,7 @@ export const Form = styled.form`
 
     font-size: 18px;
 
-    color: ${shade(0.6, '#324286')};
+    color: ${props => shade(0.6, props.theme.colors.light.lightBlue)};
     background: #f2f2f2;
 
     border: 1px solid ${shade(0.4, '#f2f2f2')};
@@ -66,13 +66,15 @@ export const Form = styled.form`
     }
 
     &::placeholder {
-      color: ${shade(0, 'rgba(50, 66, 134, 0.6)')};
+      color: ${props => props.theme.colors.light.lightBlue};
     }
 
     &:focus {
       transition: border 300ms ease;
-      border: 1px solid ${lighten(0.1, `#324286`)};
-      filter: drop-shadow(0px 0px 1px ${lighten(0.1, '#324286')});
+      border: 1px solid ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
+      filter: drop-shadow(
+        0px 0px 1px ${props => lighten(0.1, props.theme.colors.light.lightBlue)}
+      );
     }
   }
 
@@ -81,10 +83,10 @@ export const Form = styled.form`
     width: 50%;
     height: 50px;
 
-    background: #324286;
+    background: ${props => props.theme.colors.light.lightBlue};
     color: #fdfdfd;
 
-    border: 1px solid #324286;
+    border: 1px solid ${props => props.theme.colors.light.lightBlue};
     border-radius: 4px;
 
     margin: 8px 0;
@@ -105,12 +107,12 @@ export const Form = styled.form`
 
     &:hover {
       transition: background 300ms ease;
-      background: ${lighten(0.1, `#324286`)};
+      background: ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
     }
   }
 
   a {
-    color: #324286;
+    color: ${props => props.theme.colors.light.lightBlue};
 
     align-self: center;
 
@@ -125,12 +127,12 @@ export const Form = styled.form`
     transition: all 200ms ease;
 
     &:hover {
-      color: ${lighten(0.2, `#324286`)};
+      color: ${props => lighten(0.2, props.theme.colors.light.lightBlue)};
     }
   }
 
   span {
-    color: rgba(50, 66, 134, 0.6);
+    color: ${props => props.theme.colors.light.lightBlue};
     font-size: 12px;
   }
 `;
@@ -143,7 +145,7 @@ export const Separator = styled.div`
 
   height: 2px;
 
-  background-color: rgba(50, 66, 134, 0.4);
+  background-color: ${props => props.theme.colors.light.lightBlue};
 `;
 
 export const Content = styled.div`
@@ -182,12 +184,12 @@ export const LoginStatusDiv = styled.div<LoginStatusProps>`
   align-items: center;
   justify-content: center;
 
-  ${(props) =>
+  ${props =>
     props.isLoading &&
     css`
       background: #f2f2f2;
     `};
-  ${(props) =>
+  ${props =>
     props.isLogged &&
     css`
       background: #32c019;
