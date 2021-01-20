@@ -61,7 +61,9 @@ export const ArrowIcon = styled(AiOutlineDelete)`
 
   &:hover {
     transition: all 300ms ease-in-out;
-    filter: drop-shadow(0px 0px 1px ${shade(0.1, `#324286`)});
+    filter: drop-shadow(
+      0px 0px 1px ${props => shade(0.1, props.theme.colors.light.lightBlue)}
+    );
   }
 
   @media only screen and (max-width: 385px) {
@@ -144,7 +146,9 @@ export const Modal = styled.div`
 
   background-color: #fdfdfd;
 
-  filter: drop-shadow(-4px 4px 8px ${shade(0.6, '#324286')});
+  filter: drop-shadow(
+    -4px 4px 8px ${props => shade(0.6, props.theme.colors.light.lightBlue)}
+  );
 
   z-index: 5;
 
@@ -210,16 +214,16 @@ export const Button = styled.button<ButtonProps>`
 
   &:hover {
     color: #fff;
-    ${(props) =>
+    ${props =>
       props.buttonType === 'confirm' &&
       css`
-        background-color: #32c019;
+        background-color: ${shade(0.2, '#32c019')};
       `}
 
-    ${(props) =>
+    ${props =>
       props.buttonType === 'cancel' &&
       css`
-        background-color: #324286;
+        background-color: ${props => props.theme.colors.light.lightBlue};
       `}
   }
 `;
@@ -243,7 +247,9 @@ export const InfoModal = styled.div`
   border-radius: 4px;
 
   background-color: #fdfdfd;
-  filter: drop-shadow(-4px 4px 8px ${shade(0.6, '#324286')});
+  filter: drop-shadow(
+    -4px 4px 8px ${props => shade(0.6, props.theme.colors.light.lightBlue)}
+  );
 
   z-index: 5;
 

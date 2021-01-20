@@ -99,10 +99,7 @@ const RemoverEmp: React.FC = () => {
             </span>
             <CloseIcon onClick={() => handleClickOutsiteInfoModal()} />
             <div>
-              <Button
-                buttonType="confirm"
-                onClick={() => handleClickOutsiteInfoModal()}
-              >
+              <Button buttonType="confirm" onClick={() => handleClickOutsiteInfoModal()}>
                 Confirmar
               </Button>
             </div>
@@ -124,7 +121,7 @@ const RemoverEmp: React.FC = () => {
                 use={ThreeDots}
                 size={80}
                 strokeWidth={8}
-                strokeColor="#324286"
+                strokeColor="#0e6387"
                 duration={800}
               />
             </div>
@@ -134,16 +131,10 @@ const RemoverEmp: React.FC = () => {
               <span>ID: {idToDelete}</span>
               <CloseIcon onClick={() => handleClickOutsite()} />
               <div>
-                <Button
-                  buttonType="confirm"
-                  onClick={() => handleDelete(idToDelete)}
-                >
+                <Button buttonType="confirm" onClick={() => handleDelete(idToDelete)}>
                   Confirmar
                 </Button>
-                <Button
-                  buttonType="cancel"
-                  onClick={() => handleClickOutsite()}
-                >
+                <Button buttonType="cancel" onClick={() => handleClickOutsite()}>
                   Cancelar
                 </Button>
               </div>
@@ -167,7 +158,7 @@ const RemoverEmp: React.FC = () => {
               use={ThreeDots}
               size={120}
               strokeWidth={8}
-              strokeColor="#324286"
+              strokeColor="#0e6387"
               duration={800}
             />
           </div>
