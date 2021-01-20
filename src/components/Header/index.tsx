@@ -13,7 +13,7 @@ import {
   LinkRRD,
 } from './styles';
 
-import Logo from '../../assets/logo.jpg';
+import Logo from '../../assets/logo.png';
 
 import HeaderMobile from '../HeaderMobile';
 

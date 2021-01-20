@@ -12,7 +12,7 @@ import {
   HorizontalSeparator,
 } from './styles';
 
-import Logo from '../../assets/logo.jpg';
+import Logo from '../../assets/logo.png';
 
 const HeaderMobile: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
