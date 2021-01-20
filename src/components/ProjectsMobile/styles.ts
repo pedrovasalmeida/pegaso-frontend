@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { shade } from 'polished';
+import { lighten, shade } from 'polished';
 import { Link } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
@@ -40,7 +40,7 @@ export const DivTitle = styled(motion.div)`
 
 export const Subtitle = styled.span`
   width: auto;
-  border-bottom: 8px solid #324286;
+  border-bottom: 8px solid ${props => props.theme.colors.light.lightBlue};
 
   margin: 0 0 32px 0;
 
@@ -70,7 +70,7 @@ export const Project = styled(motion.div)`
 
   position: relative;
 
-  background-color: ${shade(0.1, `#324286`)};
+  background-color: ${props => shade(0.1, props.theme.colors.light.lightBlue)};
 
   border-radius: 4px;
 
@@ -152,7 +152,7 @@ export const FloatContent = styled.div`
     font-size: 24px;
     text-transform: uppercase;
 
-    color: #324286;
+    color: ${props => lighten(0.2, props.theme.colors.light.lightBlue)};
     font-weight: 500;
   }
 `;
@@ -161,7 +161,7 @@ export const FloatButton = styled.button`
   width: 100%;
   height: 32px;
 
-  background-color: #324286;
+  background-color: ${props => props.theme.colors.light.lightBlue};
 
   margin-top: 4px;
 
@@ -170,7 +170,7 @@ export const FloatButton = styled.button`
 
   transition: background-color 300ms ease;
   &:hover {
-    background-color: ${shade(0.4, `#324286`)};
+    background-color: ${props => shade(0.4, props.theme.colors.light.lightBlue)};
   }
 
   &:focus {
