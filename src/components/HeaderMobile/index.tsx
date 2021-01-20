@@ -12,7 +12,7 @@ import {
   HorizontalSeparator,
 } from './styles';
 
-import Logo from '../../assets/logo.png';
+import Logo from '../../assets/logo.jpg';
 
 const HeaderMobile: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,8 +27,7 @@ const HeaderMobile: React.FC = () => {
     { rota: '/painel', nome: 'PAINEL' },
   ];
 
-  const handleVisible = () =>
-    isVisible ? setIsVisible(false) : setIsVisible(true);
+  const handleVisible = () => (isVisible ? setIsVisible(false) : setIsVisible(true));
 
   const handleOutsideClick = () => {
     setIsVisible(false);
@@ -47,9 +46,7 @@ const HeaderMobile: React.FC = () => {
               to={option.rota}
               selected={option.rota === location.pathname}
             >
-              <Button selected={option.rota === location.pathname}>
-                {option.nome}
-              </Button>
+              <Button selected={option.rota === location.pathname}>{option.nome}</Button>
             </LinkRRDHiddenMenu>
 
             <HorizontalSeparator />

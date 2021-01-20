@@ -47,6 +47,7 @@ export const DivLogo = styled(motion.div)`
   cursor: pointer;
 
   > img {
+    height: 64px;
     z-index: 6;
   }
 `;
@@ -77,7 +78,7 @@ export const DivContato = styled.div`
   display: flex;
 
   border-radius: 8px;
-  border-bottom: 3px solid #324286;
+  border-bottom: 3px solid ${props => props.theme.colors.light.lightBlue};
 
   padding: 4px 8px;
 
@@ -92,7 +93,7 @@ export const DivContato = styled.div`
   &:hover {
     transition: all 300ms ease-in-out;
 
-    border-bottom: 3px solid ${shade(0.3, `#324286`)};
+    border-bottom: 3px solid ${props => shade(0.3, props.theme.colors.light.lightBlue)};
     background-color: rgba(150, 150, 150, 0.1);
 
     transform: translateX(8px);
@@ -148,7 +149,7 @@ export const DivButtons = styled(motion.div)`
 export const Button = styled.button<RouterProps>`
   background-color: transparent;
 
-  color: ${props => (props.selected ? '#324286' : '#333')};
+  color: ${props => (props.selected ? props.theme.colors.light.lightBlue : '#333')};
 
   font-weight: 500;
 
@@ -162,7 +163,7 @@ export const Button = styled.button<RouterProps>`
 
   &:hover {
     transition: all 300ms ease-in-out;
-    color: #324286;
+    color: ${props => props.theme.colors.light.lightBlue};
   }
 `;
 
@@ -282,7 +283,7 @@ export const LinkRRD = styled(Link)<RouterProps>`
     width: ${props => (props.selected ? '100%' : 0)};
     height: 2px;
 
-    background: #324286;
+    background: ${props => props.theme.colors.light.lightBlue};
 
     transition: all 400ms ease-in;
   }
@@ -296,7 +297,7 @@ export const LinkRRD = styled(Link)<RouterProps>`
   }
 
   &:hover {
-    color: ${shade(0.1, `#324286`)};
+    color: ${props => shade(0.1, props.theme.colors.light.lightBlue)};
   }
 `;
 
