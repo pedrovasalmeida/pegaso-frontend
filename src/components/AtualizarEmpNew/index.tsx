@@ -35,9 +35,7 @@ interface ResponseAPI {
 
 const AtualizarEmpNew: React.FC = () => {
   const [enterprises, setEnterprise] = useState<Enterprise[] | null>(null);
-  const [singleEnterprise, setSingleEnterprise] = useState<ResponseAPI | null>(
-    null,
-  );
+  const [singleEnterprise, setSingleEnterprise] = useState<ResponseAPI | null>(null);
   const [enterpriseId, setEnterpriseId] = useState<number | null>(null);
   const [files, setFiles] = useState<any>([]);
   const [loading, setLoading] = useState(false);
@@ -59,18 +57,18 @@ const AtualizarEmpNew: React.FC = () => {
     setEnterprise(data);
   };
 
-  const getDataFromOneEnterprise = async (id) => {
+  const getDataFromOneEnterprise = async id => {
     const { data } = await api.get(`/show-one/${id}`);
 
     setSingleEnterprise(data);
   };
 
-  const options = enterprises?.map((proj) => ({
+  const options = enterprises?.map(proj => ({
     value: proj.id,
     label: proj.nome,
   }));
 
-  const handleInputChange = (option) => {
+  const handleInputChange = option => {
     setEnterpriseId(option.value);
   };
 
@@ -149,7 +147,7 @@ const AtualizarEmpNew: React.FC = () => {
     try {
       let formData = new FormData();
 
-      files.forEach((file) => {
+      files.forEach(file => {
         formData.append('images', file);
       });
 
@@ -157,7 +155,7 @@ const AtualizarEmpNew: React.FC = () => {
 
       let images: any = [];
 
-      data.links.forEach((link) => {
+      data.links.forEach(link => {
         images.push(link);
       });
 
@@ -204,7 +202,7 @@ const AtualizarEmpNew: React.FC = () => {
     option: (provided, state) => ({
       ...provided,
       border: '1px solid #333',
-      color: state.isSelected ? '#fff' : '#324286',
+      color: state.isSelected ? '#fff' : '#0e6387',
       background: state.isSelected ? '#5264b3' : '#fff',
       fontWeight: 'bold',
       borderRadius: '2px',
@@ -241,7 +239,7 @@ const AtualizarEmpNew: React.FC = () => {
           use={ThreeDots}
           size={120}
           strokeWidth={6}
-          strokeColor="#324286"
+          strokeColor="#0e6387"
           duration={2000}
         />
       </div>
@@ -257,7 +255,7 @@ const AtualizarEmpNew: React.FC = () => {
             <span>Empreendimentos...</span>
           </div>
         }
-        onChange={(option) => handleInputChange(option)}
+        onChange={option => handleInputChange(option)}
       />
 
       {singleEnterprise ? (
@@ -271,20 +269,18 @@ const AtualizarEmpNew: React.FC = () => {
                 {singleEnterprise.images.length > 10 ? (
                   <>
                     <Text>
-                      O empreendimento possui{' '}
-                      <strong>mais de 10 imagens</strong> cadastradas. Por isso,
-                      o preview está desativado.
+                      O empreendimento possui <strong>mais de 10 imagens</strong>{' '}
+                      cadastradas. Por isso, o preview está desativado.
                     </Text>
                     <Text>
-                      Total de imagens:{' '}
-                      <strong>{singleEnterprise.images.length}</strong>
+                      Total de imagens: <strong>{singleEnterprise.images.length}</strong>
                     </Text>
                   </>
                 ) : (
                   <>
                     <Text>Imagens existentes:</Text>
                     <PreviewDiv>
-                      {singleEnterprise.images.map((image) => (
+                      {singleEnterprise.images.map(image => (
                         <a
                           key={image.imagem}
                           href={image.imagem}
@@ -311,7 +307,7 @@ const AtualizarEmpNew: React.FC = () => {
                     use={ThreeDots}
                     size={40}
                     strokeWidth={6}
-                    strokeColor="#324286"
+                    strokeColor="#0e6387"
                     duration={2000}
                   />
                 </StatusMessageDiv>
@@ -326,9 +322,7 @@ const AtualizarEmpNew: React.FC = () => {
                   <span>{statusMessage}</span>
                 </StatusMessageDiv>
               )}
-              <Text style={{ margin: 0, padding: 0 }}>
-                Selecione a(s) imagem(ns)
-              </Text>
+              <Text style={{ margin: 0, padding: 0 }}>Selecione a(s) imagem(ns)</Text>
               :
               <UploadInput
                 name="images"
@@ -336,7 +330,7 @@ const AtualizarEmpNew: React.FC = () => {
                 type="file"
                 accept="image/png, image/jpeg, image/jpg"
                 multiple
-                onChange={(e) => handleAddFileListToArray(e.target.files)}
+                onChange={e => handleAddFileListToArray(e.target.files)}
               />
               <Button
                 type="button"

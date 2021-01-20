@@ -31,8 +31,8 @@ export const SelectInput = styled(Select)`
 
   width: 40%;
 
-  color: ${shade(0.6, '#324286')};
-  border: 1px solid ${shade(0.4, '#324286')};
+  color: ${props => shade(0.6, props.theme.colors.light.lightBlue)};
+  border: 1px solid ${props => shade(0.4, props.theme.colors.light.lightBlue)};
   border-radius: 4px;
 
   /* div {
@@ -71,7 +71,7 @@ export const EnterpriseDetails = styled.div`
   width: auto;
   height: auto;
 
-  border: 1px solid ${lighten(0.6, '#324286')};
+  border: 1px solid ${props => lighten(0.6, props.theme.colors.light.lightBlue)};
   border-radius: 4px;
 
   form {
@@ -145,7 +145,7 @@ export const UploadInput = styled.input`
 
   cursor: pointer;
 
-  border: 1px solid ${shade(0.4, `#324286`)};
+  border: 1px solid ${props => shade(0.4, props.theme.colors.light.lightBlue)};
   border-radius: 4px;
 
   ::-webkit-file-upload-button {
@@ -164,10 +164,10 @@ export const Button = styled.input`
   width: 100%;
   height: 50px;
 
-  background: #324286;
+  background: ${props => props.theme.colors.light.lightBlue};
   color: #fdfdfd;
 
-  border: 1px solid #324286;
+  border: 1px solid ${props => props.theme.colors.light.lightBlue};
   border-radius: 4px;
 
   margin: 8px 0;
@@ -184,7 +184,7 @@ export const Button = styled.input`
 
   &:hover {
     transition: background 300ms ease;
-    background: ${lighten(0.1, `#324286`)};
+    background: ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
   }
 
   &:focus {
@@ -219,17 +219,17 @@ export const StatusMessageDiv = styled.div<StatusMessageProp>`
 
   z-index: 1;
 
-  ${(props) =>
+  ${props =>
     props.status === 'error' &&
     css`
       background: rgba(192, 25, 32, 1);
     `}
-  ${(props) =>
+  ${props =>
     props.status === 'loading' &&
     css`
       background: #fff;
     `}
-  ${(props) =>
+  ${props =>
     props.status === 'success' &&
     css`
       background: #32c019;
