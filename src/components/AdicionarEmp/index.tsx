@@ -229,12 +229,7 @@ const AddEmp2: React.FC = () => {
         </form>
 
         {linkBanner ? (
-          <Input
-            type="text"
-            value={linkBanner}
-            disabled
-            placeholder="Link do banner"
-          />
+          <Input type="text" value={linkBanner} disabled placeholder="Link do banner" />
         ) : (
           <>
             {isBannerLoading && (
@@ -242,7 +237,7 @@ const AddEmp2: React.FC = () => {
                 <Preloader
                   use={ThreeDots}
                   size={70}
-                  strokeColor="#324286"
+                  strokeColor="#0e6387"
                   strokeWidth={6}
                   duration={1000}
                 />
@@ -267,7 +262,7 @@ const AddEmp2: React.FC = () => {
             <Preloader
               use={ThreeDots}
               size={70}
-              strokeColor="#324286"
+              strokeColor="#0e6387"
               strokeWidth={6}
               duration={1000}
             />

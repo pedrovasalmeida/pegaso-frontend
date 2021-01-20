@@ -67,7 +67,7 @@ export const Input = styled.input<InputProps>`
 
   font-size: 18px;
 
-  color: ${shade(0.6, '#324286')};
+  color: ${props => shade(0.6, props.theme.colors.light.lightBlue)};
   background: #f2f2f2;
 
   border: 1px solid ${shade(0.4, '#f2f2f2')};
@@ -78,23 +78,25 @@ export const Input = styled.input<InputProps>`
 
   transition: all 300ms ease;
 
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'auto')};
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'auto')};
 
   &::placeholder {
-    color: ${shade(0, 'rgba(50, 66, 134, 0.6)')};
+    color: ${props => props.theme.colors.light.lightBlue};
   }
 
   &:hover {
-    background-color: ${(props) =>
+    background-color: ${props =>
       props.disabled
-        ? `${lighten(0.55, '#324286')}`
-        : `${lighten(0.6, '#324286')}`};
+        ? `${props => lighten(0.55, props.theme.colors.light.lightBlue)}`
+        : `${props => lighten(0.6, props.theme.colors.light.lightBlue)}`};
   }
 
   &:focus {
     transition: border 300ms ease;
-    border: 1px solid ${lighten(0.1, `#324286`)};
-    filter: drop-shadow(0px 0px 1px ${lighten(0.1, '#324286')});
+    border: 1px solid ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
+    filter: drop-shadow(
+      0px 0px 1px ${props => lighten(0.1, props.theme.colors.light.lightBlue)}
+    );
   }
 `;
 
@@ -104,17 +106,17 @@ export const UploadInput = styled.input<InputProps>`
 
   overflow: hidden;
 
-  color: ${shade(0.4, '#324286')};
+  color: ${props => shade(0.4, props.theme.colors.light.lightBlue)};
 
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'auto')};
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'auto')};
 
-  border: 1px solid ${shade(0.4, `#324286`)};
+  border: 1px solid ${props => shade(0.4, props.theme.colors.light.lightBlue)};
   border-radius: 4px;
 
-  background-color: ${(props) =>
+  background-color: ${props =>
     props.disabled
-      ? `${lighten(0.55, '#324286')}`
-      : `${lighten(0.62, '#324286')}`};
+      ? `${props => lighten(0.55, props.theme.colors.light.lightBlue)}`
+      : `${props => lighten(0.62, props.theme.colors.light.lightBlue)}`};
 
   ::-webkit-file-upload-button {
     visibility: hidden;
@@ -125,15 +127,17 @@ export const UploadInput = styled.input<InputProps>`
   transition: all 300ms ease;
 
   &:hover {
-    background-color: ${(props) =>
+    background-color: ${props =>
       props.disabled
-        ? `${lighten(0.55, '#324286')}`
-        : `${lighten(0.6, '#324286')}`};
+        ? `${props => lighten(0.55, props.theme.colors.light.lightBlue)}`
+        : `${props => lighten(0.6, props.theme.colors.light.lightBlue)}`};
   }
 
   &:focus {
-    border: 1px solid ${shade(0.4, `#324286`)};
-    filter: drop-shadow(0px 0px 2px ${lighten(0.4, `#324286`)});
+    border: 1px solid ${props => shade(0.4, props.theme.colors.light.lightBlue)};
+    filter: drop-shadow(
+      0px 0px 2px ${props => lighten(0.4, props.theme.colors.light.lightBlue)}
+    );
   }
 `;
 
@@ -145,24 +149,26 @@ export const TextArea = styled.textarea`
 
   font-size: 18px;
 
-  color: ${shade(0.6, '#324286')};
+  color: ${props => shade(0.6, props.theme.colors.light.lightBlue)};
   background: #f2f2f2;
 
   margin: 8px 0;
   padding: 16px;
 
-  border: 1px solid ${shade(0.4, `#324286`)};
+  border: 1px solid ${shade(0.4, '#f2f2f2')};
   border-radius: 4px;
 
   transition: all 300ms ease;
 
-  &:hover {
-    background-color: ${lighten(0.6, '#324286')};
+  &::placeholder {
+    color: ${props => props.theme.colors.light.lightBlue};
   }
 
   &:focus {
-    border: 1px solid ${shade(0.4, `#324286`)};
-    filter: drop-shadow(0px 0px 2px ${lighten(0.4, `#324286`)});
+    border: 1px solid ${props => shade(0.4, props.theme.colors.light.lightBlue)};
+    filter: drop-shadow(
+      0px 0px 2px ${props => lighten(0.4, props.theme.colors.light.lightBlue)}
+    );
   }
 `;
 
@@ -184,10 +190,6 @@ export const DivImagens = styled.div`
 
     padding: 0 0 0 16px;
     margin: 16px 0;
-
-    /* background-color: ${lighten(0.62, '#324286')}; */
-
-    /* border: 1px solid ${lighten(0.2, '#324286')}; */
     border-radius: 8px;
 
     label {
@@ -205,10 +207,10 @@ export const CreateButton = styled.button`
   width: 100%;
   height: 50px;
 
-  background: #324286;
+  background: ${props => props.theme.colors.light.lightBlue};
   color: #fdfdfd;
 
-  border: 1px solid #324286;
+  border: 1px solid ${props => props.theme.colors.light.lightBlue};
   border-radius: 4px;
 
   margin: 8px 0;
@@ -225,7 +227,7 @@ export const CreateButton = styled.button`
 
   &:hover {
     transition: background 300ms ease;
-    background: ${lighten(0.1, `#324286`)};
+    background: ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
   }
 
   &:focus {
@@ -249,7 +251,7 @@ export const UploadButton = styled.input`
 
   font-size: 18px;
 
-  color: ${shade(0.6, '#324286')};
+  color: ${props => shade(0.6, props.theme.colors.light.lightBlue)};
   background: #f2f2f2;
 
   border: 1px solid ${shade(0.4, '#f2f2f2')};
@@ -260,12 +262,12 @@ export const UploadButton = styled.input`
 
   transition: all 300ms ease;
 
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'auto')};
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'auto')};
 `;
 
 export const LinkMessage = styled.span`
   font-weight: 500;
-  color: ${shade(0.1, '#324286')};
+  color: ${props => shade(0.1, props.theme.colors.light.lightBlue)};
 `;
 
 export const Separator = styled.div`
@@ -275,7 +277,7 @@ export const Separator = styled.div`
 
   margin: 0 32px;
 
-  background-color: ${lighten(0.5, '#324286')};
+  background-color: ${props => lighten(0.5, props.theme.colors.light.lightBlue)};
 
   @media (max-width: 1639px) {
     display: none;
@@ -298,7 +300,7 @@ export const ModalSuccess = styled.div`
   width: 450px;
   height: 150px;
 
-  border: 1px solid #324286;
+  border: 1px solid ${props => props.theme.colors.light.lightBlue};
   border-radius: 16px;
 
   background-color: ${lighten(0.61, '#324286')};
@@ -318,9 +320,9 @@ export const ModalButton = styled.input`
 
   margin: 8px 0 0 0;
 
-  color: #324286;
+  color: ${props => props.theme.colors.light.lightBlue};
 
-  border: 1px solid #324286;
+  border: 1px solid ${props => props.theme.colors.light.lightBlue};
   border-radius: 8px;
   /* border-top-width: 0;
   border-bottom-width: 0; */
@@ -331,7 +333,7 @@ export const ModalButton = styled.input`
     color: #fff;
     font-weight: bold;
     background-color: ${lighten(0.2, '#324286')};
-    border: 0px solid #324286;
+    border: 0px solid ${props => props.theme.colors.light.lightBlue};
   }
 `;
 
@@ -402,17 +404,17 @@ export const StatusMessageDiv = styled.div<StatusMessageProp>`
 
   z-index: 1;
 
-  ${(props) =>
+  ${props =>
     props.status === 'error' &&
     css`
       background: rgba(192, 25, 32, 1);
     `}
-  ${(props) =>
+  ${props =>
     props.status === 'loading' &&
     css`
       background: #fff;
     `}
-  ${(props) =>
+  ${props =>
     props.status === 'success' &&
     css`
       background: #32c019;

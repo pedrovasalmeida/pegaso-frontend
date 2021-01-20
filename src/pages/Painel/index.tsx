@@ -55,9 +55,7 @@ const Painel: React.FC = () => {
   const [remover, setRemover] = useState(false);
   const [listar, setListar] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(true);
-  const [loggedUserData, setLoggedUserData] = useState<UserApiData>(
-    {} as UserApiData,
-  );
+  const [loggedUserData, setLoggedUserData] = useState<UserApiData>({} as UserApiData);
 
   const [userData, setUserData] = useState<UserDataFromStorage>(() => {
     if (user) {
@@ -115,12 +113,12 @@ const Painel: React.FC = () => {
 
     await api
       .get(`/list-one-user/${userData.id}`)
-      .then((res) => {
+      .then(res => {
         const loggedUser: UserApiData = res.data.user;
 
         setLoggedUserData(loggedUser);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }, [userData.id]);
@@ -168,7 +166,7 @@ const Painel: React.FC = () => {
                     <Preloader
                       use={ThreeDots}
                       size={100}
-                      strokeColor="#324286"
+                      strokeColor="#0e6387"
                       strokeWidth={6}
                       duration={800}
                     />
