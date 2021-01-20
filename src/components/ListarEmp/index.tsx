@@ -69,16 +69,13 @@ const ListarEmp: React.FC = () => {
                   use={ThreeDots}
                   size={120}
                   strokeWidth={8}
-                  strokeColor="#324286"
+                  strokeColor="#0e6387"
                   duration={800}
                 />
               </div>
             ) : (
               data?.map(item => (
-                <LinkRRD
-                  to={`/empreendimentos/detalhes/${item.id}`}
-                  key={item.id}
-                >
+                <LinkRRD to={`/empreendimentos/detalhes/${item.id}`} key={item.id}>
                   <Avatar src={item.banner} alt={item.nome} />
                   <Data>
                     <Nome>{item.nome}</Nome>

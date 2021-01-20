@@ -30,7 +30,7 @@ export const Item = styled.div`
   position: relative;
 
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 16px;
+  border-radius: 4px;
 `;
 
 export const LinkRRD = styled(Link)`
@@ -44,14 +44,14 @@ export const LinkRRD = styled(Link)`
   position: relative;
 
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 16px;
+  border-radius: 4px;
 
   color: #333;
 
   transition: all 300ms ease;
 
   &:hover {
-    color: #324282;
+    color: ${props => props.theme.colors.light.lightBlue};
     text-decoration: none;
   }
 
@@ -87,7 +87,7 @@ export const Avatar = styled.img`
 
   margin: 0 16px 0 0;
 
-  border-radius: 50%;
+  border-radius: 4%;
 `;
 
 export const Data = styled.div`
