@@ -9,7 +9,7 @@ export default createGlobalStyle`
     border: 0;
 
     &::selection {
-      background: #324286;
+      background: #0e6387;
       color: #f2f2f2;
     }
   }
@@ -22,7 +22,7 @@ export default createGlobalStyle`
   body, input, button {
     outline: 0;
     font-size: 16px;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6, strong {
