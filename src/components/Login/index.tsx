@@ -131,7 +131,7 @@ const Login: React.FC = () => {
           Entrar
         </button>
 
-        {/* <Link to="/forgot-password">Esqueci minha senha</Link> */}
+        <Link to="#">Esqueci minha senha</Link>
 
         {isLoading && (
           <LoginStatusDiv isLoading={isLoading} isLogged={false}>
