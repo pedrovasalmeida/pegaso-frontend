@@ -16,7 +16,7 @@ export const Container = styled.div`
 `;
 
 export const LeftMenu = styled.div<LeftMenuProps>`
-  ${(props) =>
+  ${props =>
     props.width! < 731
       ? css`
           position: fixed;
@@ -43,7 +43,11 @@ export const LeftMenu = styled.div<LeftMenuProps>`
 
   padding-top: 20px;
 
-  background: linear-gradient(45deg, ${shade(0.7, '#324286')}, #324286);
+  background: linear-gradient(
+    45deg,
+    ${props => shade(0.7, props.theme.colors.light.lightBlue)},
+    ${props => props.theme.colors.light.lightBlue}
+  );
   border-right: 1px solid rgba(0, 0, 0, 0.6);
 
   transition: all 600ms ease-in-out;
@@ -51,7 +55,7 @@ export const LeftMenu = styled.div<LeftMenuProps>`
   @media only screen and (max-width: 730px) {
     display: flex;
 
-    ${(props) =>
+    ${props =>
       props.isOpened
         ? css`
             transform: translateX(0);
@@ -82,7 +86,7 @@ export const Avatar = styled.div`
 
   border-radius: 50%;
 
-  background-color: #324286;
+  background-color: ${props => props.theme.colors.light.lightBlue};
 `;
 
 export const Name = styled.span`
@@ -123,10 +127,10 @@ export const OpcaoMenu = styled.span<OpcoesMenuProps>`
   border-radius: 4px;
 
   font-weight: bold;
-  color: ${(props) =>
-    props.selected ? `${shade(0.4, '#324286')}` : '#f2f2f2'};
+  color: ${props =>
+    props.selected ? `${shade(0.4, props.theme.colors.light.lightBlue)}` : '#f2f2f2'};
 
-  ${(props) =>
+  ${props =>
     props.selected &&
     css`
       background: #f2f2f2;
@@ -138,7 +142,7 @@ export const OpcaoMenu = styled.span<OpcoesMenuProps>`
 
   &:hover {
     transition: all 300ms ease-in-out;
-    color: ${shade(0.4, '#324286')};
+    color: ${props => shade(0.4, props.theme.colors.light.lightBlue)};
     background: #f2f2f2;
   }
 `;
@@ -183,13 +187,13 @@ export const FloatButtonDiv = styled.div`
 
   clip-path: circle(50%);
 
-  background: ${lighten(0.1, '#324286')};
+  background: ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
 
   z-index: 1;
 
   transition: background 500ms ease-in-out;
 
   &:hover {
-    background: ${shade(0.2, '#324286')};
+    background: ${props => shade(0.2, props.theme.colors.light.lightBlue)};
   }
 `;
