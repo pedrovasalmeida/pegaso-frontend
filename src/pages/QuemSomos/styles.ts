@@ -52,7 +52,7 @@ export const DivTitleMotion = styled(motion.div)`
 
 export const Title = styled.span`
   width: auto;
-  border-bottom: 8px solid #324286;
+  border-bottom: 8px solid ${props => props.theme.colors.light.lightBlue};
 
   font-size: 40px;
   font-weight: bold;
@@ -177,7 +177,7 @@ export const Categoria = styled(motion.div)`
   > p {
     font-size: 16px;
     text-transform: uppercase;
-    color: #324286;
+    color: ${props => props.theme.colors.light.lightBlue};
   }
 
   > span {
