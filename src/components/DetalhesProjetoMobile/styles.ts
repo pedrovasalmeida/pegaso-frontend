@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 import { shade, lighten } from 'polished';
 
-import {
-  IoIosArrowForward,
-  IoIosArrowBack,
-  IoIosReturnLeft,
-} from 'react-icons/io';
+import { IoIosArrowForward, IoIosArrowBack, IoIosReturnLeft } from 'react-icons/io';
 
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -68,7 +64,7 @@ export const Title = styled.span`
   font-weight: bold;
   text-transform: uppercase;
   margin: 8px 0;
-  color: #324286;
+  color: ${props => props.theme.colors.light.lightBlue};
 `;
 
 export const Text = styled.span`
@@ -94,8 +90,8 @@ export const DivTitlePlanta = styled.div`
   margin: 16px 0;
 
   span {
-    color: #324286;
-    border-bottom: 1px solid ${shade(0.2, `#324286`)};
+    color: ${props => props.theme.colors.light.lightBlue};
+    border-bottom: 1px solid ${props => shade(0.2, props.theme.colors.light.lightBlue)};
   }
 `;
 
@@ -144,7 +140,7 @@ export const OpcaoPlanta = styled.div`
 `;
 
 export const TitlePlanta = styled.span`
-  color: #324286;
+  color: ${props => props.theme.colors.light.lightBlue};
   font-weight: bold;
   text-transform: uppercase;
 `;
@@ -231,7 +227,7 @@ export const LeftArrow = styled(IoIosArrowBack)`
   cursor: pointer;
 
   &:hover {
-    color: #324286;
+    color: ${props => props.theme.colors.light.lightBlue};
   }
 `;
 
@@ -249,7 +245,7 @@ export const RightArrow = styled(IoIosArrowForward)`
   cursor: pointer;
 
   &:hover {
-    color: #324286;
+    color: ${props => props.theme.colors.light.lightBlue};
   }
 `;
 
@@ -371,7 +367,7 @@ export const FloatContent = styled.div`
     padding: 0;
     font-size: 32px;
     text-transform: uppercase;
-    color: #324286;
+    color: ${props => props.theme.colors.light.lightBlue};
   }
 
   @media (max-width: 663px) {
@@ -400,7 +396,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 26px;
       text-transform: uppercase;
-      color: #324286;
+      color: ${props => props.theme.colors.light.lightBlue};
     }
   }
 
@@ -430,7 +426,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 26px;
       text-transform: uppercase;
-      color: #324286;
+      color: ${props => props.theme.colors.light.lightBlue};
     }
   }
 
@@ -460,7 +456,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 26px;
       text-transform: uppercase;
-      color: #324286;
+      color: ${props => props.theme.colors.light.lightBlue};
     }
   }
 
@@ -490,7 +486,7 @@ export const FloatContent = styled.div`
       padding: 0;
       font-size: 22px;
       text-transform: uppercase;
-      color: #324286;
+      color: ${props => props.theme.colors.light.lightBlue};
     }
   }
 `;
@@ -498,7 +494,7 @@ export const FloatContent = styled.div`
 export const FloatButton = styled.button`
   width: 100%;
 
-  background-color: #324286;
+  background-color: ${props => props.theme.colors.light.lightBlue};
 
   height: 32px;
 
@@ -507,7 +503,7 @@ export const FloatButton = styled.button`
   transition: all 300ms ease-in-out;
 
   &:hover {
-    background-color: ${shade(0.4, `#324286`)};
+    background-color: ${props => shade(0.4, props.theme.colors.light.lightBlue)};
   }
 
   &:focus {
@@ -560,7 +556,7 @@ export const BackButton = styled.div`
   transition: background-color 300ms ease;
 
   &:hover {
-    background-color: ${lighten(0.5, '#324286')};
+    background-color: ${props => lighten(0.5, props.theme.colors.light.lightBlue)};
   }
 `;
 
