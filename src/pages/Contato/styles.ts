@@ -155,7 +155,7 @@ export const Input = styled.input`
 
   font-size: 18px;
 
-  color: ${shade(0.6, '#324286')};
+  color: ${props => shade(0.6, props.theme.colors.light.lightBlue)};
   background: #f2f2f2;
 
   border: 1px solid ${shade(0.4, '#f2f2f2')};
@@ -167,13 +167,15 @@ export const Input = styled.input`
   transition: color 300ms ease;
 
   &::placeholder {
-    color: ${shade(0, 'rgba(50, 66, 134, 0.6)')};
+    color: ${props => props.theme.colors.light.lightBlue};
   }
 
   &:focus {
     transition: border 300ms ease;
-    border: 1px solid ${lighten(0.1, `#324286`)};
-    filter: drop-shadow(0px 0px 1px ${lighten(0.1, '#324286')});
+    border: 1px solid ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
+    filter: drop-shadow(
+      0px 0px 1px ${props => lighten(0.1, props.theme.colors.light.lightBlue)}
+    );
   }
 
   @media only screen and (max-width: 1365px) {
@@ -193,7 +195,7 @@ export const InputMessage = styled(motion.textarea)`
     display: none;
   }
 
-  color: ${shade(0.6, '#324286')};
+  color: ${props => shade(0.6, props.theme.colors.light.lightBlue)};
   font-size: 18px;
 
   background: #f2f2f2;
@@ -208,13 +210,15 @@ export const InputMessage = styled(motion.textarea)`
   transition: color 300ms ease;
 
   &::placeholder {
-    color: ${shade(0, 'rgba(50, 66, 134, 0.6)')};
+    color: ${props => props.theme.colors.light.lightBlue};
   }
 
   &:focus {
     transition: border 300ms ease;
-    border: 1px solid ${lighten(0.2, `#324286`)};
-    filter: drop-shadow(0px 0px 1px ${lighten(0.1, '#324286')});
+    border: 1px solid ${props => lighten(0.2, props.theme.colors.light.lightBlue)};
+    filter: drop-shadow(
+      0px 0px 1px ${props => lighten(0.1, props.theme.colors.light.lightBlue)}
+    );
   }
 
   @media only screen and (max-width: 1365px) {
@@ -229,10 +233,10 @@ export const Button = styled.button`
   width: 80%;
   height: 40px;
 
-  background: #324286;
+  background: ${props => props.theme.colors.light.lightBlue};
   color: #f2f2f2;
 
-  border: 1px solid #324286;
+  border: 1px solid ${props => props.theme.colors.light.lightBlue};
   border-radius: 4px;
 
   margin-bottom: 8px;
@@ -253,7 +257,7 @@ export const Button = styled.button`
 
   &:hover {
     transition: background 300ms ease;
-    background: ${lighten(0.1, `#324286`)};
+    background: ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
   }
 
   @media only screen and (max-width: 1365px) {
@@ -311,7 +315,7 @@ export const MapMarker = styled.div<MapMarkerProps>`
   background: #f2f2f2;
   width: 25px;
   height: 25px;
-  border: 1px solid #324286;
+  border: 1px solid ${props => props.theme.colors.light.lightBlue};
   border-radius: 50%;
 
   span {
@@ -321,15 +325,15 @@ export const MapMarker = styled.div<MapMarkerProps>`
 `;
 
 export const PhoneIcon = styled(MdPhoneInTalk)`
-  color: #324286;
+  color: ${props => props.theme.colors.light.lightBlue};
 `;
 
 export const LocationIcon = styled(MdLocationOn)`
-  color: #324286;
+  color: ${props => props.theme.colors.light.lightBlue};
 `;
 
 export const MailIcon = styled(MdMailOutline)`
-  color: #324286;
+  color: ${props => props.theme.colors.light.lightBlue};
 `;
 
 export const SendIcon = styled(RiMailSendLine)`
