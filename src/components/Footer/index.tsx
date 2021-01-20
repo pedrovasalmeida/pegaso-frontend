@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
         <Container>
           <Data>
             <motion.div animate={{ x: 50 }} transition={{ duration: 1 }}>
-              <Text>© 2020 por St. James Comunicação</Text>
+              <Text>© 2020 - St. James Comunicação</Text>
             </motion.div>
           </Data>
 
@@ -84,7 +84,6 @@ const Footer: React.FC = () => {
                     target="blank"
                     animate={{ x: -50 }}
                     transition={{ duration: option.duration }}
-                    whileHover={{ translateX: 2 }}
                   >
                     {option.icon}
                     <ContactData>
@@ -97,7 +96,6 @@ const Footer: React.FC = () => {
                     target="blank"
                     animate={{ x: -50 }}
                     transition={{ duration: option.duration }}
-                    whileHover={{ translateX: 2 }}
                   >
                     {option.icon}
                     <ContactData>

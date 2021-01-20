@@ -78,9 +78,9 @@ export const Button = styled(motion.a)`
   color: #222;
 
   border-radius: 8px;
-  border: 1px solid ${shade(0.1, `#324286`)};
-  border-left: 4px solid ${shade(0.1, `#324286`)};
-  border-bottom: 4px solid ${shade(0.1, `#324286`)};
+  border: 1px solid ${props => shade(0.1, props.theme.colors.light.lightBlue)};
+  border-left: 4px solid ${props => shade(0.1, props.theme.colors.light.lightBlue)};
+  border-bottom: 4px solid ${props => shade(0.1, props.theme.colors.light.lightBlue)};
 
   background-color: rgba(0, 0, 0, 0.025);
   text-decoration: none;
@@ -91,7 +91,6 @@ export const Button = styled(motion.a)`
 
   &:hover {
     text-decoration: none;
-    transform: translateX(4px);
     box-shadow: -3px 1px rgba(0, 0, 0, 0.3);
     text-decoration: none;
     color: #222;
@@ -111,9 +110,9 @@ export const MotionButton = styled(motion.button)`
 
   border-radius: 8px;
 
-  border: 1px solid ${shade(0.1, `#324286`)};
-  border-left: 4px solid ${shade(0.1, `#324286`)};
-  border-bottom: 4px solid ${shade(0.1, `#324286`)};
+  border: 1px solid ${props => shade(0.1, props.theme.colors.light.lightBlue)};
+  border-left: 4px solid ${props => shade(0.1, props.theme.colors.light.lightBlue)};
+  border-bottom: 4px solid ${props => shade(0.1, props.theme.colors.light.lightBlue)};
 
   background-color: rgba(0, 0, 0, 0.025);
 

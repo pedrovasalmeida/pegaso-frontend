@@ -94,9 +94,9 @@ export const Button = styled(motion.a)<ButtonProps>`
   color: #222;
 
   border-radius: 8px;
-  border: 1px solid ${shade(0.1, `#324286`)};
-  border-left: 4px solid ${shade(0.1, `#324286`)};
-  border-bottom: 4px solid ${shade(0.1, `#324286`)};
+  border: 1px solid ${props => shade(0.1, props.theme.colors.light.lightBlue)};
+  border-left: 4px solid ${props => shade(0.1, props.theme.colors.light.lightBlue)};
+  border-bottom: 4px solid ${props => shade(0.1, props.theme.colors.light.lightBlue)};
 
   background-color: rgba(0, 0, 0, 0.025);
   text-decoration: none;
@@ -150,9 +150,9 @@ export const MotionButton = styled(motion.button)`
 
   border-radius: 8px;
 
-  border: 1px solid ${shade(0.1, `#324286`)};
-  border-left: 4px solid ${shade(0.1, `#324286`)};
-  border-bottom: 4px solid ${shade(0.1, `#324286`)};
+  border: 1px solid ${props => shade(0.1, props.theme.colors.light.lightBlue)};
+  border-left: 4px solid ${props => shade(0.1, props.theme.colors.light.lightBlue)};
+  border-bottom: 4px solid ${props => shade(0.1, props.theme.colors.light.lightBlue)};
 
   background-color: rgba(0, 0, 0, 0.025);
 
@@ -225,7 +225,9 @@ export const Modal = styled.div`
   border: 2px solid #333;
   border-radius: 16px;
 
-  filter: drop-shadow(-4px 4px 4px ${shade(0.4, '#324286')});
+  filter: drop-shadow(
+    -4px 4px 4px ${props => shade(0.4, props.theme.colors.light.lightBlue)}
+  );
 
   z-index: 99;
 `;
@@ -235,7 +237,7 @@ export const CloseIcon = styled(TiDelete)`
   right: 2vw;
   top: 1vh;
 
-  color: #324286;
+  color: ${props => props.theme.colors.light.lightBlue};
   font-size: 32px;
 
   cursor: pointer;
