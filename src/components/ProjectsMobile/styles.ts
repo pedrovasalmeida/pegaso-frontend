@@ -152,7 +152,7 @@ export const FloatContent = styled.div`
     font-size: 24px;
     text-transform: uppercase;
 
-    color: ${props => lighten(0.2, props.theme.colors.light.lightBlue)};
+    color: ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
     font-weight: 500;
   }
 `;

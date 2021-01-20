@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import { shade } from 'polished';
+import { shade, lighten } from 'polished';
 
 export const NEXT = 'NEXT';
 export const PREV = 'PREV';
@@ -298,7 +298,7 @@ export const FloatContent = styled.div`
     font-size: 32px;
     font-weight: bold;
     text-transform: uppercase;
-    color: ${props => props.theme.colors.light.lightBlue};
+    color: ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
     text-shadow: 0px 0px 1px ${props => shade(0.6, props.theme.colors.light.lightBlue)};
   }
 
