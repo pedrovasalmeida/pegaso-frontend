@@ -44,9 +44,7 @@ export const Container = styled.div<IContainerProps>`
 
   transition: transform 1s ease;
   transform: ${props =>
-    props.sliding
-      ? `translateX(calc(-100vw * ${props.sliding}))`
-      : `translateX(0%)`};
+    props.sliding ? `translateX(calc(-100vw * ${props.sliding}))` : `translateX(0%)`};
 
   @media only screen and (max-width: 1000px) {
     flex-direction: column;
@@ -306,8 +304,8 @@ export const FloatContent = styled.div`
     font-size: 32px;
     font-weight: bold;
     text-transform: uppercase;
-    color: #324286;
-    text-shadow: 0px 0px 1px ${shade(0.6, '#324286')};
+    color: ${props => props.theme.colors.light.lightBlue};
+    text-shadow: 0px 0px 1px ${props => shade(0.6, props.theme.colors.light.lightBlue)};
   }
 
   @media (max-width: 663px) {
@@ -387,7 +385,7 @@ export const FloatButton = styled.button`
   width: 100%;
   height: 32px;
 
-  background-color: #324286;
+  background-color: ${props => props.theme.colors.light.lightBlue};
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
 
@@ -396,7 +394,7 @@ export const FloatButton = styled.button`
   transition: all 300ms ease-in-out;
 
   &:hover {
-    background-color: ${shade(0.4, `#324286`)};
+    background-color: ${props => shade(0.4, props.theme.colors.light.lightBlue)};
   }
 
   &:focus {
@@ -425,7 +423,7 @@ export const LeftArrow = styled(IoIosArrowBack)`
   cursor: pointer;
 
   &:hover {
-    color: #324286;
+    color: ${props => props.theme.colors.light.lightBlue};
   }
 `;
 
@@ -440,6 +438,6 @@ export const RightArrow = styled(IoIosArrowForward)`
   cursor: pointer;
 
   &:hover {
-    color: #324286;
+    color: ${props => props.theme.colors.light.lightBlue};
   }
 `;

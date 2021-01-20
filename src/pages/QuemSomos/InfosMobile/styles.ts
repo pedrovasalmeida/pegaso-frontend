@@ -110,7 +110,7 @@ export const Categoria = styled(motion.div)`
 
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     border-bottom-width: 1px;
-    ]border-bottom-color: ${props => props.theme.colors.light.lightBlue};
+    border-bottom-color: ${props => props.theme.colors.light.lightBlue};
   }
 
   > span {
@@ -122,16 +122,6 @@ export const Categoria = styled(motion.div)`
 
     margin-bottom: 20px;
   }
-
-  /* @media (max-width: 360px) {
-    > p {
-      font-size: 20px;
-    }
-
-    > span {
-      font-size: 14px;
-    }
-  } */
 `;
 
 export const Separator = styled(motion.div)`
