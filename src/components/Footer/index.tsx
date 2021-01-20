@@ -8,6 +8,7 @@ import {
   Text,
   Contact,
   Button,
+  LinkRRD,
   WhatsAppIcon,
   PhoneIcon,
   EmailIcon,
@@ -20,36 +21,29 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 import FooterMobile from '../FooterMobile';
 
 const Footer: React.FC = () => {
-  const msg = 'Olá!';
-  const number = '+551140028922';
+  const msg = '';
+  const number = '+5571999087283';
   const WhatsApp = `https://api.whatsapp.com/send?phone=${encodeURIComponent(
     number,
   )}&text=${encodeURIComponent(msg)}`;
+  const InstagramLink = 'https://www.instagram.com/pegasoeng/';
 
   const { width } = useWindowDimensions();
 
   const footerOptions = [
     {
       nome: 'WhatsApp',
-      info: '31 93333333',
+      info: '(71) 9 9908 - 7283',
       linkExist: false,
-      link: '/contato',
+      link: WhatsApp,
       icon: <WhatsAppIcon />,
       duration: 0.3,
     },
-    // {
-    //   nome: 'SAC',
-    //   info: '31 93333333',
-    //   linkExist: false,
-    //   link: '/contato',
-    //   icon: <SacIcon />,
-    //   duration: 0.5,
-    // },
     {
-      nome: 'Vendas',
-      info: '31 32999999',
+      nome: 'Instagram',
+      info: 'pegasoeng',
       linkExist: false,
-      link: '/contato',
+      link: InstagramLink,
       icon: <PhoneIcon />,
       duration: 0.7,
     },
@@ -78,21 +72,23 @@ const Footer: React.FC = () => {
           <Contact>
             {footerOptions.map(option => (
               <React.Fragment key={option.nome}>
-                {option.linkExist ? (
-                  <Button
-                    href={WhatsApp}
-                    target="blank"
-                    animate={{ x: -50 }}
-                    transition={{ duration: option.duration }}
-                  >
-                    {option.icon}
-                    <ContactData>
-                      <ContactText>{option.info}</ContactText>
-                    </ContactData>
-                  </Button>
+                {option.link === '/contato' ? (
+                  <LinkRRD to="/contato">
+                    <Button
+                      href="#"
+                      target="blank"
+                      animate={{ x: -50 }}
+                      transition={{ duration: option.duration }}
+                    >
+                      {option.icon}
+                      <ContactData>
+                        <ContactText>{option.info}</ContactText>
+                      </ContactData>
+                    </Button>
+                  </LinkRRD>
                 ) : (
                   <Button
-                    href={WhatsApp}
+                    href={option.link}
                     target="blank"
                     animate={{ x: -50 }}
                     transition={{ duration: option.duration }}

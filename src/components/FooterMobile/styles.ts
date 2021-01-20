@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { shade } from 'polished';
-import { FaWhatsapp, FaPhoneVolume } from 'react-icons/fa';
+import { FaWhatsapp } from 'react-icons/fa';
 import { MdReportProblem, MdEmail } from 'react-icons/md';
 import { TiDelete } from 'react-icons/ti';
+import { SiInstagram } from 'react-icons/si';
 
 import { motion } from 'framer-motion';
 
@@ -171,7 +172,7 @@ export const WhatsAppIcon = styled(FaWhatsapp)`
   font-size: 32px;
 `;
 
-export const PhoneIcon = styled(FaPhoneVolume)`
+export const PhoneIcon = styled(SiInstagram)`
   margin: 0 8px 0 0;
   font-size: 32px;
 `;

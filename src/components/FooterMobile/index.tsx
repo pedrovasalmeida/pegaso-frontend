@@ -8,6 +8,7 @@ import {
   PhoneIcon,
   EmailIcon,
   ContactName,
+  LinkRRD,
   Modal,
   CloseIcon,
   TitleModal,
@@ -20,14 +21,10 @@ const FooterMobile: React.FC = () => {
   const WhatsApp = `https://api.whatsapp.com/send?phone=${encodeURIComponent(
     number,
   )}&text=${encodeURIComponent(msg)}`;
+  const InstagramLink = 'https://www.instagram.com/pegasoeng/';
 
   const [modal, setModal] = useState(false);
-  const [title, setTitle] = useState('');
-
-  const handleModal = (nome: string) => {
-    setModal(!modal);
-    setTitle(nome);
-  };
+  const [title] = useState('');
 
   const handleClickOutsite = () => {
     setModal(false);
@@ -36,30 +33,20 @@ const FooterMobile: React.FC = () => {
   const footerOptions1 = [
     {
       nome: 'WhatsApp',
-      info: '31 93333333',
+      info: '(71) 9 9908 - 7283',
       linkExist: false,
-      link: '/',
+      link: WhatsApp,
       icon: <WhatsAppIcon />,
       duration: 0.3,
       modal: false,
     },
-    // {
-    //   nome: 'SAC',
-    //   info: '31 93333333',
-    //   linkExist: false,
-    //   link: '/',
-    //   icon: <SacIcon />,
-    //   duration: 0.5,
-    //   modal: true,
-    // },
     {
-      nome: 'Vendas',
-      info: '31 93333333',
+      nome: 'Instagram',
+      info: 'pegasoeng',
       linkExist: false,
-      link: '/',
+      link: InstagramLink,
       icon: <PhoneIcon />,
       duration: 0.7,
-      modal: true,
     },
     {
       nome: 'E-mail',
@@ -73,39 +60,12 @@ const FooterMobile: React.FC = () => {
   ];
 
   return (
-    <>
-      {modal && (
-        <Modal>
-          <CloseIcon onClick={() => handleClickOutsite()} />
-          {title === 'SAC' ? (
-            <>
-              <TextModal>Dúvidas, reclamações ou sugestões?</TextModal>
-              <TitleModal>
-                Entre em contato com nosso {title} <span>pelo telefone: </span>
-              </TitleModal>
-              <TextModal>
-                <strong>31 933333333</strong>
-              </TextModal>
-            </>
-          ) : (
-            <>
-              <TitleModal>
-                Para maiores informações sobre
-                {title}
-              </TitleModal>
-              <TextModal>
-                Entre em contato pelo telefone: <br />
-                <strong>31 933333333</strong>
-              </TextModal>
-            </>
-          )}
-        </Modal>
-      )}
-      <Container>
-        <Data>
-          {footerOptions1.map(option => (
-            <React.Fragment key={option.nome}>
-              {option.linkExist ? (
+    <Container>
+      <Data>
+        {footerOptions1.map(option => (
+          <React.Fragment key={option.nome}>
+            {option.link === '/contato' ? (
+              <LinkRRD to="/contato">
                 <Button
                   target="blank"
                   animate={{ y: 0 }}
@@ -116,37 +76,24 @@ const FooterMobile: React.FC = () => {
                   {option.icon}
                   <ContactName>{option.info}</ContactName>
                 </Button>
-              ) : (
-                <>
-                  {option.modal ? (
-                    <Button
-                      animate={{ y: 0 }}
-                      transition={{ duration: option.duration }}
-                      whileHover={{ translateX: 2 }}
-                      onClick={() => handleModal(option.nome)}
-                    >
-                      {option.icon}
-                      <ContactName>{option.info}</ContactName>
-                    </Button>
-                  ) : (
-                    <Button
-                      href={WhatsApp}
-                      target="blank"
-                      animate={{ y: 0 }}
-                      transition={{ duration: option.duration }}
-                      whileHover={{ translateX: 2 }}
-                    >
-                      {option.icon}
-                      <ContactName>{option.info}</ContactName>
-                    </Button>
-                  )}
-                </>
-              )}
-            </React.Fragment>
-          ))}
-        </Data>
-      </Container>
-    </>
+              </LinkRRD>
+            ) : (
+              <Button
+                href={option.link}
+                target="blank"
+                animate={{ y: 0 }}
+                transition={{ duration: option.duration }}
+                whileHover={{ translateX: 2 }}
+                linkExist={option.linkExist}
+              >
+                {option.icon}
+                <ContactName>{option.info}</ContactName>
+              </Button>
+            )}
+          </React.Fragment>
+        ))}
+      </Data>
+    </Container>
   );
 };
 
