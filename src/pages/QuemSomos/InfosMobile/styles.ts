@@ -45,7 +45,7 @@ export const DivTitleMotion = styled(motion.div)`
 
 export const Title = styled.span<ScreenSizeProps>`
   width: auto;
-  border-bottom: 8px solid #324286;
+  border-bottom: 8px solid ${props => props.theme.colors.light.lightBlue};
 
   font-size: ${props => (props.width < 346 ? '34px' : '40px')};
   font-weight: bold;
@@ -104,13 +104,13 @@ export const Categoria = styled(motion.div)`
     font-size: 16px;
     text-transform: uppercase;
 
-    color: #324286;
+    color: ${props => props.theme.colors.light.lightBlue};
 
     line-height: 42px;
 
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     border-bottom-width: 1px;
-    ]border-bottom-color: #324286;
+    ]border-bottom-color: ${props => props.theme.colors.light.lightBlue};
   }
 
   > span {
