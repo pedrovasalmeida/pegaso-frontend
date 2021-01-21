@@ -22,11 +22,11 @@ export default createGlobalStyle`
   body, input, button {
     outline: 0;
     font-size: 16px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Slab', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6, strong {
-    font-weight: 500;
+    font-weight: 700;
   }
 
   button {
