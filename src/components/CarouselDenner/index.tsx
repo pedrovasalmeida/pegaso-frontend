@@ -36,6 +36,8 @@ interface ResultsProps {
 }
 
 const CarouselDenner: React.FC = () => {
+  return <h1>Apenas um return informativo, caso o componente venha a ser utilizado</h1>;
+
   const [sliding, setSliding] = useState(0);
   const [dir, setDir] = useState('NEXT');
 
