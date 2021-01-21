@@ -52,6 +52,12 @@ export const Subtitle = styled.span`
   text-transform: uppercase;
 `;
 
+export const ErrorMessage = styled.span`
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+`;
+
 export const DivProjects = styled(motion.div)`
   display: flex;
   flex-direction: column;
