@@ -18,10 +18,9 @@ export const Container = styled.footer`
   height: 40px;
   width: 100vw;
 
-  background-color: #fdfdfd;
-
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 
+  background-color: #fdfdfd;
   filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.2));
 
   z-index: 4;
@@ -153,9 +152,7 @@ export const ContactName = styled.span`
   font-size: 12px;
 `;
 
-export const ContactText = styled.span`
-  font-family: 'Roboto', sans-serif;
-`;
+export const ContactText = styled.span``;
 
 export const HorizontalSeparator = styled.div`
   width: 48px;
