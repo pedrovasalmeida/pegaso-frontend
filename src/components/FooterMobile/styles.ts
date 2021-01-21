@@ -79,14 +79,8 @@ export const Button = styled(motion.a)<ButtonProps>`
   justify-content: center;
   align-items: center;
 
-  ${props =>
-    props.linkExist
-      ? css`
-          width: 240px;
-        `
-      : css`
-          width: 150px;
-        `}
+  width: 240px;
+
   height: auto;
 
   padding: 0 16px;
@@ -114,27 +108,14 @@ export const Button = styled(motion.a)<ButtonProps>`
     color: #222;
   }
 
-  @media only screen and (max-width: 559px) {
-    ${props =>
-      props.linkExist
-        ? css`
-            width: 180px;
-          `
-        : css`
-            width: 150px;
-          `}
-  }
-
-  @media only screen and (max-width: 499px) {
-    width: 120px;
-
+  @media only screen and (max-width: 748px) {
     span {
       display: none;
     }
   }
 
-  @media only screen and (max-width: 360px) {
-    width: 100px;
+  @media only screen and (min-width: 300px) {
+    width: 30vw;
   }
 `;
 
@@ -172,8 +153,9 @@ export const WhatsAppIcon = styled(FaWhatsapp)`
   font-size: 32px;
 `;
 
-export const PhoneIcon = styled(SiInstagram)`
+export const InstaIcon = styled(SiInstagram)`
   margin: 0 8px 0 0;
+  padding: 1px 0;
   font-size: 32px;
 `;
 
@@ -183,18 +165,17 @@ export const SacIcon = styled(MdReportProblem)`
 `;
 
 export const EmailIcon = styled(MdEmail)`
+  display: flex;
+  flex-shrink: 0;
   margin: 0 8px 0 0;
   font-size: 32px;
 `;
 
 export const ContactName = styled.span`
-  text-transform: uppercase;
   line-height: 4px;
-  font-size: 12px;
 `;
 
 export const ContactText = styled.span<ContactTextProps>`
-  font-family: 'Roboto', sans-serif;
   font-size: ${props => (props.isBigInfo ? '12px' : '16px')};
 `;
 
@@ -258,7 +239,6 @@ export const TextModal = styled.span`
   font-size: 18px;
 
   > strong {
-    font-family: 'Roboto', sans-serif;
     font-size: 20px;
   }
 `;

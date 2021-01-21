@@ -1,18 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
   Container,
   Data,
   Button,
   WhatsAppIcon,
-  PhoneIcon,
+  InstaIcon,
   EmailIcon,
   ContactName,
   LinkRRD,
-  Modal,
-  CloseIcon,
-  TitleModal,
-  TextModal,
 } from './styles';
 
 const FooterMobile: React.FC = () => {
@@ -22,13 +18,6 @@ const FooterMobile: React.FC = () => {
     number,
   )}&text=${encodeURIComponent(msg)}`;
   const InstagramLink = 'https://www.instagram.com/pegasoeng/';
-
-  const [modal, setModal] = useState(false);
-  const [title] = useState('');
-
-  const handleClickOutsite = () => {
-    setModal(false);
-  };
 
   const footerOptions1 = [
     {
@@ -45,7 +34,7 @@ const FooterMobile: React.FC = () => {
       info: 'pegasoeng',
       linkExist: false,
       link: InstagramLink,
-      icon: <PhoneIcon />,
+      icon: <InstaIcon />,
       duration: 0.7,
     },
     {
