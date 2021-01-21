@@ -406,6 +406,13 @@ export const FloatButton = styled.button`
   }
 `;
 
+export const ErrorMessage = styled.span`
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+`;
+
 export const DivIcons = styled.div`
   position: absolute;
   bottom: 0;

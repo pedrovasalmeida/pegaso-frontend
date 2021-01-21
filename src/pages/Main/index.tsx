@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useSwipeable } from 'react-swipeable';
@@ -15,10 +15,12 @@ import {
   FloatDiv,
   FloatContent,
   FloatButton,
+  ErrorMessage,
   DivIcons,
   LeftArrow,
   RightArrow,
 } from './styles';
+import api from '../../services/api';
 
 interface Empreendimentos {
   id: number;
@@ -39,9 +41,23 @@ interface ResultsProps {
 const CarouselDenner: React.FC = () => {
   const [sliding, setSliding] = useState(0);
   const [dir] = useState('NEXT');
+  const [loading, setLoading] = useState(true);
+  const [hasData, setHasData] = useState(false);
+  const [results, setResults] = useState<any>();
 
-  const { results }: ResultsProps = useAxios('show-all');
-  const isArray = results instanceof Array;
+  const getData = () => {
+    api
+      .get('/show-all')
+      .then(res => {
+        setLoading(false);
+        setHasData(true);
+        setResults(res.data);
+      })
+      .catch(err => {
+        setLoading(false);
+        setHasData(false);
+      });
+  };
 
   const handleNext = useCallback(() => {
     if (sliding !== results.length - 1) {
@@ -66,7 +82,11 @@ const CarouselDenner: React.FC = () => {
     trackMouse: true,
   });
 
-  if (!isArray) {
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (loading) {
     return (
       <div
         style={{
@@ -81,8 +101,8 @@ const CarouselDenner: React.FC = () => {
           use={ThreeDots}
           size={120}
           strokeWidth={6}
-          strokeColor="#262626"
-          duration={2000}
+          strokeColor="#0e6387"
+          duration={1000}
         />
       </div>
     );
@@ -90,32 +110,47 @@ const CarouselDenner: React.FC = () => {
 
   return (
     <>
-      <Carousel {...handlers} style={{ cursor: 'grab' }}>
-        {results.map(item => (
-          <Container key={item.id} sliding={sliding} dir={dir}>
-            <Imagem src={item.banner} alt={item.nome} />
-          </Container>
-        ))}
+      {!hasData ? (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
+            height: '95vh',
+          }}
+        >
+          <ErrorMessage>Ainda não possuimos empreendimentos cadastrados!</ErrorMessage>
+        </div>
+      ) : (
+        <Carousel {...handlers} style={{ cursor: 'grab' }}>
+          {results.map(item => (
+            <Container key={item.id} sliding={sliding} dir={dir}>
+              <Imagem src={item.banner} alt={item.nome} />
+            </Container>
+          ))}
 
-        <FloatDiv>
-          <FloatContent>
-            <div>
-              <span>Pronto para morar</span>
-              <p>{results[sliding].nome}</p>
-              <span>{results[sliding].descricao_curta}</span>
-            </div>
-            <DivIcons>
-              <LeftArrow onClick={() => handleBack()} />
-              <RightArrow onClick={() => handleNext()} />
-            </DivIcons>
-          </FloatContent>
-          <Link to={`/empreendimentos/detalhes/${results[sliding].id}`}>
-            <FloatButton>
-              <span>Clique aqui para conferir</span>
-            </FloatButton>
-          </Link>
-        </FloatDiv>
-      </Carousel>
+          <FloatDiv>
+            <FloatContent>
+              <div>
+                <span>Pronto para morar</span>
+                <p>{results[sliding].nome}</p>
+                <span>{results[sliding].descricao_curta}</span>
+              </div>
+              <DivIcons>
+                <LeftArrow onClick={() => handleBack()} />
+                <RightArrow onClick={() => handleNext()} />
+              </DivIcons>
+            </FloatContent>
+            <Link to={`/empreendimentos/detalhes/${results[sliding].id}`}>
+              <FloatButton>
+                <span>Clique aqui para conferir</span>
+              </FloatButton>
+            </Link>
+          </FloatDiv>
+        </Carousel>
+      )}
+
       <Footer />
     </>
   );
