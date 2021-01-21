@@ -53,9 +53,10 @@ export const Subtitle = styled.span`
 `;
 
 export const ErrorMessage = styled.span`
-  font-size: 18px;
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
+  color: #333;
 `;
 
 export const DivProjects = styled(motion.div)`
