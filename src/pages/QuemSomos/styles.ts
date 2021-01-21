@@ -28,6 +28,12 @@ export const DivInfos = styled.div`
   max-width: 40%;
   height: calc(100vh - 104px);
 
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   /* @media (max-width: 897px) {
   }
 
