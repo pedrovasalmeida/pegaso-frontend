@@ -88,23 +88,26 @@ const CarouselDenner: React.FC = () => {
 
   if (loading) {
     return (
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '100%',
-          height: '95vh',
-        }}
-      >
-        <Preloader
-          use={ThreeDots}
-          size={120}
-          strokeWidth={6}
-          strokeColor="#0e6387"
-          duration={1000}
-        />
-      </div>
+      <>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
+            height: '95vh',
+          }}
+        >
+          <Preloader
+            use={ThreeDots}
+            size={120}
+            strokeWidth={6}
+            strokeColor="#0e6387"
+            duration={1000}
+          />
+        </div>
+        <Footer />
+      </>
     );
   }
 
