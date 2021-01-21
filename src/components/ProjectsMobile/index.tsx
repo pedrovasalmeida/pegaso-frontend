@@ -27,6 +27,8 @@ interface Empreendimentos {
 
 const ProjectsMobile: React.FC = () => {
   const { results } = useAxios('/show-all');
+  const isArray = results instanceof Array;
+
   const { width } = useWindowDimensions();
 
   const variants = {
@@ -41,21 +43,18 @@ const ProjectsMobile: React.FC = () => {
       </DivTitle>
 
       <DivProjects>
-        {!results ? (
+        {!isArray ? (
           <Preloader
             use={ThreeDots}
             size={120}
             strokeWidth={6}
-            strokeColor="#324286"
+            strokeColor="#0e6387"
             duration={800}
           />
         ) : (
-          results.map((item) => {
+          results.map(item => {
             return (
-              <LinkRRD
-                to={`/empreendimentos/detalhes/${item.id}`}
-                key={item.id}
-              >
+              <LinkRRD to={`/empreendimentos/detalhes/${item.id}`} key={item.id}>
                 <Project
                   animate={{ x: 0 }}
                   transition={{ duration: 0.3 }}
