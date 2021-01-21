@@ -46,7 +46,7 @@ const Contato: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   /** Google Map React Props */
-  const center = { lat: -12.9778728, lng: -38.4404094 };
+  const center = { lat: -12.984606816010935, lng: -38.450350821104934 };
   const zoom = 13;
 
   let API_GOOGLE_MAPS: any;
@@ -221,7 +221,7 @@ const Contato: React.FC = () => {
               center={center}
               zoom={zoom}
             >
-              <MapMarker lat={-12.9845797} lng={-38.4501945}>
+              <MapMarker lat={center.lat} lng={center.lng}>
                 <img src={LogoForMaps} alt="Pégaso" />
               </MapMarker>
             </GoogleMapReact>
