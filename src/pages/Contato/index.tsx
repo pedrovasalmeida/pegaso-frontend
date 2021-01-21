@@ -7,6 +7,8 @@ import api from '../../services/api';
 
 import Footer from '../../components/Footer';
 
+import LogoForMaps from '../../assets/logo-no-text.png';
+
 import {
   Container,
   ContactDiv,
@@ -30,6 +32,31 @@ import {
 const { REACT_APP_API_GOOGLE_MAPS } = process.env;
 
 const Contato: React.FC = () => {
+  const [inputNome, setInputNome] = useState('');
+  const [inputEmail, setInputEmail] = useState('');
+  const [inputContato, setInputContato] = useState('');
+  const [inputMensagem, setInputMensagem] = useState('');
+  const [isError, setIsError] = useState(false);
+  /** se está carregando o envio ou não */
+  const [isLoading, setIsLoading] = useState(false);
+  /** se o email foi enviado ou não */
+  const [isSended, setIsSended] = useState(false);
+  /** se o email foi enviado ou não */
+  const [couldSend, setCouldSend] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  /** Google Map React Props */
+  const center = { lat: -12.9778728, lng: -38.4404094 };
+  const zoom = 13;
+
+  let API_GOOGLE_MAPS: any;
+
+  if (REACT_APP_API_GOOGLE_MAPS !== undefined) {
+    API_GOOGLE_MAPS = REACT_APP_API_GOOGLE_MAPS;
+  } else {
+    API_GOOGLE_MAPS = 'unknown';
+  }
+
   const contactData = [
     {
       name: 'Location',
@@ -48,29 +75,6 @@ const Contato: React.FC = () => {
       text: 'teste@pegaso.com',
     },
   ];
-
-  let API_GOOGLE_MAPS: any;
-
-  if (REACT_APP_API_GOOGLE_MAPS !== undefined) {
-    API_GOOGLE_MAPS = REACT_APP_API_GOOGLE_MAPS;
-  } else {
-    API_GOOGLE_MAPS = 'unknown';
-  }
-
-  const [center] = useState({ lat: -12.9778728, lng: -38.4404094 });
-  const [zoom] = useState(11);
-  const [inputNome, setInputNome] = useState('');
-  const [inputEmail, setInputEmail] = useState('');
-  const [inputContato, setInputContato] = useState('');
-  const [inputMensagem, setInputMensagem] = useState('');
-  const [isError, setIsError] = useState(false);
-  /** se está carregando o envio ou não */
-  const [isLoading, setIsLoading] = useState(false);
-  /** se o email foi enviado ou não */
-  const [isSended, setIsSended] = useState(false);
-  /** se o email foi enviado ou não */
-  const [couldSend, setCouldSend] = useState(true);
-  const [errorMessage, setErrorMessage] = useState('');
 
   const handleInputNome = useCallback((value: string) => {
     setInputNome(value);
@@ -194,7 +198,7 @@ const Contato: React.FC = () => {
               <Text style={{ fontFamily: 'Roboto' }}>{contactData[0].text}</Text>
             </Contact>
 
-            <div>
+            <div className="second-line">
               <Contact>
                 {contactData[1].icon}
                 <Text style={{ fontFamily: 'Roboto' }}>{contactData[1].text}</Text>
@@ -214,9 +218,11 @@ const Contato: React.FC = () => {
               }}
               defaultCenter={center}
               defaultZoom={zoom}
+              center={center}
+              zoom={zoom}
             >
               <MapMarker lat={-12.9845797} lng={-38.4501945}>
-                <span>Logo</span>
+                <img src={LogoForMaps} alt="Pégaso" />
               </MapMarker>
             </GoogleMapReact>
           </div>

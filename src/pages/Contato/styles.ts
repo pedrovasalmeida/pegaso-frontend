@@ -67,8 +67,12 @@ export const ContactDiv = styled.div`
     margin-bottom: 24px;
   }
 
-  @media only screen and (max-width: 870px) {
+  @media only screen and (max-width: 1365px) {
     width: 80%;
+  }
+
+  @media only screen and (max-width: 870px) {
+    width: 90%;
   }
 `;
 
@@ -76,19 +80,11 @@ export const Contacts = styled.div`
   display: flex;
   flex-direction: column;
 
-  > div + div {
+  .second-line {
     display: flex;
     flex-direction: row;
-  }
 
-  @media only screen and (max-width: 870px) {
-    > div {
-      flex-direction: column;
-    }
-  }
-
-  @media only screen and (max-width: 628px) {
-    div + div {
+    @media only screen and (max-width: 898px) {
       flex-direction: column;
     }
   }
@@ -96,17 +92,23 @@ export const Contacts = styled.div`
 
 export const Contact = styled.div<InfoProps>`
   display: flex;
-  flex-direction: column;
+  align-items: center;
 
   margin: 20px 0;
   margin-right: 40px;
+
+  svg {
+    margin-right: 10px;
+  }
+
+  @media only screen and (max-width: 870px) {
+    margin-right: 4px;
+  }
 `;
 
 export const Text = styled.span`
   font-size: 18px;
 `;
-
-export const Map = styled.div``;
 
 export const FormDiv = styled.div`
   display: flex;
@@ -127,11 +129,11 @@ export const FormDiv = styled.div`
 
   @media only screen and (max-width: 1365px) {
     display: flex;
-    width: 50%;
+    width: 80%;
   }
 
   @media only screen and (max-width: 870px) {
-    width: 80%;
+    width: 90%;
   }
 `;
 
@@ -309,18 +311,14 @@ export const StatusMessage = styled.div<StatusMessageProps>`
 
 export const MapMarker = styled.div<MapMarkerProps>`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  transform: translate(-50%, -100%);
 
-  background: #f2f2f2;
-  width: 25px;
-  height: 25px;
-  border: 1px solid ${props => props.theme.colors.light.lightBlue};
-  border-radius: 50%;
-
-  span {
-    font-weight: bold;
-    font-size: 8px;
+  img {
+    width: 24px;
+    height: 24px;
+    background-color: ${props => props.theme.colors.light.darkBlue};
+    border-radius: 4px;
   }
 `;
 
@@ -329,10 +327,14 @@ export const PhoneIcon = styled(MdPhoneInTalk)`
 `;
 
 export const LocationIcon = styled(MdLocationOn)`
+  display: flex;
+  flex-shrink: 0;
   color: ${props => props.theme.colors.light.lightBlue};
 `;
 
 export const MailIcon = styled(MdMailOutline)`
+  display: flex;
+  flex-shrink: 0;
   color: ${props => props.theme.colors.light.lightBlue};
 `;
 
