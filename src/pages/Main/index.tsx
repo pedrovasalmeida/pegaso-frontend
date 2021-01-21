@@ -41,6 +41,7 @@ const CarouselDenner: React.FC = () => {
   const [dir] = useState('NEXT');
 
   const { results }: ResultsProps = useAxios('show-all');
+  const isArray = results instanceof Array;
 
   const handleNext = useCallback(() => {
     if (sliding !== results.length - 1) {
@@ -65,7 +66,7 @@ const CarouselDenner: React.FC = () => {
     trackMouse: true,
   });
 
-  if (!results) {
+  if (!isArray) {
     return (
       <div
         style={{
@@ -86,6 +87,7 @@ const CarouselDenner: React.FC = () => {
       </div>
     );
   }
+
   return (
     <>
       <Carousel {...handlers} style={{ cursor: 'grab' }}>

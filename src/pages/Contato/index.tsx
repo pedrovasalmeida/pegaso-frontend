@@ -35,7 +35,7 @@ const Contato: React.FC = () => {
       name: 'Location',
       icon: <LocationIcon size={40} />,
       text:
-        'R. Doutor Jose Peroba, 297, Edf: Atlanta Empresarial, Sala: 907, Stiep, Salvador - BA',
+        'R. Doutor Jose Peroba, 297 Edf: Atlanta Empresarial, Sala: 907, Stiep, Salvador - BA',
     },
     {
       name: 'Phone',
