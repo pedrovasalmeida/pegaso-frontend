@@ -14,6 +14,9 @@ import {
   ContactDiv,
   Contacts,
   Contact,
+  ContactLink,
+  SecondLine,
+  GoogleMapsDiv,
   Text,
   FormDiv,
   Form,
@@ -194,11 +197,24 @@ const Contato: React.FC = () => {
         <ContactDiv>
           <Contacts>
             <Contact infoName={contactData[0].name}>
-              {contactData[0].icon}
-              <Text style={{ fontFamily: 'Roboto' }}>{contactData[0].text}</Text>
+              <ContactLink
+                href="https://www.google.com.br/maps/place/EDF.+Atlanta+Empresarial/@-12.9846262,-38.4525944,17z/data=!4m12!1m6!3m5!1s0x7161b0f7a5364df:0xcf979c0077f7795c!2sEDF.+Atlanta+Empresarial!8m2!3d-12.9846314!4d-38.4504057!3m4!1s0x7161b0f7a5364df:0xcf979c0077f7795c!8m2!3d-12.9846314!4d-38.4504057"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ x: -50 }}
+                animate={{ x: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                {contactData[0].icon}
+                <Text style={{ fontFamily: 'Roboto' }}>{contactData[0].text}</Text>
+              </ContactLink>
             </Contact>
 
-            <div className="second-line">
+            <SecondLine
+              initial={{ x: -50 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 1 }}
+            >
               <Contact>
                 {contactData[1].icon}
                 <Text style={{ fontFamily: 'Roboto' }}>{contactData[1].text}</Text>
@@ -208,10 +224,14 @@ const Contato: React.FC = () => {
                 {contactData[2].icon}
                 <Text style={{ fontFamily: 'Roboto' }}>{contactData[2].text}</Text>
               </Contact>
-            </div>
+            </SecondLine>
           </Contacts>
 
-          <div style={{ width: '100%', height: '48vh' }}>
+          <GoogleMapsDiv
+            initial={{ x: -50 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 1.2 }}
+          >
             <GoogleMapReact
               bootstrapURLKeys={{
                 key: API_GOOGLE_MAPS,
@@ -225,12 +245,14 @@ const Contato: React.FC = () => {
                 <img src={LogoForMaps} alt="Pégaso" />
               </MapMarker>
             </GoogleMapReact>
-          </div>
+          </GoogleMapsDiv>
         </ContactDiv>
 
         <FormDiv>
-          <Title>Entre em contato</Title>
-          <Text>
+          <Title initial={{ x: 50 }} animate={{ x: 0 }} transition={{ duration: 0.4 }}>
+            Entre em contato
+          </Title>
+          <Text initial={{ x: 50 }} animate={{ x: 0 }} transition={{ duration: 0.45 }}>
             Para qualquer informação, dúvida ou comentário ligue: (71) 3018-5649 ou
             preencha o fomulário:
           </Text>
@@ -241,6 +263,9 @@ const Contato: React.FC = () => {
               value={inputNome}
               onChange={e => handleInputNome(e.target.value)}
               required
+              initial={{ x: 50 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 0.5 }}
             />
 
             <Input
@@ -249,6 +274,9 @@ const Contato: React.FC = () => {
               value={inputEmail}
               onChange={e => handleInputEmail(e.target.value)}
               required
+              initial={{ x: 50 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 0.7 }}
             />
 
             <Input
@@ -259,6 +287,9 @@ const Contato: React.FC = () => {
               value={inputContato}
               onChange={e => handleInputContato(e.target.value)}
               required
+              initial={{ x: 50 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 0.9 }}
             />
 
             <InputMessage
@@ -267,6 +298,9 @@ const Contato: React.FC = () => {
               value={inputMensagem}
               onChange={e => handleInputMensagem(e.target.value)}
               required
+              initial={{ x: 50 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 1.1 }}
             />
 
             <Button
@@ -275,6 +309,9 @@ const Contato: React.FC = () => {
               onClick={e =>
                 handleSendEmail(e, inputNome, inputEmail, inputContato, inputMensagem)
               }
+              initial={{ x: 50 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 1.3 }}
             >
               <SendIcon />
               Enviar

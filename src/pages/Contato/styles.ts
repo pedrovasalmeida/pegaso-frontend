@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { shade, lighten } from 'polished';
 
 import { MdPhoneInTalk, MdLocationOn, MdMailOutline } from 'react-icons/md';
@@ -79,15 +79,6 @@ export const ContactDiv = styled.div`
 export const Contacts = styled.div`
   display: flex;
   flex-direction: column;
-
-  .second-line {
-    display: flex;
-    flex-direction: row;
-
-    @media only screen and (max-width: 898px) {
-      flex-direction: column;
-    }
-  }
 `;
 
 export const Contact = styled.div<InfoProps>`
@@ -106,8 +97,42 @@ export const Contact = styled.div<InfoProps>`
   }
 `;
 
-export const Text = styled.span`
+export const ContactLink = styled(motion.a)`
+  display: flex;
+
+  color: #333;
+  width: 100%;
+  font-family: 'Roboto Slab', serif;
+
+  span {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: ${props => props.theme.colors.light.lightBlue};
+  }
+`;
+
+export const SecondLine = styled(motion.div)`
+  display: flex;
+  flex-direction: row;
+
+  @media only screen and (max-width: 898px) {
+    flex-direction: column;
+  }
+`;
+
+export const GoogleMapsDiv = styled(motion.div)`
+  width: 100%;
+  height: 48vh;
+`;
+
+export const Text = styled(motion.span)`
   font-size: 18px;
+  width: auto;
 `;
 
 export const FormDiv = styled.div`
@@ -137,7 +162,7 @@ export const FormDiv = styled.div`
   }
 `;
 
-export const Title = styled.p`
+export const Title = styled(motion.p)`
   font-size: 30px;
   font-weight: bold;
   text-transform: uppercase;
@@ -149,7 +174,7 @@ export const Form = styled.form`
   position: relative;
 `;
 
-export const Input = styled.input`
+export const Input = styled(motion.input)`
   position: relative;
 
   width: 80%;
@@ -228,7 +253,7 @@ export const InputMessage = styled(motion.textarea)`
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled(motion.button)`
   position: relative;
   outline: 0;
 
