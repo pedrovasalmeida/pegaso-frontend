@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import api from '../../services/api';
-
 import { Preloader, ThreeDots } from 'react-preloader-icon';
+import api from '../../services/api';
 
 import {
   Container,
@@ -49,6 +48,37 @@ const AdicionarImagens: React.FC = () => {
     headers: { Authorization: `Bearer ${token}` },
   };
 
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      border: '1px solid #333',
+      color: state.isSelected ? '#fff' : '#0e6387',
+      background: state.isSelected ? '#5264b3' : '#fff',
+      fontWeight: 'bold',
+      borderRadius: '2px',
+    }),
+    control: () => ({
+      // none of react-select's styles are passed to <Control />
+      display: 'flex',
+      flexDirection: 'row',
+      width: '100%',
+      border: '1px solid #fff',
+      borderRadius: '4px',
+      outline: 0,
+    }),
+    singleValue: (provided, state) => {
+      const opacity = state.isDisabled ? 0.5 : 1;
+      const transition = 'opacity 300ms';
+
+      return { ...provided, opacity, transition };
+    },
+  };
+
+  const options = enterprises?.map(proj => ({
+    value: proj.id,
+    label: proj.nome,
+  }));
+
   const getEnterprises = async () => {
     const { data } = await api.get('/show-all');
 
@@ -62,11 +92,6 @@ const AdicionarImagens: React.FC = () => {
 
     setSingleEnterprise(data);
   };
-
-  const options = enterprises?.map(proj => ({
-    value: proj.id,
-    label: proj.nome,
-  }));
 
   const handleInputChange = option => {
     setEnterpriseId(option.value);
@@ -104,7 +129,7 @@ const AdicionarImagens: React.FC = () => {
       setSuccess(false);
 
       try {
-        let formData = new FormData();
+        const formData = new FormData();
 
         formData.append('image', files[0]);
 
@@ -145,7 +170,7 @@ const AdicionarImagens: React.FC = () => {
     }
 
     try {
-      let formData = new FormData();
+      const formData = new FormData();
 
       files.forEach(file => {
         formData.append('images', file);
@@ -153,7 +178,7 @@ const AdicionarImagens: React.FC = () => {
 
       const { data } = await api.post('/storage-many-images', formData);
 
-      let images: any = [];
+      const images: any = [];
 
       data.links.forEach(link => {
         images.push(link);
@@ -198,32 +223,6 @@ const AdicionarImagens: React.FC = () => {
     if (enterpriseId) getDataFromOneEnterprise(enterpriseId);
   }, [enterpriseId]);
 
-  const customStyles = {
-    option: (provided, state) => ({
-      ...provided,
-      border: '1px solid #333',
-      color: state.isSelected ? '#fff' : '#0e6387',
-      background: state.isSelected ? '#5264b3' : '#fff',
-      fontWeight: 'bold',
-      borderRadius: '2px',
-    }),
-    control: () => ({
-      // none of react-select's styles are passed to <Control />
-      display: 'flex',
-      flexDirection: 'row',
-      width: '100%',
-      border: '1px solid #fff',
-      borderRadius: '4px',
-      outline: 0,
-    }),
-    singleValue: (provided, state) => {
-      const opacity = state.isDisabled ? 0.5 : 1;
-      const transition = 'opacity 300ms';
-
-      return { ...provided, opacity, transition };
-    },
-  };
-
   if (!enterprises)
     return (
       <div
@@ -250,11 +249,7 @@ const AdicionarImagens: React.FC = () => {
       <SelectInput
         styles={customStyles}
         options={options}
-        placeholder={
-          <div>
-            <span>Empreendimentos...</span>
-          </div>
-        }
+        placeholder="Empreendimentos..."
         onChange={option => handleInputChange(option)}
       />
 
