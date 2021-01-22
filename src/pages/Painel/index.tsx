@@ -2,10 +2,9 @@ import React, { useState, useCallback, useEffect } from 'react';
 
 /** Hooks */
 import { Preloader, ThreeDots } from 'react-preloader-icon';
+import { Slant as Hamburger } from 'hamburger-react';
 import { useAuth } from '../../context/AuthContext';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
-
-import { Slant as Hamburger } from 'hamburger-react';
 
 /** Componentes */
 import LoginPage from '../../components/Login';
@@ -215,12 +214,12 @@ const Painel: React.FC = () => {
                 Remover empreendimento
               </OpcaoMenu>
 
-              <OpcaoMenu selected={adicionarImagens} onClick={() => handleAtualizar()}>
-                Adicionar imagens
-              </OpcaoMenu>
-
               <OpcaoMenu selected={listar} onClick={() => handleListar()}>
                 Listar empreendimentos
+              </OpcaoMenu>
+
+              <OpcaoMenu selected={adicionarImagens} onClick={() => handleAtualizar()}>
+                Adicionar imagens
               </OpcaoMenu>
 
               <OpcaoMenu selected={false} onClick={() => handleDeslogar()}>
