@@ -429,3 +429,9 @@ export const StatusMessageDiv = styled.div<StatusMessageProp>`
     color: #fff;
   }
 `;
+
+export const Title = styled.span`
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 20px;
+`;
