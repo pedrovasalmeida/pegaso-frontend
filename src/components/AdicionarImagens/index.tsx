@@ -33,7 +33,7 @@ interface ResponseAPI {
   development: Enterprise;
 }
 
-const AtualizarEmpNew: React.FC = () => {
+const AdicionarImagens: React.FC = () => {
   const [enterprises, setEnterprise] = useState<Enterprise[] | null>(null);
   const [singleEnterprise, setSingleEnterprise] = useState<ResponseAPI | null>(null);
   const [enterpriseId, setEnterpriseId] = useState<number | null>(null);
@@ -349,4 +349,4 @@ const AtualizarEmpNew: React.FC = () => {
   );
 };
 
-export default AtualizarEmpNew;
+export default AdicionarImagens;
