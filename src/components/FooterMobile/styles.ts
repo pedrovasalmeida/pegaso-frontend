@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { shade } from 'polished';
 import { FaWhatsapp } from 'react-icons/fa';

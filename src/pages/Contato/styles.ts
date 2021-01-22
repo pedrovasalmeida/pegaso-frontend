@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { shade, lighten } from 'polished';
 
 import { MdPhoneInTalk, MdLocationOn, MdMailOutline } from 'react-icons/md';

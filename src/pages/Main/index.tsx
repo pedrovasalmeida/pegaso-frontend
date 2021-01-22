@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 
 import { Preloader, ThreeDots } from 'react-preloader-icon';
-import useAxios from '../../hooks/useAxios';
 
 import Footer from '../../components/Footer';
 
