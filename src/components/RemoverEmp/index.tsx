@@ -44,6 +44,8 @@ const RemoverEmp: React.FC = () => {
     setData(data);
   };
 
+  const token = localStorage.getItem('@ProjPegaso:token');
+
   const handleConfirmModal = (id: number) => {
     confirmModal ? setConfirmModal(false) : setConfirmModal(true);
     setIdToDelete(id);
@@ -61,8 +63,6 @@ const RemoverEmp: React.FC = () => {
 
   const handleDelete = async id => {
     setIsLoading(true);
-
-    const token = localStorage.getItem('@ProjPegaso:token');
 
     const config = {
       headers: { Authorization: `Bearer ${token}` },

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Preloader, ThreeDots } from 'react-preloader-icon';
 
-import useAxios from '../../hooks/useAxios';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 import api from '../../services/api';

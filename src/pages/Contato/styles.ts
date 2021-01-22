@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { shade, lighten } from 'polished';
 
 import { MdPhoneInTalk, MdLocationOn, MdMailOutline } from 'react-icons/md';
@@ -92,6 +92,10 @@ export const Contact = styled.div<InfoProps>`
     margin-right: 10px;
   }
 
+  a {
+    align-items: center;
+  }
+
   @media only screen and (max-width: 870px) {
     margin-right: 4px;
   }
@@ -102,7 +106,6 @@ export const ContactLink = styled(motion.a)`
 
   color: #333;
   width: 100%;
-  font-family: 'Roboto Slab', serif;
 
   span {
     display: flex;
