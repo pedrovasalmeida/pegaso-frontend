@@ -8,6 +8,8 @@ import useAxios from '../../hooks/useAxios';
 
 import Footer from '../../components/Footer';
 
+import api from '../../services/api';
+
 import {
   Carousel,
   Container,
@@ -20,7 +22,6 @@ import {
   LeftArrow,
   RightArrow,
 } from './styles';
-import api from '../../services/api';
 
 interface Empreendimentos {
   id: number;
@@ -32,30 +33,25 @@ interface Empreendimentos {
   poster: string;
 }
 
-interface ResultsProps {
-  results: Empreendimentos[];
-  isLoading?: any;
-  isError?: any;
-}
-
 const CarouselDenner: React.FC = () => {
   const [sliding, setSliding] = useState(0);
   const [dir] = useState('NEXT');
   const [loading, setLoading] = useState(true);
   const [hasData, setHasData] = useState(false);
-  const [results, setResults] = useState<any>();
+  const [results, setResults] = useState<any>(null);
 
   const getData = () => {
     api
       .get('/show-all')
       .then(res => {
-        setLoading(false);
-        setHasData(true);
         setResults(res.data);
+        setHasData(true);
+        setLoading(false);
       })
       .catch(err => {
-        setLoading(false);
         setHasData(false);
+        setLoading(false);
+        console.log(err);
       });
   };
 
@@ -86,9 +82,9 @@ const CarouselDenner: React.FC = () => {
     getData();
   }, []);
 
-  if (loading) {
-    return (
-      <>
+  return (
+    <>
+      {loading ? (
         <div
           style={{
             display: 'flex',
@@ -106,54 +102,52 @@ const CarouselDenner: React.FC = () => {
             duration={1000}
           />
         </div>
-        <Footer />
-      </>
-    );
-  }
-
-  return (
-    <>
-      {!hasData ? (
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%',
-            height: '95vh',
-          }}
-        >
-          <ErrorMessage>Ainda não possuimos empreendimentos cadastrados!</ErrorMessage>
-        </div>
       ) : (
-        <Carousel {...handlers} style={{ cursor: 'grab' }}>
-          {results.map(item => (
-            <Container key={item.id} sliding={sliding} dir={dir}>
-              <Imagem src={item.banner} alt={item.nome} />
-            </Container>
-          ))}
+        <>
+          {!hasData ? (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100%',
+                height: '95vh',
+              }}
+            >
+              <ErrorMessage>
+                Ainda não possuimos empreendimentos cadastrados!
+              </ErrorMessage>
+            </div>
+          ) : (
+            <Carousel {...handlers} style={{ cursor: 'grab' }}>
+              {results.map(item => (
+                <Container key={item.id} sliding={sliding} dir={dir}>
+                  <Imagem src={item.banner} alt={item.nome} />
+                </Container>
+              ))}
 
-          <FloatDiv>
-            <FloatContent>
-              <div>
-                <span>Pronto para morar</span>
-                <p>{results[sliding].nome}</p>
-                <span>{results[sliding].descricao_curta}</span>
-              </div>
-              <DivIcons>
-                <LeftArrow onClick={() => handleBack()} />
-                <RightArrow onClick={() => handleNext()} />
-              </DivIcons>
-            </FloatContent>
-            <Link to={`/empreendimentos/detalhes/${results[sliding].id}`}>
-              <FloatButton>
-                <span>Clique aqui para conferir</span>
-              </FloatButton>
-            </Link>
-          </FloatDiv>
-        </Carousel>
+              <FloatDiv>
+                <FloatContent>
+                  <div>
+                    <span>Pronto para morar</span>
+                    <p>{results[sliding].nome}</p>
+                    <span>{results[sliding].descricao_curta}</span>
+                  </div>
+                  <DivIcons>
+                    <LeftArrow onClick={() => handleBack()} />
+                    <RightArrow onClick={() => handleNext()} />
+                  </DivIcons>
+                </FloatContent>
+                <Link to={`/empreendimentos/detalhes/${results[sliding].id}`}>
+                  <FloatButton>
+                    <span>Clique aqui para conferir</span>
+                  </FloatButton>
+                </Link>
+              </FloatDiv>
+            </Carousel>
+          )}
+        </>
       )}
-
       <Footer />
     </>
   );

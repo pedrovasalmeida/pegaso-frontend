@@ -185,86 +185,20 @@ export const ButtonBack = styled.span`
 
 export const FloatDiv = styled.div`
   position: absolute;
-  left: 48px;
-  bottom: 144px;
+  left: 60px;
+  bottom: 80px;
 
-  height: 128px;
+  min-height: 128px;
+  height: auto;
   width: 400px;
 
   z-index: 3;
 
-  @media (max-width: 664px) {
+  @media (max-width: 474px) {
     width: 300px;
-    height: 101px;
 
-    left: 32px;
-    top: 60%;
-  }
-
-  @media (max-width: 562px) {
-    left: 32px;
-    top: 60%;
-  }
-
-  @media (max-width: 448px) {
-    left: 32px;
-    top: 60%;
-  }
-
-  @media (max-width: 420px) {
-    width: 300px;
-    height: 96px;
-
-    left: 32px;
-    top: 60%;
-  }
-
-  @media (max-width: 414px) {
-    width: 300px;
-    height: 101px;
-
-    left: 32px;
-    top: 60%;
-  }
-
-  @media (max-width: 411px) {
-    width: 300px;
-    height: 101px;
-
-    left: 32px;
-    top: 60%;
-  }
-
-  @media (max-width: 375px) {
-    width: 300px;
-    height: 88px;
-
-    left: 32px;
-    top: 60%;
-  }
-
-  @media (max-width: 360px) {
-    width: 300px;
-    height: 100px;
-
-    left: 32px;
-    top: 60%;
-  }
-
-  @media (max-width: 325px) {
-    width: 300px;
-    height: 100px;
-
-    left: 4px;
-    top: 60%;
-  }
-
-  @media (max-width: 320px) {
-    width: 300px;
-    height: 100px;
-
-    left: 8px;
-    top: 60%;
+    left: 16px;
+    bottom: 90px;
   }
 `;
 
@@ -284,24 +218,28 @@ export const FloatContent = styled.div`
 
   > div span:first-child {
     margin: 0;
-    padding: 0;
+    padding-top: 8px;
     text-transform: uppercase;
     font-size: 14px;
     color: #fff;
   }
 
   > div span {
+    display: flex;
+    flex-wrap: wrap;
     margin: 0;
     padding: 0;
     font-size: 14px;
     color: #fff;
     text-shadow: 0px 0px 2px black;
+    width: 80%;
+    height: auto;
   }
 
   > div p {
     margin: 0;
-    padding: 0;
-    font-size: 32px;
+    padding: 6px 0;
+    font-size: 26px;
     font-weight: bold;
     text-transform: uppercase;
     color: ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
@@ -415,7 +353,7 @@ export const ErrorMessage = styled.span`
 
 export const DivIcons = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 30px;
   right: 0;
 `;
 
