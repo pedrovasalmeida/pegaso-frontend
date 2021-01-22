@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { shade, lighten } from 'polished';
+import Select from 'react-select';
 
 import { TiDelete } from 'react-icons/ti';
 
@@ -14,7 +15,9 @@ interface StatusMessageProp {
 
 export const Container = styled.div``;
 
-export const Form = styled.form`
+export const Form = styled.form``;
+
+export const FormDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -434,4 +437,37 @@ export const Title = styled.span`
   font-weight: bold;
   font-size: 26px;
   line-height: 20px;
+`;
+
+export const SelectInput = styled(Select)`
+  margin-top: 8px;
+  align-self: center;
+
+  width: 40%;
+
+  color: ${props => shade(0.6, props.theme.colors.light.lightBlue)};
+  border: 1px solid ${props => shade(0.4, props.theme.colors.light.lightBlue)};
+  border-radius: 4px;
+
+  /* div {
+    color: ${shade(0.7, '#fff')};
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    line-height: 26px;
+
+    &:hover {
+      background: red;
+    }
+
+    span {
+      border-bottom: 1px solid #000;
+    } */
+
+  @media only screen and (max-width: 1400px) {
+    width: 70%;
+  }
+  @media only screen and (max-width: 912px) {
+    width: 100%;
+  }
 `;

@@ -32,7 +32,7 @@
     "no-use-before-define": "off",
     "camelcase": "off",
     "react/jsx-curly-newline": "off",
-    "arrow-parens": ["error", { "requireForBlockBody": 1 }],
+    // "arrow-parens": ["error", { "requireForBlockBody": 1 }],
     "import/extensions": [
       "error",
       "ignorePackages",

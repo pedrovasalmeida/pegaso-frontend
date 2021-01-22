@@ -14,6 +14,7 @@ import {
   PreviewImage,
   PreviewDiv,
   StatusMessageDiv,
+  Title,
 } from './styles';
 
 interface EmpreendimentoData {
@@ -184,108 +185,111 @@ const AddEmp2: React.FC = () => {
   };
 
   return (
-    <Form>
-      <DivDetalhes>
-        <Input
-          type="text"
-          id="emp-name"
-          placeholder="Nome do empreendimento"
-          onChange={e => handleInputs(e.target.value, 'nome')}
-        />
-        <TextArea
-          id="emp-descricao"
-          placeholder="Descrição (detalhes)"
-          onChange={e => handleInputs(e.target.value, 'descricao')}
-        />
-        <Input
-          id="emp-descricao_curta"
-          type="text"
-          placeholder="Curta descrição (2 ou 3 palavras)"
-          onChange={e => handleInputs(e.target.value, 'descricao_curta')}
-        />
-        <Input
-          id="emp-endereco"
-          type="text"
-          placeholder="Endereço"
-          onChange={e => handleInputs(e.target.value, 'endereco')}
-        />
-
-        <label>Selecione um arquivo para ser o Banner do empreendimento:</label>
-
-        <form encType="multipart/form-data">
-          <UploadInput
-            name="image"
-            id="image"
-            type="file"
-            whatImageType="banner"
-            onChange={e => handleSubmitImage(e.target.files)}
+    <>
+      <Title>Adicionar empreendimento</Title>
+      <Form>
+        <DivDetalhes>
+          <Input
+            type="text"
+            id="emp-name"
+            placeholder="Nome do empreendimento"
+            onChange={e => handleInputs(e.target.value, 'nome')}
+          />
+          <TextArea
+            id="emp-descricao"
+            placeholder="Descrição (detalhes)"
+            onChange={e => handleInputs(e.target.value, 'descricao')}
+          />
+          <Input
+            id="emp-descricao_curta"
+            type="text"
+            placeholder="Curta descrição (2 ou 3 palavras)"
+            onChange={e => handleInputs(e.target.value, 'descricao_curta')}
+          />
+          <Input
+            id="emp-endereco"
+            type="text"
+            placeholder="Endereço"
+            onChange={e => handleInputs(e.target.value, 'endereco')}
           />
 
-          <UploadButton
-            type="button"
-            value="Upload Banner"
-            onClick={() => fileUploadBannerHandler()}
-          />
-        </form>
+          <label>Selecione um arquivo para ser o Banner do empreendimento:</label>
 
-        {linkBanner ? (
-          <Input type="text" value={linkBanner} disabled placeholder="Link do banner" />
-        ) : (
-          <>
-            {isBannerLoading && (
-              <DivPreloader>
-                <Preloader
-                  use={ThreeDots}
-                  size={70}
-                  strokeColor="#0e6387"
-                  strokeWidth={6}
-                  duration={1000}
-                />
-              </DivPreloader>
-            )}
-          </>
-        )}
+          <form encType="multipart/form-data">
+            <UploadInput
+              name="image"
+              id="image"
+              type="file"
+              whatImageType="banner"
+              onChange={e => handleSubmitImage(e.target.files)}
+            />
 
-        <PreviewDiv>
-          {linkBanner && (
+            <UploadButton
+              type="button"
+              value="Upload Banner"
+              onClick={() => fileUploadBannerHandler()}
+            />
+          </form>
+
+          {linkBanner ? (
+            <Input type="text" value={linkBanner} disabled placeholder="Link do banner" />
+          ) : (
             <>
-              <span>Banner: </span>
-              <a href={linkBanner} target="_blank" rel="noreferrer noopener">
-                <PreviewImage src={linkBanner} alt={linkBanner} />
-              </a>
+              {isBannerLoading && (
+                <DivPreloader>
+                  <Preloader
+                    use={ThreeDots}
+                    size={70}
+                    strokeColor="#0e6387"
+                    strokeWidth={6}
+                    duration={1000}
+                  />
+                </DivPreloader>
+              )}
             </>
           )}
-        </PreviewDiv>
 
-        {isLoading && (
-          <StatusMessageDiv status="loading">
-            <Preloader
-              use={ThreeDots}
-              size={70}
-              strokeColor="#0e6387"
-              strokeWidth={6}
-              duration={1000}
-            />
-          </StatusMessageDiv>
-        )}
+          <PreviewDiv>
+            {linkBanner && (
+              <>
+                <span>Banner: </span>
+                <a href={linkBanner} target="_blank" rel="noreferrer noopener">
+                  <PreviewImage src={linkBanner} alt={linkBanner} />
+                </a>
+              </>
+            )}
+          </PreviewDiv>
 
-        {success && (
-          <StatusMessageDiv status="success">
-            <span>{statusMessage}</span>
-          </StatusMessageDiv>
-        )}
+          {isLoading && (
+            <StatusMessageDiv status="loading">
+              <Preloader
+                use={ThreeDots}
+                size={70}
+                strokeColor="#0e6387"
+                strokeWidth={6}
+                duration={1000}
+              />
+            </StatusMessageDiv>
+          )}
 
-        {error && (
-          <StatusMessageDiv status="error">
-            <span>{statusMessage}</span>
-          </StatusMessageDiv>
-        )}
+          {success && (
+            <StatusMessageDiv status="success">
+              <span>{statusMessage}</span>
+            </StatusMessageDiv>
+          )}
 
-        <CreateButton onClick={e => verifyAndSendData(e)}>
-          Criar Empreendimento
-        </CreateButton>
-      </DivDetalhes>
-    </Form>
+          {error && (
+            <StatusMessageDiv status="error">
+              <span>{statusMessage}</span>
+            </StatusMessageDiv>
+          )}
+
+          <CreateButton onClick={e => verifyAndSendData(e)}>
+            Criar Empreendimento
+          </CreateButton>
+        </DivDetalhes>
+      </Form>
+    </>
   );
 };
 

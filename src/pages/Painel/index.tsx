@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 
 /** Hooks */
 import { Preloader, ThreeDots } from 'react-preloader-icon';
+import { Slant as Hamburger } from 'hamburger-react';
 import { useAuth } from '../../context/AuthContext';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
@@ -10,10 +11,10 @@ import LoginPage from '../../components/Login';
 import AdicionarEmp from '../../components/AdicionarEmp';
 import RemoverEmp from '../../components/RemoverEmp';
 import ListarEmp from '../../components/ListarEmp';
-import AtualizarEmp from '../../components/AtualizarEmpNew';
-import api from '../../services/api';
+import AdicionarImagens from '../../components/AdicionarImagens';
+import AtualizarEmpreendimento from '../../components/AtualizarEmpreendimento';
 
-import { Slant as Hamburger } from 'hamburger-react';
+import api from '../../services/api';
 
 /** Ícones e imagens */
 
@@ -51,7 +52,8 @@ const Painel: React.FC = () => {
   const { user, signOut } = useAuth();
 
   const [adicionar, setAdicionar] = useState(true);
-  const [atualizar, setAtualizar] = useState(false);
+  const [atualizarEmpreendimento, setAtualizarEmpreendimento] = useState(false);
+  const [adicionarImagens, setAdicionarImagens] = useState(false);
   const [remover, setRemover] = useState(false);
   const [listar, setListar] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -76,7 +78,17 @@ const Painel: React.FC = () => {
 
   const handleAdicionar = () => {
     setAdicionar(true);
-    setAtualizar(false);
+    setAtualizarEmpreendimento(false);
+    setAdicionarImagens(false);
+    setRemover(false);
+    setListar(false);
+    setToggleMenu(false);
+  };
+
+  const handleAtualizarEmpreendimento = () => {
+    setAdicionar(false);
+    setAtualizarEmpreendimento(true);
+    setAdicionarImagens(false);
     setRemover(false);
     setListar(false);
     setToggleMenu(false);
@@ -84,7 +96,8 @@ const Painel: React.FC = () => {
 
   const handleAtualizar = () => {
     setAdicionar(false);
-    setAtualizar(true);
+    setAtualizarEmpreendimento(false);
+    setAdicionarImagens(true);
     setRemover(false);
     setListar(false);
     setToggleMenu(false);
@@ -92,7 +105,8 @@ const Painel: React.FC = () => {
 
   const handleRemover = () => {
     setAdicionar(false);
-    setAtualizar(false);
+    setAtualizarEmpreendimento(false);
+    setAdicionarImagens(false);
     setRemover(true);
     setListar(false);
     setToggleMenu(false);
@@ -100,7 +114,8 @@ const Painel: React.FC = () => {
 
   const handleListar = () => {
     setAdicionar(false);
-    setAtualizar(false);
+    setAtualizarEmpreendimento(false);
+    setAdicionarImagens(false);
     setRemover(false);
     setListar(true);
     setToggleMenu(false);
@@ -188,16 +203,23 @@ const Painel: React.FC = () => {
                 Adicionar empreendimento
               </OpcaoMenu>
 
+              <OpcaoMenu
+                selected={atualizarEmpreendimento}
+                onClick={() => handleAtualizarEmpreendimento()}
+              >
+                Atualizar empreendimento
+              </OpcaoMenu>
+
               <OpcaoMenu selected={remover} onClick={() => handleRemover()}>
                 Remover empreendimento
               </OpcaoMenu>
 
-              <OpcaoMenu selected={atualizar} onClick={() => handleAtualizar()}>
-                Adicionar imagens
-              </OpcaoMenu>
-
               <OpcaoMenu selected={listar} onClick={() => handleListar()}>
                 Listar empreendimentos
+              </OpcaoMenu>
+
+              <OpcaoMenu selected={adicionarImagens} onClick={() => handleAtualizar()}>
+                Adicionar imagens
               </OpcaoMenu>
 
               <OpcaoMenu selected={false} onClick={() => handleDeslogar()}>
@@ -211,6 +233,11 @@ const Painel: React.FC = () => {
                   <AdicionarEmp />
                 </>
               )}
+              {atualizarEmpreendimento && (
+                <>
+                  <AtualizarEmpreendimento />
+                </>
+              )}
               {listar && (
                 <>
                   <ListarEmp />
@@ -221,9 +248,9 @@ const Painel: React.FC = () => {
                   <RemoverEmp />
                 </>
               )}
-              {atualizar && (
+              {adicionarImagens && (
                 <>
-                  <AtualizarEmp />
+                  <AdicionarImagens />
                 </>
               )}
             </Data>
