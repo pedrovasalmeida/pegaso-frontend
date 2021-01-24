@@ -56,7 +56,7 @@ const Painel: React.FC = () => {
   const [adicionarImagens, setAdicionarImagens] = useState(false);
   const [remover, setRemover] = useState(false);
   const [listar, setListar] = useState(false);
-  const [toggleMenu, setToggleMenu] = useState(true);
+  const [toggleMenu, setToggleMenu] = useState(false);
   const [loggedUserData, setLoggedUserData] = useState<UserApiData>({} as UserApiData);
 
   const [userData, setUserData] = useState<UserDataFromStorage>(() => {
@@ -163,6 +163,7 @@ const Painel: React.FC = () => {
                 />
               </FloatButtonDiv>
             )}
+
             <LeftMenu width={width} isOpened={toggleMenu}>
               <DadosAdmin>
                 {!loggedUserData.nome ? (
