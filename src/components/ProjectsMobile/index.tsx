@@ -28,26 +28,31 @@ interface Empreendimentos {
 }
 
 const ProjectsMobile: React.FC = () => {
-  const [results, setResults] = useState<any>();
+  const [results, setResults] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [isArray, setIsArray] = useState<boolean | undefined>(undefined);
 
   const getData = async () => {
+    const dataFromLocalStorage = localStorage.getItem('@ProjPegaso:enterpriseData');
+
+    if (dataFromLocalStorage) {
+      setResults(JSON.parse(dataFromLocalStorage));
+      setIsArray(true);
+      setLoading(false);
+      return;
+    }
+
     api
       .get('/show-all')
       .then(res => {
-        console.log('DEU BOM');
         setResults(res.data);
         setIsArray(true);
         setLoading(false);
-        return;
       })
       .catch(err => {
-        console.log('vish, deu ruim!');
         console.log(err);
         setIsArray(false);
         setLoading(false);
-        return;
       });
   };
 
@@ -61,6 +66,12 @@ const ProjectsMobile: React.FC = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    if (results !== null) {
+      localStorage.setItem('@ProjPegaso:enterpriseData', JSON.stringify(results));
+    }
+  }, [results]);
 
   return (
     <Container>
