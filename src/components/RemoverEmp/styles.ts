@@ -22,8 +22,6 @@ export const Lista = styled.div`
   flex-wrap: wrap;
   margin-bottom: 8px;
 
-  width: auto;
-
   @media (max-width: 1256px) {
     flex-direction: column;
   }
@@ -34,21 +32,17 @@ export const Item = styled.div`
   align-items: center;
   justify-content: flex-start;
 
-  width: 45%;
+  width: 90%;
 
-  margin: 8px 4px 12px 4px;
+  margin: 16px 4px;
   position: relative;
 
-  border: 1px solid ${shade(0.6, '#fff')};
+  border: 1px solid ${props => props.theme.colors.light.gray};
   border-radius: 4px;
 
-  @media (max-width: 1256px) {
-    width: 90%;
-  }
+  color: #333;
 
-  @media only screen and (max-width: 385px) {
-    width: 100%;
-  }
+  transition: all 300ms ease;
 `;
 
 export const ArrowIcon = styled(AiOutlineDelete)`
@@ -119,13 +113,17 @@ export const Nome = styled.span`
 `;
 
 export const Descricao = styled.span`
-  width: 70%;
+  width: 80%;
 
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 
   line-clamp: 2;
+
+  @media only screen and (max-width: 807px) {
+    width: 70%;
+  }
 `;
 
 export const Modal = styled.div`

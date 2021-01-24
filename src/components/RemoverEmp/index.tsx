@@ -169,10 +169,7 @@ const RemoverEmp: React.FC = () => {
 
               <Data>
                 <Nome>{item.nome}</Nome>
-                <Descricao>
-                  {item.descricao}
-                  ...
-                </Descricao>
+                <Descricao>{item.descricao}...</Descricao>
                 <Nome>
                   ID:
                   {item.id}
