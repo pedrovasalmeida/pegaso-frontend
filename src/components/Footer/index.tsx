@@ -21,11 +21,8 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 import FooterMobile from '../FooterMobile';
 
 const Footer: React.FC = () => {
-  const msg = '';
   const number = '+5571999087283';
-  const WhatsApp = `https://api.whatsapp.com/send?phone=${encodeURIComponent(
-    number,
-  )}&text=${encodeURIComponent(msg)}`;
+  const WhatsApp = `https://api.whatsapp.com/send?phone=${encodeURIComponent(number)}`;
   const InstagramLink = 'https://www.instagram.com/pegasoeng/';
 
   const { width } = useWindowDimensions();

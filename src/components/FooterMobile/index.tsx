@@ -12,11 +12,8 @@ import {
 } from './styles';
 
 const FooterMobile: React.FC = () => {
-  const msg = 'Olá!';
-  const number = '+551140028922';
-  const WhatsApp = `https://api.whatsapp.com/send?phone=${encodeURIComponent(
-    number,
-  )}&text=${encodeURIComponent(msg)}`;
+  const number = '+5571999087283';
+  const WhatsApp = `https://api.whatsapp.com/send?phone=${encodeURIComponent(number)}`;
   const InstagramLink = 'https://www.instagram.com/pegasoeng/';
 
   const footerOptions1 = [
