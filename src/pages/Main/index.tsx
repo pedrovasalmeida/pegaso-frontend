@@ -40,6 +40,15 @@ const CarouselDenner: React.FC = () => {
   const [results, setResults] = useState<any>(null);
 
   const getData = () => {
+    const dataFromLocalStorage = localStorage.getItem('@ProjPegaso:enterpriseData');
+
+    if (dataFromLocalStorage) {
+      setResults(JSON.parse(dataFromLocalStorage));
+      setHasData(true);
+      setLoading(false);
+      return;
+    }
+
     api
       .get('/show-all')
       .then(res => {
@@ -80,6 +89,12 @@ const CarouselDenner: React.FC = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    if (results !== null) {
+      localStorage.setItem('@ProjPegaso:enterpriseData', JSON.stringify(results));
+    }
+  }, [results]);
 
   return (
     <>
