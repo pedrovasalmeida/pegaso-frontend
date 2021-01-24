@@ -51,9 +51,9 @@ interface UserApiData {
 const Painel: React.FC = () => {
   const { user, signOut } = useAuth();
 
-  const [adicionar, setAdicionar] = useState(true);
+  const [adicionar, setAdicionar] = useState(false);
   const [atualizarEmpreendimento, setAtualizarEmpreendimento] = useState(false);
-  const [adicionarImagens, setAdicionarImagens] = useState(false);
+  const [adicionarImagens, setAdicionarImagens] = useState(true);
   const [remover, setRemover] = useState(false);
   const [listar, setListar] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -150,10 +150,6 @@ const Painel: React.FC = () => {
         </Container>
       ) : (
         <>
-          {/* {width < 910 ? (
-            <PainelMobile />
-          ) : ( */}
-
           <Container>
             {width < 731 && (
               <FloatButtonDiv>

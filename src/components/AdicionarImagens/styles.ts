@@ -69,6 +69,35 @@ export const EnterpriseDetails = styled.div`
   position: relative;
 
   width: auto;
+  height: 55vh;
+
+  border: 1px solid ${props => lighten(0.6, props.theme.colors.light.lightBlue)};
+  border-radius: 4px;
+
+  form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media only screen and (max-width: 394px) {
+    padding: 8px;
+  }
+`;
+
+export const FilesDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  position: relative;
+
+  width: auto;
   height: auto;
 
   border: 1px solid ${props => lighten(0.6, props.theme.colors.light.lightBlue)};
@@ -114,7 +143,9 @@ export const PreviewDiv = styled.div<PreviewDivProps>`
 
   width: 100%;
   max-width: 50%;
-  height: auto;
+  height: 100%;
+
+  overflow-y: scroll;
 
   margin-bottom: 8px;
 
