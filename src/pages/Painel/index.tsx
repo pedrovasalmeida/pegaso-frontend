@@ -31,8 +31,8 @@ import {
 
 /** Tipos */
 interface UserDataFromStorage {
-  id: number;
-  userLogin: string;
+  user: any;
+  token: string;
 }
 
 interface BlaUser {
@@ -57,13 +57,13 @@ const Painel: React.FC = () => {
   const [remover, setRemover] = useState(false);
   const [listar, setListar] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [loggedUserData, setLoggedUserData] = useState<UserApiData>({} as UserApiData);
-
   const [userData, setUserData] = useState<UserDataFromStorage>(() => {
-    if (user) {
-      return user as UserDataFromStorage;
+    if (JSON.stringify(user) === '{}') {
+      return {} as UserDataFromStorage;
     }
-    return {} as UserDataFromStorage;
+    return { user, token: user.token } as UserDataFromStorage;
   });
 
   const { width } = useWindowDimensions();
@@ -121,30 +121,35 @@ const Painel: React.FC = () => {
     setToggleMenu(false);
   };
 
-  const getUserData = useCallback(async () => {
-    if (!userData.id) {
+  const getUserData = () => {
+    if (JSON.stringify(user) === '{}') {
+      setLoading(false);
       return;
     }
 
-    await api
-      .get(`/list-one-user/${userData.id}`)
+    api
+      .get(`/list-one-user/${user.user.id}`)
       .then(res => {
         const loggedUser: UserApiData = res.data.user;
-
         setLoggedUserData(loggedUser);
+        setLoading(false);
       })
-      .catch(err => {
-        console.log(err);
+      .catch(() => {
+        localStorage.removeItem('@ProjPegaso:user');
+        localStorage.removeItem('@ProjPegaso:token');
+        setLoggedUserData({} as UserApiData);
+        setUserData({} as UserDataFromStorage);
+        setLoading(false);
       });
-  }, [userData.id]);
+  };
 
   useEffect(() => {
     getUserData();
-  }, [getUserData]);
+  }, []);
 
   return (
     <>
-      {!userData.id ? (
+      {JSON.stringify(userData) === '{}' ? (
         <Container>
           <LoginPage />
         </Container>
@@ -166,7 +171,7 @@ const Painel: React.FC = () => {
 
             <LeftMenu width={width} isOpened={toggleMenu}>
               <DadosAdmin>
-                {!loggedUserData.nome ? (
+                {!loggedUserData ? (
                   <div
                     style={{
                       display: 'flex',

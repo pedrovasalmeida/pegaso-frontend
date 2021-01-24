@@ -7,17 +7,12 @@ interface SignInCredentials {
 }
 
 interface AuthState {
-  user: object;
+  user: any;
   token: string;
 }
 
-interface UserProps {
-  id: number;
-  userLogin: string;
-}
-
 interface AuthContextProps {
-  user: object;
+  user: any;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
 }
@@ -79,7 +74,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
+    <AuthContext.Provider value={{ user: data, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
@@ -88,8 +83,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 export function useAuth(): AuthContextProps {
   const context = useContext(AuthContext);
 
-  if (!context)
-    throw new Error('useAuth deve ser usado dentro de um AuthProvider');
+  if (!context) throw new Error('useAuth deve ser usado dentro de um AuthProvider');
 
   return context;
 }

@@ -79,7 +79,7 @@ const Login: React.FC = () => {
           return setIsError(true);
         }
 
-        await signIn!({ login, password })
+        await signIn({ login, password })
           .then(res => {
             setIsLoading(false);
             setIsError(false);
@@ -87,7 +87,7 @@ const Login: React.FC = () => {
 
             setTimeout(() => {
               setIsLogged(false);
-              return handleReloadPage();
+              handleReloadPage();
             }, 2000);
           })
           .catch(err => {
