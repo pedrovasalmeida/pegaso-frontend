@@ -39,21 +39,31 @@ const ProjectsMobile: React.FC = () => {
       setResults(JSON.parse(dataFromLocalStorage));
       setIsArray(true);
       setLoading(false);
-      return;
-    }
 
-    api
-      .get('/show-all')
-      .then(res => {
-        setResults(res.data);
-        setIsArray(true);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.log(err);
-        setIsArray(false);
-        setLoading(false);
-      });
+      const response = await api.get('/show-all');
+
+      if (
+        JSON.stringify(response.data) !== dataFromLocalStorage &&
+        response.status === 200
+      ) {
+        localStorage.setItem('@ProjPegaso:enterpriseData', JSON.stringify(response.data));
+        setResults(response.data);
+      }
+    } else {
+      api
+        .get('/show-all')
+        .then(res => {
+          setResults(res.data);
+          localStorage.setItem('@ProjPegaso:enterpriseData', JSON.stringify(res.data));
+          setIsArray(true);
+          setLoading(false);
+        })
+        .catch(err => {
+          setIsArray(false);
+          setLoading(false);
+          console.log(err);
+        });
+    }
   };
 
   const { width } = useWindowDimensions();
