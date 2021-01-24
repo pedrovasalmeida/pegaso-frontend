@@ -176,7 +176,7 @@ const AddEmp2: React.FC = () => {
         setError(true);
         setSuccess(false);
         setIsLoading(false);
-        setStatusMessage('Erro: ' + err);
+        setStatusMessage(`Erro: ${err}`);
 
         setTimeout(() => {
           setError(false);

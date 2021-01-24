@@ -166,6 +166,23 @@ const AtualizarEmpreendimento: React.FC = () => {
     setError(false);
     setStatusMessage('');
 
+    if (
+      inputName === oneEnterpriseData!.nome &&
+      inputDescricao === oneEnterpriseData!.descricao &&
+      inputDescCurta === oneEnterpriseData!.descricao_curta &&
+      inputEndereco === oneEnterpriseData!.endereco &&
+      linkBanner === oneEnterpriseData!.banner
+    ) {
+      setIsLoading(false);
+      setStatusMessage('Você precisa modificar as informações.');
+      setError(true);
+
+      setTimeout(() => {
+        setError(false);
+      }, 2000);
+      return;
+    }
+
     if (!inputName) {
       setInputName(oneEnterpriseData!.nome);
     }

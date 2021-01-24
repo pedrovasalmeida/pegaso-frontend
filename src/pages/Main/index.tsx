@@ -39,19 +39,38 @@ const CarouselDenner: React.FC = () => {
   const [hasData, setHasData] = useState(false);
   const [results, setResults] = useState<any>(null);
 
-  const getData = () => {
-    api
-      .get('/show-all')
-      .then(res => {
-        setResults(res.data);
-        setHasData(true);
-        setLoading(false);
-      })
-      .catch(err => {
-        setHasData(false);
-        setLoading(false);
-        console.log(err);
-      });
+  const getData = async () => {
+    const dataFromLocalStorage = localStorage.getItem('@ProjPegaso:enterpriseData');
+
+    if (dataFromLocalStorage) {
+      setResults(JSON.parse(dataFromLocalStorage));
+      setHasData(true);
+      setLoading(false);
+
+      const response = await api.get('/show-all');
+
+      if (
+        JSON.stringify(response.data) !== dataFromLocalStorage &&
+        response.status === 200
+      ) {
+        localStorage.setItem('@ProjPegaso:enterpriseData', JSON.stringify(response.data));
+        setResults(response.data);
+      }
+    } else {
+      api
+        .get('/show-all')
+        .then(res => {
+          setResults(res.data);
+          localStorage.setItem('@ProjPegaso:enterpriseData', JSON.stringify(res.data));
+          setHasData(true);
+          setLoading(false);
+        })
+        .catch(err => {
+          setHasData(false);
+          setLoading(false);
+          console.log(err);
+        });
+    }
   };
 
   const handleNext = useCallback(() => {

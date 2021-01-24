@@ -28,27 +28,42 @@ interface Empreendimentos {
 }
 
 const ProjectsMobile: React.FC = () => {
-  const [results, setResults] = useState<any>();
+  const [results, setResults] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [isArray, setIsArray] = useState<boolean | undefined>(undefined);
 
   const getData = async () => {
-    api
-      .get('/show-all')
-      .then(res => {
-        console.log('DEU BOM');
-        setResults(res.data);
-        setIsArray(true);
-        setLoading(false);
-        return;
-      })
-      .catch(err => {
-        console.log('vish, deu ruim!');
-        console.log(err);
-        setIsArray(false);
-        setLoading(false);
-        return;
-      });
+    const dataFromLocalStorage = localStorage.getItem('@ProjPegaso:enterpriseData');
+
+    if (dataFromLocalStorage) {
+      setResults(JSON.parse(dataFromLocalStorage));
+      setIsArray(true);
+      setLoading(false);
+
+      const response = await api.get('/show-all');
+
+      if (
+        JSON.stringify(response.data) !== dataFromLocalStorage &&
+        response.status === 200
+      ) {
+        localStorage.setItem('@ProjPegaso:enterpriseData', JSON.stringify(response.data));
+        setResults(response.data);
+      }
+    } else {
+      api
+        .get('/show-all')
+        .then(res => {
+          setResults(res.data);
+          localStorage.setItem('@ProjPegaso:enterpriseData', JSON.stringify(res.data));
+          setIsArray(true);
+          setLoading(false);
+        })
+        .catch(err => {
+          setIsArray(false);
+          setLoading(false);
+          console.log(err);
+        });
+    }
   };
 
   const { width } = useWindowDimensions();
@@ -61,6 +76,12 @@ const ProjectsMobile: React.FC = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    if (results !== null) {
+      localStorage.setItem('@ProjPegaso:enterpriseData', JSON.stringify(results));
+    }
+  }, [results]);
 
   return (
     <Container>

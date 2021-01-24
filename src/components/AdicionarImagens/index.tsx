@@ -7,6 +7,7 @@ import {
   Container,
   SelectInput,
   EnterpriseDetails,
+  FilesDiv,
   Title,
   Text,
   PreviewDiv,
@@ -52,8 +53,8 @@ const AdicionarImagens: React.FC = () => {
     option: (provided, state) => ({
       ...provided,
       border: '1px solid #333',
-      color: state.isSelected ? '#fff' : '#0e6387',
-      background: state.isSelected ? '#5264b3' : '#fff',
+      color: state.isSelected ? '#f2f2f2' : '#0e6387',
+      background: state.isSelected ? '#0e6387' : '#f2f2f2',
       fontWeight: 'bold',
       borderRadius: '2px',
     }),
@@ -62,7 +63,7 @@ const AdicionarImagens: React.FC = () => {
       display: 'flex',
       flexDirection: 'row',
       width: '100%',
-      border: '1px solid #fff',
+      border: '1px solid #f2f2f2',
       borderRadius: '4px',
       outline: 0,
     }),
@@ -261,40 +262,29 @@ const AdicionarImagens: React.FC = () => {
 
             {singleEnterprise.images.length > 0 ? (
               <>
-                {singleEnterprise.images.length > 10 ? (
-                  <>
-                    <Text>
-                      O empreendimento possui <strong>mais de 10 imagens</strong>{' '}
-                      cadastradas. Por isso, o preview está desativado.
-                    </Text>
-                    <Text>
-                      Total de imagens: <strong>{singleEnterprise.images.length}</strong>
-                    </Text>
-                  </>
-                ) : (
-                  <>
-                    <Text>Imagens existentes:</Text>
-                    <PreviewDiv>
-                      {singleEnterprise.images.map(image => (
-                        <a
-                          key={image.imagem}
-                          href={image.imagem}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <PreviewImage src={image.imagem} alt={image.nome} />
-                        </a>
-                      ))}
-                    </PreviewDiv>
-                  </>
-                )}
+                <Text>
+                  Imagens existentes (<strong>{singleEnterprise.images.length}</strong> no
+                  total):
+                </Text>
+                <PreviewDiv>
+                  {singleEnterprise.images.map(image => (
+                    <a
+                      key={image.imagem}
+                      href={image.imagem}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <PreviewImage src={image.imagem} alt={image.nome} />
+                    </a>
+                  ))}
+                </PreviewDiv>
               </>
             ) : (
               <Text>O empreendimento não possui imagens cadastradas.</Text>
             )}
           </EnterpriseDetails>
 
-          <EnterpriseDetails>
+          <FilesDiv>
             <form encType="multipart/form-data">
               {loading && (
                 <StatusMessageDiv status="loading">
@@ -333,7 +323,7 @@ const AdicionarImagens: React.FC = () => {
                 onClick={() => handleUploadImages(enterpriseId!)}
               />
             </form>
-          </EnterpriseDetails>
+          </FilesDiv>
         </>
       ) : (
         <Text style={{ fontWeight: 'bold' }}>
