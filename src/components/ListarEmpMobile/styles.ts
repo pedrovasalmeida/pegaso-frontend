@@ -25,7 +25,7 @@ export const Item = styled.div`
   margin: 16px 4px;
   position: relative;
 
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid ${props => props.theme.colors.light.gray};
   border-radius: 16px;
 `;
 
@@ -39,8 +39,8 @@ export const LinkRRD = styled(Link)`
   margin: 16px 4px;
   position: relative;
 
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 16px;
+  border: 1px solid ${props => props.theme.colors.light.gray};
+  border-radius: 4px;
 
   color: #333;
 
@@ -79,7 +79,7 @@ export const Avatar = styled.img`
 
   margin: 0 16px 0 0;
 
-  border-radius: 50%;
+  border-radius: 4px;
 `;
 
 export const Data = styled.div`
