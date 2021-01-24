@@ -51,9 +51,9 @@ interface UserApiData {
 const Painel: React.FC = () => {
   const { user, signOut } = useAuth();
 
-  const [adicionar, setAdicionar] = useState(false);
+  const [adicionar, setAdicionar] = useState(true);
   const [atualizarEmpreendimento, setAtualizarEmpreendimento] = useState(false);
-  const [adicionarImagens, setAdicionarImagens] = useState(true);
+  const [adicionarImagens, setAdicionarImagens] = useState(false);
   const [remover, setRemover] = useState(false);
   const [listar, setListar] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(true);
