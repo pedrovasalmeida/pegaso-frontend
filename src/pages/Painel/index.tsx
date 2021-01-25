@@ -50,10 +50,22 @@ interface UserApiData {
   cargo: string;
 }
 
-const Painel: React.FC = () => {
-  const { user, signOut } = useAuth();
+type ActualPage = string;
 
-  const [adicionar, setAdicionar] = useState(true);
+const Painel: React.FC = () => {
+  const getLocalStoragePage = (): ActualPage => {
+    const localStorageActualPage = localStorage.getItem('@ProjPegaso:actualPanelPage');
+
+    if (!localStorageActualPage) {
+      return 'adicionar';
+    }
+
+    return localStorageActualPage;
+  };
+
+  const { user, signOut } = useAuth();
+  const [actualPage, setActualPage] = useState<ActualPage>(() => getLocalStoragePage());
+  const [adicionar, setAdicionar] = useState(false);
   const [atualizarEmpreendimento, setAtualizarEmpreendimento] = useState(false);
   const [adicionarImagens, setAdicionarImagens] = useState(false);
   const [remover, setRemover] = useState(false);
@@ -79,6 +91,7 @@ const Painel: React.FC = () => {
   }, [signOut]);
 
   const handleAdicionar = () => {
+    setActualPage('adicionar');
     setAdicionar(true);
     setAtualizarEmpreendimento(false);
     setAdicionarImagens(false);
@@ -88,6 +101,7 @@ const Painel: React.FC = () => {
   };
 
   const handleAtualizarEmpreendimento = () => {
+    setActualPage('atualizar');
     setAdicionar(false);
     setAtualizarEmpreendimento(true);
     setAdicionarImagens(false);
@@ -97,6 +111,7 @@ const Painel: React.FC = () => {
   };
 
   const handleAtualizar = () => {
+    setActualPage('adicionar-imagens');
     setAdicionar(false);
     setAtualizarEmpreendimento(false);
     setAdicionarImagens(true);
@@ -106,6 +121,7 @@ const Painel: React.FC = () => {
   };
 
   const handleRemover = () => {
+    setActualPage('remover');
     setAdicionar(false);
     setAtualizarEmpreendimento(false);
     setAdicionarImagens(false);
@@ -115,6 +131,7 @@ const Painel: React.FC = () => {
   };
 
   const handleListar = () => {
+    setActualPage('listar');
     setAdicionar(false);
     setAtualizarEmpreendimento(false);
     setAdicionarImagens(false);
@@ -122,6 +139,34 @@ const Painel: React.FC = () => {
     setListar(true);
     setToggleMenu(false);
   };
+
+  const handleActualPage = useCallback(() => {
+    const localStorageActualPage = localStorage.getItem('@ProjPegaso:actualPanelPage');
+
+    if (localStorageActualPage) {
+      if (localStorageActualPage === 'adicionar') {
+        handleAdicionar();
+      }
+
+      if (localStorageActualPage === 'listar') {
+        handleListar();
+      }
+
+      if (localStorageActualPage === 'atualizar') {
+        handleAtualizarEmpreendimento();
+      }
+
+      if (localStorageActualPage === 'remover') {
+        handleRemover();
+      }
+
+      if (localStorageActualPage === 'adicionar-imagens') {
+        handleAtualizar();
+      }
+    } else {
+      handleAdicionar();
+    }
+  }, []);
 
   const getUserData = useCallback(() => {
     if (JSON.stringify(user) === '{}') {
@@ -145,6 +190,14 @@ const Painel: React.FC = () => {
   useEffect(() => {
     getUserData();
   }, [getUserData]);
+
+  useEffect(() => {
+    localStorage.setItem('@ProjPegaso:actualPanelPage', actualPage);
+  }, [actualPage]);
+
+  useEffect(() => {
+    handleActualPage();
+  }, [handleActualPage]);
 
   return (
     <>
