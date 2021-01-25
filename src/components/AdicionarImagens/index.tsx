@@ -318,6 +318,7 @@ const AdicionarImagens: React.FC = () => {
                 onChange={e => handleAddFileListToArray(e.target.files)}
               />
               <Button
+                disabled={files.length < 1}
                 type="button"
                 value="Adicionar Imagens"
                 onClick={() => handleUploadImages(enterpriseId!)}

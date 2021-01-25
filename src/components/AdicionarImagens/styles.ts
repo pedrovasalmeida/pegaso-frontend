@@ -187,47 +187,36 @@ export const UploadInput = styled.input`
 `;
 
 export const Button = styled.input`
-  margin: 4px 0;
-
-  outline: 0;
   width: 100%;
   height: 50px;
 
-  background: ${props => props.theme.colors.light.lightBlue};
+  font-size: 18px;
+
+  ${props =>
+    props.disabled
+      ? css`
+          background: ${props.theme.colors.light.gray};
+        `
+      : css`
+          background: ${props.theme.colors.light.lightBlue};
+
+          &:hover {
+            transition: background 300ms ease;
+            background: ${lighten(0.1, props.theme.colors.light.lightBlue)};
+          }
+        `}
+
   color: #fdfdfd;
 
-  border: 1px solid ${props => props.theme.colors.light.lightBlue};
   border-radius: 4px;
 
   margin: 8px 0;
-  padding: 0 16px;
+  padding: 4px;
 
-  font-weight: bold;
-  font-size: 18px;
-
-  transition: background 300ms ease;
-
-  svg {
-    margin-right: 8px;
-  }
-
-  &:hover {
-    transition: background 300ms ease;
-    background: ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
-  }
+  transition: all 300ms ease;
 
   &:focus {
     outline: 0;
-  }
-
-  @media (max-width: 1639px) {
-    bottom: 8vh;
-    left: 13vw;
-  }
-
-  @media (max-width: 1281px) {
-    bottom: 16vh;
-    left: 11vw;
   }
 `;
 
