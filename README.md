@@ -1,5 +1,7 @@
 # Pegaso - Front-end
 
+![Pégaso](https://i.imgur.com/qN7RG8z.gif)
+
 Projeto desenvolvido utilizando algumas tecnologias como:
 
 - **ReactJS**
