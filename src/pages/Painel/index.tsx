@@ -17,12 +17,14 @@ import AtualizarEmpreendimento from '../../components/AtualizarEmpreendimento';
 import api from '../../services/api';
 
 /** Ícones e imagens */
+import logo from '../../assets/logo.png';
 
 /** Estilos */
 import {
   Container,
   LeftMenu,
   DadosAdmin,
+  Logo,
   Name,
   OpcaoMenu,
   Data,
@@ -48,16 +50,28 @@ interface UserApiData {
   cargo: string;
 }
 
-const Painel: React.FC = () => {
-  const { user, signOut } = useAuth();
+type ActualPage = string;
 
-  const [adicionar, setAdicionar] = useState(true);
+const Painel: React.FC = () => {
+  const getLocalStoragePage = (): ActualPage => {
+    const localStorageActualPage = localStorage.getItem('@ProjPegaso:actualPanelPage');
+
+    if (!localStorageActualPage) {
+      return 'adicionar';
+    }
+
+    return localStorageActualPage;
+  };
+
+  const { user, signOut } = useAuth();
+  const [actualPage, setActualPage] = useState<ActualPage>(() => getLocalStoragePage());
+  const [adicionar, setAdicionar] = useState(false);
   const [atualizarEmpreendimento, setAtualizarEmpreendimento] = useState(false);
   const [adicionarImagens, setAdicionarImagens] = useState(false);
   const [remover, setRemover] = useState(false);
   const [listar, setListar] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [loading, setLoading] = useState(true);
+
   const [loggedUserData, setLoggedUserData] = useState<UserApiData>({} as UserApiData);
   const [userData, setUserData] = useState<UserDataFromStorage>(() => {
     if (JSON.stringify(user) === '{}') {
@@ -77,6 +91,7 @@ const Painel: React.FC = () => {
   }, [signOut]);
 
   const handleAdicionar = () => {
+    setActualPage('adicionar');
     setAdicionar(true);
     setAtualizarEmpreendimento(false);
     setAdicionarImagens(false);
@@ -86,6 +101,7 @@ const Painel: React.FC = () => {
   };
 
   const handleAtualizarEmpreendimento = () => {
+    setActualPage('atualizar');
     setAdicionar(false);
     setAtualizarEmpreendimento(true);
     setAdicionarImagens(false);
@@ -95,6 +111,7 @@ const Painel: React.FC = () => {
   };
 
   const handleAtualizar = () => {
+    setActualPage('adicionar-imagens');
     setAdicionar(false);
     setAtualizarEmpreendimento(false);
     setAdicionarImagens(true);
@@ -104,6 +121,7 @@ const Painel: React.FC = () => {
   };
 
   const handleRemover = () => {
+    setActualPage('remover');
     setAdicionar(false);
     setAtualizarEmpreendimento(false);
     setAdicionarImagens(false);
@@ -113,6 +131,7 @@ const Painel: React.FC = () => {
   };
 
   const handleListar = () => {
+    setActualPage('listar');
     setAdicionar(false);
     setAtualizarEmpreendimento(false);
     setAdicionarImagens(false);
@@ -121,9 +140,36 @@ const Painel: React.FC = () => {
     setToggleMenu(false);
   };
 
-  const getUserData = () => {
+  const handleActualPage = useCallback(() => {
+    const localStorageActualPage = localStorage.getItem('@ProjPegaso:actualPanelPage');
+
+    if (localStorageActualPage) {
+      if (localStorageActualPage === 'adicionar') {
+        handleAdicionar();
+      }
+
+      if (localStorageActualPage === 'listar') {
+        handleListar();
+      }
+
+      if (localStorageActualPage === 'atualizar') {
+        handleAtualizarEmpreendimento();
+      }
+
+      if (localStorageActualPage === 'remover') {
+        handleRemover();
+      }
+
+      if (localStorageActualPage === 'adicionar-imagens') {
+        handleAtualizar();
+      }
+    } else {
+      handleAdicionar();
+    }
+  }, []);
+
+  const getUserData = useCallback(() => {
     if (JSON.stringify(user) === '{}') {
-      setLoading(false);
       return;
     }
 
@@ -132,20 +178,26 @@ const Painel: React.FC = () => {
       .then(res => {
         const loggedUser: UserApiData = res.data.user;
         setLoggedUserData(loggedUser);
-        setLoading(false);
       })
       .catch(() => {
         localStorage.removeItem('@ProjPegaso:user');
         localStorage.removeItem('@ProjPegaso:token');
         setLoggedUserData({} as UserApiData);
         setUserData({} as UserDataFromStorage);
-        setLoading(false);
       });
-  };
+  }, [user]);
 
   useEffect(() => {
     getUserData();
-  }, []);
+  }, [getUserData]);
+
+  useEffect(() => {
+    localStorage.setItem('@ProjPegaso:actualPanelPage', actualPage);
+  }, [actualPage]);
+
+  useEffect(() => {
+    handleActualPage();
+  }, [handleActualPage]);
 
   return (
     <>
@@ -171,6 +223,8 @@ const Painel: React.FC = () => {
 
             <LeftMenu width={width} isOpened={toggleMenu}>
               <DadosAdmin>
+                {width < 731 && <Logo src={logo} alt="Pégaso" />}
+
                 {!loggedUserData ? (
                   <div
                     style={{
@@ -191,7 +245,7 @@ const Painel: React.FC = () => {
                 ) : (
                   <>
                     <Name>
-                      <strong>Nome:</strong> <p>{loggedUserData!.nome}</p>
+                      <strong>Usuário:</strong> <p>{loggedUserData!.nome}</p>
                     </Name>
 
                     <Name>

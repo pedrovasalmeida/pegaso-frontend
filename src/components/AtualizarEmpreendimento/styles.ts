@@ -13,6 +13,10 @@ interface StatusMessageProp {
   status: 'error' | 'loading' | 'success';
 }
 
+interface UploadButtonProps {
+  isDisabled?: boolean;
+}
+
 export const Container = styled.div``;
 
 export const Form = styled.form``;
@@ -107,6 +111,8 @@ export const UploadInput = styled.input<InputProps>`
   width: 100%;
   height: 32px;
 
+  margin: 8px 0;
+
   overflow: hidden;
 
   color: ${props => shade(0.4, props.theme.colors.light.lightBlue)};
@@ -116,10 +122,7 @@ export const UploadInput = styled.input<InputProps>`
   border: 1px solid ${props => shade(0.4, props.theme.colors.light.lightBlue)};
   border-radius: 4px;
 
-  background-color: ${props =>
-    props.disabled
-      ? `${props => lighten(0.55, props.theme.colors.light.lightBlue)}`
-      : `${props => lighten(0.62, props.theme.colors.light.lightBlue)}`};
+  background-color: #f2f2f2;
 
   ::-webkit-file-upload-button {
     visibility: hidden;
@@ -254,18 +257,32 @@ export const UploadButton = styled.input`
 
   font-size: 18px;
 
-  color: ${props => shade(0.6, props.theme.colors.light.lightBlue)};
-  background: #f2f2f2;
+  ${props =>
+    props.disabled
+      ? css`
+          background: ${props.theme.colors.light.gray};
+        `
+      : css`
+          background: ${props.theme.colors.light.lightBlue};
 
-  border: 1px solid ${shade(0.4, '#f2f2f2')};
+          &:hover {
+            transition: background 300ms ease;
+            background: ${lighten(0.1, props.theme.colors.light.lightBlue)};
+          }
+        `}
+
+  color: #fdfdfd;
+
   border-radius: 4px;
 
   margin: 8px 0;
-  padding: 16px;
+  padding: 4px;
 
   transition: all 300ms ease;
 
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'auto')};
+  &:focus {
+    outline: 0;
+  }
 `;
 
 export const LinkMessage = styled.span`

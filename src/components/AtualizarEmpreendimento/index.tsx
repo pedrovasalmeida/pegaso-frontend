@@ -46,7 +46,6 @@ const AtualizarEmpreendimento: React.FC = () => {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
-
   const [allEnterprises, setAllEnterprises] = useState<Enterprise[] | undefined>(
     undefined,
   );
@@ -99,8 +98,7 @@ const AtualizarEmpreendimento: React.FC = () => {
       .then(res => {
         setAllEnterprises(res.data);
       })
-      .catch(err => {
-        console.log(err);
+      .catch(() => {
         setAllEnterprises(undefined);
       });
   };
@@ -114,10 +112,9 @@ const AtualizarEmpreendimento: React.FC = () => {
         setOneEnterpriseData(res.data.development);
         setLoadingEnterpriseData(false);
       })
-      .catch(err => {
+      .catch(() => {
         setOneEnterpriseData(undefined);
         setLoadingEnterpriseData(false);
-        console.log(err);
       });
   };
 
@@ -138,9 +135,20 @@ const AtualizarEmpreendimento: React.FC = () => {
 
   const fileUploadBannerHandler = async () => {
     setIsBannerLoading(true);
-    const formdata = new FormData();
 
-    if (file === null) return alert('file is empty');
+    if (file === null) {
+      setIsBannerLoading(false);
+      setError(true);
+      setSuccess(false);
+      setIsLoading(false);
+      setStatusMessage(`Você deve escolher uma imagem.`);
+
+      setTimeout(() => {
+        setError(false);
+      }, 2000);
+    }
+
+    const formdata = new FormData();
 
     formdata.append('image', file!);
 
@@ -325,7 +333,7 @@ const AtualizarEmpreendimento: React.FC = () => {
                 />
               </Form>
 
-              <span>Selecione um arquivo para ser o Banner do empreendimento:</span>
+              <span>Selecione um novo banner para o empreendimento:</span>
               <form encType="multipart/form-data">
                 <UploadInput
                   name="image"
@@ -336,6 +344,7 @@ const AtualizarEmpreendimento: React.FC = () => {
                 />
 
                 <UploadButton
+                  disabled={file === null}
                   type="button"
                   value="Enviar banner"
                   onClick={() => fileUploadBannerHandler()}

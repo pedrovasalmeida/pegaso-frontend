@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const Lista = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 0 0 80px 0;
+  margin-bottom: 8px;
 
   @media (max-width: 1548px) {
     flex-direction: column;
@@ -119,4 +119,18 @@ export const Descricao = styled.span`
   line-clamp: 2;
 
   width: 50%;
+`;
+
+export const Title = styled.span`
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 32px;
+  text-align: center;
+  text-transform: uppercase;
+
+  padding-bottom: 8px;
+
+  border-bottom: 1px solid ${props => props.theme.colors.light.gray};
+
+  width: 90%;
 `;

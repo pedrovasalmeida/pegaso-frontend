@@ -16,6 +16,7 @@ import {
   Data,
   Nome,
   Descricao,
+  Title,
 } from './styles';
 
 interface EmpreendimentoData {
@@ -30,22 +31,26 @@ interface EmpreendimentoData {
 
 const ListarEmp: React.FC = () => {
   const [data, setData] = useState<EmpreendimentoData[] | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const { width } = useWindowDimensions();
 
   const getData = async () => {
+    setLoading(true);
     const { data, error } = await api.get('/show-all');
 
-    if (error) return error;
+    if (error) {
+      setLoading(false);
+      return;
+    }
 
     setData(data);
+    setLoading(false);
   };
 
   useEffect(() => {
     getData();
   }, []);
-
-  // if (!data) return <span>Não existem empreendimentos ainda! :(</span>;
 
   return (
     <>
@@ -54,7 +59,8 @@ const ListarEmp: React.FC = () => {
       ) : (
         <Container>
           <Lista>
-            {!data ? (
+            <Title>Listar Empreendimentos</Title>
+            {loading ? (
               <div
                 style={{
                   display: 'flex',
@@ -74,26 +80,32 @@ const ListarEmp: React.FC = () => {
                 />
               </div>
             ) : (
-              data?.map(item => (
-                <LinkRRD to={`/empreendimentos/detalhes/${item.id}`} key={item.id}>
-                  <Avatar src={item.banner} alt={item.nome} />
-                  <Data>
-                    <Nome>{item.nome}</Nome>
-                    <Descricao>
-                      {item.descricao}
-                      ...
-                    </Descricao>
-                    <Nome>
-                      ID:
-                      {item.id}
-                    </Nome>
-                  </Data>
+              <>
+                {!data ? (
+                  <span>Não existem empreendimentos cadastrados.</span>
+                ) : (
+                  data?.map(item => (
+                    <LinkRRD to={`/empreendimentos/detalhes/${item.id}`} key={item.id}>
+                      <Avatar src={item.banner} alt={item.nome} />
+                      <Data>
+                        <Nome>{item.nome}</Nome>
+                        <Descricao>
+                          {item.descricao}
+                          ...
+                        </Descricao>
+                        <Nome>
+                          ID:
+                          {item.id}
+                        </Nome>
+                      </Data>
 
-                  <DivIcon>
-                    <ArrowIcon />
-                  </DivIcon>
-                </LinkRRD>
-              ))
+                      <DivIcon>
+                        <ArrowIcon />
+                      </DivIcon>
+                    </LinkRRD>
+                  ))
+                )}
+              </>
             )}
           </Lista>
         </Container>
