@@ -1,6 +1,10 @@
-# Pegaso - Front-end
+# Pégaso
 
 ![Pegaso](https://i.imgur.com/dSV4hna.gif)
+
+Site institucional da construtora Pégaso.
+
+---
 
 Projeto desenvolvido utilizando algumas tecnologias como:
 
@@ -15,4 +19,4 @@ Projeto desenvolvido utilizando algumas tecnologias como:
 
 ## Preview
 
-Veja um preview do projeto aqui: [Pegaso](https://pegaso.vercel.app/).
+Veja o projeto online aqui: [Pégaso](https://pegaso.vercel.app/).
