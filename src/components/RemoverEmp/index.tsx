@@ -16,6 +16,7 @@ import {
   CloseIcon,
   Button,
   InfoModal,
+  Title,
 } from './styles';
 
 interface EmpreendimentoData {
@@ -149,6 +150,7 @@ const RemoverEmp: React.FC = () => {
         </Modal>
       )}
       <Lista>
+        <Title>Remover Empreendimentos</Title>
         {loadingData ? (
           <div
             style={{

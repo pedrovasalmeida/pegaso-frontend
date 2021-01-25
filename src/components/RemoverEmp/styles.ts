@@ -309,3 +309,17 @@ export const StatusMessageDiv = styled.div`
     width: 100%;
   }
 `;
+
+export const Title = styled.span`
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 32px;
+  text-align: center;
+  text-transform: uppercase;
+
+  padding-bottom: 8px;
+
+  border-bottom: 1px solid ${props => props.theme.colors.light.gray};
+
+  width: 90%;
+`;

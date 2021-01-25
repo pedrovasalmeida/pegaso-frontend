@@ -16,6 +16,7 @@ import {
   Data,
   Nome,
   Descricao,
+  Title,
 } from './styles';
 
 interface EmpreendimentoData {
@@ -58,6 +59,7 @@ const ListarEmp: React.FC = () => {
       ) : (
         <Container>
           <Lista>
+            <Title>Listar Empreendimentos</Title>
             {loading ? (
               <div
                 style={{

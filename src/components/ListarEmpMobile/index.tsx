@@ -12,6 +12,7 @@ import {
   Data,
   Nome,
   Descricao,
+  Title,
 } from './styles';
 
 interface EmpreendimentoData {
@@ -42,6 +43,7 @@ const ListarEmpMobile: React.FC = () => {
   return (
     <Container>
       <Lista>
+        <Title>Listar Empreendimentos</Title>
         {!data ? (
           <div
             style={{
