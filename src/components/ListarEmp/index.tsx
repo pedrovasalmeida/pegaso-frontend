@@ -40,6 +40,7 @@ const ListarEmp: React.FC = () => {
 
     if (error) {
       setLoading(false);
+      return;
     }
 
     setData(data);

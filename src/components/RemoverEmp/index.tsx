@@ -35,13 +35,19 @@ const RemoverEmp: React.FC = () => {
   const [isDeleted, setIsDeleted] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingData, setLoadingData] = useState(true);
 
   const getData = async () => {
+    setLoadingData(true);
     const { data, error } = await api.get('/show-all');
 
-    if (error) return error;
+    if (error) {
+      setLoadingData(false);
+      return;
+    }
 
     setData(data);
+    setLoadingData(false);
   };
 
   const token = localStorage.getItem('@ProjPegaso:token');
@@ -143,7 +149,7 @@ const RemoverEmp: React.FC = () => {
         </Modal>
       )}
       <Lista>
-        {!data ? (
+        {loadingData ? (
           <div
             style={{
               display: 'flex',
@@ -163,24 +169,30 @@ const RemoverEmp: React.FC = () => {
             />
           </div>
         ) : (
-          data?.map(item => (
-            <Item key={item.id}>
-              <Avatar src={item.banner} alt={item.nome} />
+          <>
+            {!data ? (
+              <span>Não existem empreendimentos cadastrados.</span>
+            ) : (
+              data?.map(item => (
+                <Item key={item.id}>
+                  <Avatar src={item.banner} alt={item.nome} />
 
-              <Data>
-                <Nome>{item.nome}</Nome>
-                <Descricao>{item.descricao}...</Descricao>
-                <Nome>
-                  ID:
-                  {item.id}
-                </Nome>
-              </Data>
+                  <Data>
+                    <Nome>{item.nome}</Nome>
+                    <Descricao>{item.descricao}...</Descricao>
+                    <Nome>
+                      ID:
+                      {item.id}
+                    </Nome>
+                  </Data>
 
-              <DivIcon>
-                <ArrowIcon onClick={() => handleConfirmModal(item.id)} />
-              </DivIcon>
-            </Item>
-          ))
+                  <DivIcon>
+                    <ArrowIcon onClick={() => handleConfirmModal(item.id)} />
+                  </DivIcon>
+                </Item>
+              ))
+            )}
+          </>
         )}
       </Lista>
     </Container>
