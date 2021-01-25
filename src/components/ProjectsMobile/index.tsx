@@ -14,6 +14,7 @@ import {
   Project,
   FullImage,
   FloatDiv,
+  FloatDivMobile,
   FloatContent,
   FloatButton,
   LinkRRD,
@@ -119,6 +120,40 @@ const ProjectsMobile: React.FC = () => {
                       <FullImage width={width}>
                         <img src={item.banner} alt={item.nome} />
                       </FullImage>
+
+                      {width < 586 ? (
+                        <FloatDivMobile
+                          initial="hidden"
+                          animate="visible"
+                          variants={variants}
+                          transition={{ duration: 0.25 }}
+                        >
+                          <p>{item.descricao_curta}</p>
+                          <p>{item.nome}</p>
+                        </FloatDivMobile>
+                      ) : (
+                        <FloatDiv
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{
+                            scale: 0.95,
+                          }}
+                          initial="hidden"
+                          animate="visible"
+                          variants={variants}
+                          transition={{ duration: 0.25 }}
+                        >
+                          <FloatContent>
+                            <div>
+                              <span>{item.descricao_curta}</span>
+                              <p>{item.nome}</p>
+                            </div>
+                          </FloatContent>
+                          <FloatButton>
+                            <span>Clique aqui para conferir</span>
+                          </FloatButton>
+                        </FloatDiv>
+                      )}
+
                       <FloatDiv
                         whileHover={{ scale: 1.05 }}
                         whileTap={{

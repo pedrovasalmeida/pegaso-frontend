@@ -122,7 +122,7 @@ export const FloatDiv = styled(motion.div)`
 
   z-index: 2;
 
-  @media (max-width: 414px) {
+  @media only screen and (max-width: 585px) {
     display: none;
   }
 `;
@@ -133,7 +133,7 @@ export const FloatContent = styled.div`
   height: 100%;
   flex-direction: column;
 
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0.55);
 
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -186,5 +186,66 @@ export const FloatButton = styled.button`
 
   > span {
     color: #f5f5f5;
+  }
+`;
+
+export const FloatDivMobile = styled(motion.div)`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 70px;
+
+  line-height: 20px;
+
+  text-align: center;
+
+  border-bottom: 2px solid ${props => props.theme.colors.light.lightBlue};
+  border-left: 2px solid ${props => props.theme.colors.light.lightBlue};
+  border-right: 2px solid ${props => props.theme.colors.light.lightBlue};
+
+  background: rgba(0, 0, 0, 0.55);
+
+  z-index: 2;
+
+  > p {
+    font-size: 16px;
+    font-weight: bold;
+
+    margin-top: 5px;
+    margin-bottom: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    color: #fff;
+
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #000;
+
+    @media only screen and (max-width: 490px) {
+      margin-left: 6px;
+    }
+  }
+
+  > p + p {
+    font-size: 26px;
+    font-weight: bold;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    color: ${props => lighten(0.15, props.theme.colors.light.lightBlue)};
+
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #000;
+
+    @media only screen and (max-width: 490px) {
+      font-size: 23px;
+      margin-left: 6px;
+    }
   }
 `;
