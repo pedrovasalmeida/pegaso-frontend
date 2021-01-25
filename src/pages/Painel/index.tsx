@@ -58,8 +58,8 @@ const Painel: React.FC = () => {
   const [adicionarImagens, setAdicionarImagens] = useState(false);
   const [remover, setRemover] = useState(false);
   const [listar, setListar] = useState(false);
-  const [toggleMenu, setToggleMenu] = useState(true);
-  const [loading, setLoading] = useState(true);
+  const [toggleMenu, setToggleMenu] = useState(false);
+
   const [loggedUserData, setLoggedUserData] = useState<UserApiData>({} as UserApiData);
   const [userData, setUserData] = useState<UserDataFromStorage>(() => {
     if (JSON.stringify(user) === '{}') {
@@ -123,9 +123,8 @@ const Painel: React.FC = () => {
     setToggleMenu(false);
   };
 
-  const getUserData = () => {
+  const getUserData = useCallback(() => {
     if (JSON.stringify(user) === '{}') {
-      setLoading(false);
       return;
     }
 
@@ -134,20 +133,18 @@ const Painel: React.FC = () => {
       .then(res => {
         const loggedUser: UserApiData = res.data.user;
         setLoggedUserData(loggedUser);
-        setLoading(false);
       })
       .catch(() => {
         localStorage.removeItem('@ProjPegaso:user');
         localStorage.removeItem('@ProjPegaso:token');
         setLoggedUserData({} as UserApiData);
         setUserData({} as UserDataFromStorage);
-        setLoading(false);
       });
-  };
+  }, [user]);
 
   useEffect(() => {
     getUserData();
-  }, []);
+  }, [getUserData]);
 
   return (
     <>
