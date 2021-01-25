@@ -71,7 +71,6 @@ export const EnterpriseDetails = styled.div`
   width: auto;
   height: 55vh;
 
-  border: 1px solid ${props => lighten(0.6, props.theme.colors.light.lightBlue)};
   border-radius: 4px;
 
   form {
@@ -100,7 +99,6 @@ export const FilesDiv = styled.div`
   width: auto;
   height: auto;
 
-  border: 1px solid ${props => lighten(0.6, props.theme.colors.light.lightBlue)};
   border-radius: 4px;
 
   form {
