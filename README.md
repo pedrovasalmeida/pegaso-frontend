@@ -1,6 +1,6 @@
 # Pegaso - Front-end
 
-![Pégaso](https://i.imgur.com/qN7RG8z.gif)
+![Pegaso](https://i.imgur.com/dSV4hna.gif)
 
 Projeto desenvolvido utilizando algumas tecnologias como:
 
