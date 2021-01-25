@@ -15,6 +15,7 @@ import {
   UploadInput,
   Button,
   StatusMessageDiv,
+  TitlePage,
 } from './styles';
 
 interface Enterprise {
@@ -42,6 +43,7 @@ const AdicionarImagens: React.FC = () => {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
+  const [loadingData, setLoadingData] = useState(true);
 
   const token = localStorage.getItem('@ProjPegaso:token');
 
@@ -81,11 +83,17 @@ const AdicionarImagens: React.FC = () => {
   }));
 
   const getEnterprises = async () => {
+    setLoadingData(true);
     const { data } = await api.get('/show-all');
 
-    if (!data) return setEnterprise(null);
+    if (!data) {
+      setEnterprise(null);
+      setLoadingData(false);
+      return;
+    }
 
     setEnterprise(data);
+    setLoadingData(false);
   };
 
   const getDataFromOneEnterprise = async id => {
@@ -224,112 +232,101 @@ const AdicionarImagens: React.FC = () => {
     if (enterpriseId) getDataFromOneEnterprise(enterpriseId);
   }, [enterpriseId]);
 
-  if (!enterprises)
-    return (
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '100%',
-          height: '30vh',
-        }}
-      >
-        <Preloader
-          use={ThreeDots}
-          size={120}
-          strokeWidth={6}
-          strokeColor="#0e6387"
-          duration={2000}
-        />
-      </div>
-    );
-
   return (
     <Container>
-      <SelectInput
-        styles={customStyles}
-        options={options}
-        placeholder="Empreendimentos..."
-        onChange={option => handleInputChange(option)}
-      />
-
-      {singleEnterprise ? (
-        <>
-          <EnterpriseDetails>
-            <Title>{singleEnterprise?.development.nome}</Title>
-            <Text>{singleEnterprise?.development.descricao}</Text>
-
-            {singleEnterprise.images.length > 0 ? (
-              <>
-                <Text>
-                  Imagens existentes (<strong>{singleEnterprise.images.length}</strong> no
-                  total):
-                </Text>
-                <PreviewDiv>
-                  {singleEnterprise.images.map(image => (
-                    <a
-                      key={image.imagem}
-                      href={image.imagem}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <PreviewImage src={image.imagem} alt={image.nome} />
-                    </a>
-                  ))}
-                </PreviewDiv>
-              </>
-            ) : (
-              <Text>O empreendimento não possui imagens cadastradas.</Text>
-            )}
-          </EnterpriseDetails>
-
-          <FilesDiv>
-            <form encType="multipart/form-data">
-              {loading && (
-                <StatusMessageDiv status="loading">
-                  <Preloader
-                    use={ThreeDots}
-                    size={40}
-                    strokeWidth={6}
-                    strokeColor="#0e6387"
-                    duration={2000}
-                  />
-                </StatusMessageDiv>
-              )}
-              {success && (
-                <StatusMessageDiv status="success">
-                  <span>{statusMessage}</span>
-                </StatusMessageDiv>
-              )}
-              {error && (
-                <StatusMessageDiv status="error">
-                  <span>{statusMessage}</span>
-                </StatusMessageDiv>
-              )}
-              <Text style={{ margin: 0, padding: 0 }}>Selecione a(s) imagem(ns)</Text>
-              :
-              <UploadInput
-                name="images"
-                id="images"
-                type="file"
-                accept="image/png, image/jpeg, image/jpg"
-                multiple
-                onChange={e => handleAddFileListToArray(e.target.files)}
-              />
-              <Button
-                disabled={files.length < 1}
-                type="button"
-                value="Adicionar Imagens"
-                onClick={() => handleUploadImages(enterpriseId!)}
-              />
-            </form>
-          </FilesDiv>
-        </>
+      <TitlePage>Adicionar Imagens</TitlePage>
+      {loadingData ? (
+        <StatusMessageDiv status="loading">
+          <Preloader
+            use={ThreeDots}
+            size={40}
+            strokeWidth={6}
+            strokeColor="#0e6387"
+            duration={2000}
+          />
+        </StatusMessageDiv>
       ) : (
-        <Text style={{ fontWeight: 'bold' }}>
-          Selecione um dos empreendimentos disponíveis acima!
-        </Text>
+        <>
+          <SelectInput
+            styles={customStyles}
+            options={options}
+            placeholder="Empreendimentos..."
+            onChange={option => handleInputChange(option)}
+          />
+          {singleEnterprise && (
+            <>
+              <EnterpriseDetails>
+                <Title>{singleEnterprise?.development.nome}</Title>
+                <Text>{singleEnterprise?.development.descricao}</Text>
+
+                {singleEnterprise?.images.length > 0 ? (
+                  <>
+                    <Text>
+                      Imagens existentes (
+                      <strong>{singleEnterprise?.images.length}</strong> no total):
+                    </Text>
+                    <PreviewDiv>
+                      {singleEnterprise?.images.map(image => (
+                        <a
+                          key={image.imagem}
+                          href={image.imagem}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <PreviewImage src={image.imagem} alt={image.nome} />
+                        </a>
+                      ))}
+                    </PreviewDiv>
+                  </>
+                ) : (
+                  <Text>O empreendimento não possui imagens cadastradas.</Text>
+                )}
+              </EnterpriseDetails>
+
+              <FilesDiv>
+                <form encType="multipart/form-data">
+                  {loading && (
+                    <StatusMessageDiv status="loading">
+                      <Preloader
+                        use={ThreeDots}
+                        size={40}
+                        strokeWidth={6}
+                        strokeColor="#0e6387"
+                        duration={2000}
+                      />
+                    </StatusMessageDiv>
+                  )}
+                  {success && (
+                    <StatusMessageDiv status="success">
+                      <span>{statusMessage}</span>
+                    </StatusMessageDiv>
+                  )}
+                  {error && (
+                    <StatusMessageDiv status="error">
+                      <span>{statusMessage}</span>
+                    </StatusMessageDiv>
+                  )}
+                  <Text style={{ margin: 0, padding: 0 }}>Selecione a(s) imagem(ns)</Text>
+                  :
+                  <UploadInput
+                    name="images"
+                    id="images"
+                    type="file"
+                    accept="image/png, image/jpeg, image/jpg"
+                    multiple
+                    onChange={e => handleAddFileListToArray(e.target.files)}
+                  />
+                  <Button
+                    disabled={files.length < 1}
+                    type="button"
+                    value="Adicionar Imagens"
+                    onClick={() => handleUploadImages(enterpriseId!)}
+                  />
+                </form>
+              </FilesDiv>
+            </>
+          )}
+        </>
       )}
     </Container>
   );
