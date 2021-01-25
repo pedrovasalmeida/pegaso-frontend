@@ -534,29 +534,38 @@ export const LinkRRD = styled(Link)``;
 
 export const BackButton = styled.div`
   position: absolute;
-  top: 5vh;
-  left: 16vw;
+  top: 15vh;
+  left: 10vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   background-color: #fdfdfd;
 
-  border-radius: 16px;
+  border-radius: 4px;
 
-  width: auto;
-  height: auto;
+  width: 120px;
+  height: 35px;
 
   filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.4));
 
   cursor: pointer;
 
-  span {
-    font-weight: bold;
-    margin: 0 4px;
+  svg {
+    margin-right: 10px;
   }
 
-  transition: background-color 300ms ease;
+  span {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  transition: all 300ms ease-in-out;
 
   &:hover {
-    background-color: ${props => lighten(0.5, props.theme.colors.light.lightBlue)};
+    background-color: ${props => lighten(0.05, props.theme.colors.light.lightBlue)};
+    color: #f2f2f2;
   }
 `;
 
