@@ -88,7 +88,7 @@ const Login: React.FC = () => {
             setTimeout(() => {
               setIsLogged(false);
               handleReloadPage();
-            }, 2000);
+            }, 1000);
           })
           .catch(err => {
             setLoginError(true);
@@ -96,7 +96,7 @@ const Login: React.FC = () => {
 
             setTimeout(() => {
               setLoginError(false);
-            }, 3000);
+            }, 2000);
           });
       } catch {
         return new Error('Usuário/senha inválidos. Tente novamente!');
