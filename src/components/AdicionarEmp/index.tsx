@@ -225,6 +225,7 @@ const AddEmp2: React.FC = () => {
             />
 
             <UploadButton
+              disabled={file === null}
               type="button"
               value="Upload Banner"
               onClick={() => fileUploadBannerHandler()}
