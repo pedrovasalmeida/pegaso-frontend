@@ -22,7 +22,7 @@ export const Lista = styled.div`
   flex-wrap: wrap;
   margin-bottom: 8px;
 
-  @media (max-width: 1256px) {
+  @media (max-width: 1548px) {
     flex-direction: column;
   }
 `;
@@ -32,7 +32,7 @@ export const Item = styled.div`
   align-items: center;
   justify-content: flex-start;
 
-  width: 90%;
+  width: 45%;
 
   margin: 16px 4px;
   position: relative;
@@ -43,6 +43,15 @@ export const Item = styled.div`
   color: #333;
 
   transition: all 300ms ease;
+
+  &:hover {
+    color: ${props => props.theme.colors.light.lightBlue};
+    text-decoration: none;
+  }
+
+  @media (max-width: 1548px) {
+    width: 90%;
+  }
 `;
 
 export const ArrowIcon = styled(AiOutlineDelete)`

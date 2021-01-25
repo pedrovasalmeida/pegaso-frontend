@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const Lista = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 0 0 80px 0;
+  margin-bottom: 8px;
 
   @media (max-width: 1548px) {
     flex-direction: column;
