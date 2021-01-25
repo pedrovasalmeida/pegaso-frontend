@@ -17,12 +17,14 @@ import AtualizarEmpreendimento from '../../components/AtualizarEmpreendimento';
 import api from '../../services/api';
 
 /** Ícones e imagens */
+import logo from '../../assets/logo.png';
 
 /** Estilos */
 import {
   Container,
   LeftMenu,
   DadosAdmin,
+  Logo,
   Name,
   OpcaoMenu,
   Data,
@@ -56,7 +58,7 @@ const Painel: React.FC = () => {
   const [adicionarImagens, setAdicionarImagens] = useState(false);
   const [remover, setRemover] = useState(false);
   const [listar, setListar] = useState(false);
-  const [toggleMenu, setToggleMenu] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(true);
   const [loading, setLoading] = useState(true);
   const [loggedUserData, setLoggedUserData] = useState<UserApiData>({} as UserApiData);
   const [userData, setUserData] = useState<UserDataFromStorage>(() => {
@@ -171,6 +173,8 @@ const Painel: React.FC = () => {
 
             <LeftMenu width={width} isOpened={toggleMenu}>
               <DadosAdmin>
+                {width < 731 && <Logo src={logo} alt="Pégaso" />}
+
                 {!loggedUserData ? (
                   <div
                     style={{
@@ -191,7 +195,7 @@ const Painel: React.FC = () => {
                 ) : (
                   <>
                     <Name>
-                      <strong>Nome:</strong> <p>{loggedUserData!.nome}</p>
+                      <strong>Usuário:</strong> <p>{loggedUserData!.nome}</p>
                     </Name>
 
                     <Name>

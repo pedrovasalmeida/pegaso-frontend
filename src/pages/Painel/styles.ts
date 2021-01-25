@@ -41,7 +41,7 @@ export const LeftMenu = styled.div<LeftMenuProps>`
   min-height: calc(100vh - 64px);
   height: auto;
 
-  padding-top: 20px;
+  padding-top: 112px;
 
   background: linear-gradient(
     45deg,
@@ -51,6 +51,10 @@ export const LeftMenu = styled.div<LeftMenuProps>`
   border-right: 1px solid rgba(0, 0, 0, 0.6);
 
   transition: all 600ms ease-in-out;
+
+  @media only screen and (min-width: 731px) {
+    padding-top: 15px;
+  }
 
   @media only screen and (max-width: 730px) {
     display: flex;
@@ -78,6 +82,22 @@ export const DadosAdmin = styled.div`
   padding: 4px 8px;
 
   margin-bottom: 10px;
+`;
+
+export const Logo = styled.img`
+  position: absolute;
+  top: 0;
+
+  background: #f2f2f2;
+
+  border-right: 1px solid #000;
+
+  padding: 10px;
+  width: 240px;
+
+  > img {
+    width: 100%;
+  }
 `;
 
 export const Avatar = styled.div`
