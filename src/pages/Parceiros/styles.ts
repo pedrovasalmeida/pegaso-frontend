@@ -12,6 +12,11 @@ export const Container = styled.div`
   padding-top: 64px;
   padding-left: 24px;
   padding-bottom: 45px;
+
+  @media only screen and (min-width: 300px) {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 `;
 
 export const Title = styled.span`
@@ -30,11 +35,31 @@ export const ParceirosDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 
-  width: 45%;
+  width: 18vw;
 
   margin-top: 25px;
+
+  @media only screen and (min-width: 300px) {
+    width: 100%;
+  }
+
+  @media only screen and (min-width: 518px) {
+    width: 70%;
+  }
+
+  @media only screen and (min-width: 734px) {
+    width: 50%;
+  }
+
+  @media only screen and (min-width: 1029px) {
+    width: 40%;
+  }
+
+  @media only screen and (min-width: 1281px) {
+    width: 30%;
+  }
 `;
 
 export const Parceiro = styled.span`
