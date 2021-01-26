@@ -25,9 +25,10 @@ const Header: React.FC = () => {
   const menuOptions = [
     { rota: '/', nome: 'HOME' },
     { rota: '/quem-somos', nome: 'QUEM SOMOS' },
+    { rota: '/parceiros', nome: 'PARCEIROS' },
+    { rota: '/servicos', nome: 'SERVIÇOS PRESTADOS' },
     { rota: '/empreendimentos', nome: 'EMPREENDIMENTOS' },
     { rota: '/contato', nome: 'CONTATO' },
-    { rota: '/painel', nome: 'PAINEL' },
   ];
 
   const navigateToHome = useCallback(() => {
