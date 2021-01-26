@@ -213,7 +213,7 @@ export const FloatContent = styled.div`
   border-top-right-radius: 16px;
 
   > div {
-    margin: 16px 16px;
+    margin: 8px 16px;
   }
 
   > div span:first-child {
