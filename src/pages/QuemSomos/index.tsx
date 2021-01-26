@@ -4,14 +4,14 @@ import {
   Container,
   DivInfos,
   DivTitle,
-  DivTitleMotion,
+  // DivTitleMotion,
   Title,
   DivDescription,
   Text,
-  DivCategorias,
-  SubDivCategorias,
-  Categoria,
-  Separator,
+  // DivCategorias,
+  // SubDivCategorias,
+  // Categoria,
+  // Separator,
   DivImagemTipo,
 } from './styles';
 
@@ -22,7 +22,6 @@ import Footer from '../../components/Footer';
 
 const QuemSomos: React.FC = () => {
   const { width } = useWindowDimensions();
-  // const backgroundUrl = 'https://i.imgur.com/n7mYaHC.png';
   const backgroundUrl = 'https://i.imgur.com/BTly4hM.jpg';
 
   return (
@@ -65,7 +64,7 @@ const QuemSomos: React.FC = () => {
               </Text>
             </DivDescription>
 
-            <DivCategorias>
+            {/* <DivCategorias>
               <SubDivCategorias>
                 <DivTitleMotion animate={{ x: 50 }} transition={{ duration: 0.8 }}>
                   <Title>Qualificações</Title>
@@ -96,11 +95,43 @@ const QuemSomos: React.FC = () => {
                   <span>Teleporta-se para qualquer ponto no Universo 7 onde há Ki.</span>
                 </Categoria>
               </SubDivCategorias>
-            </DivCategorias>
+            </DivCategorias> */}
           </DivInfos>
           <DivImagemTipo url={backgroundUrl}>
             <img src={backgroundUrl} alt="Pegaso" />
           </DivImagemTipo>
+
+          {/* <DivCategorias>
+            <SubDivCategorias>
+              <DivTitleMotion animate={{ x: 50 }} transition={{ duration: 0.8 }}>
+                <Title>Qualificações</Title>
+              </DivTitleMotion>
+
+              <Categoria animate={{ x: 50 }} transition={{ duration: 1 }}>
+                <p>Genki-dama Especial</p>
+
+                <span>
+                  Premiada 12 vezes como a maior Genki-dama já feita em todo o Universo 7.
+                </span>
+              </Categoria>
+
+              <Separator animate={{ x: 50 }} transition={{ duration: 1.1 }} />
+
+              <Categoria animate={{ x: 50 }} transition={{ duration: 1.1 }}>
+                <p>Kamehameha Mais Forte</p>
+
+                <span>O Kamehamehá mais impactante do mercado.</span>
+              </Categoria>
+
+              <Separator animate={{ x: 50 }} transition={{ duration: 1.2 }} />
+
+              <Categoria animate={{ x: 50 }} transition={{ duration: 1.2 }}>
+                <p>Teleporte</p>
+
+                <span>Teleporta-se para qualquer ponto no Universo 7 onde há Ki.</span>
+              </Categoria>
+            </SubDivCategorias>
+          </DivCategorias> */}
           <Footer />
         </Container>
       )}
