@@ -299,6 +299,7 @@ const AtualizarEmpreendimento: React.FC = () => {
                 <Input
                   type="text"
                   id="emp-name"
+                  value={inputName}
                   placeholder={
                     oneEnterpriseData ? oneEnterpriseData.nome : 'Nome do empreendimento'
                   }
@@ -306,6 +307,7 @@ const AtualizarEmpreendimento: React.FC = () => {
                 />
                 <TextArea
                   id="emp-descricao"
+                  value={inputDescricao}
                   placeholder={
                     oneEnterpriseData
                       ? oneEnterpriseData.descricao
@@ -316,6 +318,7 @@ const AtualizarEmpreendimento: React.FC = () => {
                 <Input
                   id="emp-descricao_curta"
                   type="text"
+                  value={inputDescCurta}
                   placeholder={
                     oneEnterpriseData
                       ? oneEnterpriseData.descricao_curta
@@ -326,6 +329,7 @@ const AtualizarEmpreendimento: React.FC = () => {
                 <Input
                   id="emp-endereco"
                   type="text"
+                  value={inputEndereco}
                   placeholder={
                     oneEnterpriseData ? oneEnterpriseData.endereco : 'Endereço'
                   }
