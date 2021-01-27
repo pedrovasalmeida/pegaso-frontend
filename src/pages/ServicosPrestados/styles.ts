@@ -112,7 +112,7 @@ export const Line = styled(motion.div)<LineOptions>`
           margin-top: 10px;
         `}
 
-  @media only screen and (max-width: 460px) {
+  @media only screen and (max-width: 504px) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
