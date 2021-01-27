@@ -64,6 +64,7 @@ const Painel: React.FC = () => {
   };
 
   const { user, signOut } = useAuth();
+
   const [actualPage, setActualPage] = useState<ActualPage>(() => getLocalStoragePage());
   const [adicionar, setAdicionar] = useState(false);
   const [atualizarEmpreendimento, setAtualizarEmpreendimento] = useState(false);
@@ -168,13 +169,27 @@ const Painel: React.FC = () => {
     }
   }, []);
 
-  const getUserData = useCallback(() => {
-    if (JSON.stringify(user) === '{}') {
+  const getUserData = () => {
+    const userLocalStorage = localStorage.getItem('@ProjPegaso:user');
+
+    if (!userLocalStorage) {
       return;
     }
 
+    const token = localStorage.getItem('@ProjPegaso:token');
+
+    if (!token) {
+      return;
+    }
+
+    const parsedUser = JSON.parse(userLocalStorage);
+
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+
     api
-      .get(`/list-one-user/${user.user.id}`)
+      .get(`/list-one-user/${parsedUser.id}`, config)
       .then(res => {
         const loggedUser: UserApiData = res.data.user;
         setLoggedUserData(loggedUser);
@@ -185,11 +200,11 @@ const Painel: React.FC = () => {
         setLoggedUserData({} as UserApiData);
         setUserData({} as UserDataFromStorage);
       });
-  }, [user]);
+  };
 
   useEffect(() => {
     getUserData();
-  }, [getUserData]);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('@ProjPegaso:actualPanelPage', actualPage);

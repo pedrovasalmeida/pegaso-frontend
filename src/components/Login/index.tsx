@@ -71,12 +71,14 @@ const Login: React.FC = () => {
 
         if (login.length < 5) {
           setIsLoading(false);
-          return setIsError(true);
+          setIsError(true);
+          return;
         }
 
         if (password.length < 5) {
           setIsLoading(false);
-          return setIsError(true);
+          setIsError(true);
+          return;
         }
 
         await signIn({ login, password })
@@ -99,7 +101,7 @@ const Login: React.FC = () => {
             }, 2000);
           });
       } catch {
-        return new Error('Usuário/senha inválidos. Tente novamente!');
+        throw new Error('Usuário/senha inválidos. Tente novamente!');
       }
     },
     [signIn, handleReloadPage],
@@ -131,7 +133,9 @@ const Login: React.FC = () => {
           Entrar
         </button>
 
-        <Link to="#">Esqueci minha senha</Link>
+        <Link to="/painel" style={{ opacity: 0 }}>
+          Esqueci minha senha
+        </Link>
 
         {isLoading && (
           <LoginStatusDiv isLoading={isLoading} isLogged={false}>
