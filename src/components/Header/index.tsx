@@ -37,7 +37,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      {width < 996 ? (
+      {width < 1235 ? (
         <HeaderMobile />
       ) : (
         <Container>
