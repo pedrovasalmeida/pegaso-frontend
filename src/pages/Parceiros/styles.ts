@@ -23,7 +23,9 @@ export const Container = styled.div`
 
 export const Title = styled.span`
   width: auto;
-  border-bottom: 8px solid ${props => props.theme.colors.light.lightBlue};
+  border-bottom: 5px solid ${props => props.theme.colors.light.lightBlue};
+
+  padding-top: 18px;
 
   font-size: 30px;
   font-weight: bold;

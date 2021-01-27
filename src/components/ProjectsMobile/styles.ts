@@ -40,8 +40,9 @@ export const DivTitle = styled(motion.div)`
 
 export const Subtitle = styled.span`
   width: auto;
-  border-bottom: 8px solid ${props => props.theme.colors.light.lightBlue};
+  border-bottom: 5px solid ${props => props.theme.colors.light.lightBlue};
 
+  padding-top: 18px;
   margin: 0 0 32px 0;
 
   font-size: 28px;

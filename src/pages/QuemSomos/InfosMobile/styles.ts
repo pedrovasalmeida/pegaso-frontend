@@ -45,7 +45,9 @@ export const DivTitleMotion = styled(motion.div)`
 
 export const Title = styled.span<ScreenSizeProps>`
   width: auto;
-  border-bottom: 8px solid ${props => props.theme.colors.light.lightBlue};
+  border-bottom: 5px solid ${props => props.theme.colors.light.lightBlue};
+
+  padding-top: 18px;
 
   font-size: ${props => (props.width < 346 ? '34px' : '40px')};
   font-weight: bold;
@@ -67,6 +69,10 @@ export const Text = styled.span`
   text-align: justify;
 
   font-weight: 400;
+
+  strong {
+    text-align: center;
+  }
 `;
 
 export const DivCategorias = styled.div`
