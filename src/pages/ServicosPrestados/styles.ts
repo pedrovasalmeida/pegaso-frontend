@@ -47,14 +47,22 @@ export const ServicosDiv = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: center;
 
   margin-top: 15px;
 
   width: 100%;
 
+  @media only screen and (max-width: 1187px) {
+    width: 60%;
+  }
+
   @media only screen and (max-width: 1034px) {
     width: 70%;
+  }
+
+  @media only screen and (max-width: 743px) {
+    width: 60%;
   }
 `;
 
@@ -68,10 +76,15 @@ export const ServicoDiv = styled(motion.div)`
   height: auto;
 
   margin: 2px;
+  margin-right: 40px;
   padding: 6px;
 
   img + span + span {
     padding-top: 10px;
+  }
+
+  @media only screen and (max-width: 1186px) {
+    margin-right: 2px;
   }
 `;
 
