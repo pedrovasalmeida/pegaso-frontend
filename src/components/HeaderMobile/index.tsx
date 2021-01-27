@@ -22,9 +22,10 @@ const HeaderMobile: React.FC = () => {
   const menuOptions = [
     { rota: '/', nome: 'HOME' },
     { rota: '/quem-somos', nome: 'QUEM SOMOS' },
+    { rota: '/parceiros', nome: 'PARCEIROS' },
+    { rota: '/servicos', nome: 'SERVIÇOS PRESTADOS' },
     { rota: '/empreendimentos', nome: 'EMPREENDIMENTOS' },
     { rota: '/contato', nome: 'CONTATO' },
-    { rota: '/painel', nome: 'PAINEL' },
   ];
 
   const handleVisible = () => (isVisible ? setIsVisible(false) : setIsVisible(true));

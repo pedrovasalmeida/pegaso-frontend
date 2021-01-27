@@ -7,6 +7,7 @@ const theme = {
       lightBlue: '#0e6387',
       darkBlue: '#062733',
       gray: '#a9aaae',
+      lightWhite: '#f2f2f2',
     },
   },
   fonts: ['Roboto', 'Raleway', 'sans-serif'],

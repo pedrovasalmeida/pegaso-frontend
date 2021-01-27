@@ -147,7 +147,6 @@ const CarouselDenner: React.FC = () => {
               <FloatDiv>
                 <FloatContent>
                   <div>
-                    <span>Pronto para morar</span>
                     <p>{results[sliding].nome}</p>
                     <span>{results[sliding].descricao_curta}</span>
                   </div>
