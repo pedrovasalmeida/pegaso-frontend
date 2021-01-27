@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { motion } from 'framer-motion';
+import { lighten } from 'polished';
 
 interface LineOptions {
   whatLine: string;
@@ -35,6 +36,10 @@ export const Title = styled(motion.span)`
   color: #333;
 
   text-transform: uppercase;
+
+  @media only screen and (max-width: 370px) {
+    font-size: 26px;
+  }
 `;
 
 export const ServicosDiv = styled.div`
@@ -106,6 +111,12 @@ export const Line = styled(motion.div)<LineOptions>`
       : css`
           margin-top: 10px;
         `}
+
+  @media only screen and (max-width: 460px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const Servico = styled(motion.img)`
@@ -123,15 +134,28 @@ export const Servico = styled(motion.img)`
 
 export const ServicoTitle = styled(motion.span)`
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 
-  color: ${props => props.theme.colors.light.lightBlue};
+  min-height: 60px;
 
   font-weight: bold;
   text-align: center;
 
   border-bottom: 1px solid ${props => props.theme.colors.light.lightBlue};
-  padding: 5px 0;
+  padding-top: 5px;
+
+  color: ${props => props.theme.colors.light.lightBlue};
+
+  cursor: default;
+
+  transition: color 300ms ease-in-out, border-bottom 300ms ease-in-out;
+
+  &:hover {
+    color: ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
+    border-bottom: 1px solid ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
+  }
 `;
 
 export const Text = styled(motion.span)`
@@ -140,9 +164,11 @@ export const Text = styled(motion.span)`
 
   text-align: center;
 
-  transition: color 400ms ease-in-out;
+  cursor: default;
+
+  transition: color 300ms ease-in-out;
 
   &:hover {
-    color: ${props => props.theme.colors.light.lightBlue};
+    color: ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
   }
 `;
