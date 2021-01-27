@@ -11,7 +11,7 @@ import {
   ServicosDiv,
   ServicoDiv,
   Servico,
-  Line,
+  // Line,
   ServicoTitle,
   Text,
 } from './styles';
@@ -34,7 +34,7 @@ const ServicosPrestados: React.FC = () => {
             alt="Pégaso"
             initial={{ x: -150 }}
             animate={{ x: 0 }}
-            whileHover={{ x: -6, transition: { duration: 0.4 } }}
+            whileHover={{ y: -6, transition: { duration: 0.4 } }}
             transition={{ duration: 0.4 }}
           />
           <ServicoTitle
@@ -68,7 +68,7 @@ const ServicosPrestados: React.FC = () => {
             alt="Pégaso"
             initial={{ x: -150 }}
             animate={{ x: 0 }}
-            whileHover={{ x: -6, transition: { duration: 0.4 } }}
+            whileHover={{ y: -6, transition: { duration: 0.4 } }}
             transition={{ duration: 0.6 }}
           />
           <ServicoTitle
@@ -117,7 +117,7 @@ const ServicosPrestados: React.FC = () => {
             alt="Pégaso"
             initial={{ x: -150 }}
             animate={{ x: 0 }}
-            whileHover={{ x: -6, transition: { duration: 0.4 } }}
+            whileHover={{ y: -6, transition: { duration: 0.4 } }}
             transition={{ duration: 0.6 }}
           />
           <ServicoTitle
@@ -170,7 +170,7 @@ const ServicosPrestados: React.FC = () => {
             initial={{ x: -150 }}
             animate={{ x: 0 }}
             transition={{ duration: 0.6 }}
-            whileHover={{ x: -6, transition: { duration: 0.4 } }}
+            whileHover={{ y: -6, transition: { duration: 0.4 } }}
           />
           <ServicoTitle
             initial={{ x: -150 }}
