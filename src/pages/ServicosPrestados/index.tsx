@@ -40,7 +40,7 @@ const ServicosPrestados: React.FC = () => {
               alt="Pégaso"
               initial={{ y: -100 }}
               animate={{ y: 0 }}
-              whileHover={{ y: -6 }}
+              whileHover={{ y: -6, transition: { duration: 0.4 } }}
               transition={{ duration: 0.4 }}
             />
             <ServicoTitle
@@ -74,7 +74,7 @@ const ServicosPrestados: React.FC = () => {
               alt="Pégaso"
               initial={{ y: -150 }}
               animate={{ y: 0 }}
-              whileHover={{ y: -6 }}
+              whileHover={{ y: -6, transition: { duration: 0.4 } }}
               transition={{ duration: 0.6 }}
             />
             <ServicoTitle
@@ -125,7 +125,7 @@ const ServicosPrestados: React.FC = () => {
               alt="Pégaso"
               initial={{ y: 100 }}
               animate={{ y: 0 }}
-              whileHover={{ y: -6 }}
+              whileHover={{ y: -6, transition: { duration: 0.4 } }}
               transition={{ duration: 0.6 }}
             />
             <ServicoTitle
@@ -178,7 +178,7 @@ const ServicosPrestados: React.FC = () => {
               initial={{ y: 100 }}
               animate={{ y: 0 }}
               transition={{ duration: 0.6 }}
-              whileHover={{ y: -6 }}
+              whileHover={{ y: -6, transition: { duration: 0.4 } }}
             />
             <ServicoTitle
               initial={{ y: 100 }}

@@ -139,4 +139,10 @@ export const Text = styled(motion.span)`
   color: ${props => props.theme.colors.light.darkBlue};
 
   text-align: center;
+
+  transition: color 400ms ease-in-out;
+
+  &:hover {
+    color: ${props => props.theme.colors.light.lightBlue};
+  }
 `;
