@@ -44,40 +44,17 @@ export const Title = styled(motion.span)`
 
 export const ServicosDiv = styled.div`
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
 
   margin-top: 15px;
 
-  width: 50vw;
+  width: 100%;
 
-  @media only screen and (max-width: 508px) {
-    width: 90vw;
-  }
-
-  @media only screen and (min-width: 508px) {
-    width: 90vw;
-  }
-
-  @media only screen and (min-width: 681px) {
-    width: 70vw;
-  }
-
-  @media only screen and (min-width: 875px) {
-    width: 60vw;
-  }
-
-  @media only screen and (min-width: 1224px) {
-    width: 40vw;
-  }
-
-  @media only screen and (min-width: 1529px) {
-    width: 30vw;
-  }
-
-  @media only screen and (min-width: 2040px) {
-    width: 25vw;
+  @media only screen and (max-width: 1034px) {
+    width: 70%;
   }
 `;
 
