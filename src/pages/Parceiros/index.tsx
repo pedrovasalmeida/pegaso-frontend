@@ -65,7 +65,7 @@ const Parceiros: React.FC = () => {
               key={partner.src}
               src={partner.src}
               alt="Pégaso"
-              initial={{ x: -100 }}
+              initial={{ x: -150 }}
               animate={{ x: 0 }}
               whileHover={{ y: -6, transition: { duration: 0.4 } }}
               whileTap={{ y: -6, transition: { duration: 0.4 } }}
