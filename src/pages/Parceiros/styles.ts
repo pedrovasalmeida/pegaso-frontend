@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { motion } from 'framer-motion';
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -39,7 +41,7 @@ export const ParceirosDiv = styled.div`
 
   width: 18vw;
 
-  margin-top: 25px;
+  margin-top: 15px;
 
   @media only screen and (min-width: 300px) {
     width: 100%;
@@ -62,15 +64,10 @@ export const ParceirosDiv = styled.div`
   }
 `;
 
-export const Parceiro = styled.span`
+export const Parceiro = styled(motion.img)`
   width: 150px;
-  height: 100px;
 
-  background: ${props => props.theme.colors.light.lightBlue};
-
-  margin: 10px;
-
-  transition: all 300ms ease-in-out;
+  margin: 20px;
 
   &:hover {
     transform: translateY(-4px);
