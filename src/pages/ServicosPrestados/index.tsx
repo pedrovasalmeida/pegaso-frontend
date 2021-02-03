@@ -14,6 +14,7 @@ import {
   // Line,
   ServicoTitle,
   Text,
+  Square,
 } from './styles';
 
 const ServicosPrestados: React.FC = () => {
@@ -45,15 +46,19 @@ const ServicosPrestados: React.FC = () => {
             Construções, reformas e serviços de manutenção
           </ServicoTitle>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 0.8 }}>
+            <Square />
             Industriais
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 0.9 }}>
+            <Square />
             Residenciais
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1 }}>
+            <Square />
             Comerciais
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.1 }}>
+            <Square />
             Prediais
           </Text>
         </ServicoDiv>
@@ -79,30 +84,40 @@ const ServicosPrestados: React.FC = () => {
             Terceirizações
           </ServicoTitle>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1 }}>
+            <Square />
             Piso em concreto polido
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.1 }}>
+            <Square isBigger />
             Estruturas metálicas Impermeabilização
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.2 }}>
+            <Square />
+            <Square />
             Forma, Armação
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.3 }}>
+            <Square />
             Revestimentos
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.4 }}>
+            <Square />
             Concretagem
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.5 }}>
+            <Square />
             Alvenaria
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.6 }}>
+            <Square />
             Dry Wall
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.7 }}>
+            <Square />
             Pintura
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.8 }}>
+            <Square />
             Forro
           </Text>
         </ServicoDiv>
@@ -128,33 +143,43 @@ const ServicosPrestados: React.FC = () => {
             Projetos e Instalações
           </ServicoTitle>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 0.9 }}>
+            <Square isBigger />
             Combate a incêndio / SPDA
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1 }}>
+            <Square isBigger />
             CFTV / Lógica / Automação
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.1 }}>
+            <Square />
             Combate a Incêndio
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.2 }}>
+            <Square />
             Elétrico / Telefônico
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.3 }}>
+            <Square />
             Cálculo Estrutural
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.4 }}>
+            <Square />
             Ar-condicionado
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.5 }}>
+            <Square />
             Hidrossanitário
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.6 }}>
+            <Square />
             Hidráulica
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.7 }}>
+            <Square />
             Elétrica
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.8 }}>
+            <Square />
             SPDA
           </Text>
         </ServicoDiv>
@@ -180,18 +205,23 @@ const ServicosPrestados: React.FC = () => {
             Outros
           </ServicoTitle>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.3 }}>
+            <Square isBigger />
             Laudo de Avaliações Imobiliárias
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.4 }}>
+            <Square />
             Gerenciamento de Obras
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.5 }}>
+            <Square />
             Laudo Técnico
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.6 }}>
+            <Square />
             Consultoria
           </Text>
           <Text initial={{ x: -150 }} animate={{ x: 0 }} transition={{ duration: 1.7 }}>
+            <Square />
             Perícia
           </Text>
         </ServicoDiv>

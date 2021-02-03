@@ -1,10 +1,14 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import { motion } from 'framer-motion';
 import { lighten } from 'polished';
 
 interface LineOptions {
   whatLine: string;
+}
+
+interface SquareOptions {
+  isBigger?: boolean;
 }
 
 export const Container = styled.div`
@@ -71,7 +75,7 @@ export const ServicosDiv = styled.div`
 export const ServicoDiv = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   max-width: 250px;
@@ -82,7 +86,7 @@ export const ServicoDiv = styled(motion.div)`
   padding: 6px;
 
   img + span + span {
-    padding-top: 10px;
+    margin-top: 15px;
   }
 
   @media only screen and (max-width: 1186px) {
@@ -151,10 +155,19 @@ export const ServicoTitle = styled(motion.span)`
 `;
 
 export const Text = styled(motion.span)`
+  position: relative;
   font-size: 18px;
   color: ${props => props.theme.colors.light.darkBlue};
 
-  text-align: center;
+  text-align: left;
+
+  padding-left: 8px;
+  margin-left: 8px;
+
+  line-height: 30px;
+
+  width: 100%;
+  height: 100%;
 
   cursor: default;
 
@@ -163,4 +176,39 @@ export const Text = styled(motion.span)`
   &:hover {
     color: ${props => lighten(0.1, props.theme.colors.light.lightBlue)};
   }
+`;
+
+const FadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+export const Square = styled.div<SquareOptions>`
+  position: absolute;
+  left: -5px;
+
+  width: 6px;
+
+  ${props =>
+    props.isBigger
+      ? css`
+          top: 18%;
+          height: 8px;
+        `
+      : css`
+          top: 39%;
+          height: 8px;
+        `}
+
+  background-color: ${props => props.theme.colors.light.lightBlue};
+
+  animation-name: ${FadeIn};
+  animation-duration: 4s;
+  animation-delay: 0;
+  animation-timing-function: ease;
+  animation-direction: normal;
 `;
