@@ -52,6 +52,9 @@ const Contato: React.FC = () => {
   const center = { lat: -12.984606816010935, lng: -38.450350821104934 };
   const zoom = 13;
 
+  const number = '+5571999087283';
+  const WhatsApp = `https://api.whatsapp.com/send?phone=${encodeURIComponent(number)}`;
+
   let API_GOOGLE_MAPS: any;
 
   if (REACT_APP_API_GOOGLE_MAPS !== undefined) {
@@ -75,7 +78,7 @@ const Contato: React.FC = () => {
     {
       name: 'Mail',
       icon: <MailIcon size={40} />,
-      text: 'teste@pegaso.com',
+      text: 'pegasoengenharia@outlook.com',
     },
   ];
 
@@ -147,7 +150,7 @@ const Contato: React.FC = () => {
 
       await api
         .post('/send-mail', data)
-        .then(res => {
+        .then(() => {
           setIsLoading(false);
           setIsError(false);
           setIsSended(true);
@@ -159,7 +162,7 @@ const Contato: React.FC = () => {
             setCouldSend(true);
           }, 10000);
         })
-        .catch(err => {
+        .catch(() => {
           setIsError(true);
           setIsSended(false);
           setIsLoading(false);
@@ -216,8 +219,17 @@ const Contato: React.FC = () => {
               transition={{ duration: 1 }}
             >
               <Contact>
-                {contactData[1].icon}
-                <Text style={{ fontFamily: 'Roboto' }}>{contactData[1].text}</Text>
+                <ContactLink
+                  href={WhatsApp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ x: -50 }}
+                  animate={{ x: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  {contactData[1].icon}
+                  <Text style={{ fontFamily: 'Roboto' }}>{contactData[1].text}</Text>
+                </ContactLink>
               </Contact>
 
               <Contact>

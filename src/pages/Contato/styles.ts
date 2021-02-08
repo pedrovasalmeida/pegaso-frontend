@@ -107,6 +107,10 @@ export const ContactLink = styled(motion.a)`
   color: #333;
   width: 100%;
 
+  font-family: 'Roboto Slab', serif;
+
+  transition: color 300ms ease;
+
   span {
     display: flex;
     flex-wrap: nowrap;
@@ -134,6 +138,8 @@ export const GoogleMapsDiv = styled(motion.div)`
 `;
 
 export const Text = styled(motion.span)`
+  font-family: 'Roboto Slab', serif;
+
   font-size: 18px;
   width: auto;
 `;
