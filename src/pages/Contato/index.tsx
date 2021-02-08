@@ -232,7 +232,7 @@ const Contato: React.FC = () => {
                 </ContactLink>
               </Contact>
 
-              <Contact>
+              <Contact style={{ cursor: 'default' }}>
                 {contactData[2].icon}
                 <Text>{contactData[2].text}</Text>
               </Contact>

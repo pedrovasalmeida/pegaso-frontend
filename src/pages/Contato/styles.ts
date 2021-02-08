@@ -88,6 +88,12 @@ export const Contact = styled.div<InfoProps>`
   margin: 20px 0;
   margin-right: 40px;
 
+  transition: color 300ms ease;
+
+  &:hover {
+    color: ${props => props.theme.colors.light.lightBlue};
+  }
+
   svg {
     margin-right: 10px;
   }
