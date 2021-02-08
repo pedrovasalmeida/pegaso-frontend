@@ -8,7 +8,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 100vw;
+  max-width: 100vw;
   height: auto;
 
   padding-top: 64px;
@@ -41,11 +41,11 @@ export const ParceirosDiv = styled.div`
   align-items: center;
   justify-content: center;
 
-  width: 18vw;
+  width: 30vw;
 
   margin-top: 15px;
 
-  @media only screen and (min-width: 300px) {
+  /* @media only screen and (min-width: 300px) {
     width: 100%;
   }
 
@@ -63,6 +63,26 @@ export const ParceirosDiv = styled.div`
 
   @media only screen and (min-width: 1281px) {
     width: 30%;
+  } */
+
+  @media only screen and (max-width: 1639px) {
+    width: 40vw;
+  }
+
+  @media only screen and (max-width: 1424px) {
+    width: 50vw;
+  }
+
+  @media only screen and (max-width: 1139px) {
+    width: 60vw;
+  }
+
+  @media only screen and (max-width: 949px) {
+    width: 70vw;
+  }
+
+  @media only screen and (max-width: 814px) {
+    width: 80vw;
   }
 `;
 
