@@ -45,26 +45,6 @@ export const ParceirosDiv = styled.div`
 
   margin-top: 15px;
 
-  /* @media only screen and (min-width: 300px) {
-    width: 100%;
-  }
-
-  @media only screen and (min-width: 518px) {
-    width: 70%;
-  }
-
-  @media only screen and (min-width: 734px) {
-    width: 50%;
-  }
-
-  @media only screen and (min-width: 1029px) {
-    width: 40%;
-  }
-
-  @media only screen and (min-width: 1281px) {
-    width: 30%;
-  } */
-
   @media only screen and (max-width: 1639px) {
     width: 40vw;
   }
