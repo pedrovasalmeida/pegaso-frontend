@@ -73,7 +73,7 @@ const Contato: React.FC = () => {
     {
       name: 'Phone',
       icon: <PhoneIcon size={40} />,
-      text: '(71) 9 9908-7283 | (71) 3018-5649',
+      text: '(71) 9 9908-7283',
     },
     {
       name: 'Mail',
