@@ -209,7 +209,7 @@ const Contato: React.FC = () => {
                 transition={{ duration: 0.8 }}
               >
                 {contactData[0].icon}
-                <Text style={{ fontFamily: 'Roboto' }}>{contactData[0].text}</Text>
+                <Text>{contactData[0].text}</Text>
               </ContactLink>
             </Contact>
 
@@ -228,13 +228,13 @@ const Contato: React.FC = () => {
                   transition={{ duration: 0.8 }}
                 >
                   {contactData[1].icon}
-                  <Text style={{ fontFamily: 'Roboto' }}>{contactData[1].text}</Text>
+                  <Text>{contactData[1].text}</Text>
                 </ContactLink>
               </Contact>
 
               <Contact>
                 {contactData[2].icon}
-                <Text style={{ fontFamily: 'Roboto' }}>{contactData[2].text}</Text>
+                <Text>{contactData[2].text}</Text>
               </Contact>
             </SecondLine>
           </Contacts>
