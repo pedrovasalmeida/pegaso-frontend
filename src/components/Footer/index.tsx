@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
     },
     {
       nome: 'E-mail',
-      info: 'contato@pegaso.com.br',
+      info: 'pegasoengenharia@outlook.com',
       linkExist: true,
       link: '/contato',
       icon: <EmailIcon />,

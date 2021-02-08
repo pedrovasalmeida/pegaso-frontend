@@ -152,7 +152,10 @@ export const ContactName = styled.span`
   font-size: 12px;
 `;
 
-export const ContactText = styled.span``;
+export const ContactText = styled.span`
+  font-family: 'Roboto Slab', serif;
+  color: #333;
+`;
 
 export const HorizontalSeparator = styled.div`
   width: 48px;

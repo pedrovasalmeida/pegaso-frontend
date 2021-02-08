@@ -108,7 +108,7 @@ export const Button = styled(motion.a)<ButtonProps>`
     color: #222;
   }
 
-  @media only screen and (max-width: 748px) {
+  @media only screen and (max-width: 979px) {
     span {
       display: none;
     }
