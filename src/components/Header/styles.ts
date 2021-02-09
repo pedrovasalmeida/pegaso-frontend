@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { shade } from 'polished';
@@ -59,8 +60,6 @@ export const SubContainer = styled.div`
   justify-content: center;
 
   width: auto;
-
-  margin: 8px 0 0 0;
 
   z-index: 15;
 `;
@@ -146,25 +145,10 @@ export const DivButtons = styled(motion.div)`
   width: auto;
 `;
 
-export const Button = styled.button<RouterProps>`
-  background-color: transparent;
-
-  color: ${props => (props.selected ? props.theme.colors.light.lightBlue : '#333')};
-
+export const Text = styled.span`
   font-weight: 500;
 
   transition: all 300ms ease-in-out;
-
-  &:focus {
-    outline: 0;
-    text-decoration: none;
-    transition: all 300ms ease-in-out;
-  }
-
-  &:hover {
-    transition: all 300ms ease-in-out;
-    color: ${props => props.theme.colors.light.lightBlue};
-  }
 `;
 
 export const Separator = styled.div`
@@ -173,7 +157,7 @@ export const Separator = styled.div`
   width: 1px;
   height: 32px;
 
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.075);
   filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.8));
 `;
 
@@ -250,54 +234,40 @@ export const LinkRRDHiddenMenu = styled(Link)`
 `;
 
 export const LinkRRD = styled(Link)<RouterProps>`
-  /* justify-content: center;
-  align-items: center;
-  height: 40px;
-  width: 100%;
+  display: inline-block;
 
-  margin: 0 16px 0 0; */
-  position: relative;
-  background: none;
+  color: ${props => (props.selected ? props.theme.colors.light.lightBlue : '#333')};
 
-  color: #fdfdfd;
+  height: 64px;
 
-  border: none;
-  box-sizing: border-box;
-
-  height: 24px;
-  width: auto;
+  padding-top: 20px;
 
   margin: 0 8px;
 
-  cursor: pointer;
-
-  transition: all 400ms ease-in-out;
-
-  &::before {
-    content: '';
-    position: absolute;
-
-    left: -1;
-    bottom: 0;
-
-    width: ${props => (props.selected ? '100%' : 0)};
-    height: 2px;
-
-    background: ${props => props.theme.colors.light.lightBlue};
-
-    transition: all 400ms ease-in;
-  }
-
-  &:hover::before {
-    width: 100%;
-  }
-
-  &focus::before {
-    width: 100%;
-  }
-
   &:hover {
-    color: ${props => shade(0.1, props.theme.colors.light.lightBlue)};
+    text-decoration: none;
+    color: ${props => props.theme.colors.light.lightBlue};
+  }
+
+  &:after {
+    display: block;
+    content: '';
+
+    border-bottom: solid 2px ${props => props.theme.colors.light.lightBlue};
+
+    transform: ${props => (props.selected ? 'scaleX(1)' : 'scaleX(0)')};
+    transform-origin: 100% 50%;
+
+    transition: transform 300ms ease-in-out;
+  }
+
+  &:hover:after {
+    transform: scaleX(1);
+    transform-origin: 0% 50%;
+  }
+
+  &:focus::before {
+    transform: scaleX(1);
   }
 `;
 

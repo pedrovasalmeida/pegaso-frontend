@@ -8,7 +8,7 @@ import {
   SubContainer,
   DivLogo,
   DivButtons,
-  Button,
+  Text,
   Separator,
   LinkRRD,
 } from './styles';
@@ -58,9 +58,7 @@ const Header: React.FC = () => {
                     to={option.rota}
                     selected={option.rota === location.pathname}
                   >
-                    <Button selected={option.rota === location.pathname}>
-                      {option.nome}
-                    </Button>
+                    <Text>{option.nome}</Text>
                   </LinkRRD>
 
                   {index !== menuOptions.length - 1 && <Separator />}
