@@ -277,7 +277,7 @@ export const LinkRRD = styled(Link)<RouterProps>`
   }
 
   &:hover:after {
-    transform: scaleX(1);
+    transform: scaleY(1);
     transform-origin: bottom;
   }
 `;
