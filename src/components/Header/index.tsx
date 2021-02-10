@@ -3,15 +3,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
-import {
-  Container,
-  SubContainer,
-  DivLogo,
-  DivButtons,
-  Text,
-  Separator,
-  LinkRRD,
-} from './styles';
+import { Container, SubContainer, DivLogo, DivButtons, Text, LinkRRD } from './styles';
 
 import Logo from '../../assets/logo.png';
 

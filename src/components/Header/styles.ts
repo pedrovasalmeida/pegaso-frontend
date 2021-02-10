@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { shade } from 'polished';
 
