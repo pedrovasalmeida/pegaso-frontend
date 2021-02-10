@@ -4,14 +4,9 @@ import {
   Container,
   DivInfos,
   DivTitle,
-  // DivTitleMotion,
   Title,
   DivDescription,
   Text,
-  // DivCategorias,
-  // SubDivCategorias,
-  // Categoria,
-  // Separator,
   DivImagemTipo,
 } from './styles';
 
