@@ -31,17 +31,44 @@ export const Container = styled.div`
 `;
 
 export const Title = styled(motion.span)`
+  position: relative;
   width: auto;
-  border-bottom: 5px solid ${props => props.theme.colors.light.lightBlue};
 
   padding-top: 18px;
+  margin-bottom: 18px;
 
   font-size: 30px;
   font-weight: bold;
 
   color: #333;
 
+  cursor: default;
+
   text-transform: uppercase;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: ${p => p.theme.colors.light.lightBlue};
+    border-radius: 2px;
+
+    margin: auto;
+    bottom: -10px;
+
+    transition: all 400ms ease;
+
+    transform: scaleX(0.3);
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
 
   @media only screen and (max-width: 370px) {
     font-size: 26px;
