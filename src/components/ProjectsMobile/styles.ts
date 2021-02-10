@@ -39,18 +39,87 @@ export const DivTitle = styled(motion.div)`
 `;
 
 export const Subtitle = styled.span`
+  position: relative;
   width: auto;
-  border-bottom: 5px solid ${props => props.theme.colors.light.lightBlue};
 
-  padding-top: 18px;
-  margin: 0 0 32px 0;
+  padding-top: 10px;
+  margin-bottom: 40px;
 
-  font-size: 28px;
+  font-size: 30px;
   font-weight: bold;
 
   color: #333;
 
+  cursor: default;
+
   text-transform: uppercase;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+
+    width: 100%;
+    height: 4px;
+
+    background: ${p => p.theme.colors.light.lightBlue};
+    border-radius: 2px;
+
+    margin: auto;
+
+    transition: all 400ms ease;
+
+    transform: scaleX(0.3);
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    left: 0;
+  }
+
+  @media only screen and (max-width: 458px) {
+    font-size: 24px;
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+
+      width: 100%;
+      height: 4px;
+
+      background: ${p => p.theme.colors.light.lightBlue};
+      border-radius: 2px;
+
+      margin: auto;
+
+      transition: all 400ms ease;
+
+      transform: scaleX(0.3);
+    }
+
+    &::after {
+      bottom: 35px;
+
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      width: 40%;
+
+      transform: scaleX(1);
+      left: 0;
+    }
+
+    &:hover::before {
+      transform: scaleX(1);
+      left: 0;
+    }
+  }
 `;
 
 export const ErrorMessage = styled.span`

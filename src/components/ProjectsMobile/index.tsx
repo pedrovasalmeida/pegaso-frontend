@@ -87,7 +87,15 @@ const ProjectsMobile: React.FC = () => {
   return (
     <Container>
       <DivTitle animate={{ x: 0 }} transition={{ duration: 1.2 }}>
-        <Subtitle>NOSSOS EMPREENDIMENTOS</Subtitle>
+        {width < 459 ? (
+          <Subtitle>
+            NOSSOS
+            <br />
+            EMPREENDIMENTOS
+          </Subtitle>
+        ) : (
+          <Subtitle>NOSSOS EMPREENDIMENTOS</Subtitle>
+        )}
       </DivTitle>
 
       <DivProjects>
