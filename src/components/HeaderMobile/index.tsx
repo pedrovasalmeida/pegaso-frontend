@@ -47,7 +47,7 @@ const HeaderMobile: React.FC = () => {
               to={option.rota}
               selected={option.rota === location.pathname}
             >
-              <Button selected={option.rota === location.pathname}>{option.nome}</Button>
+              <Button>{option.nome}</Button>
             </LinkRRDHiddenMenu>
 
             <HorizontalSeparator />

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { shade } from 'polished';
 
@@ -30,8 +30,6 @@ export const Container = styled.div`
 
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   background-color: #fdfdfd;
-
-  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.2));
 
   z-index: 40;
 
@@ -131,24 +129,14 @@ export const DivDados = styled.div`
   }
 `;
 
-export const Button = styled.button<RouterProps>`
-  background-color: transparent;
-
-  color: ${props => (props.selected ? props.theme.colors.light.lightBlue : '#333')};
-
+export const Button = styled.span`
   font-weight: 500;
 
   transition: all 300ms ease-in-out;
 
-  &:focus {
-    outline: 0;
-    text-decoration: none;
-    transition: all 300ms ease-in-out;
-  }
-
   &:hover {
     transition: all 300ms ease-in-out;
-    color: ${props => props.theme.colors.light.lightBlue};
+    color: ${props => shade(0.2, props.theme.colors.light.lightBlue)};
   }
 `;
 
@@ -211,47 +199,52 @@ export const HiddenMenu = styled.div<Props>`
 
 export const LinkRRDHiddenMenu = styled(Link)<RouterProps>`
   position: relative;
-  background: none;
 
-  color: #fdfdfd;
+  color: ${props =>
+    props.selected ? shade(0.2, props.theme.colors.light.lightBlue) : '#333'};
 
-  border: none;
-  box-sizing: border-box;
-
-  height: auto;
-
-  margin: 8px 8px;
-
-  cursor: pointer;
-
-  transition: all 400ms ease-in-out;
-
-  &::before {
-    content: '';
-    position: absolute;
-
-    left: -1;
-    bottom: 0;
-
-    width: ${props => (props.selected ? '100%' : 0)};
-    height: 2px;
-
-    background: ${props => props.theme.colors.light.lightBlue};
-
-    transition: all 300ms ease-in;
-  }
-
-  &:hover::before {
-    width: 100%;
-  }
-
-  &focus::before {
-    width: 100%;
-  }
+  margin: 8px 20px;
 
   &:hover {
-    color: ${props => shade(0.1, props.theme.colors.light.lightBlue)};
-    transform: translateX(2px);
+    text-decoration: none;
+    color: ${props => shade(0.2, props.theme.colors.light.lightBlue)};
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+
+    margin: auto;
+
+    width: 100%;
+    height: 3px;
+
+    border-radius: 2px;
+
+    cursor: pointer;
+
+    background: ${props => shade(0.2, props.theme.colors.light.lightBlue)};
+
+    transform-origin: bottom;
+
+    transition: transform 150ms ease-in-out;
+
+    ${p =>
+      p.selected
+        ? css`
+            transform: scaleY(1);
+          `
+        : css`
+            transform: scaleY(0);
+          `};
+  }
+
+  &:hover:after {
+    transform: scaleY(1);
+    transform-origin: bottom;
   }
 `;
 
