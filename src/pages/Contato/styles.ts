@@ -31,8 +31,6 @@ export const Container = styled.div`
 
   padding: 5px 60px;
 
-  background: #f2f2f2;
-
   @media only screen and (max-width: 1365px) {
     display: flex;
     flex-direction: column;
