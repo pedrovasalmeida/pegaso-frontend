@@ -60,8 +60,6 @@ const Header: React.FC = () => {
                   >
                     <Text>{option.nome}</Text>
                   </LinkRRD>
-
-                  {index !== menuOptions.length - 1 && <Separator />}
                 </React.Fragment>
               ))}
             </DivButtons>

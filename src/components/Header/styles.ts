@@ -1,5 +1,5 @@
-import { Fragment } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { shade } from 'polished';
 
@@ -32,8 +32,6 @@ export const Container = styled.div`
 
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   background-color: #fdfdfd;
-
-  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.2));
 
   z-index: 40;
 
@@ -234,40 +232,53 @@ export const LinkRRDHiddenMenu = styled(Link)`
 `;
 
 export const LinkRRD = styled(Link)<RouterProps>`
-  display: inline-block;
+  position: relative;
 
-  color: ${props => (props.selected ? props.theme.colors.light.lightBlue : '#333')};
+  color: ${props =>
+    props.selected ? shade(0.2, props.theme.colors.light.lightBlue) : '#333'};
 
-  height: 64px;
-
-  padding-top: 20px;
-
-  margin: 0 8px;
+  margin: 0 14px;
 
   &:hover {
     text-decoration: none;
-    color: ${props => props.theme.colors.light.lightBlue};
+    color: ${props => shade(0.2, props.theme.colors.light.lightBlue)};
   }
 
   &:after {
-    display: block;
     content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -20px;
 
-    border-bottom: solid 2px ${props => props.theme.colors.light.lightBlue};
+    margin: auto;
 
-    transform: ${props => (props.selected ? 'scaleX(1)' : 'scaleX(0)')};
-    transform-origin: 100% 50%;
+    width: 100%;
+    height: 3px;
 
-    transition: transform 300ms ease-in-out;
+    border-radius: 2px;
+
+    cursor: pointer;
+
+    background: ${props => shade(0.2, props.theme.colors.light.lightBlue)};
+
+    transform-origin: bottom;
+
+    transition: transform 150ms ease-in-out;
+
+    ${p =>
+      p.selected
+        ? css`
+            transform: scaleY(1);
+          `
+        : css`
+            transform: scaleY(0);
+          `};
   }
 
   &:hover:after {
     transform: scaleX(1);
-    transform-origin: 0% 50%;
-  }
-
-  &:focus::before {
-    transform: scaleX(1);
+    transform-origin: bottom;
   }
 `;
 
