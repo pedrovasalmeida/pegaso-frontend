@@ -59,8 +59,6 @@ export const Title = styled.span`
   }
 
   &:hover::after {
-    background: ${p => shade(0.3, p.theme.colors.light.lightBlue)};
-
     transform: scaleX(1);
   }
 `;
