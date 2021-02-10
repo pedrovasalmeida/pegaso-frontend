@@ -16,7 +16,7 @@ export const Container = styled.div`
   align-items: center;
 
   width: 100%;
-  height: auto;
+  max-height: 200vh;
 
   margin-top: 64px;
 
@@ -207,11 +207,10 @@ export const DivImagemTipo = styled(motion.div)<BackgroundProps>`
 `;
 
 export const DivBackground = styled.div<BackgroundProps>`
-  overflow-x: hidden;
+  margin-bottom: 50px;
 
-  height: 100vh;
-  width: 100%;
-
-  background: url(${props => props.url}) no-repeat center center fixed;
-  background-size: cover;
+  img {
+    width: 100%;
+    background-size: cover;
+  }
 `;
