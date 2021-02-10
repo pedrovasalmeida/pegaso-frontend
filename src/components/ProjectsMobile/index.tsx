@@ -121,8 +121,8 @@ const ProjectsMobile: React.FC = () => {
                       animate={{ x: 0 }}
                       transition={{ duration: 0.3 }}
                       whileHover={{
-                        y: -7,
-                        filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))',
+                        y: -3,
+                        filter: 'drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.4))',
                       }}
                     >
                       <FullImage width={width}>
@@ -141,7 +141,6 @@ const ProjectsMobile: React.FC = () => {
                         </FloatDivMobile>
                       ) : (
                         <FloatDiv
-                          whileHover={{ scale: 1.05 }}
                           whileTap={{
                             scale: 0.95,
                           }}
@@ -163,7 +162,6 @@ const ProjectsMobile: React.FC = () => {
                       )}
 
                       <FloatDiv
-                        whileHover={{ scale: 1.05 }}
                         whileTap={{
                           scale: 0.95,
                         }}

@@ -58,7 +58,7 @@ export const Subtitle = styled.span`
     content: '';
     position: absolute;
     left: 0;
-    bottom: -5px;
+    bottom: -10px;
 
     width: 100%;
     height: 4px;
@@ -147,12 +147,12 @@ export const Project = styled(motion.div)`
 
   position: relative;
 
-  background-color: ${props => shade(0.1, props.theme.colors.light.lightBlue)};
+  background-color: ${props => shade(0.1, props.theme.colors.light.darkBlue)};
 
   border-radius: 4px;
 
   margin-bottom: 24px;
-  padding: 4px;
+  padding: 3px;
 `;
 
 export const ExternalImage = styled.div`
