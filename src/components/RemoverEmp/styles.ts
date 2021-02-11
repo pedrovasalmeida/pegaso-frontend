@@ -122,13 +122,17 @@ export const Nome = styled.span`
 `;
 
 export const Descricao = styled.span`
-  width: 80%;
+  width: 50%;
 
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 
-  line-clamp: 2;
+  line-clamp: 1;
+
+  @media only screen and (max-width: 1548px) {
+    width: 90%;
+  }
 
   @media only screen and (max-width: 807px) {
     width: 70%;
