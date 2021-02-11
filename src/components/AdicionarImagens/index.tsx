@@ -9,6 +9,7 @@ import {
   EnterpriseDetails,
   FilesDiv,
   Title,
+  Description,
   Text,
   PreviewDiv,
   PreviewImage,
@@ -256,8 +257,14 @@ const AdicionarImagens: React.FC = () => {
           {singleEnterprise && (
             <>
               <EnterpriseDetails>
-                <Title>{singleEnterprise?.development.nome}</Title>
-                <Text>{singleEnterprise?.development.descricao}</Text>
+                <Title>
+                  <strong>Nome: </strong>
+                  {singleEnterprise?.development.nome}
+                </Title>
+                <Description>
+                  <strong>Descrição: </strong>
+                  {singleEnterprise?.development.descricao}
+                </Description>
 
                 {singleEnterprise?.images.length > 0 ? (
                   <>

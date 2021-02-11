@@ -64,7 +64,7 @@ export const EnterpriseDetails = styled.div`
   align-items: center;
   justify-content: center;
 
-  text-align: center;
+  text-align: justify;
 
   position: relative;
 
@@ -115,9 +115,18 @@ export const FilesDiv = styled.div`
 `;
 
 export const Title = styled.span`
-  font-weight: bold;
   font-size: 18px;
   color: #333;
+`;
+
+export const Description = styled.span`
+  font-size: 18px;
+  width: 20vw;
+
+  line-clamp: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 export const Text = styled.span`
