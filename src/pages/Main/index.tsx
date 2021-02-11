@@ -155,7 +155,7 @@ const CarouselDenner: React.FC = () => {
                     <RightArrow onClick={() => handleNext()} />
                   </DivIcons>
                 </FloatContent>
-                <Link to={`/empreendimentos/detalhes/${results[sliding].id}`}>
+                <Link to={`/obras/detalhes/${results[sliding].id}`}>
                   <FloatButton>
                     <span>Clique aqui para conferir</span>
                   </FloatButton>

@@ -98,7 +98,11 @@ export const Subtitle = styled.span`
 
       transition: all 400ms ease;
 
-      transform: scaleX(0.3);
+      transform: scaleX(0.5);
+    }
+
+    &::before {
+      left: -5px;
     }
 
     &::after {
@@ -109,15 +113,14 @@ export const Subtitle = styled.span`
     }
 
     &:hover::after {
-      width: 40%;
-
       transform: scaleX(1);
       left: 0;
     }
 
     &:hover::before {
-      transform: scaleX(1);
+      transform: scaleX(0.85);
       left: 0;
+      transform-origin: left;
     }
   }
 `;

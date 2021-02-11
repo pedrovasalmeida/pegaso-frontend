@@ -89,12 +89,12 @@ const ProjectsMobile: React.FC = () => {
       <DivTitle animate={{ x: 0 }} transition={{ duration: 1.2 }}>
         {width < 459 ? (
           <Subtitle>
-            NOSSOS
+            NOSSAS
             <br />
-            EMPREENDIMENTOS
+            OBRAS
           </Subtitle>
         ) : (
-          <Subtitle>NOSSOS EMPREENDIMENTOS</Subtitle>
+          <Subtitle>NOSSAS OBRAS</Subtitle>
         )}
       </DivTitle>
 
@@ -116,7 +116,7 @@ const ProjectsMobile: React.FC = () => {
             ) : (
               results.map(item => {
                 return (
-                  <LinkRRD to={`/empreendimentos/detalhes/${item.id}`} key={item.id}>
+                  <LinkRRD to={`/obras/detalhes/${item.id}`} key={item.id}>
                     <Project
                       animate={{ x: 0 }}
                       transition={{ duration: 0.3 }}

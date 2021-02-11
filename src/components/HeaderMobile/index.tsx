@@ -24,7 +24,7 @@ const HeaderMobile: React.FC = () => {
     { rota: '/quem-somos', nome: 'QUEM SOMOS' },
     { rota: '/parceiros', nome: 'PARCEIROS' },
     { rota: '/servicos', nome: 'SERVIÇOS PRESTADOS' },
-    { rota: '/empreendimentos', nome: 'EMPREENDIMENTOS' },
+    { rota: '/obras', nome: 'OBRAS REALIZADAS' },
     { rota: '/contato', nome: 'CONTATO' },
   ];
 

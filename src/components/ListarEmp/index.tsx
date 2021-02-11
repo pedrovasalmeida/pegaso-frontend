@@ -85,7 +85,7 @@ const ListarEmp: React.FC = () => {
                   <span>Não existem empreendimentos cadastrados.</span>
                 ) : (
                   data?.map(item => (
-                    <LinkRRD to={`/empreendimentos/detalhes/${item.id}`} key={item.id}>
+                    <LinkRRD to={`/obras/detalhes/${item.id}`} key={item.id}>
                       <Avatar src={item.banner} alt={item.nome} />
                       <Data>
                         <Nome>{item.nome}</Nome>

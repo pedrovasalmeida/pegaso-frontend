@@ -92,7 +92,7 @@ const Main = () => {
         onExited={() => setAnimating(false)}
         key={item.id}
       >
-        <Link to={`/empreendimentos/detalhes/${results[activeIndex].id}`}>
+        <Link to={`/obras/detalhes/${results[activeIndex].id}`}>
           <img src={item.banner} alt={item.nome} />
         </Link>
       </DivCarouselItem>
@@ -117,7 +117,7 @@ const Main = () => {
                 <RightArrow onClick={() => next()} />
               </DivIcons>
             </FloatContent>
-            <Link to={`/empreendimentos/detalhes/${results[activeIndex].id}`}>
+            <Link to={`/obras/detalhes/${results[activeIndex].id}`}>
               <FloatButton>
                 <span>Clique aqui para conferir</span>
               </FloatButton>

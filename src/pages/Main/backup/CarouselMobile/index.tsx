@@ -83,7 +83,7 @@ const MyCarouselMobile: React.FC = () => {
         onExited={() => setAnimating(false)}
         key={item.id}
       >
-        <Link to={`/empreendimentos/detalhes/${results[activeIndex].id}`}>
+        <Link to={`/obras/detalhes/${results[activeIndex].id}`}>
           <Imagem src={item.banner} alt={item.nome} />
         </Link>
       </DivCarouselItem>
@@ -104,7 +104,7 @@ const MyCarouselMobile: React.FC = () => {
             <RightArrow onClick={() => next()} />
           </DivIcons>
         </FloatContent>
-        <Link to={`/empreendimentos/detalhes/${results[activeIndex].id}`}>
+        <Link to={`/obras/detalhes/${results[activeIndex].id}`}>
           <FloatButton>
             <span>Clique aqui para conferir</span>
           </FloatButton>
@@ -123,11 +123,7 @@ const MyCarouselMobile: React.FC = () => {
           directionText="Previous"
           onClickHandler={previous}
         />
-        <DivCarouselControl
-          direction="next"
-          directionText="Next"
-          onClickHandler={next}
-        />
+        <DivCarouselControl direction="next" directionText="Next" onClickHandler={next} />
       </DivCarousel>
 
       <Footer />
