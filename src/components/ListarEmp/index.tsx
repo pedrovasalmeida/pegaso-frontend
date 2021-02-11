@@ -54,7 +54,7 @@ const ListarEmp: React.FC = () => {
 
   return (
     <>
-      {width < 910 ? (
+      {width < 731 ? (
         <ListarEmpMobile />
       ) : (
         <Container>
@@ -89,10 +89,7 @@ const ListarEmp: React.FC = () => {
                       <Avatar src={item.banner} alt={item.nome} />
                       <Data>
                         <Nome>{item.nome}</Nome>
-                        <Descricao>
-                          {item.descricao}
-                          ...
-                        </Descricao>
+                        <Descricao>{item.descricao}</Descricao>
                         <Nome>
                           ID:
                           {item.id}
