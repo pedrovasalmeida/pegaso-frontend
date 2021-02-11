@@ -7,8 +7,6 @@ import api from '../../services/api';
 
 import Footer from '../../components/Footer';
 
-import LogoForMaps from '../../assets/logo-no-text.png';
-
 import {
   Container,
   ContactDiv,
@@ -253,9 +251,7 @@ const Contato: React.FC = () => {
               center={center}
               zoom={zoom}
             >
-              <MapMarker lat={center.lat} lng={center.lng}>
-                <img src={LogoForMaps} alt="Pégaso" />
-              </MapMarker>
+              <MapMarker lat={center.lat} lng={center.lng} />
             </GoogleMapReact>
           </GoogleMapsDiv>
         </ContactDiv>

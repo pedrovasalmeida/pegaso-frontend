@@ -352,11 +352,37 @@ export const MapMarker = styled.div<MapMarkerProps>`
   position: absolute;
   transform: translate(-50%, -100%);
 
-  img {
-    width: 24px;
-    height: 24px;
-    background-color: ${props => props.theme.colors.light.darkBlue};
-    border-radius: 4px;
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 50%;
+
+    width: 20px;
+    height: 20px;
+
+    border: 2px solid ${props => props.theme.colors.light.darkBlue};
+    user-select: none;
+    transform: translate(-50%, -100%);
+
+    border-radius: 50% 50% 50% 0;
+    background: #ff4d4d;
+    transform: rotate(-45deg);
+    margin: -20px 0 0 -20px;
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transform: translate(-175%, -180%);
+    background: ${props => props.theme.colors.light.darkBlue};
+
+    filter: drop-shadow(0 17px 3px rgba(0, 0, 0, 0.4));
   }
 `;
 
