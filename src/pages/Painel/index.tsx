@@ -12,6 +12,7 @@ import AdicionarEmp from '../../components/AdicionarEmp';
 import RemoverEmp from '../../components/RemoverEmp';
 import ListarEmp from '../../components/ListarEmp';
 import AdicionarImagens from '../../components/AdicionarImagens';
+import OrdenarProjetos from '../../components/OrdenarProjetos';
 import AtualizarEmpreendimento from '../../components/AtualizarEmpreendimento';
 
 import api from '../../services/api';
@@ -69,6 +70,7 @@ const Painel: React.FC = () => {
   const [adicionar, setAdicionar] = useState(false);
   const [atualizarEmpreendimento, setAtualizarEmpreendimento] = useState(false);
   const [adicionarImagens, setAdicionarImagens] = useState(false);
+  const [ordenarProjetos, setOrdenarProjetos] = useState(false);
   const [remover, setRemover] = useState(false);
   const [listar, setListar] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -98,6 +100,7 @@ const Painel: React.FC = () => {
     setAdicionarImagens(false);
     setRemover(false);
     setListar(false);
+    setOrdenarProjetos(false);
     setToggleMenu(false);
   };
 
@@ -108,6 +111,7 @@ const Painel: React.FC = () => {
     setAdicionarImagens(false);
     setRemover(false);
     setListar(false);
+    setOrdenarProjetos(false);
     setToggleMenu(false);
   };
 
@@ -118,6 +122,7 @@ const Painel: React.FC = () => {
     setAdicionarImagens(true);
     setRemover(false);
     setListar(false);
+    setOrdenarProjetos(false);
     setToggleMenu(false);
   };
 
@@ -128,6 +133,7 @@ const Painel: React.FC = () => {
     setAdicionarImagens(false);
     setRemover(true);
     setListar(false);
+    setOrdenarProjetos(false);
     setToggleMenu(false);
   };
 
@@ -138,6 +144,18 @@ const Painel: React.FC = () => {
     setAdicionarImagens(false);
     setRemover(false);
     setListar(true);
+    setOrdenarProjetos(false);
+    setToggleMenu(false);
+  };
+
+  const handleOrdenarProjetos = () => {
+    setActualPage('ordenar');
+    setAdicionar(false);
+    setAtualizarEmpreendimento(false);
+    setAdicionarImagens(false);
+    setRemover(false);
+    setListar(false);
+    setOrdenarProjetos(true);
     setToggleMenu(false);
   };
 
@@ -163,6 +181,10 @@ const Painel: React.FC = () => {
 
       if (localStorageActualPage === 'adicionar-imagens') {
         handleAtualizar();
+      }
+
+      if (localStorageActualPage === 'ordenar') {
+        handleOrdenarProjetos();
       }
     } else {
       handleAdicionar();
@@ -293,6 +315,13 @@ const Painel: React.FC = () => {
                 Adicionar imagens
               </OpcaoMenu>
 
+              <OpcaoMenu
+                selected={ordenarProjetos}
+                onClick={() => handleOrdenarProjetos()}
+              >
+                Ordenar Projetos
+              </OpcaoMenu>
+
               <OpcaoMenu selected={false} onClick={() => handleDeslogar()}>
                 Sair
               </OpcaoMenu>
@@ -322,6 +351,11 @@ const Painel: React.FC = () => {
               {adicionarImagens && (
                 <>
                   <AdicionarImagens />
+                </>
+              )}
+              {ordenarProjetos && (
+                <>
+                  <OrdenarProjetos />
                 </>
               )}
             </Data>
