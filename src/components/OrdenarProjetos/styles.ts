@@ -16,9 +16,11 @@ export const Container = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   height: auto;
-  width: 100%;
+  width: calc(100vw - 300px);
 
   padding: 10px;
 
@@ -83,8 +85,7 @@ export const RotateUp = keyframes`
 `;
 
 export const CheckboxLabel = styled.label`
-  align-self: center;
-  width: auto;
+  width: 300px;
   transition: all 300ms ease;
 
   font-size: 18px;
@@ -110,6 +111,10 @@ export const CheckboxLabel = styled.label`
 `;
 
 export const List = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 
   margin-bottom: 30px;
@@ -168,6 +173,7 @@ export const Button = styled.button`
 
   height: 40px;
   width: 100%;
+
   min-width: 260px;
   max-width: 350px;
 
