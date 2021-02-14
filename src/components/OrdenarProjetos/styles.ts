@@ -137,6 +137,11 @@ export const Enterprise = styled.div`
   @media only screen and (max-width: 731px) {
     flex-direction: column;
   }
+
+  @media only screen and (max-width: 352px) {
+    max-width: 350px;
+    width: 100vw;
+  }
 `;
 
 export const Image = styled.img`
