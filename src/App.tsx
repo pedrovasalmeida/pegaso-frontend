@@ -1,21 +1,24 @@
 import React from 'react';
-import { Router } from 'react-router-dom';
-import history from './services/history';
+import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 
 import { AuthProvider } from './context/AuthContext';
+/** Header */
+import Header from './components/Header';
 
 import Theme from './styles/Theme';
-
 import GlobalStyles from './styles/global';
 
 const App: React.FC = () => (
   <Theme>
-    <AuthProvider>
-      <Router history={history}>
+    <BrowserRouter>
+      <Header />
+
+      <AuthProvider>
         <Routes />
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </BrowserRouter>
+
     <GlobalStyles />
   </Theme>
 );
