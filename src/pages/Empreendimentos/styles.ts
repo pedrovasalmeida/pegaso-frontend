@@ -223,8 +223,9 @@ export const FloatContent = styled.div`
   }
 
   > div p {
-    overflow-x: hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 
     margin: 0;
     padding: 0;
