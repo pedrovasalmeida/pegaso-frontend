@@ -57,7 +57,7 @@ export const SubContainer = styled.div`
   justify-content: center;
 
   width: auto;
-
+  height: 100%;
   z-index: 15;
 `;
 
@@ -137,15 +137,13 @@ export const DivDados = styled.div`
 
 export const DivButtons = styled(motion.div)`
   display: flex;
-  align-items: center;
 
-  width: auto;
+  height: 100%;
 `;
 
 export const Text = styled.span`
   font-weight: 500;
-
-  transition: all 300ms ease-in-out;
+  text-align: center;
 `;
 
 export const Separator = styled.div`
@@ -278,6 +276,9 @@ export const Button = styled.span`
 `;
 
 export const LinkRRD = styled(Link)<RouterProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
 
   color: ${props =>
@@ -295,7 +296,7 @@ export const LinkRRD = styled(Link)<RouterProps>`
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -20px;
+    bottom: 0;
 
     margin: auto;
 

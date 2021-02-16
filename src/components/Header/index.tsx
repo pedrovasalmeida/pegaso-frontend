@@ -91,15 +91,13 @@ const Header: React.FC = () => {
           <SubContainer>
             <DivButtons animate={{ x: -100 }} transition={{ duration: 1 }}>
               {menuOptions.map((option, index) => (
-                <React.Fragment key={option.nome}>
-                  <LinkRRD
-                    key={option.nome}
-                    to={option.rota}
-                    selected={option.rota === location.pathname}
-                  >
-                    <Text>{option.nome}</Text>
-                  </LinkRRD>
-                </React.Fragment>
+                <LinkRRD
+                  key={option.nome}
+                  to={option.rota}
+                  selected={option.rota === location.pathname}
+                >
+                  <Text>{option.nome}</Text>
+                </LinkRRD>
               ))}
             </DivButtons>
           </SubContainer>
