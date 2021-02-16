@@ -141,6 +141,7 @@ export const Title = styled.span`
   text-transform: uppercase;
 
   min-width: 220px;
+  width: auto;
 
   margin-bottom: 8px;
   color: ${props => props.theme.colors.light.lightBlue};
@@ -168,7 +169,7 @@ export const Title = styled.span`
   }
 
   &:hover::after {
-    transform: scaleX(0.35);
+    transform: scaleX(0.6);
     left: 0;
     opacity: 1;
   }

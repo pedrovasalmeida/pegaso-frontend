@@ -118,7 +118,7 @@ const DetalhesEmpreendimento: React.FC = () => {
 
             <Details>
               <Box>
-                <Title>Empreendimento</Title>
+                <Title>{enterprise.development.nome}</Title>
                 <Text>{enterprise.development.descricao}</Text>
               </Box>
 
