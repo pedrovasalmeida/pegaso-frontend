@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import { useSwipeable } from 'react-swipeable';
-import { Preloader, ThreeDots } from 'react-preloader-icon';
-import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 
 /** Componentes */
 import MyLoading from '../../components/MyLoading';
+import Footer from '../../components/Footer';
 
 import api from '../../services/api';
 
@@ -17,20 +16,13 @@ import {
   Box,
   Text,
   MoreImages,
-  FloatDiv,
   DivImagemTipo,
   BackButton,
   BackIcon,
   Carousel,
   CarouselContainer,
   Imagem,
-  FloatContent,
-  FloatButton,
-  DivIcons,
-  LeftArrow,
-  RightArrow,
 } from './styles';
-import Footer from '../../components/Footer';
 
 interface EnterpriseProps {
   development: {
