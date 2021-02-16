@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 
 import useWindowDimensions from '../../hooks/useWindowDimensions';
@@ -50,7 +50,7 @@ const Header: React.FC = () => {
       {width < 1235 ? (
         <>
           <HiddenMenu onClick={() => handleOutsideClick()} isVisible={isVisible}>
-            {menuOptions.map(option => (
+            {menuOptions.map((option, index) => (
               <React.Fragment key={option.nome}>
                 <LinkRRDHiddenMenu
                   to={option.rota}
@@ -58,8 +58,7 @@ const Header: React.FC = () => {
                 >
                   <Button>{option.nome}</Button>
                 </LinkRRDHiddenMenu>
-
-                <HorizontalSeparator />
+                {index + 1 !== menuOptions.length && <HorizontalSeparator />}
               </React.Fragment>
             ))}
           </HiddenMenu>

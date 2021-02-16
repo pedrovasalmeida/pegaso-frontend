@@ -200,11 +200,17 @@ export const HiddenMenu = styled.div<Props>`
 
   position: fixed;
 
-  top: ${props => (props.isVisible ? '64px' : '-50%')};
-  left: 0;
+  top: ${props => (props.isVisible ? '64px' : '-100%')};
+  right: 0;
 
   height: auto;
-  width: 100%;
+  width: 250px;
+
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border: 1px solid ${p => p.theme.colors.light.gray};
+  border-top-width: 0;
 
   background-color: #fdfdfd;
 
