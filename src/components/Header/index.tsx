@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 
 import useWindowDimensions from '../../hooks/useWindowDimensions';
+import Logo from '../../assets/logo.png';
 
 import {
   Container,
@@ -17,10 +18,6 @@ import {
   Button,
   HorizontalSeparator,
 } from './styles';
-
-import Logo from '../../assets/logo.png';
-
-import HeaderMobile from '../HeaderMobile';
 
 const Header: React.FC = () => {
   const { width } = useWindowDimensions();
