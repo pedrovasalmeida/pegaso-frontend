@@ -1,9 +1,22 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
-import { Container, SubContainer, DivLogo, DivButtons, Text, LinkRRD } from './styles';
+import {
+  Container,
+  SubContainer,
+  DivLogo,
+  DivButtons,
+  Text,
+  DivMenu,
+  MenuIcon,
+  LinkRRD,
+  HiddenMenu,
+  LinkRRDHiddenMenu,
+  Button,
+  HorizontalSeparator,
+} from './styles';
 
 import Logo from '../../assets/logo.png';
 
@@ -14,6 +27,8 @@ const Header: React.FC = () => {
   const location = useLocation();
   const history = useHistory();
 
+  const [isVisible, setIsVisible] = useState(false);
+
   const menuOptions = [
     { rota: '/', nome: 'HOME' },
     { rota: '/quem-somos', nome: 'QUEM SOMOS' },
@@ -23,14 +38,49 @@ const Header: React.FC = () => {
     { rota: '/contato', nome: 'CONTATO' },
   ];
 
-  const navigateToHome = useCallback(() => {
+  const handleVisible = () => (isVisible ? setIsVisible(false) : setIsVisible(true));
+
+  const handleOutsideClick = () => {
+    setIsVisible(false);
+  };
+
+  const navigateToHome = () => {
     history.push('/');
-  }, [history]);
+  };
 
   return (
     <>
       {width < 1235 ? (
-        <HeaderMobile />
+        <>
+          <HiddenMenu onClick={() => handleOutsideClick()} isVisible={isVisible}>
+            {menuOptions.map(option => (
+              <React.Fragment key={option.nome}>
+                <LinkRRDHiddenMenu
+                  to={option.rota}
+                  selected={option.rota === location.pathname}
+                >
+                  <Button>{option.nome}</Button>
+                </LinkRRDHiddenMenu>
+
+                <HorizontalSeparator />
+              </React.Fragment>
+            ))}
+          </HiddenMenu>
+          <Container>
+            <DivLogo
+              animate={{ x: 25 }}
+              transition={{ duration: 1 }}
+              onClick={() => navigateToHome()}
+            >
+              <img src={Logo} alt="Logo" />
+            </DivLogo>
+
+            <DivMenu onClick={() => handleVisible()} isVisible={isVisible}>
+              <span>{isVisible ? 'Close' : 'Menu'}</span>
+              <MenuIcon />
+            </DivMenu>
+          </Container>
+        </>
       ) : (
         <Container>
           <DivLogo

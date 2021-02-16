@@ -159,11 +159,11 @@ export const Separator = styled.div`
 `;
 
 export const DivMenu = styled.div<Props>`
-  display: none;
+  display: flex;
 
   position: absolute;
-  right: 24px;
-  top: 80px;
+  right: 0;
+  top: 25%;
 
   cursor: pointer;
 
@@ -202,7 +202,7 @@ export const HiddenMenu = styled.div<Props>`
 
   position: fixed;
 
-  top: ${props => (props.isVisible ? '140px' : '-50%')};
+  top: ${props => (props.isVisible ? '64px' : '-50%')};
   left: 0;
 
   height: auto;
@@ -215,18 +215,65 @@ export const HiddenMenu = styled.div<Props>`
   z-index: 39;
 `;
 
-export const LinkRRDHiddenMenu = styled(Link)`
-  display: flex;
-  align-items: center;
+export const LinkRRDHiddenMenu = styled(Link)<RouterProps>`
+  position: relative;
 
-  height: 48px;
+  color: ${props =>
+    props.selected ? shade(0.2, props.theme.colors.light.lightBlue) : '#333'};
 
-  margin: 0 16px 0 0;
+  margin: 8px 20px;
 
-  text-decoration: none;
-
-  &:focus {
+  &:hover {
     text-decoration: none;
+    color: ${props => shade(0.2, props.theme.colors.light.lightBlue)};
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+
+    margin: auto;
+
+    width: 100%;
+    height: 3px;
+
+    border-radius: 2px;
+
+    cursor: pointer;
+
+    background: ${props => shade(0.2, props.theme.colors.light.lightBlue)};
+
+    transform-origin: bottom;
+
+    transition: transform 150ms ease-in-out;
+
+    ${p =>
+      p.selected
+        ? css`
+            transform: scaleY(1);
+          `
+        : css`
+            transform: scaleY(0);
+          `};
+  }
+
+  &:hover:after {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+`;
+
+export const Button = styled.span`
+  font-weight: 500;
+
+  transition: all 300ms ease-in-out;
+
+  &:hover {
+    transition: all 300ms ease-in-out;
+    color: ${props => shade(0.2, props.theme.colors.light.lightBlue)};
   }
 `;
 
@@ -283,9 +330,10 @@ export const LinkRRD = styled(Link)<RouterProps>`
 
 export const HorizontalSeparator = styled.div`
   height: 1px;
-  width: 100%;
+  width: 95%;
+  align-self: center;
 
-  background-color: #fdfdfd;
+  background-color: rgba(0, 0, 0, 0.1);
 `;
 
 export const EmailIcon = styled(MdEmail)`
