@@ -18,6 +18,7 @@ import {
   Descricao,
   Title,
 } from './styles';
+import MyLoading from '../MyLoading';
 
 interface EmpreendimentoData {
   id: number;
@@ -61,24 +62,7 @@ const ListarEmp: React.FC = () => {
           <Lista>
             <Title>Listar Empreendimentos</Title>
             {loading ? (
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  justifyContent: 'center',
-                  height: '100vh',
-                  width: '100%',
-                  marginTop: '100px',
-                }}
-              >
-                <Preloader
-                  use={ThreeDots}
-                  size={120}
-                  strokeWidth={8}
-                  strokeColor="#0e6387"
-                  duration={800}
-                />
-              </div>
+              <MyLoading />
             ) : (
               <>
                 {!data ? (

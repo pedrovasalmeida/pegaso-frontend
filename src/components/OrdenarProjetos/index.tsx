@@ -217,12 +217,7 @@ const OrdenarProjetos: React.FC = () => {
 
           <CheckboxLabel className={checkbox ? 'checked' : 'unchecked'}>
             <RiArrowDropLeftLine size={35} />
-            <input
-              type="checkbox"
-              defaultChecked={checkbox}
-              onChange={handleCheckbox}
-              value="TESTE TESTE"
-            />
+            <input type="checkbox" defaultChecked={checkbox} onChange={handleCheckbox} />
             Ver nova ordenação da lista:
           </CheckboxLabel>
 
