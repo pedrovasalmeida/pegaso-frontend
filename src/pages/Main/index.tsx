@@ -151,8 +151,8 @@ const CarouselDenner: React.FC = () => {
                     <span>{results[sliding].descricao_curta}</span>
                   </div>
                   <DivIcons>
-                    <LeftArrow onClick={() => handleBack()} />
-                    <RightArrow onClick={() => handleNext()} />
+                    <LeftArrow size={50} onClick={() => handleBack()} />
+                    <RightArrow size={50} onClick={() => handleNext()} />
                   </DivIcons>
                 </FloatContent>
                 <Link to={`/obras/detalhes/${results[sliding].id}`}>
