@@ -1,6 +1,6 @@
 # Pégaso
 
-![Pegaso](https://i.imgur.com/MFUzYvF.gif)
+![Pegaso](https://i.imgur.com/MFUzYvF.mp4)
 
 Site institucional da construtora Pégaso.
 
