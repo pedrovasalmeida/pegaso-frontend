@@ -72,16 +72,6 @@ const Main: React.FC = () => {
     }
   };
 
-  const handleAutomaticNext = useCallback(() => {
-    setTimeout(() => {
-      if (sliding !== results.length - 1) {
-        setSliding(sliding + 1);
-      } else {
-        setSliding(0);
-      }
-    }, 7000);
-  }, [sliding, results]);
-
   const handleNext = useCallback(() => {
     if (sliding !== results.length - 1) {
       setSliding(sliding + 1);
@@ -108,12 +98,6 @@ const Main: React.FC = () => {
   useEffect(() => {
     getData();
   }, []);
-
-  useEffect(() => {
-    if (results) {
-      handleAutomaticNext();
-    }
-  });
 
   return (
     <>

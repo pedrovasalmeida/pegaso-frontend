@@ -198,14 +198,14 @@ export const FloatDiv = styled.div`
     width: 300px;
 
     left: 16px;
-    bottom: 90px;
+    bottom: 70px;
   }
 `;
 
 export const FloatContent = styled.div`
   display: flex;
 
-  height: 100%;
+  min-height: 80px;
   flex-direction: column;
 
   background-color: rgba(0, 0, 0, 0.65);
@@ -353,7 +353,7 @@ export const ErrorMessage = styled.span`
 
 export const DivIcons = styled.div`
   position: absolute;
-  bottom: 30px;
+  bottom: 40px;
   right: 0;
 `;
 
