@@ -262,7 +262,7 @@ const Contato: React.FC = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.45 }}
           >
-            Ligue o preencha o formulário:
+            Ligue ou preencha o formulário:
           </Text>
           <Form>
             <Input
