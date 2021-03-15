@@ -21,7 +21,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Title = styled.span`
+export const Title = styled(motion.span)`
   position: relative;
   width: auto;
 
@@ -97,7 +97,7 @@ export const Parceiro = styled(motion.img)`
   width: 150px;
 
   margin: 20px;
-
+  cursor: pointer;
   &:hover {
     transform: translateY(-4px);
   }

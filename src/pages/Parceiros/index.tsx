@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import ImgAdvocaciaPartner from '../../assets/partners/advocacia-geral-da-uniao.png';
 import ImgGrupoCBPartner from '../../assets/partners/grupo-cb.png';
@@ -18,46 +18,58 @@ const Parceiros: React.FC = () => {
   const partners = [
     {
       src: ImgAdvocaciaPartner,
-      duration: 0.5,
+      duration: 1,
     },
     {
       src: ImgGrupoCBPartner,
-      duration: 0.7,
+      duration: 1.05,
     },
     {
       src: ImgHelusPartner,
-      duration: 0.9,
-    },
-    {
-      src: ImgInajaPartner,
       duration: 1.1,
     },
     {
+      src: ImgInajaPartner,
+      duration: 1.15,
+    },
+    {
       src: ImgMetrollPartner,
-      duration: 1.3,
+      duration: 1.2,
     },
     {
       src: ImgPupoPartner,
-      duration: 1.5,
+      duration: 1.25,
     },
     {
       src: ImgPetrobrasPartner,
-      duration: 1.7,
+      duration: 1.3,
     },
     {
       src: ImgSantanderPartner,
-      duration: 1.9,
+      duration: 1.35,
     },
     {
       src: ImgUcsalPartner,
-      duration: 2.1,
+      duration: 1.4,
     },
   ];
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
+  }, []);
 
   return (
     <>
       <Container>
-        <Title>Parceiros</Title>
+        <Title
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7 }}
+        >
+          Parceiros
+        </Title>
 
         <ParceirosDiv>
           {partners.map(partner => (
@@ -65,10 +77,9 @@ const Parceiros: React.FC = () => {
               key={partner.src}
               src={partner.src}
               alt="Pégaso"
-              initial={{ x: -150 }}
-              animate={{ x: 0 }}
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               whileHover={{ y: -6, transition: { duration: 0.4 } }}
-              whileTap={{ y: -6, transition: { duration: 0.4 } }}
               transition={{ duration: partner.duration }}
             />
           ))}
