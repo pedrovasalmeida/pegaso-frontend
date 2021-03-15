@@ -196,51 +196,10 @@ const Contato: React.FC = () => {
     <>
       <Container>
         <ContactDiv>
-          <Contacts>
-            <Contact infoName={contactData[0].name}>
-              <ContactLink
-                href="https://www.google.com.br/maps/place/EDF.+Atlanta+Empresarial/@-12.9846262,-38.4525944,17z/data=!4m12!1m6!3m5!1s0x7161b0f7a5364df:0xcf979c0077f7795c!2sEDF.+Atlanta+Empresarial!8m2!3d-12.9846314!4d-38.4504057!3m4!1s0x7161b0f7a5364df:0xcf979c0077f7795c!8m2!3d-12.9846314!4d-38.4504057"
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ x: -50 }}
-                animate={{ x: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                {contactData[0].icon}
-                <Text>{contactData[0].text}</Text>
-              </ContactLink>
-            </Contact>
-
-            <SecondLine
-              initial={{ x: -50 }}
-              animate={{ x: 0 }}
-              transition={{ duration: 1 }}
-            >
-              <Contact>
-                <ContactLink
-                  href={WhatsApp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ x: -50 }}
-                  animate={{ x: 0 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  {contactData[1].icon}
-                  <Text>{contactData[1].text}</Text>
-                </ContactLink>
-              </Contact>
-
-              <Contact style={{ cursor: 'default' }}>
-                {contactData[2].icon}
-                <Text>{contactData[2].text}</Text>
-              </Contact>
-            </SecondLine>
-          </Contacts>
-
           <GoogleMapsDiv
-            initial={{ x: -50 }}
-            animate={{ x: 0 }}
-            transition={{ duration: 1.2 }}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
           >
             <GoogleMapReact
               bootstrapURLKeys={{
@@ -254,15 +213,56 @@ const Contato: React.FC = () => {
               <MapMarker lat={center.lat} lng={center.lng} />
             </GoogleMapReact>
           </GoogleMapsDiv>
+
+          <Contacts>
+            <Contact infoName={contactData[0].name}>
+              <ContactLink
+                href="https://www.google.com.br/maps/place/EDF.+Atlanta+Empresarial/@-12.9846262,-38.4525944,17z/data=!4m12!1m6!3m5!1s0x7161b0f7a5364df:0xcf979c0077f7795c!2sEDF.+Atlanta+Empresarial!8m2!3d-12.9846314!4d-38.4504057!3m4!1s0x7161b0f7a5364df:0xcf979c0077f7795c!8m2!3d-12.9846314!4d-38.4504057"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+              >
+                {contactData[0].icon}
+                <Text>{contactData[0].text}</Text>
+              </ContactLink>
+            </Contact>
+
+            <SecondLine
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1.1 }}
+            >
+              <Contact>
+                <ContactLink href={WhatsApp} target="_blank" rel="noopener noreferrer">
+                  {contactData[1].icon}
+                  <Text>{contactData[1].text}</Text>
+                </ContactLink>
+              </Contact>
+
+              <Contact style={{ cursor: 'default' }}>
+                {contactData[2].icon}
+                <Text>{contactData[2].text}</Text>
+              </Contact>
+            </SecondLine>
+          </Contacts>
         </ContactDiv>
 
         <FormDiv>
-          <Title initial={{ x: 50 }} animate={{ x: 0 }} transition={{ duration: 0.4 }}>
+          <Title
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.4 }}
+          >
             Entre em contato
           </Title>
-          <Text initial={{ x: 50 }} animate={{ x: 0 }} transition={{ duration: 0.45 }}>
-            Para qualquer informação, dúvida ou comentário ligue: (71) 3018-5649 ou
-            preencha o fomulário:
+          <Text
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.45 }}
+          >
+            Ligue o preencha o formulário:
           </Text>
           <Form>
             <Input
@@ -271,8 +271,8 @@ const Contato: React.FC = () => {
               value={inputNome}
               onChange={e => handleInputNome(e.target.value)}
               required
-              initial={{ x: 50 }}
-              animate={{ x: 0 }}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5 }}
             />
 
@@ -282,8 +282,8 @@ const Contato: React.FC = () => {
               value={inputEmail}
               onChange={e => handleInputEmail(e.target.value)}
               required
-              initial={{ x: 50 }}
-              animate={{ x: 0 }}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.7 }}
             />
 
@@ -295,8 +295,8 @@ const Contato: React.FC = () => {
               value={inputContato}
               onChange={e => handleInputContato(e.target.value)}
               required
-              initial={{ x: 50 }}
-              animate={{ x: 0 }}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.9 }}
             />
 
@@ -306,8 +306,8 @@ const Contato: React.FC = () => {
               value={inputMensagem}
               onChange={e => handleInputMensagem(e.target.value)}
               required
-              initial={{ x: 50 }}
-              animate={{ x: 0 }}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.1 }}
             />
 
@@ -317,8 +317,8 @@ const Contato: React.FC = () => {
               onClick={e =>
                 handleSendEmail(e, inputNome, inputEmail, inputContato, inputMensagem)
               }
-              initial={{ x: 50 }}
-              animate={{ x: 0 }}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.3 }}
             >
               <SendIcon />
