@@ -205,7 +205,7 @@ export const HiddenMenu = styled.div<Props>`
   position: fixed;
 
   top: ${props => (props.isVisible ? '64px' : '-100%')};
-  right: 20px;
+  right: 5px;
 
   height: auto;
   width: 250px;
