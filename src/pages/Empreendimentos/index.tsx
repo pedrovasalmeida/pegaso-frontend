@@ -85,10 +85,20 @@ const ProjectsMobile: React.FC = () => {
     }
   }, [results]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
+  }, []);
+
   return (
     <>
       <Container>
-        <DivTitle animate={{ x: 0 }} transition={{ duration: 1.2 }}>
+        <DivTitle
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7 }}
+        >
           {width < 459 ? (
             <Subtitle>
               NOSSAS
@@ -120,11 +130,13 @@ const ProjectsMobile: React.FC = () => {
                   return (
                     <LinkRRD to={`/obras/detalhes/${item.id}`} key={item.id}>
                       <Project
-                        animate={{ x: 0 }}
-                        transition={{ duration: 0.3 }}
+                        initial={{ y: 100, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1 }}
                         whileHover={{
-                          y: -3,
+                          y: -5,
                           filter: 'drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.4))',
+                          transition: { duration: 0.5 },
                         }}
                       >
                         <FullImage width={width}>
