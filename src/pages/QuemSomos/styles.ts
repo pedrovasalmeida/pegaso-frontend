@@ -13,7 +13,7 @@ export const Container = styled.div`
   width: 100vw;
   height: calc(100vh - 104px);
   margin-top: 64px;
-  overflow-x: hidden;
+  overflow: hidden;
 `;
 
 export const DivInfos = styled.div`
@@ -88,7 +88,7 @@ export const DivDescription = styled(motion.div)`
   margin: 16px 0 0 0;
 `;
 
-export const Text = styled.span`
+export const Text = styled(motion.span)`
   display: flex;
   text-align: justify;
   font-weight: 400;
@@ -190,14 +190,16 @@ export const fadeIn = keyframes`
   }
 `;
 
-export const DivImagemTipo = styled.div<BackgroundProps>`
+export const DivImagemTipo = styled(motion.div)<BackgroundProps>`
   display: flex;
   height: calc(100vh - 104px);
+
   > img {
+    pointer-events: none;
     height: 100%;
     width: 1080px;
     opacity: 0;
     object-fit: fill;
-    animation: ${fadeIn} 3s ease-in-out 0.5s forwards;
+    animation: ${fadeIn} 2s ease 0.5s forwards;
   }
 `;

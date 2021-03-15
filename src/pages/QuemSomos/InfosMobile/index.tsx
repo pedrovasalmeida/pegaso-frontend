@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 
@@ -20,17 +20,30 @@ import {
 const InfosMobile: React.FC = () => {
   const { width } = useWindowDimensions();
 
-  // const backgroundUrl = 'https://i.imgur.com/n7mYaHC.png';
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
+  }, []);
+
   const backgroundUrl = 'https://i.imgur.com/BTly4hM.jpg';
 
   return (
     <>
       <Container>
-        <DivTitle animate={{ x: 0 }} transition={{ duration: 0.5 }}>
+        <DivTitle
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7 }}
+        >
           <Title width={width}>Quem somos</Title>
         </DivTitle>
 
-        <DivDescription animate={{ x: 0 }} transition={{ duration: 0.7 }}>
+        <DivDescription
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.9 }}
+        >
           <Text>
             <strong>
               “Soluções em engenharia para baixar custos e otimizar a produtividade”
