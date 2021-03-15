@@ -32,7 +32,7 @@ interface Empreendimentos {
   poster: string;
 }
 
-const CarouselDenner: React.FC = () => {
+const Main: React.FC = () => {
   const [sliding, setSliding] = useState(0);
   const [dir] = useState('NEXT');
   const [loading, setLoading] = useState(true);
@@ -68,7 +68,6 @@ const CarouselDenner: React.FC = () => {
         .catch(err => {
           setHasData(false);
           setLoading(false);
-          console.log(err);
         });
     }
   };
@@ -169,4 +168,4 @@ const CarouselDenner: React.FC = () => {
     </>
   );
 };
-export default CarouselDenner;
+export default Main;
