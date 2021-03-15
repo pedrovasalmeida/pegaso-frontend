@@ -1,6 +1,6 @@
 # Pégaso
 
-![Pegaso](https://im4.ezgif.com/tmp/ezgif-4-0b9d47a3a07f.gif)
+![Pegaso](demo/show-website.gif)
 
 Site institucional da construtora Pégaso.
 
