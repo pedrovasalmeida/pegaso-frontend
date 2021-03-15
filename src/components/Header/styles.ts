@@ -172,17 +172,21 @@ export const DivMenu = styled.div<Props>`
 
   transition: all 400ms ease-in-out;
 
-  > span {
-    transition: all 400ms ease;
+  z-index: 16;
+`;
 
-    font-size: 20px;
-  }
+export const HiddenMenuTitle = styled(motion.span)<Props>`
+  display: flex;
+  font-size: 20px;
+  transform: translateX(-2px);
 
   > svg {
-    ${props => (props.isVisible ? 'transform: rotate(45deg);' : '')}
+    ${props =>
+      props.isVisible &&
+      css`
+        transform: rotate(45deg);
+      `}
   }
-
-  z-index: 16;
 `;
 
 export const MenuIcon = styled(FiPlus)`
@@ -190,7 +194,7 @@ export const MenuIcon = styled(FiPlus)`
 
   margin: 0 0 0 8px;
 
-  transition: all 200ms ease-in-out;
+  transition: all 200ms ease;
 `;
 
 export const HiddenMenu = styled.div<Props>`
@@ -201,7 +205,7 @@ export const HiddenMenu = styled.div<Props>`
   position: fixed;
 
   top: ${props => (props.isVisible ? '64px' : '-100%')};
-  right: 0;
+  right: 20px;
 
   height: auto;
   width: 250px;

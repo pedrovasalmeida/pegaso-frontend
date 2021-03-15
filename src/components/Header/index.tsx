@@ -14,6 +14,7 @@ import {
   MenuIcon,
   LinkRRD,
   HiddenMenu,
+  HiddenMenuTitle,
   LinkRRDHiddenMenu,
   Button,
   HorizontalSeparator,
@@ -64,7 +65,8 @@ const Header: React.FC = () => {
           </HiddenMenu>
           <Container>
             <DivLogo
-              animate={{ x: 25 }}
+              initial={{ x: 25, opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
               onClick={() => navigateToHome()}
             >
@@ -72,15 +74,23 @@ const Header: React.FC = () => {
             </DivLogo>
 
             <DivMenu onClick={() => handleVisible()} isVisible={isVisible}>
-              <span>{isVisible ? 'Close' : 'Menu'}</span>
-              <MenuIcon />
+              <HiddenMenuTitle
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                isVisible={isVisible}
+              >
+                {isVisible ? 'Close' : 'Menu'}
+                <MenuIcon />
+              </HiddenMenuTitle>
             </DivMenu>
           </Container>
         </>
       ) : (
         <Container>
           <DivLogo
-            animate={{ x: 100 }}
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
             onClick={() => navigateToHome()}
           >
@@ -88,7 +98,11 @@ const Header: React.FC = () => {
           </DivLogo>
 
           <SubContainer>
-            <DivButtons animate={{ x: -100 }} transition={{ duration: 1 }}>
+            <DivButtons
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: -100, opacity: 1 }}
+              transition={{ duration: 1, type: 'tween' }}
+            >
               {menuOptions.map((option, index) => (
                 <LinkRRD
                   key={option.nome}
