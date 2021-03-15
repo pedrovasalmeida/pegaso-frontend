@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
       linkExist: false,
       link: WhatsApp,
       icon: <WhatsAppIcon />,
-      duration: 0.3,
+      duration: 0.5,
     },
     {
       nome: 'Instagram',
@@ -61,7 +61,11 @@ const Footer: React.FC = () => {
       ) : (
         <Container>
           <Data>
-            <motion.div animate={{ x: 50 }} transition={{ duration: 1 }}>
+            <motion.div
+              initial={{ y: 50 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1 }}
+            >
               <Text>© 2020 - St. James Comunicação</Text>
             </motion.div>
           </Data>
@@ -74,7 +78,8 @@ const Footer: React.FC = () => {
                     <Button
                       href="#"
                       target="blank"
-                      animate={{ x: -50 }}
+                      initial={{ y: 50 }}
+                      animate={{ y: 0 }}
                       transition={{ duration: option.duration }}
                     >
                       {option.icon}
@@ -87,7 +92,8 @@ const Footer: React.FC = () => {
                   <Button
                     href={option.link}
                     target="blank"
-                    animate={{ x: -50 }}
+                    initial={{ y: 50 }}
+                    animate={{ y: 0 }}
                     transition={{ duration: option.duration }}
                   >
                     {option.icon}

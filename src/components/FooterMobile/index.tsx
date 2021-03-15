@@ -54,6 +54,7 @@ const FooterMobile: React.FC = () => {
               <LinkRRD to="/contato">
                 <Button
                   target="blank"
+                  initial={{ y: 50 }}
                   animate={{ y: 0 }}
                   transition={{ duration: option.duration }}
                   whileHover={{ translateX: 2 }}
@@ -67,6 +68,7 @@ const FooterMobile: React.FC = () => {
               <Button
                 href={option.link}
                 target="blank"
+                initial={{ y: 50 }}
                 animate={{ y: 0 }}
                 transition={{ duration: option.duration }}
                 whileHover={{ translateX: 2 }}
