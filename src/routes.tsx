@@ -10,7 +10,7 @@ import Empreendimentos from './pages/Empreendimentos';
 import DetalhesEmpreendimento from './pages/DetalhesEmpreendimento';
 import Painel from './pages/Painel';
 import Contato from './pages/Contato';
-import Forgot from './pages/Forgot';
+import NotFound from './pages/NotFound';
 
 const Routes: React.FC = () => {
   return (
@@ -22,8 +22,8 @@ const Routes: React.FC = () => {
       <Route path="/obras" exact component={Empreendimentos} />
       <Route path="/obras/detalhes/:id" component={DetalhesEmpreendimento} />
       <Route path="/painel" component={Painel} />
-      <Route path="/forgot-password" component={Forgot} />
       <Route path="/contato" component={Contato} />
+      <Route component={NotFound} />
     </Switch>
   );
 };
