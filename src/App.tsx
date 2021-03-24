@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import ReactGA from 'react-ga';
 import Routes from './routes';
 
 import { AuthProvider } from './context/AuthContext';
@@ -8,6 +9,8 @@ import Header from './components/Header';
 
 import Theme from './styles/Theme';
 import GlobalStyles from './styles/global';
+
+ReactGA.initialize('UA-192907132-1');
 
 const App: React.FC = () => (
   <Theme>
