@@ -11,7 +11,9 @@ import {
   Container,
   ContactDiv,
   Contacts,
+  Adresses,
   Contact,
+  ContactTitle,
   ContactLink,
   SecondLine,
   GoogleMapsDiv,
@@ -215,19 +217,94 @@ const Contato: React.FC = () => {
           </GoogleMapsDiv>
 
           <Contacts>
-            <Contact infoName={contactData[0].name}>
-              <ContactLink
-                href="https://www.google.com.br/maps/place/EDF.+Atlanta+Empresarial/@-12.9846262,-38.4525944,17z/data=!4m12!1m6!3m5!1s0x7161b0f7a5364df:0xcf979c0077f7795c!2sEDF.+Atlanta+Empresarial!8m2!3d-12.9846314!4d-38.4504057!3m4!1s0x7161b0f7a5364df:0xcf979c0077f7795c!8m2!3d-12.9846314!4d-38.4504057"
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ y: 100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1 }}
-              >
-                {contactData[0].icon}
-                <Text>{contactData[0].text}</Text>
-              </ContactLink>
-            </Contact>
+            <ContactTitle
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              Endereço
+            </ContactTitle>
+            <div className="wrapper">
+              <Contact infoName={contactData[0].name}>
+                <ContactLink
+                  href="https://www.google.com.br/maps/place/EDF.+Atlanta+Empresarial/@-12.9846262,-38.4525944,17z/data=!4m12!1m6!3m5!1s0x7161b0f7a5364df:0xcf979c0077f7795c!2sEDF.+Atlanta+Empresarial!8m2!3d-12.9846314!4d-38.4504057!3m4!1s0x7161b0f7a5364df:0xcf979c0077f7795c!8m2!3d-12.9846314!4d-38.4504057"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ y: 100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 1 }}
+                >
+                  {contactData[0].icon}
+                  <Text>{contactData[0].text}</Text>
+                </ContactLink>
+              </Contact>
+
+              <Adresses>
+                <ContactTitle
+                  initial={{ y: 100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 1 }}
+                >
+                  Filiais
+                </ContactTitle>
+                <Contact infoName={contactData[0].name}>
+                  <ContactLink
+                    href="https://www.google.com.br/maps/place/Condom%C3%ADnio+do+Edif%C3%ADcio+JCPM+Trade+Center/@-8.0894952,-34.8842093,17z/data=!4m8!1m2!2m1!1sJCPM+Trade+Center!3m4!1s0x0:0x33edd5e97ff13d0a!8m2!3d-8.0895004!4d-34.8820203
+                    "
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ y: 100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1 }}
+                  >
+                    {contactData[0].icon}
+                    <Text>
+                      Av. Antônio de Goes, 60, JCPM Trade Center - 7º andar - Boa Viagem,
+                      Recife - PE
+                    </Text>
+                  </ContactLink>
+                </Contact>
+                <Contact infoName={contactData[0].name}>
+                  <ContactLink
+                    href="https://www.google.com.br/maps/place/Amadeus+Business+Tower/@-19.9391612,-43.9428591,17z/data=!4m12!1m6!3m5!1s0xa699d76d82ff5f:0x928c468011ccf1ce!2sAmadeus+Business+Tower!8m2!3d-19.9391663!4d-43.9406704!3m4!1s0xa699d76d82ff5f:0x928c468011ccf1ce!8m2!3d-19.9391663!4d-43.9406704"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ y: 100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1 }}
+                  >
+                    {contactData[0].icon}
+                    <Text>
+                      R. Rosa Maria Savassi, 30, Amadeus Business Tower - 16º andar, Belo
+                      Horizonte - MG
+                    </Text>
+                  </ContactLink>
+                </Contact>
+                <Contact infoName={contactData[0].name}>
+                  <ContactLink
+                    href="https://www.google.com.br/maps/place/Office+Prime+Bel%C3%A9m+-+Escrit%C3%B3rio+virtual/@-1.4499998,-48.4915104,17z/data=!3m1!4b1!4m5!3m4!1s0x92a48e90902dc61b:0xa5e9da611b0efd69!8m2!3d-1.4500052!4d-48.4893217"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ y: 100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1 }}
+                  >
+                    {contactData[0].icon}
+                    <Text>
+                      Travessa Rui Barbosa, 897, Office Prime Business Center, Belém - PA
+                    </Text>
+                  </ContactLink>
+                </Contact>
+              </Adresses>
+            </div>
+
+            <ContactTitle
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              Contato
+            </ContactTitle>
 
             <SecondLine
               initial={{ y: 100, opacity: 0 }}

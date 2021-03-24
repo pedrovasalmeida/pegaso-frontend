@@ -28,7 +28,7 @@ export const Container = styled.div`
   height: calc(100vh - 104px);
 
   margin-top: 64px;
-
+  overflow: hidden;
   padding: 5px 60px;
 
   @media only screen and (max-width: 1365px) {
@@ -77,6 +77,36 @@ export const ContactDiv = styled.div`
 export const Contacts = styled.div`
   display: flex;
   flex-direction: column;
+
+  div.wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 100vw;
+    width: 95vw;
+  }
+
+  @media only screen and (max-width: 1328px) {
+    div.wrapper {
+      flex-direction: column;
+    }
+  }
+`;
+
+export const Adresses = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (min-width: 1328px) {
+    margin-top: -30px;
+  }
+`;
+
+export const ContactTitle = styled(motion.span)`
+  color: #333;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 5px;
 `;
 
 export const Contact = styled.div<InfoProps>`

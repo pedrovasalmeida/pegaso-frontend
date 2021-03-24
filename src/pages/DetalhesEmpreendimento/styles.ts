@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Carousel } from 'react-responsive-carousel';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 import { BiArrowBack } from 'react-icons/bi';
 
@@ -18,8 +19,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  min-height: 100vh;
-  max-width: 100vw;
+  max-width: 99vw;
   width: 100vw;
 
   overflow-x: hidden;
@@ -181,13 +181,13 @@ export const Text = styled.span`
 `;
 
 export const MoreImages = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  width: 100%;
-
+  width: 100vw;
   margin-bottom: 60px;
 
   span {
@@ -198,18 +198,23 @@ export const MoreImages = styled.div`
   }
 `;
 
-export const Carousel = styled.div`
+export const MyCarousel = styled(Carousel)`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 
-  * {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  max-width: 50vw;
+  width: 50vw;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  @media only screen and (max-width: 1100px) {
+    max-width: 80vw;
+    width: 80vw;
   }
 `;
 
@@ -219,7 +224,8 @@ export const CarouselContainer = styled.div<IContainerProps>`
   align-items: center;
   justify-content: center;
 
-  min-width: 100vw;
+  max-width: 100vw;
+  width: 100vw;
 
   overflow: hidden;
 
@@ -232,9 +238,10 @@ export const CarouselContainer = styled.div<IContainerProps>`
 `;
 
 export const Imagem = styled.img`
+  max-height: calc(100vh - 104px);
+  max-width: 100vw;
   height: auto;
-  width: 100%;
-  max-width: 100%;
+  width: 100vw;
 
   object-fit: contain;
 
@@ -472,31 +479,40 @@ export const DivIcons = styled.div`
 `;
 
 export const LeftArrow = styled(IoIosArrowBack)`
+  position: absolute;
+  height: calc(100vh - 245px);
+  width: 30px;
+
   color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+
   font-size: 32px;
-
-  width: 24px;
-
-  transition: all 300ms ease-in-out;
-
   cursor: pointer;
 
+  z-index: 10;
+  transition: all 300ms ease;
+
   &:hover {
-    color: ${props => props.theme.colors.light.lightBlue};
+    background: rgba(0, 0, 0, 0.7);
   }
 `;
 
 export const RightArrow = styled(IoIosArrowForward)`
+  position: absolute;
+
+  height: calc(100vh - 245px);
+  width: 30px;
+
   color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+
   font-size: 32px;
-
-  width: 24px;
-
-  transition: all 300ms ease-in-out;
-
   cursor: pointer;
 
+  z-index: 10;
+  transition: all 300ms ease;
+
   &:hover {
-    color: ${props => props.theme.colors.light.lightBlue};
+    background: rgba(0, 0, 0, 0.7);
   }
 `;

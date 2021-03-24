@@ -88,6 +88,22 @@ const ServicosPrestados: React.FC = () => {
               <Square />
               Prediais
             </Text>
+            <Text
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1.2 }}
+            >
+              <Square />
+              Terraplanagem
+            </Text>
+            <Text
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1.3 }}
+            >
+              <Square />
+              Obras Públicas
+            </Text>
           </ServicoDiv>
 
           <ServicoDiv
@@ -210,16 +226,16 @@ const ServicosPrestados: React.FC = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.9 }}
             >
-              <Square isBigger />
-              Combate a incêndio / SPDA
+              <Square />
+              Projeto Arquitetônico
             </Text>
             <Text
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <Square isBigger />
-              CFTV / Lógica / Automação
+              <Square />
+              Design de interiores
             </Text>
             <Text
               initial={{ y: 100, opacity: 0 }}
@@ -227,63 +243,39 @@ const ServicosPrestados: React.FC = () => {
               transition={{ duration: 1.1 }}
             >
               <Square />
-              Combate a Incêndio
+              Projeto Estrutural
             </Text>
             <Text
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.2 }}
             >
-              <Square />
-              Elétrico / Telefônico
+              <Square isBigger />
+              Projeto Elétrico / Ar-condicionado
             </Text>
             <Text
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.3 }}
             >
-              <Square />
-              Cálculo Estrutural
+              <Square isBigger />
+              Projeto Hidráulico / Hidrossanitário
             </Text>
             <Text
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.4 }}
             >
-              <Square />
-              Ar-condicionado
+              <Square isBigger />
+              Combate a incêndio / SPDA
             </Text>
             <Text
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.5 }}
             >
-              <Square />
-              Hidrossanitário
-            </Text>
-            <Text
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1.6 }}
-            >
-              <Square />
-              Hidráulica
-            </Text>
-            <Text
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1.7 }}
-            >
-              <Square />
-              Elétrica
-            </Text>
-            <Text
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1.8 }}
-            >
-              <Square />
-              SPDA
+              <Square isBigger />
+              CFTV / Lógica / Automação / Telefônico
             </Text>
           </ServicoDiv>
 
