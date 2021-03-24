@@ -19,9 +19,11 @@ import {
   DivImagemTipo,
   BackButton,
   BackIcon,
-  Carousel,
+  MyCarousel,
   CarouselContainer,
   Imagem,
+  LeftArrow,
+  RightArrow,
 } from './styles';
 
 interface EnterpriseProps {
@@ -49,37 +51,21 @@ const DetalhesEmpreendimento: React.FC = () => {
 
   const [enterprise, setEnterprise] = useState<EnterpriseProps | null>(null);
   const [loading, setLoading] = useState(false);
-  const [openDialog, setOpenDialog] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const [sliding, setSliding] = useState(0);
-  const dir = 'NEXT';
+  function handlePrev() {
+    setCurrentSlide(prevState => (prevState - 1 < 0 ? 0 : prevState));
+  }
 
-  const handleAlgumaCoisa = () => {
-    setOpenDialog(true);
-  };
+  function handleNext() {
+    setCurrentSlide(prevState =>
+      prevState + 1 > enterprise!.images.length ? 0 : prevState + 1,
+    );
+  }
 
-  const handleNext = useCallback(() => {
-    if (sliding !== enterprise!.images.length - 1) {
-      setSliding(sliding + 1);
-    } else {
-      setSliding(0);
-    }
-  }, [sliding, setSliding, enterprise]);
-
-  const handleBack = useCallback(() => {
-    if (sliding !== 0) {
-      setSliding(sliding - 1);
-    } else {
-      setSliding(enterprise!.images.length - 1);
-    }
-  }, [sliding, setSliding, enterprise]);
-
-  const handlers = useSwipeable({
-    onSwipedLeft: () => handleNext(),
-    onSwipedRight: () => handleBack(),
-    preventDefaultTouchmoveEvent: true,
-    trackMouse: true,
-  });
+  function updateCurrentSlide(index: number) {
+    setCurrentSlide(prevState => (prevState !== index ? index : prevState));
+  }
 
   useEffect(() => {
     const getData = async () => {
@@ -130,14 +116,18 @@ const DetalhesEmpreendimento: React.FC = () => {
 
             {enterprise && enterprise.images.length > 0 ? (
               <MoreImages>
-                <Carousel {...handlers} style={{ cursor: 'grab' }}>
+                <MyCarousel
+                  onChange={index => updateCurrentSlide(index)}
+                  selectedItem={currentSlide}
+                  autoPlay
+                  infiniteLoop
+                  showThumbs={false}
+                  showIndicators={false}
+                >
                   {enterprise.images.map(item => (
-                    <CarouselContainer key={item.id} sliding={sliding} dir={dir}>
-                      <Imagem src={item.imagem} alt={item.name} />
-                    </CarouselContainer>
+                    <img key={item.id} src={item.imagem} alt={item.name} />
                   ))}
-                </Carousel>
-                <span>Arraste para os lados</span>
+                </MyCarousel>
               </MoreImages>
             ) : (
               <>
