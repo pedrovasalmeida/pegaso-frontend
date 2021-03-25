@@ -363,8 +363,10 @@ export const ContactLink = styled(motion.a)`
   text-decoration: none;
   color: #333;
   transition: color 300ms ease;
+
   &:hover {
     color: ${p => p.theme.colors.light.lightBlue};
+    text-decoration: none;
   }
 
   & + a {
@@ -395,5 +397,8 @@ export const ContatoText = styled(motion.span)`
   align-items: center;
   svg {
     margin-right: 5px;
+  }
+  &:hover {
+    color: ${p => p.theme.colors.light.lightBlue};
   }
 `;

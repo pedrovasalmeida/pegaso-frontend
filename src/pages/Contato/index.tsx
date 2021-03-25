@@ -384,7 +384,7 @@ const Contato: React.FC = () => {
             <ContactTitle
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 0.9 }}
               className="title-with-margin-top"
             >
               Contato
@@ -394,6 +394,9 @@ const Contato: React.FC = () => {
                 href={WhatsAppNumber}
                 target="_blank"
                 rel="noopener noreferrer"
+                initial={{ y: 100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
               >
                 <Text>
                   <PhoneIcon size={40} />
@@ -401,7 +404,13 @@ const Contato: React.FC = () => {
                 </Text>
               </ContactLink>
             </Contact>
-            <ContatoNT style={{ cursor: 'default' }} className="contact-email">
+            <ContatoNT
+              style={{ cursor: 'default' }}
+              className="contact-email"
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1.1 }}
+            >
               <ContatoText>
                 <MailIcon size={40} />
                 pegasoengenharia@outlook.com
