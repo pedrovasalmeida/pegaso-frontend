@@ -45,19 +45,36 @@ export const Container = styled.div`
   }
 `;
 
-export const DivImagemTipo = styled.img`
+interface BackgroundProps {
+  url: string;
+}
+
+export const DivImagemTipo = styled.div<BackgroundProps>`
   position: relative;
 
-  max-width: 100%;
-  min-height: auto;
+  height: calc(100vh - 200px);
+  margin-top: 1px;
+  margin-bottom: 10px;
 
-  background-size: cover;
+  background: url(${p => p.url}) no-repeat center;
+  background-size: contain;
+
+  @media only screen and (min-width: 300px) {
+    height: 60vh;
+    width: 100vw;
+    margin-top: 5px;
+    margin-left: 1px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    margin-top: 5px;
+  }
 `;
 
 export const BackButton = styled.button`
-  position: absolute;
+  position: fixed;
   top: 100px;
-  left: 10vw;
+  left: 5vw;
 
   display: flex;
   justify-content: center;
@@ -74,7 +91,7 @@ export const BackButton = styled.button`
   filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.4));
 
   transition: all 300ms ease;
-
+  z-index: 10;
   span {
     font-weight: bold;
     font-size: 18px;
@@ -108,7 +125,7 @@ export const Details = styled.div`
 
   background-color: rgba(0, 0, 0, 0.05);
 
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 1100px) {
     flex-direction: column;
   }
 `;
@@ -117,7 +134,7 @@ export const Box = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 45%;
+  width: 45vw;
   min-height: 300px;
 
   margin-top: 10px;
@@ -126,8 +143,8 @@ export const Box = styled.div`
 
   text-align: justify;
 
-  @media only screen and (max-width: 800px) {
-    width: 90%;
+  @media only screen and (max-width: 1100px) {
+    width: 90vw;
     min-height: 200px;
 
     margin-bottom: 10px;

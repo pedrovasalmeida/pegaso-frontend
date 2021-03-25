@@ -96,7 +96,7 @@ const DetalhesEmpreendimento: React.FC = () => {
       <Container>
         {enterprise !== null && enterprise && (
           <>
-            <DivImagemTipo src={enterprise?.development.banner} alt="Pégaso" />
+            <DivImagemTipo url={enterprise?.development.banner} />
             <BackButton type="button" onClick={() => history.goBack()}>
               <BackIcon size={20} />
               <span>Voltar</span>
