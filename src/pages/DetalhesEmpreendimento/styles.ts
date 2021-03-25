@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { Carousel } from 'react-responsive-carousel';
-import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
-import { BiArrowBack } from 'react-icons/bi';
-
 import { lighten, shade } from 'polished';
 import { motion, AnimatePresence } from 'framer-motion';
+import Slider from 'react-slick';
+
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
+import { BiArrowBack } from 'react-icons/bi';
 
 interface EmpImageProps {
   src?: string;
@@ -215,23 +215,49 @@ export const MoreImages = styled.div`
   }
 `;
 
-export const MyCarousel = styled(Carousel)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+export const MyCarousel = styled(Slider)`
+  position: relative;
 
-  max-width: 50vw;
-  width: 50vw;
+  width: 100vw;
+  max-height: 600px;
+
+  margin-bottom: 50px;
 
   img {
-    width: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center center;
+    height: 600px;
   }
 
-  @media only screen and (max-width: 1100px) {
-    max-width: 80vw;
-    width: 80vw;
+  @media only screen and (max-height: 721px) {
+    max-height: 400px;
+
+    img {
+      height: 400px;
+    }
+  }
+
+  @media only screen and (max-height: 523px) {
+    max-height: 300px;
+
+    img {
+      height: 300px;
+    }
+  }
+
+  @media only screen and (max-width: 477px) {
+    max-height: 400px;
+
+    img {
+      height: 400px;
+    }
+  }
+  @media only screen and (max-width: 365px) {
+    max-height: 300px;
+
+    img {
+      height: 300px;
+    }
   }
 `;
 
@@ -255,15 +281,7 @@ export const CarouselContainer = styled.div<IContainerProps>`
 `;
 
 export const Imagem = styled.img`
-  max-height: calc(100vh - 104px);
-  max-width: 100vw;
-  height: auto;
-  width: 100vw;
-
-  object-fit: contain;
-
-  pointer-events: none;
-  transition: 0.5s all;
+  height: 20rem;
 `;
 
 export const FloatDiv = styled.div`
@@ -497,9 +515,9 @@ export const DivIcons = styled.div`
 
 export const LeftArrow = styled(IoIosArrowBack)`
   position: absolute;
-  height: calc(100vh - 245px);
+  left: 2px;
   width: 30px;
-
+  min-height: 100px;
   color: #fff;
   background: rgba(0, 0, 0, 0.5);
 
@@ -516,10 +534,9 @@ export const LeftArrow = styled(IoIosArrowBack)`
 
 export const RightArrow = styled(IoIosArrowForward)`
   position: absolute;
-
-  height: calc(100vh - 245px);
+  right: 2px;
   width: 30px;
-
+  min-height: 100px;
   color: #fff;
   background: rgba(0, 0, 0, 0.5);
 

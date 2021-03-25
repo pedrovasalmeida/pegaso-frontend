@@ -53,6 +53,28 @@ const DetalhesEmpreendimento: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const carouselOptions = {
+    dots: false,
+    arrows: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    afterChange: index => updateCurrentSlide(index),
+    prevArrow: <LeftArrow />,
+    nextArrow: <RightArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+        },
+      },
+    ],
+  };
+
   function handlePrev() {
     setCurrentSlide(prevState => (prevState - 1 < 0 ? 0 : prevState));
   }
@@ -115,20 +137,14 @@ const DetalhesEmpreendimento: React.FC = () => {
             </Details>
 
             {enterprise && enterprise.images.length > 0 ? (
-              <MoreImages>
-                <MyCarousel
-                  onChange={index => updateCurrentSlide(index)}
-                  selectedItem={currentSlide}
-                  autoPlay
-                  infiniteLoop
-                  showThumbs={false}
-                  showIndicators={false}
-                >
+              <div style={{ position: 'relative' }}>
+                <MyCarousel {...carouselOptions}>
                   {enterprise.images.map(item => (
-                    <img key={item.id} src={item.imagem} alt={item.name} />
+                    // eslint-disable-next-line react/jsx-key
+                    <img src={item.imagem} alt={item.name} />
                   ))}
                 </MyCarousel>
-              </MoreImages>
+              </div>
             ) : (
               <>
                 {loading ? (
