@@ -534,7 +534,7 @@ export const LeftArrow = styled(IoIosArrowBack)`
 
 export const RightArrow = styled(IoIosArrowForward)`
   position: absolute;
-  right: 2px;
+  right: 17px;
   width: 30px;
   min-height: 100px;
   color: #fff;
