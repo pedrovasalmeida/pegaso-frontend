@@ -12,6 +12,7 @@ import AdicionarEmp from '../../components/AdicionarEmp';
 import RemoverEmp from '../../components/RemoverEmp';
 import ListarEmp from '../../components/ListarEmp';
 import AdicionarImagens from '../../components/AdicionarImagens';
+import RemoverImagens from '../../components/RemoverImagens';
 import OrdenarProjetos from '../../components/OrdenarProjetos';
 import AtualizarEmpreendimento from '../../components/AtualizarEmpreendimento';
 
@@ -70,6 +71,7 @@ const Painel: React.FC = () => {
   const [adicionar, setAdicionar] = useState(false);
   const [atualizarEmpreendimento, setAtualizarEmpreendimento] = useState(false);
   const [adicionarImagens, setAdicionarImagens] = useState(false);
+  const [removerImagens, setRemoverImagens] = useState(false);
   const [ordenarProjetos, setOrdenarProjetos] = useState(false);
   const [remover, setRemover] = useState(false);
   const [listar, setListar] = useState(false);
@@ -98,6 +100,7 @@ const Painel: React.FC = () => {
     setAdicionar(true);
     setAtualizarEmpreendimento(false);
     setAdicionarImagens(false);
+    setRemoverImagens(false);
     setRemover(false);
     setListar(false);
     setOrdenarProjetos(false);
@@ -109,6 +112,7 @@ const Painel: React.FC = () => {
     setAdicionar(false);
     setAtualizarEmpreendimento(true);
     setAdicionarImagens(false);
+    setRemoverImagens(false);
     setRemover(false);
     setListar(false);
     setOrdenarProjetos(false);
@@ -120,6 +124,19 @@ const Painel: React.FC = () => {
     setAdicionar(false);
     setAtualizarEmpreendimento(false);
     setAdicionarImagens(true);
+    setRemoverImagens(false);
+    setRemover(false);
+    setListar(false);
+    setOrdenarProjetos(false);
+    setToggleMenu(false);
+  };
+
+  const handleRemoverImagens = () => {
+    setActualPage('remover-imagens');
+    setAdicionar(false);
+    setAtualizarEmpreendimento(false);
+    setAdicionarImagens(false);
+    setRemoverImagens(true);
     setRemover(false);
     setListar(false);
     setOrdenarProjetos(false);
@@ -131,6 +148,7 @@ const Painel: React.FC = () => {
     setAdicionar(false);
     setAtualizarEmpreendimento(false);
     setAdicionarImagens(false);
+    setRemoverImagens(false);
     setRemover(true);
     setListar(false);
     setOrdenarProjetos(false);
@@ -142,6 +160,7 @@ const Painel: React.FC = () => {
     setAdicionar(false);
     setAtualizarEmpreendimento(false);
     setAdicionarImagens(false);
+    setRemoverImagens(false);
     setRemover(false);
     setListar(true);
     setOrdenarProjetos(false);
@@ -153,6 +172,7 @@ const Painel: React.FC = () => {
     setAdicionar(false);
     setAtualizarEmpreendimento(false);
     setAdicionarImagens(false);
+    setRemoverImagens(false);
     setRemover(false);
     setListar(false);
     setOrdenarProjetos(true);
@@ -181,6 +201,10 @@ const Painel: React.FC = () => {
 
       if (localStorageActualPage === 'adicionar-imagens') {
         handleAtualizar();
+      }
+
+      if (localStorageActualPage === 'remover-imagens') {
+        handleRemoverImagens();
       }
 
       if (localStorageActualPage === 'ordenar') {
@@ -315,6 +339,10 @@ const Painel: React.FC = () => {
                 Adicionar imagens
               </OpcaoMenu>
 
+              <OpcaoMenu selected={removerImagens} onClick={() => handleRemoverImagens()}>
+                Remover imagens
+              </OpcaoMenu>
+
               <OpcaoMenu
                 selected={ordenarProjetos}
                 onClick={() => handleOrdenarProjetos()}
@@ -351,6 +379,11 @@ const Painel: React.FC = () => {
               {adicionarImagens && (
                 <>
                   <AdicionarImagens />
+                </>
+              )}
+              {removerImagens && (
+                <>
+                  <RemoverImagens />
                 </>
               )}
               {ordenarProjetos && (
