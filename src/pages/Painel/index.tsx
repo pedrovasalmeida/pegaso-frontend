@@ -335,19 +335,19 @@ const Painel: React.FC = () => {
                 Listar empreendimentos
               </OpcaoMenu>
 
+              <OpcaoMenu
+                selected={ordenarProjetos}
+                onClick={() => handleOrdenarProjetos()}
+              >
+                Ordenar Projetos
+              </OpcaoMenu>
+
               <OpcaoMenu selected={adicionarImagens} onClick={() => handleAtualizar()}>
                 Adicionar imagens
               </OpcaoMenu>
 
               <OpcaoMenu selected={removerImagens} onClick={() => handleRemoverImagens()}>
                 Remover imagens
-              </OpcaoMenu>
-
-              <OpcaoMenu
-                selected={ordenarProjetos}
-                onClick={() => handleOrdenarProjetos()}
-              >
-                Ordenar Projetos
               </OpcaoMenu>
 
               <OpcaoMenu selected={false} onClick={() => handleDeslogar()}>
