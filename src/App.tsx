@@ -10,6 +10,8 @@ import Header from './components/Header';
 import Theme from './styles/Theme';
 import GlobalStyles from './styles/global';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 ReactGA.initialize('UA-192907132-1');
 
 const App: React.FC = () => (
