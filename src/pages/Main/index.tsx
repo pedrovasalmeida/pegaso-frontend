@@ -24,19 +24,15 @@ const Main: React.FC = () => {
 
   return (
     <>
-      {width < 800 ? (
-        <Container>
-          <MyLink to="/obras">
-            <Imagem src="https://i.imgur.com/CVtmdgh.png" alt="Pégaso" />
-          </MyLink>
-        </Container>
-      ) : (
-        <Container>
-          <MyLink to="/obras">
-            <Imagem src="https://i.imgur.com/BVKrDNR.png" alt="Pégaso" />
-          </MyLink>
-        </Container>
-      )}
+      <Container>
+        <MyLink to="/obras">
+          {width < 800 ? (
+            <Imagem src="https://i.imgur.com/gPTt7TX.png" alt="Pégaso" />
+          ) : (
+            <Imagem src="https://i.imgur.com/bjaiOlz.png" alt="Pégaso" />
+          )}
+        </MyLink>
+      </Container>
       <Footer />
     </>
   );
