@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
 import { Preloader, ThreeDots } from 'react-preloader-icon';
@@ -95,9 +96,9 @@ const ProjectsMobile: React.FC = () => {
     <>
       <Container>
         <DivTitle
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.7 }}
+          // initial={{ y: 100, opacity: 0 }}
+          // animate={{ y: 0, opacity: 1 }}
+          // transition={{ duration: 0.7 }}
         >
           {width < 459 ? (
             <Subtitle>
@@ -130,14 +131,14 @@ const ProjectsMobile: React.FC = () => {
                   return (
                     <LinkRRD to={`/obras/detalhes/${result.development.id}`} key={result.development.id}>
                       <Project
-                        initial={{ y: 100, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 1 }}
-                        whileHover={{
-                          y: -5,
-                          filter: 'drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.4))',
-                          transition: { duration: 0.5 },
-                        }}
+                        // initial={{ y: 100, opacity: 0 }}
+                        // animate={{ y: 0, opacity: 1 }}
+                        // transition={{ duration: 1 }}
+                        // whileHover={{
+                        //   y: -5,
+                        //   filter: 'drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.4))',
+                        //   transition: { duration: 0.5 },
+                        // }}
                       >
                         <FullImage width={width}>
                           <img src={result.development.poster} alt={result.development.nome} />
@@ -145,10 +146,10 @@ const ProjectsMobile: React.FC = () => {
 
                         {width < 586 ? (
                           <FloatDivMobile
-                            initial="hidden"
-                            animate="visible"
-                            variants={variants}
-                            transition={{ duration: 0.25 }}
+                            // initial="hidden"
+                            // animate="visible"
+                            // variants={variants}
+                            // transition={{ duration: 0.25 }}
                           >
                             <p>{result.development.descricao_curta}</p>
                             <p>{result.development.nome}</p>
@@ -158,10 +159,10 @@ const ProjectsMobile: React.FC = () => {
                             whileTap={{
                             scale: 0.95,
                           }}
-                            initial="hidden"
-                            animate="visible"
-                            variants={variants}
-                            transition={{ duration: 0.25 }}
+                            // initial="hidden"
+                            // animate="visible"
+                            // variants={variants}
+                            // transition={{ duration: 0.25 }}
                           >
                             <FloatContent>
                               <div>

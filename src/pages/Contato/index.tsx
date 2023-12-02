@@ -87,106 +87,103 @@ const Contato: React.FC = () => {
     }
   }
 
-  const handleSendEmail = useCallback(
-    async (e, nome: string, email: string, contato: string, mensagem: string) => {
-      e.preventDefault();
+  const handleSendEmail = async (e, nome: string, email: string, contato: string, mensagem: string) => {
+e.preventDefault();
 
-      setLoadingSendEmail(true);
+setLoadingSendEmail(true);
 
-      if (!nome || !email || !contato || !mensagem) {
-        setLoadingSendEmail(false);
-        setIsError(true);
-        setIsSended(false);
-        setCouldSend(false);
-        setErrorMessage('Preencha todos os campos!');
+if (!nome || !email || !contato || !mensagem) {
+  setLoadingSendEmail(false);
+  setIsError(true);
+  setIsSended(false);
+  setCouldSend(false);
+  setErrorMessage('Preencha todos os campos!');
 
-        setTimeout(() => {
-          setLoadingSendEmail(false);
-          setIsError(false);
-          setIsSended(false);
-          setCouldSend(true);
-          setErrorMessage('');
-        }, 5000);
-        return;
-      }
+  setTimeout(() => {
+    setLoadingSendEmail(false);
+    setIsError(false);
+    setIsSended(false);
+    setCouldSend(true);
+    setErrorMessage('');
+  }, 5000);
+  return;
+}
 
-      if (!email.match(/.+@.+/)) {
-        setLoadingSendEmail(false);
-        setIsError(true);
-        setIsSended(false);
-        setCouldSend(false);
-        setErrorMessage('E-mail inválido. Tente novamente!');
+if (!email.match(/.+@.+/)) {
+  setLoadingSendEmail(false);
+  setIsError(true);
+  setIsSended(false);
+  setCouldSend(false);
+  setErrorMessage('E-mail inválido. Tente novamente!');
 
-        setTimeout(() => {
-          setLoadingSendEmail(false);
-          setIsError(false);
-          setIsSended(false);
-          setCouldSend(true);
-          setErrorMessage('');
-        }, 5000);
-        return;
-      }
+  setTimeout(() => {
+    setLoadingSendEmail(false);
+    setIsError(false);
+    setIsSended(false);
+    setCouldSend(true);
+    setErrorMessage('');
+  }, 5000);
+  return;
+}
 
+setIsError(false);
+setIsSended(false);
+
+const data = {
+  service_id: 'service_7jr8g3d',
+  template_id: 'template_5be7vys',
+  user_id: '6lZ6MeN2_qTlrjLID',
+  template_params: {
+    from_name: inputNome,
+    contact_email: inputEmail,
+    contact_fone: inputContato,
+    message: inputMensagem,
+  }
+};
+
+  emailApi.post('/send', data)
+  .then(() => {
+    setLoadingSendEmail(false);
+    setIsError(false);
+    setIsSended(true);
+    setCouldSend(false);
+    setTimeout(() => {
+      setLoadingSendEmail(false);
       setIsError(false);
       setIsSended(false);
-
-      const data = {
-        service_id: 'service_1q2q3q4',
-        template_id: '',
-        user_id: '',
-        template_params: {
-          from_name: inputNome,
-          contact_email: inputEmail,
-          contact_fone: inputContato,
-          message: inputMensagem,
-        }
-      };
-
-      emailApi.post('/send', data)
-      .then(() => {
-        setLoadingSendEmail(false);
-        setIsError(false);
-        setIsSended(true);
-        setCouldSend(false);
-        setTimeout(() => {
-          setLoadingSendEmail(false);
-          setIsError(false);
-          setIsSended(false);
-          setCouldSend(true);
-        }, 10000);
-      })
-      .catch(() => {
-        setIsError(true);
-        setIsSended(false);
-        setLoadingSendEmail(false);
-        setCouldSend(false);
-        setErrorMessage('Ocorreu algum erro com o envio dos dados. Tente novamente!');
-        setTimeout(() => {
-          setLoadingSendEmail(false);
-          setIsError(false);
-          setIsSended(false);
-          setCouldSend(true);
-          setErrorMessage('');
-        }, 10000);
-      });
+      setCouldSend(true);
+    }, 10000);
+  })
+  .catch(() => {
+    setIsError(true);
+    setIsSended(false);
+    setLoadingSendEmail(false);
+    setCouldSend(false);
+    setErrorMessage('Ocorreu algum erro com o envio dos dados. Tente novamente!');
+    setTimeout(() => {
+      setLoadingSendEmail(false);
+      setIsError(false);
+      setIsSended(false);
+      setCouldSend(true);
+      setErrorMessage('');
+    }, 10000);
+  });
 
 
-      setTimeout(() => {
-        setLoadingSendEmail(false);
-        setIsError(false);
-        setIsSended(true);
-        setCouldSend(false);
-      }, 1000);
+setTimeout(() => {
+  setLoadingSendEmail(false);
+  setIsError(false);
+  setIsSended(true);
+  setCouldSend(false);
+}, 1000);
 
-      setTimeout(() => {
-        setLoadingSendEmail(false);
-        setIsError(false);
-        setIsSended(false);
-        setCouldSend(true);
-      }, 5000);
-    },
-    [],
-  );
+setTimeout(() => {
+  setLoadingSendEmail(false);
+  setIsError(false);
+  setIsSended(false);
+  setCouldSend(true);
+}, 5000);
+}
 
   return (
     <>
@@ -197,7 +194,8 @@ const Contato: React.FC = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <GoogleMapReact
+            <div style={{ width: '100%', height: '100%', background: '#efefef' }} />
+            {/* <GoogleMapReact
               bootstrapURLKeys={{
                 key: API_GOOGLE_MAPS,
               }}
@@ -210,7 +208,7 @@ const Contato: React.FC = () => {
                 lat={googleMapsOptions.center.lat}
                 lng={googleMapsOptions.center.lng}
               />
-            </GoogleMapReact>
+            </GoogleMapReact> */}
           </GoogleMapsDiv>
           <FormDiv>
             <Title
