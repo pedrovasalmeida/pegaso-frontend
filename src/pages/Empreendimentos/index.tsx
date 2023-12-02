@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
 import { Preloader, ThreeDots } from 'react-preloader-icon';
 import Footer from '../../components/Footer';
@@ -20,6 +21,7 @@ import {
   FloatButton,
   LinkRRD,
 } from './styles';
+import { EnterpriseProps, makeListProjects } from '../../modules/project/factory/makeListProjects';
 
 interface Empreendimentos {
   id: number;
@@ -30,7 +32,7 @@ interface Empreendimentos {
 }
 
 const ProjectsMobile: React.FC = () => {
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<EnterpriseProps[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [isArray, setIsArray] = useState<boolean | undefined>(undefined);
 
@@ -42,29 +44,27 @@ const ProjectsMobile: React.FC = () => {
       setIsArray(true);
       setLoading(false);
 
-      const response = await api.get('/show-all');
+      const projects = await makeListProjects()
 
       if (
-        JSON.stringify(response.data) !== dataFromLocalStorage &&
-        response.status === 200
+        JSON.stringify(projects) !== dataFromLocalStorage &&
+        projects !== null
       ) {
-        localStorage.setItem('@ProjPegaso:enterpriseData', JSON.stringify(response.data));
-        setResults(response.data);
+        localStorage.setItem('@ProjPegaso:enterpriseData', JSON.stringify(projects));
+        setResults(projects);
       }
     } else {
-      api
-        .get('/show-all')
-        .then(res => {
-          setResults(res.data);
-          localStorage.setItem('@ProjPegaso:enterpriseData', JSON.stringify(res.data));
+      try {
+        const projects = await makeListProjects()
+          setResults(projects);
+          localStorage.setItem('@ProjPegaso:enterpriseData', JSON.stringify(projects));
           setIsArray(true);
           setLoading(false);
-        })
-        .catch(err => {
-          setIsArray(false);
+      } catch (err) {
+        setIsArray(false);
           setLoading(false);
           console.log(err);
-        });
+      }
     }
   };
 
@@ -126,9 +126,9 @@ const ProjectsMobile: React.FC = () => {
                   Ainda não possuímos empreendimentos cadastrados!
                 </ErrorMessage>
               ) : (
-                results.map(item => {
+                results?.map((result) => {
                   return (
-                    <LinkRRD to={`/obras/detalhes/${item.id}`} key={item.id}>
+                    <LinkRRD to={`/obras/detalhes/${result.development.id}`} key={result.development.id}>
                       <Project
                         initial={{ y: 100, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
@@ -140,7 +140,7 @@ const ProjectsMobile: React.FC = () => {
                         }}
                       >
                         <FullImage width={width}>
-                          <img src={item.banner} alt={item.nome} />
+                          <img src={result.development.poster} alt={result.development.nome} />
                         </FullImage>
 
                         {width < 586 ? (
@@ -150,14 +150,14 @@ const ProjectsMobile: React.FC = () => {
                             variants={variants}
                             transition={{ duration: 0.25 }}
                           >
-                            <p>{item.descricao_curta}</p>
-                            <p>{item.nome}</p>
+                            <p>{result.development.descricao_curta}</p>
+                            <p>{result.development.nome}</p>
                           </FloatDivMobile>
                         ) : (
                           <FloatDiv
                             whileTap={{
-                              scale: 0.95,
-                            }}
+                            scale: 0.95,
+                          }}
                             initial="hidden"
                             animate="visible"
                             variants={variants}
@@ -165,8 +165,8 @@ const ProjectsMobile: React.FC = () => {
                           >
                             <FloatContent>
                               <div>
-                                <span>{item.descricao_curta}</span>
-                                <p>{item.nome}</p>
+                                <span>{result.development.descricao_curta}</span>
+                                <p>{result.development.nome}</p>
                               </div>
                             </FloatContent>
                             <FloatButton>
@@ -174,26 +174,6 @@ const ProjectsMobile: React.FC = () => {
                             </FloatButton>
                           </FloatDiv>
                         )}
-
-                        <FloatDiv
-                          whileTap={{
-                            scale: 0.95,
-                          }}
-                          initial="hidden"
-                          animate="visible"
-                          variants={variants}
-                          transition={{ duration: 0.25 }}
-                        >
-                          <FloatContent>
-                            <div>
-                              <span>{item.descricao_curta}</span>
-                              <p>{item.nome}</p>
-                            </div>
-                          </FloatContent>
-                          <FloatButton>
-                            <span>Clique aqui para conferir</span>
-                          </FloatButton>
-                        </FloatDiv>
                       </Project>
                     </LinkRRD>
                   );

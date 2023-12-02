@@ -60,7 +60,7 @@ const NotFound: React.FC = () => {
           transition={{ duration: 1.4 }}
         >
           <Text className="link" onClick={() => handleNavigate('/')}>
-            ← Voltar para home
+            ← Voltar para Início
           </Text>
           <Text className="link" onClick={() => handleNavigate('/obras')}>
             Nossas obras →

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import Routes from './routes';
@@ -14,18 +14,32 @@ import 'react-toastify/dist/ReactToastify.css';
 
 ReactGA.initialize('UA-192907132-1');
 
-const App: React.FC = () => (
-  <Theme>
-    <BrowserRouter>
-      <Header />
-
-      <AuthProvider>
-        <Routes />
-      </AuthProvider>
-    </BrowserRouter>
-
-    <GlobalStyles />
-  </Theme>
-);
+const App: React.FC = () => {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const iframes = document.querySelectorAll('iframe');
+      if (iframes.length > 0) {
+        clearInterval(interval)
+        iframes.forEach(iframe => {
+          // eslint-disable-next-line no-param-reassign
+          iframe.setAttribute('style', 'display: none !important;')
+        })
+      }
+    }, 500);
+  }, [])
+  
+  return (
+    <Theme>
+      <BrowserRouter>
+        <Header />
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
+      </BrowserRouter>
+  
+      <GlobalStyles />
+    </Theme>
+  )
+};
 
 export default App;

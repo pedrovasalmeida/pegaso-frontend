@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 /** Páginas */
 import Main from './pages/Main';
@@ -16,6 +16,7 @@ const Routes: React.FC = () => {
   return (
     <Switch>
       <Route path="/" exact component={Main} />
+      {/* <Redirect from="/" to="/quem-somos" exact /> */}
       <Route path="/quem-somos" exact component={QuemSomos} />
       <Route path="/parceiros" exact component={Parceiros} />
       <Route path="/servicos" exact component={ServicosPrestados} />

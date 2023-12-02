@@ -28,7 +28,7 @@ const Header: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const menuOptions = [
-    { rota: '/', nome: 'HOME' },
+    { rota: '/', nome: 'INÍCIO' },
     { rota: '/quem-somos', nome: 'QUEM SOMOS' },
     { rota: '/parceiros', nome: 'PARCEIROS' },
     { rota: '/servicos', nome: 'SERVIÇOS PRESTADOS' },

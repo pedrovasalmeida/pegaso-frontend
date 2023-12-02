@@ -23,7 +23,7 @@ import FooterMobile from '../FooterMobile';
 const Footer: React.FC = () => {
   const number = '+5571999087283';
   const WhatsApp = `https://api.whatsapp.com/send?phone=${encodeURIComponent(number)}`;
-  const InstagramLink = 'https://www.instagram.com/pegasoeng/';
+  const InstagramLink = 'https://www.instagram.com/construtorapegaso';
 
   const { width } = useWindowDimensions();
 
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
     },
     {
       nome: 'Instagram',
-      info: 'pegasoeng',
+      info: 'construtorapegaso',
       linkExist: false,
       link: InstagramLink,
       icon: <PhoneIcon />,
@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
               animate={{ y: 0 }}
               transition={{ duration: 1 }}
             >
-              <Text>© 2020 - St. James Comunicação</Text>
+              <Text>© 2024 - Construtora Pegaso</Text>
             </motion.div>
           </Data>
 

@@ -32,6 +32,7 @@ import {
   ContatoNT,
   ContatoText,
 } from './styles';
+import { emailApi } from '../../services/email';
 
 const { REACT_APP_API_GOOGLE_MAPS } = process.env;
 let API_GOOGLE_MAPS: any;
@@ -130,40 +131,45 @@ const Contato: React.FC = () => {
       setIsSended(false);
 
       const data = {
-        nome,
-        email,
-        contato,
-        mensagem,
+        service_id: 'service_1q2q3q4',
+        template_id: '',
+        user_id: '',
+        template_params: {
+          from_name: inputNome,
+          contact_email: inputEmail,
+          contact_fone: inputContato,
+          message: inputMensagem,
+        }
       };
 
-      await api
-        .post('/send-mail', data)
-        .then(() => {
+      emailApi.post('/send', data)
+      .then(() => {
+        setLoadingSendEmail(false);
+        setIsError(false);
+        setIsSended(true);
+        setCouldSend(false);
+        setTimeout(() => {
           setLoadingSendEmail(false);
           setIsError(false);
-          setIsSended(true);
-          setCouldSend(false);
-          setTimeout(() => {
-            setLoadingSendEmail(false);
-            setIsError(false);
-            setIsSended(false);
-            setCouldSend(true);
-          }, 10000);
-        })
-        .catch(() => {
-          setIsError(true);
           setIsSended(false);
+          setCouldSend(true);
+        }, 10000);
+      })
+      .catch(() => {
+        setIsError(true);
+        setIsSended(false);
+        setLoadingSendEmail(false);
+        setCouldSend(false);
+        setErrorMessage('Ocorreu algum erro com o envio dos dados. Tente novamente!');
+        setTimeout(() => {
           setLoadingSendEmail(false);
-          setCouldSend(false);
-          setErrorMessage('Ocorreu algum erro com o envio dos dados. Tente novamente!');
-          setTimeout(() => {
-            setLoadingSendEmail(false);
-            setIsError(false);
-            setIsSended(false);
-            setCouldSend(true);
-            setErrorMessage('');
-          }, 10000);
-        });
+          setIsError(false);
+          setIsSended(false);
+          setCouldSend(true);
+          setErrorMessage('');
+        }, 10000);
+      });
+
 
       setTimeout(() => {
         setLoadingSendEmail(false);
