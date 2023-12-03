@@ -11,6 +11,7 @@ import Theme from './styles/Theme';
 import GlobalStyles from './styles/global';
 
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from './components/Footer';
 
 ReactGA.initialize('UA-192907132-1');
 
@@ -35,6 +36,7 @@ const App: React.FC = () => {
         <AuthProvider>
           <Routes />
         </AuthProvider>
+        <Footer />
       </BrowserRouter>
   
       <GlobalStyles />

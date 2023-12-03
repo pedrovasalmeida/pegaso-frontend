@@ -85,7 +85,7 @@ const Parceiros: React.FC = () => {
           ))}
         </ParceirosDiv>
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

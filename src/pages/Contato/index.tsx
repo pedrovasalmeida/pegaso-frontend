@@ -6,6 +6,8 @@ import Footer from '../../components/Footer';
 
 import api from '../../services/api';
 
+import MapaImg from '../../assets/maps/mapa.png';
+
 import {
   Container,
   WrapperMapsAndForm,
@@ -46,6 +48,8 @@ if (REACT_APP_API_GOOGLE_MAPS !== undefined) {
 const WhatsAppNumber = `https://api.whatsapp.com/send?phone=${encodeURIComponent(
   '+5571999087283',
 )}`;
+
+const PEGASO_MAPS_LINK = 'https://www.google.com.br/maps/place/P%C3%89GASO+ENGENHARIA/@-12.9845572,-38.4502138,19z/data=!4m15!1m8!3m7!1s0x7161b68fb2e6d3b:0xa1975a61ceeea863!2sP%C3%89GASO+ENGENHARIA!8m2!3d-12.9846691!4d-38.4505053!10e5!16s%2Fg%2F11n2npvp8l!3m5!1s0x7161b68fb2e6d3b:0xa1975a61ceeea863!8m2!3d-12.9846691!4d-38.4505053!16s%2Fg%2F11n2npvp8l?entry=ttu'
 
 const Contato: React.FC = () => {
   const [inputNome, setInputNome] = useState('');
@@ -194,7 +198,9 @@ setTimeout(() => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <div style={{ width: '100%', height: '100%', background: '#efefef' }} />
+            <a href={PEGASO_MAPS_LINK} target="_blank" rel="noopener noreferrer nofollow">
+              <img src={MapaImg} alt="Mapa da sede da Construtora Pegaso" />
+            </a>
             {/* <GoogleMapReact
               bootstrapURLKeys={{
                 key: API_GOOGLE_MAPS,
@@ -319,7 +325,7 @@ setTimeout(() => {
               Endereço
             </ContactTitle>
             <ContactLink
-              href="https://www.google.com.br/maps/place/EDF.+Atlanta+Empresarial/@-12.9846262,-38.4525944,17z/data=!4m12!1m6!3m5!1s0x7161b0f7a5364df:0xcf979c0077f7795c!2sEDF.+Atlanta+Empresarial!8m2!3d-12.9846314!4d-38.4504057!3m4!1s0x7161b0f7a5364df:0xcf979c0077f7795c!8m2!3d-12.9846314!4d-38.4504057"
+              href={PEGASO_MAPS_LINK}
               target="_blank"
               rel="noopener noreferrer"
               initial={{ y: 100, opacity: 0 }}
@@ -423,7 +429,7 @@ setTimeout(() => {
           </Contacts>
         </WrapperContacts>
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

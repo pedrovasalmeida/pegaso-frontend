@@ -6,17 +6,14 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 64px;
+  margin-top: 65px;
 
   overflow: hidden;
 
   max-width: 100vw;
   height: auto;
+  height: calc(100vh - 104px);
   max-height: calc(100vh - 104px);
-
-  @media only screen and (min-width: 1024px) {
-    height: calc(100vh - 104px);
-  }
 `;
 
 export const Imagem = styled.img`
@@ -35,48 +32,25 @@ export const Imagem = styled.img`
 `;
 
 export const MyCarousel = styled(Slider)`
+  display: block;
   position: relative;
 
   width: 100vw;
-  max-height: 1080px;
+  height: 100%;
+  max-height: 100vh;
 
   margin-bottom: 50px;
 
   img {
-    object-fit: contain;
-    object-position: center center;
-    height: 100%;
     cursor: pointer;
+    object-fit: contain;
+    aspect-ratio: 16/9;
+    height: 100%;
   }
 
-  @media only screen and (max-height: 721px) {
-    max-height: 100%;
-
+  @media only screen and (min-width: 800px) {
     img {
-      height: 100%;
-    }
-  }
-
-  @media only screen and (max-height: 523px) {
-    max-height: 300px;
-
-    img {
-      height: 300px;
-    }
-  }
-
-  @media only screen and (max-width: 477px) {
-    max-height: 400px;
-
-    img {
-      height: 400px;
-    }
-  }
-  @media only screen and (max-width: 365px) {
-    max-height: 300px;
-
-    img {
-      height: 300px;
+      aspect-ratio: 16/9;
     }
   }
 `;

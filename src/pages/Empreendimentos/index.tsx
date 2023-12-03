@@ -184,7 +184,7 @@ const ProjectsMobile: React.FC = () => {
           )}
         </DivProjects>
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

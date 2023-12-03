@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 /** Páginas */
 import Main from './pages/Main';
@@ -8,7 +8,7 @@ import Parceiros from './pages/Parceiros';
 import ServicosPrestados from './pages/ServicosPrestados';
 import Empreendimentos from './pages/Empreendimentos';
 import DetalhesEmpreendimento from './pages/DetalhesEmpreendimento';
-import Painel from './pages/Painel';
+// import Painel from './pages/Painel';
 import Contato from './pages/Contato';
 import NotFound from './pages/NotFound';
 
@@ -22,7 +22,7 @@ const Routes: React.FC = () => {
       <Route path="/servicos" exact component={ServicosPrestados} />
       <Route path="/obras" exact component={Empreendimentos} />
       <Route path="/obras/detalhes/:id" component={DetalhesEmpreendimento} />
-      <Route path="/painel" component={Painel} />
+      {/* <Route path="/painel" component={Painel} /> */}
       <Route path="/contato" component={Contato} />
       <Route component={NotFound} />
     </Switch>

@@ -102,7 +102,7 @@ const QuemSomos: React.FC = () => {
           >
             <img src={backgroundUrl} alt="Pegaso" />
           </DivImagemTipo>
-          <Footer />
+          {/* <Footer /> */}
         </Container>
       )}
     </>

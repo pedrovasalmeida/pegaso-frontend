@@ -130,7 +130,7 @@ const DetalhesEmpreendimento: React.FC = () => {
           </>
         )}
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

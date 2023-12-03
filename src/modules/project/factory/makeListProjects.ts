@@ -45,13 +45,18 @@ export async function makeListProjects(): Promise<EnterpriseProps[] | null> {
   }
 }
 
-export async function makeListHomeImages(): Promise<string[] | null> {
+export async function makeListHomeImages(): Promise<{ desktopImages: string[], mobileImages: string[] } | null> {
   try {
     const requestToGetRef = await cmsClient.get('/')
     const usableRef = requestToGetRef.data.refs[0].ref
     const images = await cmsClient.get(`/documents/search?ref=${usableRef}`)
-    const parsedImages = images.data.results.filter(p => p.type === 'site-image').map(p => p.data.imagens_pagina_inicial.map(img => img.imagem.url)).flat()
-    return parsedImages
+    const desktopImages = images.data.results.filter(p => p.type === 'site-image').map(p => p.data.imagens_pagina_inicial_pc.map(img => img.imagem.url)).flat()
+    const mobileImages = images.data.results.filter(p => p.type === 'site-image').map(p => p.data.imagens_da_pagina_mobile.map(img => img.imagem.url)).flat()
+    // const parsedImages = images.data.results.filter(p => p.type === 'site-image').map(p => p.data.imagens_pagina_inicial.map(img => img.imagem.url)).flat()
+    return {
+      desktopImages,
+      mobileImages,
+    }
   } catch {
     return null
   }
