@@ -38,7 +38,7 @@ export const MyCarousel = styled(Slider)`
 
   width: 100vw;
   height: calc(100vh - 104px);
-  max-height: 100vh;
+  max-height: calc(100vh - 104px);
 
   img {
     cursor: pointer;
@@ -50,8 +50,17 @@ export const MyCarousel = styled(Slider)`
   @media only screen and (min-width: 800px) {    
     img {
       cursor: pointer;
+      aspect-ratio: 16/9;
+      height: calc(100vh - 104px);
+    }
+  }
+
+  @media only screen and (min-width: 1920px) {    
+    img {
+      cursor: pointer;
       object-fit: contain;
       aspect-ratio: 16/9;
+      width: 100vw;
       height: calc(100vh - 104px);
     }
   }
