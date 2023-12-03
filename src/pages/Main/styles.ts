@@ -8,10 +8,11 @@ export const Container = styled.div`
   justify-content: center;
   margin-top: 65px;
 
+  position: relative;
+
   overflow: hidden;
 
   max-width: 100vw;
-  height: auto;
   height: calc(100vh - 104px);
   max-height: calc(100vh - 104px);
 `;
@@ -36,21 +37,22 @@ export const MyCarousel = styled(Slider)`
   position: relative;
 
   width: 100vw;
-  height: 100%;
+  height: calc(100vh - 104px);
   max-height: 100vh;
-
-  margin-bottom: 50px;
 
   img {
     cursor: pointer;
     object-fit: contain;
-    aspect-ratio: 16/9;
-    height: 100%;
+    aspect-ratio: 9/16;
+    width: 100%;
   }
 
-  @media only screen and (min-width: 800px) {
+  @media only screen and (min-width: 800px) {    
     img {
+      cursor: pointer;
+      object-fit: contain;
       aspect-ratio: 16/9;
+      height: calc(100vh - 104px);
     }
   }
 `;

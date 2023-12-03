@@ -44,13 +44,14 @@ const Main: React.FC = () => {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
+    initialSlide: 0,
     autoplay: true,
     afterChange: index => updateCurrentSlide(index),
     prevArrow: <LeftArrow />,
     nextArrow: <RightArrow />,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 800,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -93,29 +94,15 @@ const Main: React.FC = () => {
 
   return (
     <>
-      <Container>
-        <div style={{ position: 'relative', backgroundColor: 'blue', height: '100%' }}>
-          <MyCarousel {...carouselOptions}>
-            {width < 800 ? mobileImages.map((image) => (
-              <img src={image} alt={image} onClick={handleNavigateToObras} />
+      <Container id='container'>
+        <MyCarousel {...carouselOptions}>
+          {width < 800 ? mobileImages.map((image) => (
+            <img src={image} alt={image} onClick={handleNavigateToObras} />
               )) : desktopImages.map((image) => (
                 <img src={image} alt={image} onClick={handleNavigateToObras} />
-              ))}
-          </MyCarousel>
-        </div>
-        {/* {width < 800 ? (
-          <Imagem src="https://images.prismic.io/pegaso-frontend/7312d843-34e4-4720-a471-f9c414f06375_166362050_297601308449060_5038356839360580746_n.jpg" alt="Pégaso" />
-        ) : (
-          <div style={{ position: 'relative' }}>
-            <MyCarousel {...carouselOptions}>
-              {desktopImages.map((image) => (
-                <img src={image} alt={image} onClick={handleNavigateToObras} />
-              ))}
-            </MyCarousel>
-          </div>
-        )} */}
+            ))}
+        </MyCarousel>
       </Container>
-      {/* <Footer /> */}
     </>
   );
 };
