@@ -342,7 +342,7 @@ const ServicosPrestados: React.FC = () => {
           </ServicoDiv>
         </ServicosDiv>
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -14,7 +14,7 @@ import {
 const FooterMobile: React.FC = () => {
   const number = '+5571999087283';
   const WhatsApp = `https://api.whatsapp.com/send?phone=${encodeURIComponent(number)}`;
-  const InstagramLink = 'https://www.instagram.com/pegasoeng/';
+  const InstagramLink = 'https://www.instagram.com/construtorapegaso';
 
   const footerOptions1 = [
     {
@@ -28,7 +28,7 @@ const FooterMobile: React.FC = () => {
     },
     {
       nome: 'Instagram',
-      info: 'pegasoeng',
+      info: 'construtorapegaso',
       linkExist: false,
       link: InstagramLink,
       icon: <InstaIcon />,

@@ -15,12 +15,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  width: 100vw;
-  max-height: 200vh;
-
   margin-top: 64px;
+  margin-bottom: 64px;
 
-  overflow-x: hidden;
+  overflow: hidden;
 `;
 
 export const DivInfos = styled.div`
