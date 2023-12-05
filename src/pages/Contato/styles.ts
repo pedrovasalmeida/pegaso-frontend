@@ -17,22 +17,14 @@ export const WrapperMapsAndForm = styled.div`
   align-items: center;
   justify-content: center;
 
-  padding-left: 16px;
-
-  img {
-    border-radius: 8px;
-    cursor: pointer;
-  }
-
   @media only screen and (max-width: 1368px) {
     flex-direction: column;
   }
 `;
 
 export const GoogleMapsDiv = styled(motion.div)`
-  width: 100vw;
-  max-width: 960px;
-  height: 480px;
+  width: 60rem;
+  height: 30rem;
 
   margin-right: 100px;
 

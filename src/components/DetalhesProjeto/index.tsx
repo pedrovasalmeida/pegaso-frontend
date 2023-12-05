@@ -174,7 +174,7 @@ const Infos: React.FC = () => {
         </Container>
       )}
 
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

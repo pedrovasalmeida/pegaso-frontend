@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
+import { useSwipeable } from 'react-swipeable';
 
 /** Componentes */
 import MyLoading from '../../components/MyLoading';
 import Footer from '../../components/Footer';
 
+import api from '../../services/api';
 
 import {
   Container,
@@ -13,14 +15,34 @@ import {
   Title,
   Box,
   Text,
+  MoreImages,
   DivImagemTipo,
   BackButton,
   BackIcon,
   MyCarousel,
+  CarouselContainer,
+  Imagem,
   LeftArrow,
   RightArrow,
 } from './styles';
-import { EnterpriseProps } from '../../modules/project/factory/makeListProjects';
+
+interface EnterpriseProps {
+  development: {
+    id: number;
+    nome: string;
+    descricao_curta: string;
+    descricao: string;
+    endereco: string;
+    banner: string;
+    poster: string;
+  };
+  images: {
+    id: number;
+    id_empreendimento: number;
+    imagem: string;
+    name: string;
+  }[];
+}
 
 const DetalhesEmpreendimento: React.FC = () => {
   // return <DetalhesProjeto />;
@@ -67,27 +89,36 @@ const DetalhesEmpreendimento: React.FC = () => {
     setCurrentSlide(prevState => (prevState !== index ? index : prevState));
   }
 
-  const getData = () => {
-    const dataFromLocalStorage = localStorage.getItem('@ProjPegaso:enterpriseData');
-    if (!dataFromLocalStorage) return
-
-    const parsedData = JSON.parse(dataFromLocalStorage)
-    const selectedEnterprise = parsedData.find((item: EnterpriseProps) => item.development.id === id)
-    console.log({ selectedEnterprise })
-    if (selectedEnterprise) setEnterprise(selectedEnterprise)
-  }
-
   useEffect(() => {
-    getData()
-  }, [])
+    const getData = async () => {
+      setLoading(true);
+      const response = await api.get(`/show-one/${id}`);
 
+      if (response.status !== 200) {
+        setEnterprise(null);
+        setLoading(false);
+
+        return (
+          <h1>
+            Não foi possivel carregar os dados da obra. Por favor, atualize a página para
+            tentar novamente!
+          </h1>
+        );
+      }
+
+      setEnterprise(response.data);
+      setLoading(false);
+    };
+
+    getData();
+  }, [id]);
 
   return (
     <>
       <Container>
         {enterprise !== null && enterprise && (
           <>
-            <DivImagemTipo url={enterprise?.images[0]} />
+            <DivImagemTipo url={enterprise?.development.banner} />
             <BackButton type="button" onClick={() => history.goBack()}>
               <BackIcon size={20} />
               <span>Voltar</span>
@@ -110,7 +141,7 @@ const DetalhesEmpreendimento: React.FC = () => {
                 <MyCarousel {...carouselOptions}>
                   {enterprise.images.map(item => (
                     // eslint-disable-next-line react/jsx-key
-                    <img src={item} alt={item} />
+                    <img src={item.imagem} alt={item.name} />
                   ))}
                 </MyCarousel>
               </div>
@@ -130,7 +161,7 @@ const DetalhesEmpreendimento: React.FC = () => {
           </>
         )}
       </Container>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
