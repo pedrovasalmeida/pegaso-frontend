@@ -20,7 +20,6 @@ import {
   LoadingMessage,
   DivStateMessages,
 } from './styles';
-import { emailApi } from '../../../services/email';
 
 const ContatoMobile: React.FC = () => {
   const [inputNome, setInputNome] = useState('');
@@ -69,7 +68,8 @@ const ContatoMobile: React.FC = () => {
   //     );
   // }, []);
 
-  const handleSendEmail = async (
+  const handleSendEmail = useCallback(
+    async (
       e,
       nome: string,
       email: string,
@@ -114,18 +114,15 @@ const ContatoMobile: React.FC = () => {
       setIsSended(false);
 
       const data = {
-        service_id: 'service_7jr8g3d',
-        template_id: 'template_5be7vys',
-        user_id: '6lZ6MeN2_qTlrjLID',
-        template_params: {
-          from_name: inputNome,
-          contact_email: inputEmail,
-          contact_fone: inputContato,
-          message: inputMensagem,
-        }
+        nome,
+        email,
+        contato,
+        mensagem,
       };
-      emailApi.post('/send', data)
-        .then(() => {
+
+      await api
+        .post('/send-mail', data)
+        .then(res => {
           setIsLoading(false);
           setIsError(false);
           setIsSended(true);
@@ -137,7 +134,7 @@ const ContatoMobile: React.FC = () => {
             setCouldSend(true);
           }, 10000);
         })
-        .catch(() => {
+        .catch(err => {
           setIsError(true);
           setIsSended(false);
           setIsLoading(false);
@@ -163,7 +160,9 @@ const ContatoMobile: React.FC = () => {
         setIsSended(false);
         setCouldSend(true);
       }, 8000);
-    }
+    },
+    [],
+  );
 
   return (
     <Container>

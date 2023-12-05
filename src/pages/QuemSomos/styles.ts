@@ -10,6 +10,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100vw;
   height: calc(100vh - 104px);
   margin-top: 64px;
   overflow: hidden;

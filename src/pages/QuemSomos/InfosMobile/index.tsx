@@ -86,7 +86,7 @@ const InfosMobile: React.FC = () => {
           <img src={backgroundUrl} alt="Pégaso" />
         </DivBackground>
       </Container>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

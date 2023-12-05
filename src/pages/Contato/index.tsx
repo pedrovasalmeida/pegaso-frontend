@@ -6,8 +6,6 @@ import Footer from '../../components/Footer';
 
 import api from '../../services/api';
 
-import MapaImg from '../../assets/maps/mapa.png';
-
 import {
   Container,
   WrapperMapsAndForm,
@@ -34,7 +32,6 @@ import {
   ContatoNT,
   ContatoText,
 } from './styles';
-import { emailApi } from '../../services/email';
 
 const { REACT_APP_API_GOOGLE_MAPS } = process.env;
 let API_GOOGLE_MAPS: any;
@@ -48,8 +45,6 @@ if (REACT_APP_API_GOOGLE_MAPS !== undefined) {
 const WhatsAppNumber = `https://api.whatsapp.com/send?phone=${encodeURIComponent(
   '+5571999087283',
 )}`;
-
-const PEGASO_MAPS_LINK = 'https://www.google.com.br/maps/place/P%C3%89GASO+ENGENHARIA/@-12.9845572,-38.4502138,19z/data=!4m15!1m8!3m7!1s0x7161b68fb2e6d3b:0xa1975a61ceeea863!2sP%C3%89GASO+ENGENHARIA!8m2!3d-12.9846691!4d-38.4505053!10e5!16s%2Fg%2F11n2npvp8l!3m5!1s0x7161b68fb2e6d3b:0xa1975a61ceeea863!8m2!3d-12.9846691!4d-38.4505053!16s%2Fg%2F11n2npvp8l?entry=ttu'
 
 const Contato: React.FC = () => {
   const [inputNome, setInputNome] = useState('');
@@ -91,103 +86,101 @@ const Contato: React.FC = () => {
     }
   }
 
-  const handleSendEmail = async (e, nome: string, email: string, contato: string, mensagem: string) => {
-e.preventDefault();
+  const handleSendEmail = useCallback(
+    async (e, nome: string, email: string, contato: string, mensagem: string) => {
+      e.preventDefault();
 
-setLoadingSendEmail(true);
+      setLoadingSendEmail(true);
 
-if (!nome || !email || !contato || !mensagem) {
-  setLoadingSendEmail(false);
-  setIsError(true);
-  setIsSended(false);
-  setCouldSend(false);
-  setErrorMessage('Preencha todos os campos!');
+      if (!nome || !email || !contato || !mensagem) {
+        setLoadingSendEmail(false);
+        setIsError(true);
+        setIsSended(false);
+        setCouldSend(false);
+        setErrorMessage('Preencha todos os campos!');
 
-  setTimeout(() => {
-    setLoadingSendEmail(false);
-    setIsError(false);
-    setIsSended(false);
-    setCouldSend(true);
-    setErrorMessage('');
-  }, 5000);
-  return;
-}
+        setTimeout(() => {
+          setLoadingSendEmail(false);
+          setIsError(false);
+          setIsSended(false);
+          setCouldSend(true);
+          setErrorMessage('');
+        }, 5000);
+        return;
+      }
 
-if (!email.match(/.+@.+/)) {
-  setLoadingSendEmail(false);
-  setIsError(true);
-  setIsSended(false);
-  setCouldSend(false);
-  setErrorMessage('E-mail inválido. Tente novamente!');
+      if (!email.match(/.+@.+/)) {
+        setLoadingSendEmail(false);
+        setIsError(true);
+        setIsSended(false);
+        setCouldSend(false);
+        setErrorMessage('E-mail inválido. Tente novamente!');
 
-  setTimeout(() => {
-    setLoadingSendEmail(false);
-    setIsError(false);
-    setIsSended(false);
-    setCouldSend(true);
-    setErrorMessage('');
-  }, 5000);
-  return;
-}
+        setTimeout(() => {
+          setLoadingSendEmail(false);
+          setIsError(false);
+          setIsSended(false);
+          setCouldSend(true);
+          setErrorMessage('');
+        }, 5000);
+        return;
+      }
 
-setIsError(false);
-setIsSended(false);
-
-const data = {
-  service_id: 'service_7jr8g3d',
-  template_id: 'template_5be7vys',
-  user_id: '6lZ6MeN2_qTlrjLID',
-  template_params: {
-    from_name: inputNome,
-    contact_email: inputEmail,
-    contact_fone: inputContato,
-    message: inputMensagem,
-  }
-};
-
-  emailApi.post('/send', data)
-  .then(() => {
-    setLoadingSendEmail(false);
-    setIsError(false);
-    setIsSended(true);
-    setCouldSend(false);
-    setTimeout(() => {
-      setLoadingSendEmail(false);
       setIsError(false);
       setIsSended(false);
-      setCouldSend(true);
-    }, 10000);
-  })
-  .catch(() => {
-    setIsError(true);
-    setIsSended(false);
-    setLoadingSendEmail(false);
-    setCouldSend(false);
-    setErrorMessage('Ocorreu algum erro com o envio dos dados. Tente novamente!');
-    setTimeout(() => {
-      setLoadingSendEmail(false);
-      setIsError(false);
-      setIsSended(false);
-      setCouldSend(true);
-      setErrorMessage('');
-    }, 10000);
-  });
 
+      const data = {
+        nome,
+        email,
+        contato,
+        mensagem,
+      };
 
-setTimeout(() => {
-  setLoadingSendEmail(false);
-  setIsError(false);
-  setIsSended(true);
-  setCouldSend(false);
-}, 1000);
+      await api
+        .post('/send-mail', data)
+        .then(() => {
+          setLoadingSendEmail(false);
+          setIsError(false);
+          setIsSended(true);
+          setCouldSend(false);
+          setTimeout(() => {
+            setLoadingSendEmail(false);
+            setIsError(false);
+            setIsSended(false);
+            setCouldSend(true);
+          }, 10000);
+        })
+        .catch(() => {
+          setIsError(true);
+          setIsSended(false);
+          setLoadingSendEmail(false);
+          setCouldSend(false);
+          setErrorMessage('Ocorreu algum erro com o envio dos dados. Tente novamente!');
+          setTimeout(() => {
+            setLoadingSendEmail(false);
+            setIsError(false);
+            setIsSended(false);
+            setCouldSend(true);
+            setErrorMessage('');
+          }, 10000);
+        });
 
-setTimeout(() => {
-  setLoadingSendEmail(false);
-  setIsError(false);
-  setIsSended(false);
-  setCouldSend(true);
-}, 5000);
-}
+      setTimeout(() => {
+        setLoadingSendEmail(false);
+        setIsError(false);
+        setIsSended(true);
+        setCouldSend(false);
+      }, 1000);
+
+      setTimeout(() => {
+        setLoadingSendEmail(false);
+        setIsError(false);
+        setIsSended(false);
+        setCouldSend(true);
+      }, 5000);
+    },
+    [],
+  );
 
   return (
     <>
@@ -198,10 +191,7 @@ setTimeout(() => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <a href={PEGASO_MAPS_LINK} target="_blank" rel="noopener noreferrer nofollow">
-              <img src={MapaImg} alt="Mapa da sede da Construtora Pegaso" />
-            </a>
-            {/* <GoogleMapReact
+            <GoogleMapReact
               bootstrapURLKeys={{
                 key: API_GOOGLE_MAPS,
               }}
@@ -214,7 +204,7 @@ setTimeout(() => {
                 lat={googleMapsOptions.center.lat}
                 lng={googleMapsOptions.center.lng}
               />
-            </GoogleMapReact> */}
+            </GoogleMapReact>
           </GoogleMapsDiv>
           <FormDiv>
             <Title
@@ -325,7 +315,7 @@ setTimeout(() => {
               Endereço
             </ContactTitle>
             <ContactLink
-              href={PEGASO_MAPS_LINK}
+              href="https://www.google.com.br/maps/place/EDF.+Atlanta+Empresarial/@-12.9846262,-38.4525944,17z/data=!4m12!1m6!3m5!1s0x7161b0f7a5364df:0xcf979c0077f7795c!2sEDF.+Atlanta+Empresarial!8m2!3d-12.9846314!4d-38.4504057!3m4!1s0x7161b0f7a5364df:0xcf979c0077f7795c!8m2!3d-12.9846314!4d-38.4504057"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ y: 100, opacity: 0 }}
@@ -429,7 +419,7 @@ setTimeout(() => {
           </Contacts>
         </WrapperContacts>
       </Container>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
