@@ -12,6 +12,7 @@ import GlobalStyles from './styles/global';
 
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './components/Footer';
+import { Providers } from './components/Providers';
 
 ReactGA.initialize('UA-192907132-1');
 
@@ -28,20 +29,23 @@ const App: React.FC = () => {
       }
     }, 500);
   }, [])
-  
+
   return (
     <Theme>
       <BrowserRouter>
         <Header />
         <AuthProvider>
-          <Routes />
+          <Providers>
+            <Routes />
+          </Providers>
         </AuthProvider>
         <Footer />
       </BrowserRouter>
-  
+
       <GlobalStyles />
     </Theme>
   )
 };
+
 
 export default App;

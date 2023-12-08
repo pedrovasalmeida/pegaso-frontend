@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 import { motion } from 'framer-motion';
+import bgMobile from '../../../assets/bg_mobile.jpg'
+import bgDesk from '../../../assets/bg_desk.jpg'
+
 
 interface ScreenSizeProps {
   width: number;
@@ -10,13 +13,13 @@ interface BackgroundProps {
   url?: string;
 }
 
-export const Container = styled.div`
+export const Container = styled.div<{ width: number }>`
   display: flex;
   flex-direction: column;
   align-items: center;
 
   margin-top: 64px;
-  margin-bottom: 64px;
+  margin-bottom: 40px;
 
   overflow: hidden;
 `;

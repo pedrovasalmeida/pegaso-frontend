@@ -30,7 +30,7 @@ const InfosMobile: React.FC = () => {
 
   return (
     <>
-      <Container>
+      <Container width={width}>
         <DivTitle
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

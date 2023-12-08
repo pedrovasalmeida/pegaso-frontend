@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-
 import { motion } from 'framer-motion';
 
 interface BackgroundProps {
@@ -85,6 +84,7 @@ export const DivDescription = styled(motion.div)`
   width: 60%;
   height: auto;
   margin: 16px 0 0 0;
+  padding-bottom: 24px;
 `;
 
 export const Text = styled(motion.span)`

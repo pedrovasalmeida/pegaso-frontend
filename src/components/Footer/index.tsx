@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
   const footerOptions = [
     {
       nome: 'WhatsApp',
-      info: '(71) 9 9908 - 7283',
+      info: 'WhatsApp',
       linkExist: false,
       link: WhatsApp,
       icon: <WhatsAppIcon />,
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
     },
     {
       nome: 'Instagram',
-      info: 'construtorapegaso',
+      info: '@construtorapegaso',
       linkExist: false,
       link: InstagramLink,
       icon: <PhoneIcon />,
